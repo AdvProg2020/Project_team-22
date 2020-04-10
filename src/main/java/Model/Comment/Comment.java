@@ -1,12 +1,12 @@
-package Model.Opinion;
+package Model.Comment;
 
 import Model.Account.Account;
 import Model.Product.Product;
 
-public class Opinion {
+public class Comment {
     private Account account;
     private Product product;
     private String opinionText;
-    private OpinionStatus opinionStatus;
+    private CommentStatus opinionStatus;
     private boolean hasBayed;
 }

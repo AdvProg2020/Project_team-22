@@ -1,7 +1,7 @@
 package Model.Product;
 
 import Model.Category.Category;
-import Model.Opinion.Opinion;
+import Model.Comment.Comment;
 
 import java.util.ArrayList;
 
@@ -15,5 +15,5 @@ public class Product {
     private Category category;
     private String description;
     private int averagePoint;
-    private ArrayList<Opinion> opinionList;
+    private ArrayList<Comment> commentList;
 }

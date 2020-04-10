@@ -1,6 +1,6 @@
-package Model.Opinion;
+package Model.Comment;
 
-public enum OpinionStatus {
+public enum CommentStatus {
     WAITING_FOR_CONFIRM,
     CONFIRMED,
     NOT_CONFIRMED_FORM_MANAGER
