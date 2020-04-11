@@ -1,7 +1,7 @@
-package Model;
+package model;
 
-import Model.Account.Account;
-import Model.Product.Product;
+import model.account.Account;
+import model.product.Product;
 
 public class Point {
     private Account account;

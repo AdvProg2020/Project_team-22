@@ -1,6 +1,6 @@
-package Model.Log;
+package model.log;
 
-import Model.Discount;
+import model.Discount;
 
 public class BuyLog extends Log{
     private Discount discount;

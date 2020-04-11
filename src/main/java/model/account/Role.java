@@ -1,4 +1,4 @@
-package Model.Account;
+package model.account;
 
 public enum Role {
     CUSTOMER,

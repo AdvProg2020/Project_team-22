@@ -1,6 +1,6 @@
-package Model;
+package model;
 
-import Model.Account.Account;
+import model.account.Account;
 
 import java.sql.Time;
 import java.util.ArrayList;

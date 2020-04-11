@@ -1,4 +1,4 @@
-package Model.Off;
+package model.off;
 
 public enum OffStatus {
     MAKING,

@@ -1,4 +1,4 @@
-package Model.Comment;
+package model.comment;
 
 public enum CommentStatus {
     WAITING_FOR_CONFIRM,

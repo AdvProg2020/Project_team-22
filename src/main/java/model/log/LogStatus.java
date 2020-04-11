@@ -1,4 +1,4 @@
-package Model.Log;
+package model.log;
 
 public enum LogStatus {
 }

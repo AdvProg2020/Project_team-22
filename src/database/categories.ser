@@ -1,0 +1,11 @@
+{
+  "categories": [
+    {
+      "name": "books",
+      "properties": [
+        "cheap",
+        "useful"
+      ]
+    }
+  ]
+}
