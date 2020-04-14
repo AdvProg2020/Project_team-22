@@ -1,6 +1,6 @@
-package view.menu.managerMenu;
+package view.userArea.managerMenu;
 
-import view.menu.Menu;
+import view.Menu;
 
 public class ViewDiscountCodesMenu extends Menu {
     public ViewDiscountCodesMenu(String name, Menu parentMenu) {

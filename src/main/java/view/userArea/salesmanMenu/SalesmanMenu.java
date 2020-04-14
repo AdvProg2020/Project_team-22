@@ -1,6 +1,6 @@
-package view.menu.salesmanMenu;
+package view.userArea.salesmanMenu;
 
-import view.menu.Menu;
+import view.Menu;
 
 public class SalesmanMenu extends Menu {
     public SalesmanMenu(String name, Menu parentMenu) {

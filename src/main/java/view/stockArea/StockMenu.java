@@ -1,4 +1,4 @@
-package view.menu;
+package view.stockArea;
 
 public class StockMenu {
 }

@@ -1,6 +1,6 @@
-package view.menu;
+package view.userArea;
 
-import view.menu.Menu;
+import view.Menu;
 
 public class EditPersonalInfoMenu extends Menu {
     public EditPersonalInfoMenu(String name, Menu parentMenu) {

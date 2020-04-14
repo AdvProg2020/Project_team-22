@@ -1,6 +1,6 @@
-package view.menu.managerMenu;
+package view.userArea.managerMenu;
 
-import view.menu.Menu;
+import view.Menu;
 
 public class ManageRequestsMenu extends Menu {
     public ManageRequestsMenu(String name, Menu parentMenu) {
