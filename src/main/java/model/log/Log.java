@@ -1,7 +1,6 @@
 package model.log;
 
 import model.account.Account;
-import model.databaseUtil.Database;
 import model.product.Product;
 
 import java.io.Serializable;
@@ -11,8 +10,8 @@ import java.util.Date;
 public class Log implements Serializable {
     private String logId;
     private Date date;
-    private ArrayList<Product> productsList;
     private int money;
+    private ArrayList<Product> productsList;
     private Account logAccount;
     private LogStatus logStatus;
 

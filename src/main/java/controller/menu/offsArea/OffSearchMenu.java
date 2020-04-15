@@ -1,0 +1,47 @@
+package controller.menu.offsArea;
+
+import controller.menu.Menu;
+
+import java.util.HashMap;
+
+public class OffSearchMenu extends Menu {
+    public OffSearchMenu(Menu parentMenu) {
+        super("Off search menu", parentMenu);
+        HashMap<Integer, Menu> submenus = new HashMap<>();
+        submenus.put(1, getSortByGeneralPropertiesMenu());
+        submenus.put(2, getSortByCustomPropertiesMenu());
+        this.setSubmenus(submenus);
+    }
+
+    private Menu getSortByCustomPropertiesMenu() {
+        return new Menu("sort by custom property", this) {
+            @Override
+            public void show() {
+                System.out.println(this.getName() + ":");
+                System.out.println("Enter the property");
+            }
+
+            @Override
+            public void execute() {
+                String input = scanner.nextLine();
+                manager.sortByCustomProperties(input);
+            }
+        };
+    }
+
+    private Menu getSortByGeneralPropertiesMenu() {
+        return new Menu("sort by general property", this) {
+            @Override
+            public void show() {
+                System.out.println(this.getName() + ":");
+                System.out.println("Enter the property");
+            }
+
+            @Override
+            public void execute() {
+                String input = scanner.nextLine();
+                manager.sortByGeneralProperties(input);
+            }
+        };
+    }
+}

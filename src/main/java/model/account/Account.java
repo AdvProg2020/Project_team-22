@@ -20,11 +20,6 @@ public class Account implements Serializable {
     private int credit;
     private ArrayList<Log> logsList;
 
-    {
-        discountsList = new ArrayList<>();
-        logsList = new ArrayList<>();
-    }
-
     public String getUsername() {
         return username;
     }

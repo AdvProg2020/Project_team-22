@@ -16,7 +16,7 @@ public class Database {
     static ArrayList<Product> allProducts = new ArrayList<>();
     static ArrayList<Log> allLogs = new ArrayList<>();
     static ArrayList<Category> allCategories = new ArrayList<>();
-    static ArrayList<Off> allOff = new ArrayList<>();
+    static ArrayList<Off> allOffs = new ArrayList<>();
 
     public static void addAllAccountsToDatabaseFile() {
         try {
@@ -66,11 +66,11 @@ public class Database {
         }
     }
 
-    public static void addAllOffToDatabaseFile() {
+    public static void addAllOffsToDatabaseFile() {
         try {
             FileOutputStream fileOutput = new FileOutputStream("src/database/accounts.ser");
             ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
-            objectOutput.writeObject(allOff);
+            objectOutput.writeObject(allOffs);
             objectOutput.close();
             fileOutput.close();
         } catch (IOException ioe) {
@@ -115,7 +115,7 @@ public class Database {
     }
 
     public static Off getOffByOffId(String offId){
-        for (Off off : allOff) {
+        for (Off off : allOffs) {
             if (off.getOffId().equals(offId)) {
                 return off;
             }

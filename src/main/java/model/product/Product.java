@@ -1,7 +1,7 @@
 package model.product;
 
+import model.account.Account;
 import model.comment.Comment;
-import model.databaseUtil.Database;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -12,6 +12,7 @@ public class Product implements Serializable {
     private String name;
     private String brand;
     private int price;
+    private Account salesman;
     private StockStatus stockStatus;
     private String category;
     private String description;
@@ -36,6 +37,10 @@ public class Product implements Serializable {
 
     public int getPrice() {
         return price;
+    }
+
+    public Account getSalesman() {
+        return salesman;
     }
 
     public StockStatus getStockStatus() {
@@ -76,6 +81,10 @@ public class Product implements Serializable {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public void setSalesman(Account salesman) {
+        this.salesman = salesman;
     }
 
     public void setStockStatus(StockStatus stockStatus) {

@@ -1,5 +1,7 @@
 package model.log;
 
+import model.off.Off;
+
 public class SellLog extends Log{
-    private int minusMoneyForOff;
+    private Off logOff;
 }

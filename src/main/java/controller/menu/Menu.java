@@ -1,4 +1,6 @@
-package view;
+package controller.menu;
+
+import controller.Manager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,20 +36,38 @@ public abstract class Menu {
         allMenus.add(this);
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setSubmenus(HashMap<Integer, Menu> submenus) {
         this.submenus = submenus;
     }
 
     public void show() {
-
+        System.out.println(this.name + ":");
+        for (Integer menuNum : submenus.keySet()) {
+            System.out.println(menuNum + ". " + submenus.get(menuNum).getName());
+        }
+        if (this.parentMenu != null) {
+            System.out.println((submenus.size() + 1) + ". Back");
+        } else {
+            System.out.println((submenus.size() + 1) + ". Exit");
+        }
     }
 
     public void execute() {
-
+        Menu nextMenu = null;
+        int chosenMenu = Integer.parseInt(scanner.nextLine());
+        if (chosenMenu == submenus.size() + 1) {
+            if (this.parentMenu == null) {
+                System.exit(1);
+            } else {
+                nextMenu = this.parentMenu;
+            }
+        } else
+            nextMenu = submenus.get(chosenMenu);
+        nextMenu.show();
+        nextMenu.execute();
     }
-
-
-
-
-
 }

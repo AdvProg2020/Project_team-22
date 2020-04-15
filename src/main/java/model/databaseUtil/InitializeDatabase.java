@@ -88,7 +88,7 @@ public class InitializeDatabase {
             FileInputStream fileInput = new FileInputStream("src/database/off.ser");
             ObjectInputStream fileOutput = new ObjectInputStream(fileInput);
 
-            Database.allOff = (ArrayList) fileOutput.readObject();
+            Database.allOffs = (ArrayList) fileOutput.readObject();
 
             fileOutput.close();
             fileInput.close();
