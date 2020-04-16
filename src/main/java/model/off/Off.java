@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Off implements Serializable {
     private String offId;
-    private ArrayList<Product> productList;
+    private ArrayList<Product> productsList;
     private OffStatus offStatus;
     private Time startTime;
     private Time endTime;
@@ -18,8 +18,8 @@ public class Off implements Serializable {
         return offId;
     }
 
-    public ArrayList<Product> getProductList() {
-        return productList;
+    public ArrayList<Product> getProductsList() {
+        return productsList;
     }
 
     public OffStatus getOffStatus() {
@@ -42,8 +42,8 @@ public class Off implements Serializable {
         this.offId = offId;
     }
 
-    public void setProductList(ArrayList<Product> productList) {
-        this.productList = productList;
+    public void setProductsList(ArrayList<Product> productsList) {
+        this.productsList = productsList;
     }
 
     public void setOffStatus(OffStatus offStatus) {

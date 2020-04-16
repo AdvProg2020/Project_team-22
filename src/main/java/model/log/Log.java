@@ -12,7 +12,7 @@ public class Log implements Serializable {
     private Date date;
     private int money;
     private ArrayList<Product> productsList;
-    private Account logAccount;
+    private Account account;
     private LogStatus logStatus;
 
     public String getLogId() {
@@ -31,8 +31,8 @@ public class Log implements Serializable {
         return money;
     }
 
-    public Account getLogAccount() {
-        return logAccount;
+    public Account getAccount() {
+        return account;
     }
 
     public LogStatus getLogStatus() {
@@ -55,8 +55,8 @@ public class Log implements Serializable {
         this.money = money;
     }
 
-    public void setLogAccount(Account logAccount) {
-        this.logAccount = logAccount;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public void setLogStatus(LogStatus logStatus) {

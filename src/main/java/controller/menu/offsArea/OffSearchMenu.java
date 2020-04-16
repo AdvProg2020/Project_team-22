@@ -24,7 +24,12 @@ public class OffSearchMenu extends Menu {
             @Override
             public void execute() {
                 String input = scanner.nextLine();
-                manager.sortByCustomProperties(input);
+                if (input.equalsIgnoreCase("back")) {
+                    this.parentMenu.show();
+                    this.parentMenu.execute();
+                } else {
+                    core.sortByCustomProperty(input);
+                }
             }
         };
     }
@@ -40,7 +45,12 @@ public class OffSearchMenu extends Menu {
             @Override
             public void execute() {
                 String input = scanner.nextLine();
-                manager.sortByGeneralProperties(input);
+                if (input.equalsIgnoreCase("back")) {
+                    this.parentMenu.show();
+                    this.parentMenu.execute();
+                } else {
+                    core.sortByGeneralProperty(input);
+                }
             }
         };
     }

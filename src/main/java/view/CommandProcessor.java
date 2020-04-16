@@ -1,6 +1,6 @@
 package view;
 
-import controller.Manager;
+import controller.Core;
 import controller.menu.MainMenu;
 import controller.menu.Menu;
 
@@ -8,9 +8,9 @@ import java.util.Scanner;
 
 public class CommandProcessor {
     private Scanner scanner;
-    private Manager manager;
+    private Core manager;
 
-    public CommandProcessor(Manager manager) {
+    public CommandProcessor(Core manager) {
         this.manager = manager;
         scanner = new Scanner(System.in);
         System.out.println("Hello!\nWelcome to marketing\n");
@@ -18,7 +18,7 @@ public class CommandProcessor {
 
     public void run() {
         Menu.setScanner(this.scanner);
-        Menu.setManager(this.manager);
+        Menu.setCore(this.manager);
         Menu currentMenu = new MainMenu();
         currentMenu.show();
         currentMenu.execute();

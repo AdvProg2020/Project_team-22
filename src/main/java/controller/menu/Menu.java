@@ -1,6 +1,6 @@
 package controller.menu;
 
-import controller.Manager;
+import controller.Core;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +11,7 @@ public abstract class Menu {
     protected HashMap<Integer, Menu> submenus;
     protected Menu parentMenu;
     public static Scanner scanner;
-    protected static Manager manager;
+    protected static Core core;
     protected static ArrayList<Menu> allMenus;
 
     static {
@@ -22,8 +22,8 @@ public abstract class Menu {
         Menu.scanner = scanner;
     }
 
-    public static void setManager(Manager manager) {
-        Menu.manager = manager;
+    public static void setCore(Core core) {
+        Menu.core = core;
     }
 
     public void setParentMenu(Menu parentMenu) {
@@ -65,8 +65,9 @@ public abstract class Menu {
             } else {
                 nextMenu = this.parentMenu;
             }
-        } else
+        } else {
             nextMenu = submenus.get(chosenMenu);
+        }
         nextMenu.show();
         nextMenu.execute();
     }
