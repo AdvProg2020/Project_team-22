@@ -1,5 +1,6 @@
 package controller;
 
+import jdk.vm.ci.meta.Local;
 import model.Discount;
 import model.account.Account;
 import model.account.Role;
@@ -10,12 +11,14 @@ import model.product.Product;
 import model.product.ProductStatus;
 import model.product.StockStatus;
 
+import javax.xml.crypto.Data;
 import java.awt.geom.Area;
 import java.awt.image.AreaAveragingScaleFilter;
 import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -95,12 +98,15 @@ public class Core {
 
     }
 
-    public void createOff(ArrayList<Product> productsList, double percent, int maxOffAmount, Date endDate){
-
+    public void createOff(Off off){
+        Database.addOff(off);
     }
 
-    public void editOff(Off off, ArrayList<Product> productsList, double percent, int maxOffAmount, Date endDate){
-
+    public void editOff(Off off, ArrayList<Product> productsList, LocalDate startTime, LocalDate endTime, double discountPercent){
+        off.setProductsList(productsList);
+        off.setStartTime(startTime);
+        off.setEndTime(endTime);
+        off.setDiscountPercent(discountPercent);
     }
 
 
@@ -162,7 +168,7 @@ public class Core {
     }
 
     public void sellProduct (Product product){
-
+        Database.addProduct(product);
     }
 
     public void compareProduct(Product firstProduct, Product secondProduct){

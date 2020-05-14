@@ -2,6 +2,7 @@ package model.product;
 
 import model.account.Account;
 import model.comment.Comment;
+import model.databaseUtil.Database;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,6 +19,14 @@ public class Product implements Serializable {
     private String description;
     private int averagePoint;
     private ArrayList<Comment> comments;
+
+    public Product(String name, String brand, String price, String category, String description) {
+        this.name = name;
+        this.brand = brand;
+        this.price = Integer.parseInt(price);
+        this.category = category;
+        this.description = description;
+    }
 
     public String getProductId() {
         return productId;

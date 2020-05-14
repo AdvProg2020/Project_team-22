@@ -8,13 +8,13 @@ public class OffsMenu extends Menu {
     public OffsMenu(Menu parentMenu) {
         super("Offs Menu", parentMenu);
         HashMap<Integer, Menu> submenus = new HashMap<>();
-        submenus.put(1, getProductsContainOffMenu());
+        submenus.put(1, getProductsContainsOffMenu());
         submenus.put(2, new OffSearchMenu(this));
         this.setSubmenus(submenus);
     }
 
-    private Menu getProductsContainOffMenu() {
-        return new Menu("List of products which contain off", this) {
+    private Menu getProductsContainsOffMenu() {
+        return new Menu("List of products which contains off", this) {
             @Override
             public void show() {
                 System.out.println(this.getName() + ":");
@@ -25,10 +25,8 @@ public class OffsMenu extends Menu {
             public void execute() {
                 core.showProductsContainOff();
                 String input = scanner.nextLine();
-                if (input.equalsIgnoreCase("back")) {
-                    this.parentMenu.show();
-                    this.parentMenu.execute();
-                }
+                this.parentMenu.show();
+                this.parentMenu.execute();
             }
         };
     }
