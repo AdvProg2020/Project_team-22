@@ -1,4 +1,4 @@
-package controller.menu.userArea.AccessMenu;
+package controller.menu.userArea.AccessMenu.managerMenu;
 
 import controller.menu.Menu;
 import model.Discount;
@@ -14,10 +14,11 @@ public class ManagerMenu extends Menu {
     public ManagerMenu (Menu parentMenu) {
         super("Manager Menu", parentMenu);
         HashMap<Integer, Menu> submenus = new HashMap<>();
-        submenus.put(1, getCreateDiscountMenu());
+        submenus.put(1, new ManageDiscounts(this));
         submenus.put(2, getEditDiscountMenu());
         submenus.put(3, getCreateCategoryMenu());
-        submenus.put(3, getEditProductInfoMenu());
+        submenus.put(4, new ManageAllProducts(this));
+        submenus.put(5, new ManageUsers(this));
         this.setSubmenus(submenus);
     }
 
@@ -79,21 +80,4 @@ public class ManagerMenu extends Menu {
         };
     }
 
-    private Menu getCreateDiscountMenu() {
-        return new Menu("Create discount", this) {
-            @Override
-            public void show() {
-                System.out.println(this.getName() + ":");
-            }
-
-            @Override
-            public void execute() {
-                double discountPercent = 0;
-                int maxDiscountAmount = 0;
-                core.createDiscount(null, null, discountPercent, maxDiscountAmount);
-                this.parentMenu.show();
-                this.parentMenu.execute();
-            }
-        };
-    }
 }

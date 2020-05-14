@@ -22,7 +22,7 @@ public class ProfileMenu extends Menu {
 
             @Override
             public void execute() {
-                core.showProfileInfo();
+                core.showProfileInfo(core.currentAccount);
                 String input = scanner.nextLine();
                 if (input.equalsIgnoreCase("back")) {
                     this.parentMenu.show();

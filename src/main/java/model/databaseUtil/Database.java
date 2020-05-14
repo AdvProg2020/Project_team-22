@@ -1,5 +1,6 @@
 package model.databaseUtil;
 
+import model.Discount;
 import model.account.Account;
 import model.Category;
 import model.log.Log;
@@ -17,6 +18,7 @@ public class Database {
     static ArrayList<Log> allLogs = new ArrayList<>();
     static ArrayList<Category> allCategories = new ArrayList<>();
     static ArrayList<Off> allOffs = new ArrayList<>();
+    static ArrayList<Discount> allDiscounts = new ArrayList<>();
 
     public static void addAllAccountsToDatabaseFile() {
         try {
@@ -79,9 +81,10 @@ public class Database {
     }
 
     public static Account getAccountByUsername(String username) {
+
         for (Account account : allAccounts) {
             if (account.getUsername().equals(username)) {
-                return account;
+                    return account;
             }
         }
         return null;
@@ -121,6 +124,52 @@ public class Database {
             }
         }
         return null;
+    }
+
+    public static Discount getDiscountByDiscountCode(String code) {
+        for (Discount discount : allDiscounts) {
+            if(discount.getDiscountCode().equals(code)){
+                return discount;
+            }
+        }
+        return null;
+    }
+
+    public static void deleteAccount(Account account) throws Exception {
+        if(account == null) {
+            throw new Exception("account does not exists");
+        }
+        allAccounts.remove(account);
+    }
+
+    public static void removeProduct(Product product) throws Exception {
+        if(product == null) {
+            throw new Exception("product does not exists!");
+        }
+        allProducts.remove(product);
+    }
+
+    public static void removeDiscount(Discount discount) throws Exception {
+        if(discount == null) {
+            throw new Exception("Discount does not exists!");
+        }
+        allDiscounts.remove(discount);
+    }
+
+    public static ArrayList getUserNames() {
+        ArrayList<String> userNames = new ArrayList<>();
+        for (Account account : allAccounts) {
+            userNames.add(account.getUsername() + " " + account.getRole());
+        }
+        return userNames;
+    }
+
+    public static void addAccount(Account account) {
+        allAccounts.add(account);
+    }
+
+    public static void addDiscount(Discount discount) {
+        allDiscounts.add(discount);
     }
 
 }

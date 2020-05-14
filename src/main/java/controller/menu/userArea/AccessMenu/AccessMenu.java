@@ -1,6 +1,7 @@
 package controller.menu.userArea.AccessMenu;
 
 import controller.menu.Menu;
+import controller.menu.userArea.AccessMenu.managerMenu.ManagerMenu;
 
 import java.util.HashMap;
 

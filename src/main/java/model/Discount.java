@@ -1,28 +1,40 @@
 package model;
 
 import model.account.Account;
+import model.databaseUtil.Database;
 
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Discount {
     private String discountCode;
-    private Time startTime;
-    private Time endTime;
+    private Date startTime;
+    private Date endTime;
     private double discountPercent;
     private int maxDiscountAmount;
     private int frequency;
     private ArrayList<Account> allowedAccount;
 
+    public Discount(String discountCode, Date startTime, Date endTime, double discountPercent, int maxDiscountAmount, int frequency) throws Exception {
+        setDiscountCode(discountCode);
+        setStartTime(startTime);
+        setEndTime(endTime);
+        setDiscountPercent(discountPercent);
+        setMaxDiscountAmount(maxDiscountAmount);
+        setFrequency(frequency);
+    }
+
+
     public String getDiscountCode() {
         return discountCode;
     }
 
-    public Time getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public Time getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
@@ -42,19 +54,29 @@ public class Discount {
         return allowedAccount;
     }
 
-    public void setDiscountCode(String discountCode) {
+    public void setDiscountCode(String discountCode) throws Exception {
+        if(Database.getDiscountByDiscountCode(discountCode) != null) {
+            throw new Exception("this code already exists");
+        } else if (discountCode.length() > 25) {
+            throw new Exception("discount code should be shorter than 25 characters");
+        } else if(discountCode.contains(" ")) {
+            throw new Exception("discount code should not exists white space");
+        }
         this.discountCode = discountCode;
     }
 
-    public void setStartTime(Time startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public void setEndTime(Time endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 
-    public void setDiscountPercent(double discountPercent) {
+    public void setDiscountPercent(double discountPercent) throws Exception{
+        if(discountPercent > 99 || discountPercent < 1) {
+            throw new Exception("discount percent should be between 1 and 99");
+        }
         this.discountPercent = discountPercent;
     }
 
