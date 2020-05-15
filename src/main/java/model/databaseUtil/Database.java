@@ -1,11 +1,13 @@
 package model.databaseUtil;
 
+import model.Discount;
 import model.account.Account;
 import model.Category;
 import model.log.Log;
 import model.off.Off;
 import model.product.Product;
 
+import java.awt.geom.Area;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -17,6 +19,7 @@ public class Database {
     static ArrayList<Log> allLogs = new ArrayList<>();
     static ArrayList<Category> allCategories = new ArrayList<>();
     static ArrayList<Off> allOffs = new ArrayList<>();
+    static ArrayList<Discount> allDiscounts = new ArrayList<>();
 
     public static void addOff(Off off){
         allOffs.add(off);
@@ -133,4 +136,40 @@ public class Database {
         return null;
     }
 
+    public static void deleteAccount(Account accountByUsername) {
+        allAccounts.remove(accountByUsername);
+    }
+
+    public static void addAccount(Account account) {
+        allAccounts.add(account);
+    }
+
+    public static Discount getDiscountByDiscountCode(String code) {
+        for (Discount discount : allDiscounts) {
+            if(discount.getDiscountCode().equals(code)) {
+                return discount;
+            }
+        }
+        return null;
+    }
+
+    public static void addDiscount(Discount discount) {
+        allDiscounts.add(discount);
+    }
+
+    public static void removeDiscount(Discount discountByDiscountCode) {
+        allDiscounts.remove(discountByDiscountCode);
+    }
+
+    public static ArrayList<String> getUserNames() {
+        ArrayList<String> userNames = new ArrayList<>();
+        for (Account account : allAccounts) {
+            userNames.add(account.getUsername());
+        }
+        return userNames;
+    }
+
+    public static void removeProduct(Product productByProductId) {
+        allProducts.remove(productByProductId);
+    }
 }
