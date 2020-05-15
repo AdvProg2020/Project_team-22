@@ -174,7 +174,6 @@ public class Core {
     public void compareProduct(Product firstProduct, Product secondProduct){
 
     }
-
     public void addProductToShopBasket(Product product){
 
     }

@@ -153,4 +153,21 @@ public class Account implements Serializable {
         Matcher matcher = pattern.matcher(input);
         return matcher;
     }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "username='" + username + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                ", companyName='" + companyName + '\'' +
+                ", discountsList=" + discountsList +
+                ", credit=" + credit +
+                ", logsList=" + logsList +
+                '}';
+    }
 }
