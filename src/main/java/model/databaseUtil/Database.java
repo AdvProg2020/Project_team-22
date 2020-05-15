@@ -25,9 +25,19 @@ public class Database {
         addAllOffsToDatabaseFile();
     }
 
+    public static void addAccount(Account account) {
+        allAccounts.add(account);
+        addAllAccountsToDatabaseFile();
+    }
+
     public static void addProduct(Product product){
         allProducts.add(product);
         addAllProductsToDatabaseFile();
+    }
+
+    public static void addDiscount(Discount discount) {
+        allDiscounts.add(discount);
+        addAllDiscountsToDatabaseFile();
     }
 
     public static void addAllAccountsToDatabaseFile() {
@@ -90,6 +100,18 @@ public class Database {
         }
     }
 
+    public static void addAllDiscountsToDatabaseFile() {
+        try {
+            FileOutputStream fileOutput = new FileOutputStream("src/database/discounts.ser");
+            ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
+            objectOutput.writeObject(allDiscounts);
+            objectOutput.close();
+            fileOutput.close();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+    }
+
     public static Account getAccountByUsername(String username) {
         for (Account account : allAccounts) {
             if (account.getUsername().equals(username)) {
@@ -143,10 +165,6 @@ public class Database {
         return userNames;
     }
 
-    public static void addDiscount(Discount discount) {
-        allDiscounts.add(discount);
-    }
-
     public static Discount getDiscountByDiscountCode(String discountCode) {
         for (Discount discount : allDiscounts) {
             if(discount.getDiscountCode().equals(discountCode)) {
@@ -158,10 +176,6 @@ public class Database {
 
     public static void removeDiscount(Discount discount) {
         allDiscounts.remove(discount);
-    }
-
-    public static void addAccount(Account account) {
-        allAccounts.add(account);
     }
 
     public static void deleteAccount(Account accountByUsername) {
