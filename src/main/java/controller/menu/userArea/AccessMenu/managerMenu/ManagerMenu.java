@@ -15,8 +15,8 @@ public class ManagerMenu extends Menu {
         super("Manager Menu", parentMenu);
         HashMap<Integer, Menu> submenus = new HashMap<>();
         submenus.put(1, new ManageDiscounts(this));
-        submenus.put(2, getEditDiscountMenu());
-        submenus.put(3, getCreateCategoryMenu());
+        submenus.put(2, new ManageCategories(this));
+        submenus.put(3, new ManageRequests(this));
         submenus.put(4, new ManageAllProducts(this));
         submenus.put(5, new ManageUsers(this));
         this.setSubmenus(submenus);

@@ -1,5 +1,6 @@
 package model.databaseUtil;
 
+import model.Discount;
 import model.account.Account;
 import model.Category;
 import model.log.Log;
@@ -17,6 +18,7 @@ public class Database {
     static ArrayList<Log> allLogs = new ArrayList<>();
     static ArrayList<Category> allCategories = new ArrayList<>();
     static ArrayList<Off> allOffs = new ArrayList<>();
+    static ArrayList<Discount> allDiscounts = new ArrayList<>();
 
     public static void addOff(Off off){
         allOffs.add(off);
@@ -133,4 +135,36 @@ public class Database {
         return null;
     }
 
+    public static ArrayList<String> getUserNames() {
+        ArrayList<String> userNames = new ArrayList<>();
+        for (Account account : allAccounts) {
+            userNames.add(account.getUsername());
+        }
+        return userNames;
+    }
+
+    public static void addDiscount(Discount discount) {
+        allDiscounts.add(discount);
+    }
+
+    public static Discount getDiscountByDiscountCode(String discountCode) {
+        for (Discount discount : allDiscounts) {
+            if(discount.getDiscountCode().equals(discountCode)) {
+                return discount;
+            }
+        }
+        return null;
+    }
+
+    public static void removeDiscount(Discount discount) {
+        allDiscounts.remove(discount);
+    }
+
+    public static void addAccount(Account account) {
+        allAccounts.add(account);
+    }
+
+    public static void deleteAccount(Account accountByUsername) {
+        allAccounts.remove(accountByUsername);
+    }
 }

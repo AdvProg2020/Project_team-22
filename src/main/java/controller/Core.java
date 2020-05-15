@@ -1,26 +1,19 @@
 package controller;
 
-import jdk.vm.ci.meta.Local;
 import model.Discount;
 import model.account.Account;
 import model.account.Role;
-import model.comment.Comment;
 import model.databaseUtil.Database;
 import model.off.Off;
 import model.product.Product;
 import model.product.ProductStatus;
 import model.product.StockStatus;
 
-import javax.xml.crypto.Data;
-import java.awt.geom.Area;
-import java.awt.image.AreaAveragingScaleFilter;
 import java.sql.Time;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 
 public class Core {
