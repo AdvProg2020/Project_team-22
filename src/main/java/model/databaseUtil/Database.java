@@ -167,4 +167,8 @@ public class Database {
     public static void deleteAccount(Account accountByUsername) {
         allAccounts.remove(accountByUsername);
     }
+
+    public static void removeProduct(Product productByProductId) {
+        allProducts.remove(productByProductId);
+    }
 }
