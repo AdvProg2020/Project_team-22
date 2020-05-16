@@ -1,6 +1,8 @@
 package main.java.controller.menu.userArea.AccessMenu.managerMenu;
 
 import main.java.controller.menu.Menu;
+import main.java.model.Category;
+import main.java.model.databaseUtil.Database;
 
 import java.util.HashMap;
 
@@ -25,6 +27,12 @@ public class ManageCategories extends Menu {
 
             @Override
             public void execute() {
+                String name = scanner.nextLine();
+                try {
+                    core.editCategory(scanner, name);
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
                 this.parentMenu.show();
                 this.parentMenu.execute();
             }
@@ -37,10 +45,16 @@ public class ManageCategories extends Menu {
             @Override
             public void show() {
                 System.out.println(this.getName() + ":\n" + "Enter new category information to add:");
+                System.out.println("Enter category name:");
             }
-
             @Override
             public void execute() {
+                try {
+                    String name = scanner.nextLine();
+                    core.createCategory(name, core.setCategoryProperties(scanner));
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
                 this.parentMenu.show();
                 this.parentMenu.execute();
             }
@@ -56,6 +70,12 @@ public class ManageCategories extends Menu {
 
             @Override
             public void execute() {
+                String name = scanner.nextLine();
+                try {
+                    Database.removeCategory(Database.getCategoryByName(name));
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
                 this.parentMenu.show();
                 this.parentMenu.execute();
             }
@@ -63,9 +83,15 @@ public class ManageCategories extends Menu {
     }
 
     private Menu getShowCategoriesMenu() {
-        return new Menu("edit category", this) {
+        return new Menu("show categories", this) {
             @Override
             public void show() {
+                for (Category category : Database.getAllCategories()) {
+                    System.out.println("category name: " + category.getName() + "\nproperties:");
+                    for(Integer num : category.getProperties().keySet()) {
+                        System.out.println(num + ". " + category.getProperties().get(num));
+                    }
+                }
             }
 
             @Override

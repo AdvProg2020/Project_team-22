@@ -12,9 +12,11 @@ import main.java.model.product.Product;
 import main.java.model.product.ProductStatus;
 import main.java.model.product.StockStatus;
 
+import javax.xml.crypto.Data;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Core {
@@ -138,6 +140,13 @@ public class Core {
         + "End time: " + discount.getEndTime() + "\n" + "Discount percent: " + discount.getDiscountPercent() + "\n" + "Discount amount: " + discount.getMaxDiscountAmount()
         + "\n" + "Discount frequency: " + discount.getFrequency()+ "\n" + "Enter new Data below");
         Database.removeDiscount(discount);
+        try {
+            createDiscount(scanner);
+            System.out.println("Discount successfully edited");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            Database.addDiscount(discount);
+        }
         createDiscount(scanner);
     }
 
@@ -207,8 +216,42 @@ public class Core {
 
     }
 
-    public void createCategory(String name, ArrayList<Product> properties){
+    public void createCategory(String name, HashMap<Integer, String> properties) throws Exception {
+        Database.addCategory(new Category(name, properties));
+    }
 
+    public HashMap<Integer, String> setCategoryProperties(Scanner scanner) {
+        HashMap<Integer, String> properties= new HashMap<>();
+        System.out.println("enter properties below or type end to finish process");
+        String input;
+        int counter = 1;
+        while(!(input = scanner.nextLine()).equals("end")) {
+            properties.put(counter, input);
+            System.out.println("property added");
+            counter++;
+        }
+        return properties;
+    }
+
+    public void editCategory(Scanner scanner, String name) throws Exception {
+        if(Database.getCategoryByName(name) == null) {
+            throw new Exception("category does not exists!");
+        }
+        Category category = Database.getCategoryByName(name);
+        System.out.println("category name: " + name);
+        for (Integer num : category.getProperties().keySet()) {
+            System.out.println(num + ". " + category.getProperties().get(num));
+        }
+        System.out.println("enter new Information below:\nenter new name: ");
+        Database.removeCategory(category);
+        try {
+            String newName = scanner.nextLine();
+            createCategory(newName, setCategoryProperties(scanner));
+            System.out.println("category successfully edited");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            Database.addCategory(category);
+        }
     }
 
     public void editProductInfo(ProductStatus productStatus, int price, StockStatus stockStatus, String description){

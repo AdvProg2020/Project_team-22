@@ -42,6 +42,23 @@ public class Database {
         addAllDiscountsToDatabaseFile();
     }
 
+    public static void addCategory(Category category) {
+        allCategories.add(category);
+        addAllCategoriesToDatabaseFile();
+    }
+
+    public static void removeCategory(Category category) throws Exception {
+        if(category == null) {
+            throw new Exception("category does not exists!");
+        }
+        allCategories.remove(category);
+        addAllCategoriesToDatabaseFile();
+    }
+
+    public static ArrayList<Category> getAllCategories() {
+        return allCategories;
+    }
+
     public static void addAllAccountsToDatabaseFile() {
         try {
             FileOutputStream fileOutput = new FileOutputStream("src/database/accounts.ser");
@@ -80,7 +97,7 @@ public class Database {
 
     public static void addAllCategoriesToDatabaseFile() {
         try {
-            FileOutputStream fileOutput = new FileOutputStream("src/database/accounts.ser");
+            FileOutputStream fileOutput = new FileOutputStream("src/database/categories.ser");
             ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
             objectOutput.writeObject(allCategories);
             objectOutput.close();
@@ -176,16 +193,28 @@ public class Database {
         return null;
     }
 
-    public static void removeDiscount(Discount discount) {
+    public static void removeDiscount(Discount discount) throws Exception {
+        if(discount == null) {
+            throw new Exception("discount does not exists1");
+        }
         allDiscounts.remove(discount);
+        addAllDiscountsToDatabaseFile();
     }
 
-    public static void deleteAccount(Account accountByUsername) {
+    public static void deleteAccount(Account accountByUsername) throws Exception {
+        if(accountByUsername == null) {
+            throw new Exception("account does not exists!");
+        }
         allAccounts.remove(accountByUsername);
+        addAllAccountsToDatabaseFile();
     }
 
-    public static void removeProduct(Product productByProductId) {
+    public static void removeProduct(Product productByProductId) throws Exception {
+        if(productByProductId == null) {
+            throw new Exception("product does not exists!");
+        }
         allProducts.remove(productByProductId);
+        addAllProductsToDatabaseFile();
     }
 
     public  static ArrayList<Account> getAllAccounts() {
