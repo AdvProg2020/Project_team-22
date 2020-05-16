@@ -17,6 +17,7 @@ public class ManageDiscounts extends Menu {
         submenus.put(2, getViewDiscountMenu());
         submenus.put(3, getEditDiscountMenu());
         submenus.put(4, getRemoveDiscountMenu());
+        //submenus.put(5, )
         this.setSubmenus(submenus);
 
     }

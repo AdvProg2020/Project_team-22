@@ -107,18 +107,27 @@ public class Core {
     public void createDiscount(Scanner scanner) throws Exception {
         System.out.println("Enter discount code:");
         String code = scanner.nextLine();
-        System.out.println("Enter Start time (yyyy-MM-dd):");
-        String startTime = scanner.nextLine();
-        System.out.println("Enter end time (yyyy-MM-dd):");
-        String endTime = scanner.nextLine();
+        System.out.println("set Start time:");
+        LocalDate startTime = generateLocalDate(scanner);
+        System.out.println("set end time:");
+        LocalDate endTime = generateLocalDate(scanner);
         System.out.println("Enter Discount percent:");
         String discountPercent = scanner.nextLine();
         System.out.println("Enter discount amount:");
         String discountAmount = scanner.nextLine();
         System.out.println("Enter frequency");
         String frequency = scanner.nextLine();
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Database.addDiscount(new Discount(code, format.parse(startTime), format.parse(endTime), Integer.parseInt(discountPercent), Integer.parseInt(discountAmount), Integer.parseInt(frequency)));
+        Database.addDiscount(new Discount(code, startTime, endTime, Integer.parseInt(discountPercent), Integer.parseInt(discountAmount), Integer.parseInt(frequency)));
+    }
+
+    private LocalDate generateLocalDate(Scanner scanner){
+        System.out.println("Enter the year:");
+        int year = Integer.parseInt(scanner.nextLine());
+        System.out.println("Enter the month:");
+        int month = Integer.parseInt(scanner.nextLine());
+        System.out.println("Enter the day:");
+        int day = Integer.parseInt(scanner.nextLine());
+        return LocalDate.of(year, month, day);
     }
 
     public void editDiscount(Scanner scanner, String discountCode) throws Exception{

@@ -3,20 +3,22 @@ package model;
 import model.account.Account;
 import model.databaseUtil.Database;
 
+import java.io.Serializable;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Discount {
+public class Discount implements Serializable {
     private String discountCode;
-    private Date startTime;
-    private Date endTime;
+    private LocalDate startTime;
+    private LocalDate endTime;
     private double discountPercent;
     private int maxDiscountAmount;
     private int frequency;
     private ArrayList<Account> allowedAccount;
 
-    public Discount(String discountCode, Date startTime, Date endTime, double discountPercent, int maxDiscountAmount, int frequency) throws Exception {
+    public Discount(String discountCode, LocalDate startTime, LocalDate endTime, double discountPercent, int maxDiscountAmount, int frequency) throws Exception {
         setDiscountCode(discountCode);
         setStartTime(startTime);
         setEndTime(endTime);
@@ -30,11 +32,11 @@ public class Discount {
         return discountCode;
     }
 
-    public Date getStartTime() {
+    public LocalDate getStartTime() {
         return startTime;
     }
 
-    public Date getEndTime() {
+    public LocalDate getEndTime() {
         return endTime;
     }
 
@@ -65,11 +67,18 @@ public class Discount {
         this.discountCode = discountCode;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(LocalDate startTime) throws Exception {
+        LocalDate now = LocalDate.now();
+        if(startTime.isBefore(now)) {
+            throw new Exception("Start time must be set for after current time");
+        }
         this.startTime = startTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(LocalDate endTime) throws Exception{
+        if(endTime.isBefore(this.startTime) || endTime.isEqual(this.startTime)) {
+            throw new Exception("end time must be set for after start time");
+        }
         this.endTime = endTime;
     }
 
