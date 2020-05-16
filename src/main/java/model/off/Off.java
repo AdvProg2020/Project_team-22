@@ -14,11 +14,12 @@ public class Off implements Serializable {
     private LocalDate endTime;
     private double discountPercent;
 
-    public Off(ArrayList<Product> productsList, LocalDate startTime, LocalDate endTime, double discountPercent) {
+    public Off(ArrayList<Product> productsList, LocalDate startTime, LocalDate endTime, double discountPercent, String id) {
         this.productsList = productsList;
         this.startTime = startTime;
         this.endTime = endTime;
         this.discountPercent = discountPercent;
+        this.offId = id;
     }
 
     public String getOffId() {

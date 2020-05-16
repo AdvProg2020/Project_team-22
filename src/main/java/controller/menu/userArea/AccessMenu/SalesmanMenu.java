@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SalesmanMenu extends Menu {
-    public SalesmanMenu (Menu parentMenu) {
+    public SalesmanMenu(Menu parentMenu) {
         super("Salesman menu", parentMenu);
         HashMap<Integer, Menu> submenus = new HashMap<>();
         submenus.put(1, getCreateOffMenu());
@@ -26,6 +26,7 @@ public class SalesmanMenu extends Menu {
             String productPrice;
             String productCategory;
             String productDescription;
+
             @Override
             public void show() {
                 System.out.println(this.getName() + ":");
@@ -51,7 +52,7 @@ public class SalesmanMenu extends Menu {
         };
     }
 
-    private LocalDate generateLocalDate(){
+    private LocalDate generateLocalDate() {
         System.out.println("Enter the year:");
         int year = Integer.parseInt(scanner.nextLine());
         System.out.println("Enter the month:");
@@ -67,9 +68,14 @@ public class SalesmanMenu extends Menu {
             LocalDate startTime;
             LocalDate endTime;
             double discountPercent;
+            String offId;
             @Override
             public void show() {
                 System.out.println(this.getName() + ":");
+                do {
+                    System.out.println("Enter off id:");
+                    offId = scanner.nextLine();
+                }while (Database.getOffByOffId(offId) != null);
                 System.out.println("Enter your off start time:");
                 startTime = generateLocalDate();
                 System.out.println("Enter your off end time:");
@@ -78,9 +84,9 @@ public class SalesmanMenu extends Menu {
                 discountPercent = Double.parseDouble(scanner.nextLine());
                 System.out.println("Enter the productId which contain Off. then enter -1 to finish:");
                 String id;
-                while(!(id = scanner.nextLine()).equals("-1")){
+                while (!(id = scanner.nextLine()).equals("-1")) {
                     Product product = Database.getProductByProductId(id);
-                    if (product == null){
+                    if (product == null) {
                         System.out.println("Invalid Id");
                     } else {
                         productsList.add(product);
@@ -91,7 +97,7 @@ public class SalesmanMenu extends Menu {
 
             @Override
             public void execute() {
-                Off off = new Off(productsList, startTime, endTime, discountPercent);
+                Off off = new Off(productsList, startTime, endTime, discountPercent, offId);
                 core.createOff(off);
                 this.parentMenu.show();
                 this.parentMenu.execute();
@@ -106,13 +112,14 @@ public class SalesmanMenu extends Menu {
             LocalDate startTime;
             LocalDate endTime;
             double discountPercent;
+
             @Override
             public void show() {
                 System.out.println(this.getName() + ":");
                 System.out.println("Enter your off id");
                 String offId = scanner.nextLine();
                 off = Database.getOffByOffId(offId);
-                if (off == null){
+                if (off == null) {
                     System.out.println("Invalid id");
                 } else {
                     System.out.println("Enter new start time");
@@ -124,20 +131,20 @@ public class SalesmanMenu extends Menu {
                     productList = off.getProductsList();
                     System.out.println("Enter productId which you want to remove from off. then enter -1");
                     String id;
-                    while (!(id = scanner.nextLine()).equals("-1")){
-                        if (off.isThereProductWithId(id)){
+                    while (!(id = scanner.nextLine()).equals("-1")) {
+                        if (off.isThereProductWithId(id)) {
                             productList.remove(Database.getProductByProductId(id));
                         } else {
                             System.out.println("this id is not in your off");
                         }
                     }
                     System.out.println("Enter productId which you want to add to off. then enter -1");
-                    while (!(id = scanner.nextLine()).equals("-1")){
-                        if (off.isThereProductWithId(id)){
+                    while (!(id = scanner.nextLine()).equals("-1")) {
+                        if (off.isThereProductWithId(id)) {
                             System.out.println("this id is already in your off");
                         } else {
                             Product product;
-                            if ((product = Database.getProductByProductId(id)) == null){
+                            if ((product = Database.getProductByProductId(id)) == null) {
                                 System.out.println("Invalid id");
                             } else {
                                 productList.add(product);
@@ -149,11 +156,11 @@ public class SalesmanMenu extends Menu {
 
             @Override
             public void execute() {
-                if(off != null) {
+                if (off != null) {
                     core.editOff(off, productList, startTime, endTime, discountPercent);
-                    this.parentMenu.show();
-                    this.parentMenu.execute();
                 }
+                this.parentMenu.show();
+                this.parentMenu.execute();
             }
         };
     }
