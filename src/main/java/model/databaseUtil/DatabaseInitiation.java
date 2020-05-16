@@ -10,8 +10,9 @@ public class DatabaseInitiation {
         loadAllAccounts();
         loadAllProducts();
         loadAllLogs();
-        loadAllOff();
+        loadAllOffs();
         loadAllCategories();
+        loadAllDiscounts();
     }
 
     private static void loadAllAccounts() {
@@ -74,7 +75,22 @@ public class DatabaseInitiation {
         }
     }
 
-    private static void loadAllOff() {
+    private static void loadAllOffs() {
+        try {
+            FileInputStream fileInput = new FileInputStream("src/database/discounts.ser");
+            ObjectInputStream fileOutput = new ObjectInputStream(fileInput);
+            Database.allDiscounts = (ArrayList) fileOutput.readObject();
+            fileOutput.close();
+            fileInput.close();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        } catch (ClassNotFoundException c) {
+            System.out.println("Class not found");
+            c.printStackTrace();
+        }
+    }
+
+    private static void loadAllDiscounts() {
         try {
             FileInputStream fileInput = new FileInputStream("src/database/off.ser");
             ObjectInputStream fileOutput = new ObjectInputStream(fileInput);

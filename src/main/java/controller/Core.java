@@ -103,8 +103,6 @@ public class Core {
         off.setDiscountPercent(discountPercent);
     }
 
-
-
     public void createDiscount(Scanner scanner) throws Exception {
         System.out.println("Enter discount code:");
         String code = scanner.nextLine();
@@ -204,6 +202,7 @@ public class Core {
     public void compareProduct(Product firstProduct, Product secondProduct){
 
     }
+
     public void addProductToShopBasket(Product product){
 
     }

@@ -90,7 +90,7 @@ public class Database {
 
     public static void addAllOffsToDatabaseFile() {
         try {
-            FileOutputStream fileOutput = new FileOutputStream("src/database/accounts.ser");
+            FileOutputStream fileOutput = new FileOutputStream("src/database/off.ser");
             ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
             objectOutput.writeObject(allOffs);
             objectOutput.close();
