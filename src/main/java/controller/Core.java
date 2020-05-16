@@ -139,7 +139,6 @@ public class Core {
         + "\n" + "Discount frequency: " + discount.getFrequency()+ "\n" + "Enter new Data below");
         Database.removeDiscount(discount);
         createDiscount(scanner);
-        System.out.println("discount successfully edited");
     }
 
     public void configureDiscountAllowedUsers(Scanner scanner, String discountCode) throws Exception{
@@ -163,25 +162,46 @@ public class Core {
         while (!(input = scanner.nextLine()).equals("end")) {
             if(input.equals("select all")) {
                 discount.addAllowedAccounts(Database.getAllAccounts());
+                System.out.println("all accounts added");
                 break;
             }
             if(discount.getAllowedAccount().contains(Database.getAccountByUsername(input))) {
-                throw new Exception("user is already allowed");
+                throw new Exception("account already allowed");
             }
             if(Database.getAccountByUsername(input) == null) {
                 throw new Exception("user does not exists!");
             }
+            accounts.add(Database.getAccountByUsername(input));
+            discount.addAllowedAccounts(accounts);
+            accounts.removeAll(accounts);
+            Database.addAllDiscountsToDatabaseFile();
+            System.out.println("account added");
+        }
 
+    }
+
+    private void removeDiscountAllowedUsers(Scanner scanner, Discount discount) throws Exception {
+        System.out.println("Enter user names or \"select all\" to remove. type in \"end\" to end process");
+        String input;
+        ArrayList<Account> accounts = new ArrayList<>();
+        while (!(input = scanner.nextLine()).equals("end")) {
+            if(input.equals("select all")) {
+                discount.removeAllowedAccounts(Database.getAllAccounts());
+                System.out.println("all accounts removed");
+                break;
+            }
+            if(!discount.getAllowedAccount().contains(Database.getAccountByUsername(input))) {
+                throw new Exception("account already not allowed");
+            }
+            if(Database.getAccountByUsername(input) == null) {
+                throw new Exception("user does not exists!");
+            }
+            accounts.add(Database.getAccountByUsername(input));
+            discount.removeAllowedAccounts(accounts);
+            accounts.removeAll(accounts);
+            System.out.println("account removed");
         }
     }
-
-    private void removeDiscountAllowedUsers(Scanner scanner, Discount discount) {
-
-    }
-
-
-
-
 
     public void editDiscount(Discount discount, Time endTime, double discountPercent, int maxDiscountAmount){
 
@@ -217,8 +237,8 @@ public class Core {
 
     public void showDiscount(Discount discount) {
 
-        System.out.print("End time: " + discount.getStartTime() + "\n" +
-                "Start time: " + discount.getEndTime() + "\n" +
+        System.out.print("Start time: " + discount.getStartTime() + "\n" +
+                "End time: " + discount.getEndTime() + "\n" +
                 "Percent: " + discount.getDiscountPercent() + "\n" +
                 "Maximum amount: " + discount.getMaxDiscountAmount() + "\n" +
                 "Frequency: " + discount.getFrequency() + "\n"

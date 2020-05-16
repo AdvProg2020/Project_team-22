@@ -31,7 +31,12 @@ public class ManageDiscounts extends Menu {
 
             @Override
             public void execute() {
-
+                String discountCode = scanner.nextLine();
+                try {
+                    core.configureDiscountAllowedUsers(scanner, discountCode);
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
                 this.parentMenu.show();
                 this.parentMenu.execute();
             }

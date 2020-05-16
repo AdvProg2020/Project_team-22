@@ -25,6 +25,7 @@ public class Discount implements Serializable {
         setDiscountPercent(discountPercent);
         setMaxDiscountAmount(maxDiscountAmount);
         setFrequency(frequency);
+        allowedAccount = new ArrayList<>();
     }
 
 
@@ -59,10 +60,12 @@ public class Discount implements Serializable {
     public void setDiscountCode(String discountCode) throws Exception {
         if(Database.getDiscountByDiscountCode(discountCode) != null) {
             throw new Exception("this code already exists");
-        } else if (discountCode.length() > 25) {
+        }
+        if (discountCode.length() > 25) {
             throw new Exception("discount code should be shorter than 25 characters");
-        } else if(discountCode.contains(" ")) {
-            throw new Exception("discount code should not exists white space");
+        }
+        if(discountCode.contains(" ")) {
+            throw new Exception("discount code should not contains white space");
         }
         this.discountCode = discountCode;
     }
@@ -99,9 +102,11 @@ public class Discount implements Serializable {
 
     public void addAllowedAccounts(ArrayList<Account> accounts) {
         this.allowedAccount.addAll(accounts);
+        Database.addAllDiscountsToDatabaseFile();
     }
 
     public void removeAllowedAccounts(ArrayList<Account> accounts) {
         this.allowedAccount.removeAll(accounts);
+        Database.addAllDiscountsToDatabaseFile();
     }
 }

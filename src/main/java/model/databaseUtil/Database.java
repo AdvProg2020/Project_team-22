@@ -176,6 +176,7 @@ public class Database {
 
     public static void removeDiscount(Discount discount) {
         allDiscounts.remove(discount);
+        addAllDiscountsToDatabaseFile();
     }
 
     public static void deleteAccount(Account accountByUsername) {
@@ -186,7 +187,7 @@ public class Database {
         allProducts.remove(productByProductId);
     }
 
-    public static ArrayList<Account> getAllAccounts() {
+    public  static ArrayList<Account> getAllAccounts() {
         return allAccounts;
     }
 }
