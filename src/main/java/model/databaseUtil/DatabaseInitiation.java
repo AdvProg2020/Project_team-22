@@ -75,7 +75,7 @@ public class DatabaseInitiation {
         }
     }
 
-    private static void loadAllOffs() {
+    private static void loadAllDiscounts() {
         try {
             FileInputStream fileInput = new FileInputStream("src/database/discounts.ser");
             ObjectInputStream fileOutput = new ObjectInputStream(fileInput);
@@ -90,7 +90,7 @@ public class DatabaseInitiation {
         }
     }
 
-    private static void loadAllDiscounts() {
+    private static void loadAllOffs() {
         try {
             FileInputStream fileInput = new FileInputStream("src/database/off.ser");
             ObjectInputStream fileOutput = new ObjectInputStream(fileInput);

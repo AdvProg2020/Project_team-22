@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Core {
-    public Account currentAccount;
+    public Account currentAccount = null;
 
     //private static Account onlineAccount = new Account();
     private static ArrayList<Product> shopBasket = new ArrayList<>();
