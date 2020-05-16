@@ -1,6 +1,7 @@
-package model.log;
+package main.java.model.log;
 
-import model.Discount;
+
+import main.java.model.Discount;
 
 public class BuyLog extends Log{
     private Discount discount;

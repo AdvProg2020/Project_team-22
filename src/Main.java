@@ -1,7 +1,6 @@
-import controller.Core;
-import model.databaseUtil.DatabaseInitiation;
-import model.databaseUtil.Database;
-import view.CommandProcessor;
+import main.java.controller.Core;
+import main.java.model.databaseUtil.DatabaseInitiation;
+import main.java.view.CommandProcessor;
 
 public class Main {
 

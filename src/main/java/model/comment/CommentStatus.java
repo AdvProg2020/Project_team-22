@@ -1,4 +1,4 @@
-package model.comment;
+package main.java.model.comment;
 
 public enum CommentStatus {
     WAITING_FOR_CONFIRM,

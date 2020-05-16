@@ -1,4 +1,4 @@
-package model.off;
+package main.java.model.off;
 
 public enum OffStatus {
     MAKING,

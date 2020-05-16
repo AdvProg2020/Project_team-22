@@ -1,6 +1,6 @@
-package model.off;
+package main.java.model.off;
 
-import model.product.Product;
+import main.java.model.product.Product;
 
 import java.io.Serializable;
 import java.time.LocalDate;

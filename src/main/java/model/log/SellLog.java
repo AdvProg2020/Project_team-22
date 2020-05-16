@@ -1,8 +1,8 @@
-package model.log;
+package main.java.model.log;
 
-import model.off.Off;
+import main.java.model.off.Off;
 
-public class SellLog extends Log{
+public class SellLog extends Log {
     private Off logOff;
 
     public Off getLogOff() {

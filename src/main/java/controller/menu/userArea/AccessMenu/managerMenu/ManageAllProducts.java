@@ -1,7 +1,8 @@
-package controller.menu.userArea.AccessMenu.managerMenu;
+package main.java.controller.menu.userArea.AccessMenu.managerMenu;
 
-import controller.menu.Menu;
-import model.databaseUtil.Database;
+import main.java.controller.menu.Menu;
+import main.java.model.databaseUtil.Database;
+import main.java.model.product.Product;
 
 import java.util.HashMap;
 
@@ -10,9 +11,26 @@ public class ManageAllProducts extends Menu {
         super("manage all products", parentMenu);
         HashMap<Integer, Menu> submenus = new HashMap<>();
         submenus.put(1, getRemoveProductMenu());
+        submenus.put(2, getShowAllProductsMenu());
         this.setSubmenus(submenus);
     }
 
+    private Menu getShowAllProductsMenu() {
+        return new Menu("view all products", this) {
+            @Override
+            public void show() {
+                for (Product product : Database.getAllProducts()) {
+                    System.out.println("pdo" + product.getName());
+                }
+            }
+
+            @Override
+            public void execute() {
+                this.parentMenu.show();
+                this.parentMenu.execute();
+            }
+        };
+    }
 
     private Menu getRemoveProductMenu() {
         return new Menu("remove product", this) {

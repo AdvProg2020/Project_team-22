@@ -1,11 +1,13 @@
-package model.databaseUtil;
+package main.java.model.databaseUtil;
 
-import model.Discount;
-import model.account.Account;
-import model.Category;
-import model.log.Log;
-import model.off.Off;
-import model.product.Product;
+import main.java.model.Category;
+import main.java.model.Discount;
+import main.java.model.account.Account;
+import main.java.model.log.Log;
+import main.java.model.off.Off;
+import main.java.model.product.Product;
+
+
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -199,5 +201,9 @@ public class Database {
             }
         }
         return null;
+    }
+
+    public static ArrayList<Product> getAllProducts() {
+        return allProducts;
     }
 }

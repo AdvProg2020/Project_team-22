@@ -1,4 +1,4 @@
-package model.product;
+package main.java.model.product;
 
 public enum ProductStatus {
     MAKING,

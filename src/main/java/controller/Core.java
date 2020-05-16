@@ -1,18 +1,17 @@
-package controller;
+package main.java.controller;
 
-import model.Category;
-import model.Discount;
-import model.account.Account;
-import model.account.Role;
-import model.comment.Comment;
-import model.comment.CommentStatus;
-import model.databaseUtil.Database;
-import model.off.Off;
-import model.product.Product;
-import model.product.ProductStatus;
-import model.product.StockStatus;
+import main.java.model.Category;
+import main.java.model.Discount;
+import main.java.model.account.Account;
+import main.java.model.account.Role;
+import main.java.model.comment.Comment;
+import main.java.model.comment.CommentStatus;
+import main.java.model.databaseUtil.Database;
+import main.java.model.off.Off;
+import main.java.model.product.Product;
+import main.java.model.product.ProductStatus;
+import main.java.model.product.StockStatus;
 
-import javax.xml.crypto.Data;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.util.ArrayList;

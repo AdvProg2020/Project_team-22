@@ -1,7 +1,7 @@
-package model;
+package main.java.model;
 
-import model.account.Account;
-import model.databaseUtil.Database;
+import main.java.model.account.Account;
+import main.java.model.databaseUtil.Database;
 
 import java.io.Serializable;
 import java.sql.Time;

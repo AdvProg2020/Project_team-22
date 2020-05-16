@@ -1,6 +1,6 @@
-package controller.menu.userArea.AccessMenu.managerMenu;
+package main.java.controller.menu.userArea.AccessMenu.managerMenu;
 
-import controller.menu.Menu;
+import main.java.controller.menu.Menu;
 
 import java.util.HashMap;
 

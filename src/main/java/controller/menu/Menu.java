@@ -1,6 +1,6 @@
-package controller.menu;
+package main.java.controller.menu;
 
-import controller.Core;
+import main.java.controller.Core;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -58,17 +58,23 @@ public abstract class Menu {
 
     public void execute() {
         Menu nextMenu = null;
-        int chosenMenu = Integer.parseInt(scanner.nextLine());
-        if (chosenMenu == submenus.size() + 1) {
-            if (this.parentMenu == null) {
-                System.exit(1);
+        try {
+            int chosenMenu = Integer.parseInt(scanner.nextLine());
+            if (chosenMenu == submenus.size() + 1) {
+                if (this.parentMenu == null) {
+                    System.exit(1);
+                } else {
+                    nextMenu = this.parentMenu;
+                }
             } else {
-                nextMenu = this.parentMenu;
+                nextMenu = submenus.get(chosenMenu);
             }
-        } else {
-            nextMenu = submenus.get(chosenMenu);
+            nextMenu.show();
+            nextMenu.execute();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-        nextMenu.show();
-        nextMenu.execute();
+        show();
+        execute();
     }
 }

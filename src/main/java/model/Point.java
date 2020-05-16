@@ -1,7 +1,7 @@
-package model;
+package main.java.model;
 
-import model.account.Account;
-import model.product.Product;
+import main.java.model.account.Account;
+import main.java.model.product.Product;
 
 public class Point {
     private Account account;

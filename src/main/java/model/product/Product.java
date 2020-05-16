@@ -1,8 +1,9 @@
-package model.product;
+package main.java.model.product;
 
-import model.account.Account;
-import model.comment.Comment;
-import model.databaseUtil.Database;
+
+import main.java.model.account.Account;
+import main.java.model.comment.Comment;
+import main.java.model.databaseUtil.Database;
 
 import java.io.Serializable;
 import java.util.ArrayList;

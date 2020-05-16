@@ -1,4 +1,4 @@
-package model.account;
+package main.java.model.account;
 
 public enum Role {
     CUSTOMER,

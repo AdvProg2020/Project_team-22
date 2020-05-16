@@ -1,6 +1,6 @@
-package controller.menu.userArea;
+package main.java.controller.menu.userArea;
 
-import controller.menu.Menu;
+import main.java.controller.menu.Menu;
 
 import java.util.HashMap;
 

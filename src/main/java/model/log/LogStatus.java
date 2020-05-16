@@ -1,4 +1,4 @@
-package model.log;
+package main.java.model.log;
 
 public enum LogStatus {
     REGISTERED,

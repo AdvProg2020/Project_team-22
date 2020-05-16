@@ -1,15 +1,9 @@
-package view;
+package main.java.view;
 
-import controller.Core;
-import controller.menu.MainMenu;
-import controller.menu.Menu;
-import model.account.Account;
-import model.account.Role;
-import model.databaseUtil.Database;
-import model.off.Off;
+import main.java.controller.Core;
+import main.java.controller.menu.MainMenu;
+import main.java.controller.menu.Menu;
 
-import javax.xml.crypto.Data;
-import java.time.LocalDate;
 import java.util.Scanner;
 
 public class CommandProcessor {

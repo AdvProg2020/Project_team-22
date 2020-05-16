@@ -1,11 +1,11 @@
-package controller.menu.userArea.AccessMenu;
+package main.java.controller.menu.userArea.AccessMenu;
 
-import controller.menu.Menu;
-import model.product.Product;
+import main.java.controller.menu.Menu;
+import main.java.model.product.Product;
 
 import java.util.HashMap;
 
-public class CustomerMenu extends Menu{
+public class CustomerMenu extends Menu {
     public CustomerMenu (Menu parentMenu) {
         super("Customer menu", parentMenu);
         HashMap<Integer, Menu> submenus = new HashMap<>();

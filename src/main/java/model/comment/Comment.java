@@ -1,7 +1,8 @@
-package model.comment;
+package main.java.model.comment;
 
-import model.account.Account;
-import model.product.Product;
+
+import main.java.model.account.Account;
+import main.java.model.product.Product;
 
 public class Comment {
     private Account account;

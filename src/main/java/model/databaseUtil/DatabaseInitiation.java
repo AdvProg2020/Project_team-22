@@ -1,4 +1,4 @@
-package model.databaseUtil;
+package main.java.model.databaseUtil;
 
 import java.io.FileInputStream;
 import java.io.IOException;

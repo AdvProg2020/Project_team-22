@@ -1,6 +1,6 @@
-package model;
+package main.java.model;
 
-import model.product.Product;
+import main.java.model.product.Product;
 
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -1,12 +1,9 @@
-package controller.menu.userArea.AccessMenu.managerMenu;
+package main.java.controller.menu.userArea.AccessMenu.managerMenu;
 
-import controller.menu.Menu;
-import model.Discount;
-import model.databaseUtil.Database;
+import main.java.controller.menu.Menu;
+import main.java.model.Discount;
+import main.java.model.databaseUtil.Database;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 
 public class ManageDiscounts extends Menu {
