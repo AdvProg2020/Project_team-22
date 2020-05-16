@@ -185,4 +185,15 @@ public class Database {
     public static void removeProduct(Product productByProductId) {
         allProducts.remove(productByProductId);
     }
+
+    public static Off getOffForThisGood(Product product) {
+        for (Off off : allOffs) {
+            for (Product productInOffList : off.getProductsList()) {
+                if (productInOffList.getProductId().equals(product.getProductId())){
+                    return off;
+                }
+            }
+        }
+        return null;
+    }
 }

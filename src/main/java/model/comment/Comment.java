@@ -9,7 +9,12 @@ public class Comment {
     private String opinionTitle;
     private String opinionContent;
     private CommentStatus opinionStatus;
-    private boolean hasBayed;
+    private boolean hasBought;
+
+    public Comment(String opinionTitle, String opinionContent) {
+        this.opinionTitle = opinionTitle;
+        this.opinionContent = opinionContent;
+    }
 
     public Account getAccount() {
         return account;
@@ -31,8 +36,8 @@ public class Comment {
         return opinionStatus;
     }
 
-    public boolean isHasBayed() {
-        return hasBayed;
+    public boolean isHasBought() {
+        return hasBought;
     }
 
     public void setAccount(Account account) {
@@ -55,7 +60,7 @@ public class Comment {
         this.opinionStatus = opinionStatus;
     }
 
-    public void setHasBayed(boolean hasBayed) {
-        this.hasBayed = hasBayed;
+    public void setHasBought(boolean hasBought) {
+        this.hasBought = hasBought;
     }
 }
