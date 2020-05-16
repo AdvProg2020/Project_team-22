@@ -9,6 +9,7 @@ import model.product.Product;
 import model.product.ProductStatus;
 import model.product.StockStatus;
 
+import javax.xml.crypto.Data;
 import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -143,15 +144,42 @@ public class Core {
         System.out.println("discount successfully edited");
     }
 
-    public void addDiscountAllowedUsers(Account account) {
-
+    public void configureDiscountAllowedUsers(Scanner scanner, String discountCode) throws Exception{
+        Discount discount = Database.getDiscountByDiscountCode(discountCode);
+        if(discount == null) {
+            throw new Exception("discount with this code does not exists!");
+        }
+        System.out.println("1. add allowed users\n2. remove allowed users");
+        String input = scanner.nextLine();
+        if(Integer.parseInt(input)==1) {
+            addDiscountAllowedUsers(scanner, discount);
+        } else if(Integer.parseInt(input)==2) {
+            removeDiscountAllowedUsers(scanner, discount);
+        }
     }
 
-    public void removeDiscountAllowedUsers(Account account) {
+    private void addDiscountAllowedUsers(Scanner scanner, Discount discount) throws Exception {
+        System.out.println("Enter user names or \"select all\" to add. type in \"end\" to end process");
+        String input;
+        ArrayList<Account> accounts = new ArrayList<>();
+        while (!(input = scanner.nextLine()).equals("end")) {
+            if(input.equals("select all")) {
+                discount.addAllowedAccounts(Database.getAllAccounts());
+                break;
+            }
+            if(discount.getAllowedAccount().contains(Database.getAccountByUsername(input))) {
+                throw new Exception("user is already allowed");
+            }
+            if(Database.getAccountByUsername(input) == null) {
+                throw new Exception("user does not exists!");
+            }
 
+        }
     }
 
+    private void removeDiscountAllowedUsers(Scanner scanner, Discount discount) {
 
+    }
 
 
 

@@ -17,9 +17,25 @@ public class ManageDiscounts extends Menu {
         submenus.put(2, getViewDiscountMenu());
         submenus.put(3, getEditDiscountMenu());
         submenus.put(4, getRemoveDiscountMenu());
-        //submenus.put(5, )
+        submenus.put(5, getConfigureDiscountAllowedUsers());
         this.setSubmenus(submenus);
 
+    }
+
+    private Menu getConfigureDiscountAllowedUsers() {
+        return new Menu("configure discount allowed users", this) {
+            @Override
+            public void show() {
+                System.out.println("Enter discount code to configure allowed users");
+            }
+
+            @Override
+            public void execute() {
+
+                this.parentMenu.show();
+                this.parentMenu.execute();
+            }
+        };
     }
 
 

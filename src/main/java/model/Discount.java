@@ -97,7 +97,11 @@ public class Discount implements Serializable {
         this.frequency = frequency;
     }
 
-    public void setAllowedAccount(ArrayList<Account> allowedAccount) {
-        this.allowedAccount = allowedAccount;
+    public void addAllowedAccounts(ArrayList<Account> accounts) {
+        this.allowedAccount.addAll(accounts);
+    }
+
+    public void removeAllowedAccounts(ArrayList<Account> accounts) {
+        this.allowedAccount.removeAll(accounts);
     }
 }

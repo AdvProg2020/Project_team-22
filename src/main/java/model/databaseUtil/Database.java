@@ -185,4 +185,8 @@ public class Database {
     public static void removeProduct(Product productByProductId) {
         allProducts.remove(productByProductId);
     }
+
+    public static ArrayList<Account> getAllAccounts() {
+        return allAccounts;
+    }
 }
