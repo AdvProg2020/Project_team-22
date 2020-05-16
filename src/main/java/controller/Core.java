@@ -1,8 +1,11 @@
 package controller;
 
+import model.Category;
 import model.Discount;
 import model.account.Account;
 import model.account.Role;
+import model.comment.Comment;
+import model.comment.CommentStatus;
 import model.databaseUtil.Database;
 import model.off.Off;
 import model.product.Product;
@@ -11,14 +14,12 @@ import model.product.StockStatus;
 
 import javax.xml.crypto.Data;
 import java.sql.Time;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Core {
-    public Account currentAccount;
+    public Account currentAccount = null;
 
     //private static Account onlineAccount = new Account();
     private static ArrayList<Product> shopBasket = new ArrayList<>();
@@ -219,12 +220,17 @@ public class Core {
         Database.addProduct(product);
     }
 
-    public void compareProduct(Product firstProduct, Product secondProduct){
-
+    public void compareProduct(Product firstProduct, Product secondProduct) {
+        System.out.println("----------first product----------second product");
+        System.out.format("name: %10s %19s\n", firstProduct.getName(), secondProduct.getName());
+        System.out.format("price: %10s %19s\n", firstProduct.getPrice(), secondProduct.getPrice());
+        System.out.format("average point: %10s %19s\n", firstProduct.getAveragePoint(), secondProduct.getAveragePoint());
+        System.out.format("brand: %10s %19s\n", firstProduct.getBrand(), secondProduct.getBrand());
+        System.out.format("seller: %10s %19s\n", firstProduct.getSalesman().getCompanyName(), secondProduct.getSalesman().getCompanyName());
     }
 
     public void addProductToShopBasket(Product product){
-
+        currentAccount.addProductToShopBasket(product);
     }
 
     public void showShopBasket(){
@@ -243,5 +249,46 @@ public class Core {
                 "Maximum amount: " + discount.getMaxDiscountAmount() + "\n" +
                 "Frequency: " + discount.getFrequency() + "\n"
         );
+    }
+
+    public void showProductInfo(Product product) {
+        System.out.println("product name:" + product.getName());
+        System.out.println("product brand:" + product.getBrand());
+        System.out.println("product category:" + product.getCategory());
+        System.out.println("product description:" + product.getDescription());
+        System.out.println("product average point:" + product.getAveragePoint());
+        System.out.println("product comments:" + product.getComments());
+        System.out.println("product price:" + product.getPrice());
+        System.out.println("product seller:" + product.getSalesman().getCompanyName());
+        System.out.println("product stock status:" + product.getStockStatus());
+        Off off = Database.getOffForThisGood(product);
+        if (off == null){
+            System.out.println("There is no discount for this good yet");
+        } else {
+            System.out.println("There is a" + off.getDiscountPercent() + "% discount for this good");
+        }
+
+    }
+
+    public void showProductAttribute(Product product) {
+        Category category = Database.getCategoryByName(product.getCategory());
+        System.out.println("category name:" + category.getName());
+        System.out.println("category properties" + category.getProperties());
+    }
+
+    public void showComments(Product product) {
+        for (Comment comment : product.getComments()) {
+            System.out.println("Account: " + comment.getAccount().getUsername());
+            System.out.println("Title: " + comment.getOpinionTitle());
+            System.out.println("Content: " + comment.getOpinionContent() + "\n");
+        }
+    }
+
+    public void addComment(Product product, Comment comment) {
+        comment.setAccount(currentAccount);
+        comment.setProduct(product);
+        comment.setOpinionStatus(CommentStatus.WAITING_FOR_CONFIRM);
+        comment.setHasBought(currentAccount.hasBoughtTheProduct(product));
+        product.addComment(comment);
     }
 }

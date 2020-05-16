@@ -11,6 +11,7 @@ public class ProductMenu extends Menu {
         submenus.put(1, getCategoriesMenu());
         submenus.put(2, getProductsListMenu());
         submenus.put(3, getProductSearchMenu());
+        submenus.put(4, new ShowProductsMenu("Show products menu", this));
         this.setSubmenus(submenus);
     }
 

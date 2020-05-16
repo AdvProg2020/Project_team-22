@@ -3,6 +3,7 @@ package model.account;
 import model.Discount;
 import model.databaseUtil.Database;
 import model.log.Log;
+import model.product.Product;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,9 +19,10 @@ public class Account implements Serializable {
     private String password;
     private Role role;
     private String companyName; ////// Just for SALESMAN /////
-    private ArrayList<Discount> discountsList;
+    private ArrayList<Discount> discountsList = new ArrayList<>();
     private int credit;
-    private ArrayList<Log> logsList;
+    private ArrayList<Log> logsList = new ArrayList<>();
+    private ArrayList<Product> shopBasket = new ArrayList<>();
 
     public Account(String username, String firstName, String lastName, String email, String phone, String password, Role role) throws Exception {
         setUsername(username);
@@ -74,6 +76,10 @@ public class Account implements Serializable {
 
     public ArrayList<Log> getLogsList() {
         return logsList;
+    }
+
+    public ArrayList<Product> getShopBasket() {
+        return shopBasket;
     }
 
     public void setUsername(String username) throws Exception{
@@ -169,5 +175,24 @@ public class Account implements Serializable {
                 ", credit=" + credit +
                 ", logsList=" + logsList +
                 '}';
+    }
+
+    public void setShopBasket(ArrayList<Product> shopBasket) {
+        this.shopBasket = shopBasket;
+    }
+
+    public void addProductToShopBasket(Product product){
+        shopBasket.add(product);
+    }
+
+    public boolean hasBoughtTheProduct(Product product){
+        for (Log log : logsList) {
+            for (Product productInLogList : log.getProductsList()) {
+                if (productInLogList.getProductId().equals(product.getProductId())){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

@@ -115,4 +115,9 @@ public class Product implements Serializable {
     public void setComments(ArrayList<Comment> comments) {
         this.comments = comments;
     }
+
+    public void addComment(Comment comment){
+        comments.add(comment);
+        Database.addAllProductsToDatabaseFile();
+    }
 }

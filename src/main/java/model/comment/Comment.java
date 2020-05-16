@@ -6,9 +6,15 @@ import model.product.Product;
 public class Comment {
     private Account account;
     private Product product;
-    private String opinionText;
+    private String opinionTitle;
+    private String opinionContent;
     private CommentStatus opinionStatus;
-    private boolean hasBayed;
+    private boolean hasBought;
+
+    public Comment(String opinionTitle, String opinionContent) {
+        this.opinionTitle = opinionTitle;
+        this.opinionContent = opinionContent;
+    }
 
     public Account getAccount() {
         return account;
@@ -18,16 +24,20 @@ public class Comment {
         return product;
     }
 
-    public String getOpinionText() {
-        return opinionText;
+    public String getOpinionTitle() {
+        return opinionTitle;
+    }
+
+    public String getOpinionContent() {
+        return opinionContent;
     }
 
     public CommentStatus getOpinionStatus() {
         return opinionStatus;
     }
 
-    public boolean isHasBayed() {
-        return hasBayed;
+    public boolean isHasBought() {
+        return hasBought;
     }
 
     public void setAccount(Account account) {
@@ -38,15 +48,19 @@ public class Comment {
         this.product = product;
     }
 
-    public void setOpinionText(String opinionText) {
-        this.opinionText = opinionText;
+    public void setOpinionTitle(String opinionText) {
+        this.opinionContent = opinionText;
+    }
+
+    public void setOpinionContent(String opinionContent) {
+        this.opinionContent = opinionContent;
     }
 
     public void setOpinionStatus(CommentStatus opinionStatus) {
         this.opinionStatus = opinionStatus;
     }
 
-    public void setHasBayed(boolean hasBayed) {
-        this.hasBayed = hasBayed;
+    public void setHasBought(boolean hasBought) {
+        this.hasBought = hasBought;
     }
 }
