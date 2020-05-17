@@ -6,8 +6,8 @@ import main.java.model.product.Product;
 public class ProductRequest extends Request{
     private Product product;
 
-    public ProductRequest(Product product, Type type, String id) throws Exception {
-        super(type, id);
+    public ProductRequest(Product product, Type type) {
+        super(type);
         this.product = product;
     }
 
@@ -17,6 +17,6 @@ public class ProductRequest extends Request{
 
     @Override
     public String toString() {
-        return "ID: " + getId() + "Type: " + getType() + "\nProduct:\n" + product.getName();
+        return "ID: " + getId() + "Type: " + getType();
     }
 }

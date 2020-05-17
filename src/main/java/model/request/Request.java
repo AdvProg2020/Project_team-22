@@ -3,6 +3,7 @@ package main.java.model.request;
 import main.java.model.databaseUtil.Database;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 public abstract class Request implements Serializable {
     private Type type;
@@ -10,20 +11,13 @@ public abstract class Request implements Serializable {
 
 
 
-    public Request(Type type, String id) throws Exception {
+    public Request(Type type) {
         this.type = type;
-        setId(id);
+        id = UUID.randomUUID().toString();
     }
 
     public Type getType() {
         return type;
-    }
-
-    public void setId(String id) throws Exception {
-        if(Database.getRequestByRequestId(id) != null) {
-            throw new Exception("this id already exists!");
-        }
-        this.id = id;
     }
 
     public String getId() {

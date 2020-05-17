@@ -7,6 +7,7 @@ import main.java.model.databaseUtil.Database;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Product implements Serializable {
     private String productId;
@@ -28,6 +29,7 @@ public class Product implements Serializable {
         this.category = category;
         this.description = description;
         this.comments = new ArrayList<>();
+        productId = UUID.randomUUID().toString();
     }
 
     public String getProductId() {

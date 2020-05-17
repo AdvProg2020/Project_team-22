@@ -16,11 +16,9 @@ import main.java.model.request.ProductRequest;
 import main.java.model.request.Request;
 import main.java.model.request.Type;
 
-import javax.xml.crypto.Data;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -188,6 +186,7 @@ public class Core {
             accounts.add(Database.getAccountByUsername(input));
             discount.addAllowedAccounts(accounts);
             accounts.removeAll(accounts);
+            Database.addAllAccountsToDatabaseFile();
             Database.addAllDiscountsToDatabaseFile();
             System.out.println("account added");
         }

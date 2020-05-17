@@ -5,6 +5,7 @@ import main.java.model.product.Product;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Off implements Serializable {
     private String offId;
@@ -14,12 +15,12 @@ public class Off implements Serializable {
     private LocalDate endTime;
     private double discountPercent;
 
-    public Off(ArrayList<Product> productsList, LocalDate startTime, LocalDate endTime, double discountPercent, String id) {
+    public Off(ArrayList<Product> productsList, LocalDate startTime, LocalDate endTime, double discountPercent) {
         this.productsList = productsList;
         this.startTime = startTime;
         this.endTime = endTime;
         this.discountPercent = discountPercent;
-        this.offId = id;
+        offId = UUID.randomUUID().toString();
     }
 
     public String getOffId() {

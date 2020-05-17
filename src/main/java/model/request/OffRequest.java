@@ -6,8 +6,8 @@ import main.java.model.off.Off;
 public class OffRequest extends Request{
     private Off off;
 
-    public OffRequest(Off off, Type type, String id) throws Exception {
-        super(type, id);
+    public OffRequest(Off off, Type type) {
+        super(type);
         this.off = off;
     }
 
@@ -17,6 +17,6 @@ public class OffRequest extends Request{
 
     @Override
     public String toString() {
-        return "ID: "+ getId() + "Type: " + getType() + "\noff:\n" + off;
+        return "ID: "+ getId() + "Type: " + getType();
     }
 }
