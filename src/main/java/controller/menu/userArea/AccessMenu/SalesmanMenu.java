@@ -97,7 +97,7 @@ public class SalesmanMenu extends Menu {
 
             @Override
             public void execute() {
-                Off off = new Off(productsList, startTime, endTime, discountPercent, offId);
+                Off off = new Off(productsList, startTime, endTime, discountPercent);
                 core.createOff(off);
                 this.parentMenu.show();
                 this.parentMenu.execute();

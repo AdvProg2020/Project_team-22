@@ -2,6 +2,8 @@ package main.java.model.databaseUtil;
 
 import main.java.model.Discount;
 import main.java.model.account.Account;
+import main.java.model.off.Off;
+import main.java.model.product.Product;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,13 +12,30 @@ import java.util.ArrayList;
 
 public class DatabaseInitiation {
     public static void initializeDatabase() {
-        loadAllAccounts();
         loadAllProducts();
-        loadAllLogs();
         loadAllOffs();
+
+
+        loadAllAccounts();
+        loadAllLogs();
         loadAllCategories();
         loadAllDiscounts();
         loadAllRequests();
+    }
+
+    private static void loadAllComments() {
+        try {
+            FileInputStream fileInput = new FileInputStream("src/database/comments.ser");
+            ObjectInputStream fileOutput = new ObjectInputStream(fileInput);
+            Database.allComments = (ArrayList) fileOutput.readObject();
+            fileOutput.close();
+            fileInput.close();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        } catch (ClassNotFoundException c) {
+            System.out.println("Class not found");
+            c.printStackTrace();
+        }
     }
 
     private static void loadAllAccounts() {
@@ -128,6 +147,13 @@ public class DatabaseInitiation {
         } catch (ClassNotFoundException c) {
             System.out.println("Class not found");
             c.printStackTrace();
+        }
+        for (Off off : Database.allOffs) {
+            ArrayList<Product> productsList = new ArrayList<>();
+            for (String productId : off.getProductsListId()) {
+                productsList.add(Database.getProductByProductId(productId));
+            }
+            off.setProductsList(productsList);
         }
     }
 
