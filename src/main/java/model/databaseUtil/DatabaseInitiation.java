@@ -2,6 +2,7 @@ package main.java.model.databaseUtil;
 
 import main.java.model.Discount;
 import main.java.model.account.Account;
+import main.java.model.comment.Comment;
 import main.java.model.off.Off;
 import main.java.model.product.Product;
 
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 public class DatabaseInitiation {
     public static void initializeDatabase() {
         loadAllProducts();
+        loadAllComments();
         loadAllOffs();
 
 
@@ -35,6 +37,9 @@ public class DatabaseInitiation {
         } catch (ClassNotFoundException c) {
             System.out.println("Class not found");
             c.printStackTrace();
+        }
+        for (Comment comment : Database.allComments) {
+            Database.getProductByProductId(comment.getProduct().getProductId()).addComment(comment);
         }
     }
 
