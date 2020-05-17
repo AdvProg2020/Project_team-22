@@ -1,6 +1,11 @@
 package main.java.controller.menu;
 
 import main.java.controller.Core;
+import main.java.controller.menu.userArea.AccessMenu.CustomerMenu;
+import main.java.controller.menu.userArea.AccessMenu.SalesmanMenu;
+import main.java.controller.menu.userArea.AccessMenu.managerMenu.ManagerMenu;
+import main.java.controller.menu.userArea.UserMenu;
+import main.java.model.account.Role;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -69,10 +74,21 @@ public abstract class Menu {
             } else {
                 nextMenu = submenus.get(chosenMenu);
             }
+            if(!nextMenu.equals(this.parentMenu)) {
+                if(nextMenu instanceof UserMenu && core.getCurrentAccount() == null) {
+                    throw new Exception("login or register first");
+                } else if(nextMenu instanceof ManagerMenu && core.getCurrentAccount().getRole() != Role.MANAGER) {
+                    throw new Exception("you are not a manager!");
+                } else if(nextMenu instanceof SalesmanMenu && core.getCurrentAccount().getRole() != Role.SALESMAN) {
+                    throw new Exception("you are not a salesman!");
+                } else if(nextMenu instanceof CustomerMenu && core.getCurrentAccount().getRole() != Role.CUSTOMER) {
+                    throw new Exception("you are not a customer!");
+                }
+            }
             nextMenu.show();
             nextMenu.execute();
         } catch (Exception e) {
-            System.out.println("invalid input " + e.getMessage());
+            System.out.println(e.getMessage());
         }
         show();
         execute();

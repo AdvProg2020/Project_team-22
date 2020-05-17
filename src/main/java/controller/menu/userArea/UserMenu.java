@@ -15,4 +15,5 @@ public class UserMenu extends Menu {
         submenus.put(3, new RegisterAndLoginMenu(this));
         this.setSubmenus(submenus);
     }
+
 }

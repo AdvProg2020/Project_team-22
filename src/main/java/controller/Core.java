@@ -28,6 +28,10 @@ public class Core {
     //private static Account onlineAccount = new Account();
     private static ArrayList<Product> shopBasket = new ArrayList<>();
 
+    public Account getCurrentAccount() {
+        return currentAccount;
+    }
+
     public void showProductsContainOff() {
     }
 

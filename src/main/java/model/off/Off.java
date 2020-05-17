@@ -16,7 +16,7 @@ public class Off implements Serializable {
     private LocalDate endTime;
     private double discountPercent;
 
-    public Off(ArrayList<Product> productsList, LocalDate startTime, LocalDate endTime, double discountPercent, String id) {
+    public Off(ArrayList<Product> productsList, LocalDate startTime, LocalDate endTime, double discountPercent) {
         this.productsList = productsList;
         this.startTime = startTime;
         this.endTime = endTime;
