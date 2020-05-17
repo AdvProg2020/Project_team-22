@@ -3,6 +3,7 @@ package main.java.model.databaseUtil;
 import main.java.model.Category;
 import main.java.model.Discount;
 import main.java.model.account.Account;
+import main.java.model.comment.Comment;
 import main.java.model.log.Log;
 import main.java.model.off.Off;
 import main.java.model.product.Product;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 
 public class Database {
     static ArrayList<Account> allAccounts = new ArrayList<>();
+    static ArrayList<Comment> allComments = new ArrayList<>();
     static ArrayList<Product> allProducts = new ArrayList<>();
     static ArrayList<Log> allLogs = new ArrayList<>();
     static ArrayList<Category> allCategories = new ArrayList<>();
@@ -51,6 +53,11 @@ public class Database {
     public static void addRequest(Request request) {
         allRequests.add(request);
         addAllRequestsToDatabaseFile();
+    }
+
+    public static void addComments(Comment comment){
+        allComments.add(comment);
+        addAllCommentsToDatabaseFile();
     }
 
     public static void removeCategory(Category category) throws Exception {
@@ -102,7 +109,6 @@ public class Database {
     }
 
 
-
     public static void addAllLogsToDatabaseFile() {
         try {
             FileOutputStream fileOutput = new FileOutputStream("src/database/accounts.ser");
@@ -144,6 +150,17 @@ public class Database {
             FileOutputStream fileOutput = new FileOutputStream("src/database/discounts.ser");
             ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
             objectOutput.writeObject(allDiscounts);
+            objectOutput.close();
+            fileOutput.close();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+    }
+    public static void addAllCommentsToDatabaseFile() {
+        try {
+            FileOutputStream fileOutput = new FileOutputStream("src/database/comments.ser");
+            ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
+            objectOutput.writeObject(allComments);
             objectOutput.close();
             fileOutput.close();
         } catch (IOException ioe) {

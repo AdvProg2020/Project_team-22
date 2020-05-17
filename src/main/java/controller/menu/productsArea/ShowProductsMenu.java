@@ -132,7 +132,7 @@ public class ShowProductsMenu extends Menu {
                 Product product = Database.getProductByProductId(id);
                 System.out.println("Enter your comment title:");
                 String title = scanner.nextLine();
-                System.out.println("Enter your comment:");
+                System.out.println("Enter your comment content:");
                 String content = scanner.nextLine();
                 core.addComment(product, new Comment(title, content));
                 this.parentMenu.show();
