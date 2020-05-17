@@ -13,6 +13,7 @@ public class DatabaseInitiation {
         loadAllOffs();
         loadAllCategories();
         loadAllDiscounts();
+        loadAllRequests();
     }
 
     private static void loadAllAccounts() {
@@ -20,6 +21,21 @@ public class DatabaseInitiation {
             FileInputStream fileInput = new FileInputStream("src/database/accounts.ser");
             ObjectInputStream fileOutput = new ObjectInputStream(fileInput);
             Database.allAccounts = (ArrayList) fileOutput.readObject();
+            fileOutput.close();
+            fileInput.close();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        } catch (ClassNotFoundException c) {
+            System.out.println("Class not found");
+            c.printStackTrace();
+        }
+    }
+
+    private static void loadAllRequests() {
+        try {
+            FileInputStream fileInput = new FileInputStream("src/database/requests.ser");
+            ObjectInputStream fileOutput = new ObjectInputStream(fileInput);
+            Database.allRequests = (ArrayList) fileOutput.readObject();
             fileOutput.close();
             fileInput.close();
         } catch (IOException ioe) {

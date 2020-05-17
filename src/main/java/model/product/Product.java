@@ -121,4 +121,17 @@ public class Product implements Serializable {
         comments.add(comment);
         Database.addAllProductsToDatabaseFile();
     }
+
+    @Override
+    public String toString() {
+        return "productId='" + productId + '\'' +
+                ", productStatus=" + productStatus +
+                ", name='" + name + '\'' +
+                ", brand='" + brand + '\'' +
+                ", price=" + price +
+                ", salesman=" + salesman +
+                ", category='" + category + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

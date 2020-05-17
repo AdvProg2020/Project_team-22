@@ -1,3 +1,5 @@
+package java;
+
 import main.java.model.account.Account;
 import main.java.model.account.Role;
 import main.java.model.product.Product;

@@ -78,4 +78,15 @@ public class Off implements Serializable {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "offId='" + offId + '\'' +
+                ", productsList=" + productsList +
+                ", offStatus=" + offStatus +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", discountPercent=" + discountPercent +
+                '}';
+    }
 }

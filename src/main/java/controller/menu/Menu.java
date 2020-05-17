@@ -72,7 +72,7 @@ public abstract class Menu {
             nextMenu.show();
             nextMenu.execute();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("invalid input " + e.getMessage());
         }
         show();
         execute();

@@ -11,11 +11,16 @@ import main.java.model.off.Off;
 import main.java.model.product.Product;
 import main.java.model.product.ProductStatus;
 import main.java.model.product.StockStatus;
+import main.java.model.request.OffRequest;
+import main.java.model.request.ProductRequest;
+import main.java.model.request.Request;
+import main.java.model.request.Type;
 
 import javax.xml.crypto.Data;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -332,5 +337,42 @@ public class Core {
         comment.setOpinionStatus(CommentStatus.WAITING_FOR_CONFIRM);
         comment.setHasBought(currentAccount.hasBoughtTheProduct(product));
         product.addComment(comment);
+    }
+
+    public void showRequest(String requestId) throws Exception{
+        Request request = Database.getRequestByRequestId(requestId);
+        if(request == null) {
+            throw new Exception("invalid request id");
+        }
+        System.out.println(requestId);
+    }
+
+    public void acceptRequestById(String requestId) throws Exception {
+        Request request = Database.getRequestByRequestId(requestId);
+        if(request == null) {
+            throw new Exception("invalid request id");
+        }
+        if(request instanceof ProductRequest) {
+            if(request.getType().equals(Type.EDIT)) {
+                Database.removeProduct(Database.getProductByProductId(((ProductRequest) request).getProduct().getProductId()));
+            }
+            Database.addProduct(((ProductRequest) request).getProduct());
+        } else if(request instanceof OffRequest) {
+            if(request.getType().equals(Type.EDIT)) {
+                Database.removeOff(Database.getOffByOffId(((OffRequest) request).getOff().getOffId()));
+            }
+            Database.addOff(((OffRequest) request).getOff());
+        }
+        System.out.println("request accepted");
+        Database.removeRequest(request);
+    }
+
+    public void rejectRequestById(String requestId) throws Exception {
+        Request request = Database.getRequestByRequestId(requestId);
+        if(request == null) {
+            throw new Exception("invalid request id");
+        }
+        System.out.println("request rejected");
+        Database.removeRequest(request);
     }
 }

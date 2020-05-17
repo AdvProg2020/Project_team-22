@@ -6,7 +6,7 @@ import main.java.model.account.Account;
 import main.java.model.log.Log;
 import main.java.model.off.Off;
 import main.java.model.product.Product;
-
+import main.java.model.request.Request;
 
 
 import java.io.FileOutputStream;
@@ -21,6 +21,7 @@ public class Database {
     static ArrayList<Category> allCategories = new ArrayList<>();
     static ArrayList<Off> allOffs = new ArrayList<>();
     static ArrayList<Discount> allDiscounts = new ArrayList<>();
+    static ArrayList<Request> allRequests = new ArrayList<>();
 
     public static void addOff(Off off){
         allOffs.add(off);
@@ -45,6 +46,11 @@ public class Database {
     public static void addCategory(Category category) {
         allCategories.add(category);
         addAllCategoriesToDatabaseFile();
+    }
+
+    public static void addRequest(Request request) {
+        allRequests.add(request);
+        addAllRequestsToDatabaseFile();
     }
 
     public static void removeCategory(Category category) throws Exception {
@@ -82,6 +88,20 @@ public class Database {
             ioe.printStackTrace();
         }
     }
+
+    public static void addAllRequestsToDatabaseFile() {
+        try {
+            FileOutputStream fileOutput = new FileOutputStream("src/database/requests.ser");
+            ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
+            objectOutput.writeObject(allRequests);
+            objectOutput.close();
+            fileOutput.close();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+    }
+
+
 
     public static void addAllLogsToDatabaseFile() {
         try {
@@ -149,6 +169,15 @@ public class Database {
         return null;
     }
 
+    public static Request getRequestByRequestId(String requestId) {
+        for (Request request : allRequests) {
+            if(request.getId().equals(requestId)) {
+                return request;
+            }
+        }
+        return null;
+    }
+
     public static Log getLogByLogId(String logId) {
         for (Log log : allLogs) {
             if (log.getLogId().equals(logId)) {
@@ -209,6 +238,11 @@ public class Database {
         addAllAccountsToDatabaseFile();
     }
 
+    public static void removeOff(Off off) {
+        allOffs.remove(off);
+        addAllOffsToDatabaseFile();
+    }
+
     public static void removeProduct(Product productByProductId) throws Exception {
         if(productByProductId == null) {
             throw new Exception("product does not exists!");
@@ -219,6 +253,11 @@ public class Database {
 
     public  static ArrayList<Account> getAllAccounts() {
         return allAccounts;
+    }
+
+    public static void removeRequest(Request request) {
+        allRequests.remove(request);
+        addAllRequestsToDatabaseFile();
     }
 
     public static Off getOffForThisGood(Product product) {
@@ -234,5 +273,9 @@ public class Database {
 
     public static ArrayList<Product> getAllProducts() {
         return allProducts;
+    }
+
+    public static ArrayList<Request> getAllRequests() {
+        return allRequests;
     }
 }
