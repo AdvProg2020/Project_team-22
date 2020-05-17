@@ -82,33 +82,33 @@ public class Account implements Serializable {
         return shopBasket;
     }
 
-    public void setUsername(String username) throws Exception{
+    public void setUsername(String username) throws Exception {
         Matcher matcher = getMatcher(username, "^[^\\s]");
-        if(Database.getAccountByUsername(username) != null) {
+        if (Database.getAccountByUsername(username) != null) {
             throw new Exception("username already taken!");
-        } else if(!matcher.find()) {
+        } else if (!matcher.find()) {
             throw new Exception("username can not start with white space!");
-        } else if(username.length() > 25) {
+        } else if (username.length() > 25) {
             throw new Exception("first name should be shorter than 25 characters!");
         }
         this.username = username;
     }
 
-    public void setFirstName(String firstName) throws Exception{
+    public void setFirstName(String firstName) throws Exception {
         Matcher matcher = getMatcher(firstName, "^[^\\s]");
-        if(firstName.length() > 25) {
+        if (firstName.length() > 25) {
             throw new Exception("first name should be shorter than 25 characters!");
-        } else if(!matcher.find()) {
+        } else if (!matcher.find()) {
             throw new Exception("first name can not start with white space!");
         }
         this.firstName = firstName;
     }
 
-    public void setLastName(String lastName) throws Exception{
+    public void setLastName(String lastName) throws Exception {
         Matcher matcher = getMatcher(lastName, "^[^\\s]");
-        if(lastName.length() > 25) {
+        if (lastName.length() > 25) {
             throw new Exception("last name should be shorter than 25 characters!");
-        } else if(!matcher.find()) {
+        } else if (!matcher.find()) {
             throw new Exception("last name can not start with white space!");
         }
         this.lastName = lastName;
@@ -116,7 +116,7 @@ public class Account implements Serializable {
 
     public void setEmail(String email) throws Exception {
         Matcher matcher = getMatcher(email, "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$");
-        if(!matcher.find()) {
+        if (!matcher.find()) {
             throw new Exception("email is invalid!");
         }
         this.email = email;
@@ -124,7 +124,7 @@ public class Account implements Serializable {
 
     public void setPhone(String phone) throws Exception {
         Matcher matcher = getMatcher(phone, "^09[0-9]{9}$");
-        if(!matcher.find()) {
+        if (!matcher.find()) {
             throw new Exception("phone number is invalid!");
         }
         this.phone = phone;
@@ -181,14 +181,14 @@ public class Account implements Serializable {
         this.shopBasket = shopBasket;
     }
 
-    public void addProductToShopBasket(Product product){
+    public void addProductToShopBasket(Product product) {
         shopBasket.add(product);
     }
 
-    public boolean hasBoughtTheProduct(Product product){
+    public boolean hasBoughtTheProduct(Product product) {
         for (Log log : logsList) {
             for (Product productInLogList : log.getProductsList()) {
-                if (productInLogList.getProductId().equals(product.getProductId())){
+                if (productInLogList.getProductId().equals(product.getProductId())) {
                     return true;
                 }
             }

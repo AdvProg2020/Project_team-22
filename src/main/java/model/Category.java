@@ -1,27 +1,21 @@
 package main.java.model;
 
-import main.java.model.databaseUtil.Database;
 import main.java.model.product.Product;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Properties;
 
 public class Category implements Serializable {
     private String name;
-    private HashMap<Integer, String> properties;
-    private ArrayList<Product> productsList;
-
-    public Category(String name, HashMap<Integer, String> properties) throws Exception {
-        setName(name);
-        setProperties(properties);
-    }
+    private ArrayList<String> properties = new ArrayList<>();
+    private ArrayList<Product> productsList = new ArrayList<>();
 
     public String getName() {
         return name;
     }
 
-    public HashMap<Integer, String> getProperties() {
+    public ArrayList<String> getProperties() {
         return properties;
     }
 
@@ -29,14 +23,11 @@ public class Category implements Serializable {
         return productsList;
     }
 
-    public void setProperties(HashMap<Integer, String> properties) {
-        this.properties = properties;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setName(String name) throws Exception {
-        if(Database.getCategoryByName(name) != null) {
-            throw new Exception("category already exists!");
-        }
-        this.name = name;
+    public void addProperty(String property){
+        this.properties.add(property);
     }
 }

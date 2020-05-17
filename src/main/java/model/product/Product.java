@@ -27,6 +27,7 @@ public class Product implements Serializable {
         this.price = Integer.parseInt(price);
         this.category = category;
         this.description = description;
+        this.comments = new ArrayList<>();
     }
 
     public String getProductId() {

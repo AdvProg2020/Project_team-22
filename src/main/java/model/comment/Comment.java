@@ -49,8 +49,8 @@ public class Comment {
         this.product = product;
     }
 
-    public void setOpinionTitle(String opinionText) {
-        this.opinionContent = opinionText;
+    public void setOpinionTitle(String opinionTitle) {
+        this.opinionTitle = opinionTitle;
     }
 
     public void setOpinionContent(String opinionContent) {
