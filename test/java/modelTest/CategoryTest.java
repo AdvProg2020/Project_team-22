@@ -7,7 +7,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 public class CategoryTest {
-    Category testCategory = new Category();
+    Category testCategory = new Category("food", null);
 
     @Test
     public void getNameTest() {

@@ -86,12 +86,12 @@ public class ManageCategories extends Menu {
         return new Menu("show categories", this) {
             @Override
             public void show() {
-                for (Category category : Database.getAllCategories()) {
+                /*for (Category category : Database.getAllCategories()) {
                     System.out.println("category name: " + category.getName() + "\nproperties:");
                     for(Integer num : category.getProperties().keySet()) {
                         System.out.println(num + ". " + category.getProperties().get(num));
                     }
-                }
+                }*/
             }
 
             @Override

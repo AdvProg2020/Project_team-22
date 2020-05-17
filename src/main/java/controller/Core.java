@@ -244,9 +244,9 @@ public class Core {
         }
         Category category = Database.getCategoryByName(name);
         System.out.println("category name: " + name);
-        for (Integer num : category.getProperties().keySet()) {
+        /*for (Integer num : category.getProperties().keySet()) {
             System.out.println(num + ". " + category.getProperties().get(num));
-        }
+        }*/
         System.out.println("enter new Information below:\nenter new name: ");
         Database.removeCategory(category);
         try {

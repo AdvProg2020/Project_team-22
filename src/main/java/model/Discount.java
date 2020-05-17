@@ -18,7 +18,7 @@ public class Discount implements Serializable {
     private int maxDiscountAmount;
     private int frequency;
     private ArrayList<Account> allowedAccount;
-    private ArrayList<String> allowedAccountUserName;
+    private ArrayList<String> allowedAccountUserNames;
 
     public Discount(String discountCode, LocalDate startTime, LocalDate endTime, double discountPercent, int maxDiscountAmount, int frequency) throws Exception {
         setDiscountCode(discountCode);
@@ -28,7 +28,7 @@ public class Discount implements Serializable {
         setMaxDiscountAmount(maxDiscountAmount);
         setFrequency(frequency);
         allowedAccount = new ArrayList<>();
-        allowedAccountUserName = new ArrayList<>();
+        allowedAccountUserNames = new ArrayList<>();
     }
 
     public String getDiscountCode() {
@@ -59,14 +59,18 @@ public class Discount implements Serializable {
         return allowedAccount;
     }
 
+    public ArrayList<String> getAllowedAccountUserNames() {
+        return allowedAccountUserNames;
+    }
+
     public void setDiscountCode(String discountCode) throws Exception {
-        if(Database.getDiscountByDiscountCode(discountCode) != null) {
+        if (Database.getDiscountByDiscountCode(discountCode) != null) {
             throw new Exception("this code already exists");
         }
         if (discountCode.length() > 25) {
             throw new Exception("discount code should be shorter than 25 characters");
         }
-        if(discountCode.contains(" ")) {
+        if (discountCode.contains(" ")) {
             throw new Exception("discount code should not contains white space");
         }
         this.discountCode = discountCode;
@@ -74,21 +78,21 @@ public class Discount implements Serializable {
 
     public void setStartTime(LocalDate startTime) throws Exception {
         LocalDate now = LocalDate.now();
-        if(startTime.isBefore(now)) {
+        if (startTime.isBefore(now)) {
             throw new Exception("Start time must be set for after current time");
         }
         this.startTime = startTime;
     }
 
-    public void setEndTime(LocalDate endTime) throws Exception{
-        if(endTime.isBefore(this.startTime) || endTime.isEqual(this.startTime)) {
+    public void setEndTime(LocalDate endTime) throws Exception {
+        if (endTime.isBefore(this.startTime) || endTime.isEqual(this.startTime)) {
             throw new Exception("end time must be set for after start time");
         }
         this.endTime = endTime;
     }
 
-    public void setDiscountPercent(double discountPercent) throws Exception{
-        if(discountPercent > 99 || discountPercent < 1) {
+    public void setDiscountPercent(double discountPercent) throws Exception {
+        if (discountPercent > 99 || discountPercent < 1) {
             throw new Exception("discount percent should be between 1 and 99");
         }
         this.discountPercent = discountPercent;
@@ -105,7 +109,7 @@ public class Discount implements Serializable {
     public void addAllowedAccounts(ArrayList<Account> accounts) {
         this.allowedAccount.addAll(accounts);
         for (Account account : accounts) {
-            allowedAccountUserName.add(account.getUsername());
+            allowedAccountUserNames.add(account.getUsername());
         }
         Database.addAllDiscountsToDatabaseFile();
     }
@@ -113,7 +117,7 @@ public class Discount implements Serializable {
     public void removeAllowedAccounts(ArrayList<Account> accounts) {
         this.allowedAccount.removeAll(accounts);
         for (Account account : accounts) {
-            allowedAccountUserName.remove(account.getUsername());
+            allowedAccountUserNames.remove(account.getUsername());
         }
         Database.addAllDiscountsToDatabaseFile();
     }

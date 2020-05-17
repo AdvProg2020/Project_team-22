@@ -1,5 +1,8 @@
 package main.java.model.databaseUtil;
 
+import main.java.model.Discount;
+import main.java.model.account.Account;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -103,6 +106,13 @@ public class DatabaseInitiation {
         } catch (ClassNotFoundException c) {
             System.out.println("Class not found");
             c.printStackTrace();
+        }
+        for (Discount discount : Database.allDiscounts) {
+            ArrayList<Account> allowedAccount = new ArrayList<>();
+            for (String allowedAccountUserName : discount.getAllowedAccountUserNames()) {
+                allowedAccount.add(Database.getAccountByUsername(allowedAccountUserName));
+            }
+            discount.addAllowedAccounts(allowedAccount);
         }
     }
 
