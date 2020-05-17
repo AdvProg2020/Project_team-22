@@ -1,3 +1,5 @@
+package modelTest;
+
 import main.java.model.Category;
 import org.junit.Assert;
 import org.junit.Test;

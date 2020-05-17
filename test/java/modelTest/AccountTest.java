@@ -1,3 +1,5 @@
+package modelTest;
+
 import main.java.model.account.Account;
 import main.java.model.account.Role;
 import main.java.model.product.Product;
@@ -12,6 +14,7 @@ public class AccountTest {
         Account testAccount = null;
         try {
             testAccount = new Account("MHHSS", "mh", "soleymani", "hssoleymanmh@gmail.com", "09301395175", "mh:2301", Role.CUSTOMER);
+            testAccount.setUsername("MHHSS");
         } catch (Exception e) {
 
         }
@@ -24,6 +27,7 @@ public class AccountTest {
         Account testAccount = null;
         try {
             testAccount = new Account("MHHSS", "mh", "soleymani", "hssoleymanmh@gmail.com", "09301395175", "mh:2301", Role.CUSTOMER);
+            testAccount.setFirstName("mh");
         } catch (Exception e) {
 
         }
@@ -36,6 +40,7 @@ public class AccountTest {
         Account testAccount = null;
         try {
             testAccount = new Account("MHHSS", "mh", "soleymani", "hssoleymanmh@gmail.com", "09301395175", "mh:2301", Role.CUSTOMER);
+            testAccount.setLastName("soleymani");
         } catch (Exception e) {
 
         }
@@ -48,6 +53,7 @@ public class AccountTest {
         Account testAccount = null;
         try {
             testAccount = new Account("MHHSS", "mh", "soleymani", "hssoleymanmh@gmail.com", "09301395175", "mh:2301", Role.CUSTOMER);
+            testAccount.setEmail("hssoleymanmh@gmail.com");
         } catch (Exception e) {
 
         }
@@ -60,6 +66,7 @@ public class AccountTest {
         Account testAccount = null;
         try {
             testAccount = new Account("MHHSS", "mh", "soleymani", "hssoleymanmh@gmail.com", "09301395175", "mh:2301", Role.CUSTOMER);
+            testAccount.setPhone("09301395175");
         } catch (Exception e) {
 
         }
@@ -72,6 +79,7 @@ public class AccountTest {
         Account testAccount = null;
         try {
             testAccount = new Account("MHHSS", "mh", "soleymani", "hssoleymanmh@gmail.com", "09301395175", "mh:2301", Role.CUSTOMER);
+            testAccount.setPassword("mh:2301");
         } catch (Exception e) {
 
         }
@@ -84,6 +92,7 @@ public class AccountTest {
         Account testAccount = null;
         try {
             testAccount = new Account("MHHSS", "mh", "soleymani", "hssoleymanmh@gmail.com", "09301395175", "mh:2301", Role.CUSTOMER);
+            testAccount.setRole(Role.CUSTOMER);
         } catch (Exception e) {
 
         }
@@ -96,6 +105,7 @@ public class AccountTest {
         Account testAccount = null;
         try {
             testAccount = new Account("MHHSS", "mh", "soleymani", "hssoleymanmh@gmail.com", "09301395175", "mh:2301", Role.CUSTOMER);
+            testAccount.setCredit(1000000);
         } catch (Exception e) {
 
         }
