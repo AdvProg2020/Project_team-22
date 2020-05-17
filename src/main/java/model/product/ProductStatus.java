@@ -1,6 +1,8 @@
 package main.java.model.product;
 
-public enum ProductStatus {
+import java.io.Serializable;
+
+public enum ProductStatus implements Serializable {
     MAKING,
     EDITING,
     CONFIRMED

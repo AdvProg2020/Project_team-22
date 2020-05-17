@@ -1,6 +1,8 @@
 package main.java.model.log;
 
-public enum LogStatus {
+import java.io.Serializable;
+
+public enum LogStatus implements Serializable {
     REGISTERED,
     PREPARING,
     DONE

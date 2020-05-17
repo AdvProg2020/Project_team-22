@@ -4,7 +4,9 @@ package main.java.model.comment;
 import main.java.model.account.Account;
 import main.java.model.product.Product;
 
-public class Comment {
+import java.io.Serializable;
+
+public class Comment implements Serializable {
     private Account account;
     private Product product;
     private String opinionTitle;

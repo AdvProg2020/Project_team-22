@@ -8,6 +8,7 @@ import java.sql.Time;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Discount implements Serializable {
     private String discountCode;
@@ -17,6 +18,7 @@ public class Discount implements Serializable {
     private int maxDiscountAmount;
     private int frequency;
     private ArrayList<Account> allowedAccount;
+    private ArrayList<String> allowedAccountUserName;
 
     public Discount(String discountCode, LocalDate startTime, LocalDate endTime, double discountPercent, int maxDiscountAmount, int frequency) throws Exception {
         setDiscountCode(discountCode);
@@ -26,8 +28,8 @@ public class Discount implements Serializable {
         setMaxDiscountAmount(maxDiscountAmount);
         setFrequency(frequency);
         allowedAccount = new ArrayList<>();
+        allowedAccountUserName = new ArrayList<>();
     }
-
 
     public String getDiscountCode() {
         return discountCode;
@@ -102,11 +104,17 @@ public class Discount implements Serializable {
 
     public void addAllowedAccounts(ArrayList<Account> accounts) {
         this.allowedAccount.addAll(accounts);
+        for (Account account : accounts) {
+            allowedAccountUserName.add(account.getUsername());
+        }
         Database.addAllDiscountsToDatabaseFile();
     }
 
     public void removeAllowedAccounts(ArrayList<Account> accounts) {
         this.allowedAccount.removeAll(accounts);
+        for (Account account : accounts) {
+            allowedAccountUserName.remove(account.getUsername());
+        }
         Database.addAllDiscountsToDatabaseFile();
     }
 }

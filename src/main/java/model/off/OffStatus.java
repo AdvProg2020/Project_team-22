@@ -1,6 +1,8 @@
 package main.java.model.off;
 
-public enum OffStatus {
+import java.io.Serializable;
+
+public enum OffStatus implements Serializable {
     MAKING,
     EDITING,
     CONFIRMED

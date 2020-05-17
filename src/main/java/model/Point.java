@@ -3,7 +3,9 @@ package main.java.model;
 import main.java.model.account.Account;
 import main.java.model.product.Product;
 
-public class Point {
+import java.io.Serializable;
+
+public class Point implements Serializable {
     private Account account;
     private int point;
     private Product product;

@@ -1,6 +1,8 @@
 package main.java.model.account;
 
-public enum Role {
+import java.io.Serializable;
+
+public enum Role implements Serializable {
     CUSTOMER,
     SALESMAN,
     MANAGER

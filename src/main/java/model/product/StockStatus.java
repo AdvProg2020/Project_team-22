@@ -1,6 +1,8 @@
 package main.java.model.product;
 
-public enum StockStatus {
+import java.io.Serializable;
+
+public enum StockStatus implements Serializable {
     AVAILABLE,
     NOT_AVAILABLE,
 }
