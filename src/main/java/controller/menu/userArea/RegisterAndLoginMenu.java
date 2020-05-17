@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class RegisterAndLoginMenu extends Menu {
     public RegisterAndLoginMenu(Menu parentMenu) {
-        super("User Menu", parentMenu);
+        super("Register and login Menu", parentMenu);
         HashMap<Integer, Menu> submenus = new HashMap<>();
         submenus.put(1, getRegisterMenu());
         submenus.put(2, getLoginMenu());
@@ -14,7 +14,7 @@ public class RegisterAndLoginMenu extends Menu {
     }
 
     private Menu getLoginMenu() {
-        return new Menu("", this) {
+        return new Menu("Login", this) {
             @Override
             public void show() {
                 System.out.println(this.getName() + ":");
@@ -36,7 +36,7 @@ public class RegisterAndLoginMenu extends Menu {
     }
 
     private Menu getRegisterMenu() {
-        return new Menu("", this) {
+        return new Menu("Register", this) {
             @Override
             public void show() {
                 System.out.println(this.getName() + ":");
@@ -48,7 +48,7 @@ public class RegisterAndLoginMenu extends Menu {
                 String username = scanner.nextLine();
                 System.out.println("Enter password");
                 String password = scanner.nextLine();
-                core.registerUser(username, password);
+                core.registerUser(username, password, scanner);
                 this.parentMenu.show();
                 this.parentMenu.execute();
             }
