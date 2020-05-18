@@ -2,7 +2,6 @@ package main.java.controller.menu.userArea.AccessMenu;
 
 import main.java.controller.menu.Menu;
 import main.java.controller.menu.userArea.RegisterAndLoginAndLogoutMenu;
-import main.java.model.product.Product;
 
 import java.util.HashMap;
 
@@ -11,12 +10,12 @@ public class CustomerMenu extends Menu {
         super("Customer menu", parentMenu);
         HashMap<Integer, Menu> submenus = new HashMap<>();
         submenus.put(1, getConfirmShopBasketMenu());
-        submenus.put(2, getShopBasketMenu());
+        submenus.put(2, getShowShopBasketMenu());
         submenus.put(3, new RegisterAndLoginAndLogoutMenu(this));
         this.setSubmenus(submenus);
     }
 
-    private Menu getShopBasketMenu() {
+    private Menu getShowShopBasketMenu() {
         return new Menu("Shop basket", this) {
             @Override
             public void show() {

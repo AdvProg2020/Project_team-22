@@ -540,7 +540,18 @@ public class Core {
     }
 
     public void showShopBasket() {
-
+        int sum = 0;
+        for (Product product : currentAccount.getShopBasket()) {
+            System.out.println("product Id:\n" + product.getProductId());
+            System.out.println("product name:\n" + product.getName());
+            System.out.println("product category:\n" + product.getCategory());
+            System.out.println("product brand:\n" + product.getBrand());
+            System.out.println("product price:\n" + product.getPrice());
+            System.out.println("product average point:\n" + product.getAveragePoint());
+            System.out.println("product description:\n" + product.getDescription());
+            sum += product.getPrice();
+        }
+        System.out.println("The total price is " + sum);
     }
 
     public void confirmShopBasket() {
