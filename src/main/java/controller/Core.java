@@ -46,15 +46,12 @@ public class Core {
         return currentAccount;
     }
 
-    ////
     public void showProductsContainOff() {
     }
 
-    /////////
     public void sortByCustomProperty(String property) {
     }
 
-    ///////////
     public void sortByGeneralProperty(String property) {
     }
 
@@ -624,11 +621,4 @@ public class Core {
         System.out.println("request rejected");
         Database.removeRequest(request);
     }
-
-    public boolean checkAccess(Role role){
-        return currentAccount.getRole().equals(role);
-    }
-
-
-
 }

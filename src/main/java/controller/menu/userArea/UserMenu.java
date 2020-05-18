@@ -12,7 +12,7 @@ public class UserMenu extends Menu {
         HashMap<Integer, Menu> submenus = new HashMap<>();
         submenus.put(1, new ProfileMenu(this));
         submenus.put(2, new AccessMenu(this));
-        submenus.put(3, new RegisterAndLoginMenu(this));
+        submenus.put(3, new RegisterAndLoginAndLogoutMenu(this));
         this.setSubmenus(submenus);
     }
 
