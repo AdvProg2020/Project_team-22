@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class RegisterAndLoginAndLogoutMenu extends Menu {
     public RegisterAndLoginAndLogoutMenu(Menu parentMenu) {
-        super("Register and login Menu", parentMenu);
+        super("Register, login and logout Menu", parentMenu);
         HashMap<Integer, Menu> submenus = new HashMap<>();
         submenus.put(1, getRegisterMenu());
         submenus.put(2, getLoginMenu());

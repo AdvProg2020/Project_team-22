@@ -1,6 +1,7 @@
 package main.java.controller.menu.userArea.AccessMenu;
 
 import main.java.controller.menu.Menu;
+import main.java.controller.menu.userArea.RegisterAndLoginAndLogoutMenu;
 import main.java.model.databaseUtil.Database;
 import main.java.model.off.Off;
 import main.java.model.product.Product;
@@ -16,6 +17,7 @@ public class SalesmanMenu extends Menu {
         submenus.put(1, getCreateOffMenu());
         submenus.put(2, getEditOffMenu());
         submenus.put(3, gerSellProductMenu());
+        submenus.put(4, new RegisterAndLoginAndLogoutMenu(this));
         this.setSubmenus(submenus);
     }
 

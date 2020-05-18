@@ -1,6 +1,7 @@
 package main.java.controller.menu.userArea.AccessMenu;
 
 import main.java.controller.menu.Menu;
+import main.java.controller.menu.userArea.RegisterAndLoginAndLogoutMenu;
 import main.java.model.product.Product;
 
 import java.util.HashMap;
@@ -15,6 +16,7 @@ public class CustomerMenu extends Menu {
         submenus.put(4, getShopBasketMenu());
         submenus.put(5, getWriteCommentMenu());
         submenus.put(6, getWritePointForProductMenu());
+        submenus.put(7, new RegisterAndLoginAndLogoutMenu(this));
         this.setSubmenus(submenus);
     }
 

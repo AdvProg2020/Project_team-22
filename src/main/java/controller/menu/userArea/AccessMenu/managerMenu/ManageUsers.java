@@ -21,7 +21,6 @@ public class ManageUsers extends Menu {
 
     }
 
-
     private Menu getCreateManagerProfileMenu() {
         return new Menu("create manager profile", this) {
             @Override
@@ -57,7 +56,6 @@ public class ManageUsers extends Menu {
         };
     }
 
-
     private Menu getShowUsersMenu() {
         return new Menu("show all users", this) {
 
@@ -74,7 +72,6 @@ public class ManageUsers extends Menu {
         };
     }
 
-
     private Menu getDeleteUserMenu() {
         return new Menu("delete user", this) {
             @Override
@@ -85,14 +82,18 @@ public class ManageUsers extends Menu {
             @Override
             public void execute() {
                 String username = scanner.nextLine();
-                try {
-                    Database.deleteAccount(Database.getAccountByUsername(username));
-                    System.out.println("account successfully deleted");
-                } catch (Exception e){
-                    System.out.println(e.getMessage());
+                if (username.equals(core.currentAccount.getUsername())) {
+                    System.out.println("You can not remove yor self! :)");
+                } else {
+                    try {
+                        Database.deleteAccount(Database.getAccountByUsername(username));
+                        System.out.println("account successfully deleted");
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                    this.parentMenu.show();
+                    this.parentMenu.execute();
                 }
-                this.parentMenu.show();
-                this.parentMenu.execute();
             }
         };
     }

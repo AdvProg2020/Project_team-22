@@ -14,7 +14,7 @@ public class CommandProcessor {
     public CommandProcessor(Core manager) {
         this.manager = manager;
         scanner = new Scanner(System.in);
-        System.out.println("Hello!\nWelcome to marketing\n");
+        System.out.println("\tHello!\nWelcome to marketing\n");
     }
 
     public void run()  {
