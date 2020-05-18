@@ -90,7 +90,7 @@ public class Core {
 
     public boolean loginUser(String username, String password) {
         Account account = Database.getAccountByUsername(username);
-        if (account == null){
+        if (account == null) {
             System.out.println("There is not a user with this name");
             return false;
         } else {
@@ -118,24 +118,57 @@ public class Core {
             System.out.println("Enter your phone");
             String phone = scanner.nextLine();
             Role role = null;
+            String companyName;
             System.out.println("Select your role:\n" +
                     "1:   CUSTOMER\n" +
                     "2:   SALESMAN");
+            if (isTheFirstManager()) {
+                System.out.println("3:   MANAGER");
+            }
             String choice = scanner.nextLine();
-            switch (choice) {
-                case "1":
-                    role = Role.CUSTOMER;
-                    break;
-                case "2":
-                    role = Role.SALESMAN;
+            if (choice.equals("1") || choice.equals("2") || (choice.equals("3") && isTheFirstManager())) {
+                switch (choice) {
+                    case "1":
+                        role = Role.CUSTOMER;
+                        break;
+                    case "2":
+                        role = Role.SALESMAN;
+                        break;
+                    case "3":
+                        role = Role.MANAGER;
+                        break;
+                }
+                if (role.equals(Role.SALESMAN)) {
+                    System.out.println("Enter your company name");
+                    companyName = scanner.nextLine();
+                    try {
+                        Database.addAccount(new Account(username, firstName, lastName, email, phone,
+                                password, role, companyName));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        Database.addAccount(new Account(username, firstName, lastName, email, phone, password, role));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                System.out.println("You registered successfully");
+            } else {
+                System.out.println("Invalid input!");
             }
-            try {
-                Database.addAccount(new Account(username, firstName, lastName, email, phone, password, role));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
         }
+
+    }
+
+    private boolean isTheFirstManager() {
+        for (Account account : Database.getAllAccounts()) {
+            if (account.getRole().equals(Role.MANAGER)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public void writeComment(String comment, Product product) {
@@ -146,24 +179,15 @@ public class Core {
     }
 
     public void createOff(Off off) {
-        if (checkAccess(Role.SALESMAN)) {
-            Database.addOff(off);
-        } else {
-            System.out.println("your are a " + currentAccount.getRole() + "\n" +
-                    "and this part is for SALESMAN");
-        }
+        Database.addOff(off);
+
     }
 
     public void editOff(Off off, ArrayList<Product> productsList, LocalDate startTime, LocalDate endTime, double discountPercent) {
-        if (checkAccess(Role.SALESMAN)) {
-            off.setProductsList(productsList);
-            off.setStartTime(startTime);
-            off.setEndTime(endTime);
-            off.setDiscountPercent(discountPercent);
-        } else {
-            System.out.println("your are a " + currentAccount.getRole() + "\n" +
-                    "and this part is for SALESMAN");
-        }
+        off.setProductsList(productsList);
+        off.setStartTime(startTime);
+        off.setEndTime(endTime);
+        off.setDiscountPercent(discountPercent);
     }
 
     public void createDiscount(Scanner scanner) throws Exception {
@@ -321,12 +345,9 @@ public class Core {
     }
 
     public void sellProduct(Product product) {
-        if (checkAccess(Role.SALESMAN)) {
-            Database.addProduct(product);
-        } else {
-            System.out.println("your are a " + currentAccount.getRole() + "\n" +
-                    "and this part is for SALESMAN");
-        }
+        product.setSalesman(currentAccount);
+        product.setStockStatus(StockStatus.AVAILABLE);
+        Database.addProduct(product);
     }
 
     public void compareProduct(Product firstProduct, Product secondProduct) {
@@ -361,15 +382,15 @@ public class Core {
     }
 
     public void showProductInfo(Product product) {
-        System.out.println("product name:" + product.getName());
-        System.out.println("product brand:" + product.getBrand());
-        System.out.println("product category:" + product.getCategory());
-        System.out.println("product description:" + product.getDescription());
-        System.out.println("product average point:" + product.getAveragePoint());
-        System.out.println("product comments:" + product.getComments());
-        System.out.println("product price:" + product.getPrice());
-        System.out.println("product seller:" + product.getSalesman().getCompanyName());
-        System.out.println("product stock status:" + product.getStockStatus());
+        System.out.println("pro" +
+                "duct name: " + product.getName());
+        System.out.println("product brand: " + product.getBrand());
+        System.out.println("product category: " + product.getCategory());
+        System.out.println("product description: " + product.getDescription());
+        System.out.println("product average point: " + product.getAveragePoint());
+        System.out.println("product price: " + product.getPrice());
+        System.out.println("product seller: " + product.getSalesman().getCompanyName());
+        System.out.println("product stock status: " + product.getStockStatus());
         Off off = Database.getOffForThisGood(product);
         if (off == null) {
             System.out.println("There is no discount for this good yet");
@@ -391,6 +412,9 @@ public class Core {
             System.out.println("Title: " + comment.getOpinionTitle());
             System.out.println("Content: " + comment.getOpinionContent() + "\n");
         }
+        if (product.getComments().size() == 0) {
+            System.out.println("There is no comment");
+        }
     }
 
     public void addComment(Product product, Comment comment) {
@@ -399,6 +423,8 @@ public class Core {
         comment.setOpinionStatus(CommentStatus.WAITING_FOR_CONFIRM);
         comment.setHasBought(currentAccount.hasBoughtTheProduct(product));
         product.addComment(comment);
+        Database.addComment(comment);
+        Database.addAllCommentsToDatabaseFile();
     }
 
     public void showRequest(String requestId) throws Exception {
@@ -436,9 +462,5 @@ public class Core {
         }
         System.out.println("request rejected");
         Database.removeRequest(request);
-    }
-
-    public boolean checkAccess(Role role){
-        return currentAccount.getRole().equals(role);
     }
 }

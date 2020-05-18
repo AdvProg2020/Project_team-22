@@ -15,7 +15,7 @@ public class ShowProductsMenu extends Menu {
         submenus.put(2, getAddToCartMenu());
         submenus.put(3, getProductAttributeMenu());
         submenus.put(4, getCompareProductsMenu());
-        submenus.put(5, getProductCommentsMenu());
+        submenus.put(5, getShowProductCommentsMenu());
         submenus.put(6, getAddCommentMenu());
         this.setSubmenus(submenus);
     }
@@ -99,7 +99,7 @@ public class ShowProductsMenu extends Menu {
         };
     }
 
-    private Menu getProductCommentsMenu() {
+    private Menu getShowProductCommentsMenu() {
         return new Menu("Product comments", this) {
             @Override
             public void show() {

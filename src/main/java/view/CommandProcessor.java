@@ -3,6 +3,7 @@ package main.java.view;
 import main.java.controller.Core;
 import main.java.controller.menu.MainMenu;
 import main.java.controller.menu.Menu;
+import main.java.model.databaseUtil.Database;
 
 import java.util.Scanner;
 
@@ -17,6 +18,8 @@ public class CommandProcessor {
     }
 
     public void run() throws Exception {
+        //System.out.println(Database.getAllProducts());
+        System.out.println(Database.getAllAccounts());
         Menu.setScanner(this.scanner);
         Menu.setCore(this.manager);
         Menu currentMenu = new MainMenu();
