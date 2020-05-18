@@ -19,7 +19,7 @@ public class FilteringMenu extends Menu {
         return new Menu("show available filters", this) {
             @Override
             public void show() {
-                System.out.println("Available filters:\n1. price\n2. availability\n3. category\n4. name\n");
+                System.out.println("Available filters:\n1. price\n2. availability\n3. category");
             }
 
             @Override
@@ -73,10 +73,12 @@ public class FilteringMenu extends Menu {
         return new Menu("view current filters", this) {
             @Override
             public void show() {
+                System.out.println("current filters");
             }
 
             @Override
             public void execute() {
+                core.showCurrentFilters();
             }
         };
     }

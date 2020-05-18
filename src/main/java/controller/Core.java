@@ -63,6 +63,32 @@ public class Core {
 
     }
 
+    public void showCurrentFilters() {
+        System.out.print("price filter: ");
+        if(filters.get(1)) {
+            System.out.println("Enabled");
+            System.out.println("Starting price: " + startPrice);
+            System.out.println("Highest price: " + highestPrice);
+        } else {
+            System.out.println("Disabled");
+        }
+        System.out.print("availability filter: ");
+        if(filters.get(2)) {
+            System.out.println("Enabled");
+        } else {
+            System.out.println("Disabled");
+        }
+        System.out.print("Category Filter: ");
+        if(filters.get(3)) {
+            System.out.println("Enabled\nCategory names:");
+            for (String categoryName : categoryNames) {
+                System.out.println(categoryName);
+            }
+        } else {
+            System.out.println("Disabled");
+        }
+    }
+
     public void disableFilter(int select, Scanner scanner) throws Exception{
         if(select > 4) {
             throw new Exception("invalid input");
@@ -73,8 +99,10 @@ public class Core {
         switch (select) {
             case 1:
                 filters.put(1 ,false);
+                break;
             case 2:
-                filters.put(1 ,false);
+                filters.put(2 ,false);
+                break;
             case 3:
                 System.out.println("Enter category name to disable");
                 String name = scanner.nextLine();
@@ -85,6 +113,7 @@ public class Core {
                 if(categoryNames.size() == 0) {
                     filters.put(3, false);
                 }
+                break;
         }
         System.out.println("Filter disabled");
     }
@@ -99,12 +128,17 @@ public class Core {
                 startPrice = Integer.parseInt(scanner.nextLine());
                 System.out.println("enter highest price:");
                 highestPrice = Integer.parseInt(scanner.nextLine());
+                if(highestPrice <= startPrice) {
+                    throw new Exception("highest price should be more than starting price");
+                }
                 filters.put(1, true);
+                break;
             case 2:
                 if(filters.get(2)) {
                     throw new Exception("filter already enabled!");
                 }
                 filters.put(2, true);
+                break;
                 ///availability
             case 3:
                 ///category
@@ -117,6 +151,7 @@ public class Core {
                     throw new Exception("category already selected!");
                 }
                 categoryNames.add(name);
+                filters.put(3, true);
         }
         System.out.println("Filter enabled");
     }
