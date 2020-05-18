@@ -695,16 +695,47 @@ public class Core {
         }
     }
 
-    public void decreaseProductInShopBasket(String productid) {
+    public void decreaseProductInShopBasket(String productid) throws Exception {
+        Product product = null ;
+        for( Product basketProduct : currentAccount.getShopBasket()){
+            if( basketProduct.getProductId().equals( productid)){
+                product = basketProduct ;
+            }
+        }
+        if( product != null){
+            currentAccount.getShopBasket().remove( product) ;
+        } else {
+            throw  new Exception("The wrong product number is entered") ;
+        }
     }
 
-    public void increaseProductInShopBasket(String productid) {
+    public void increaseProductInShopBasket(String productid) throws Exception {
+        Product product = null ;
+        for( Product basketProduct : currentAccount.getShopBasket()){
+            if( basketProduct.getProductId().equals( productid)){
+                product = basketProduct ;
+            }
+        }
+        if( product != null){
+            currentAccount.getShopBasket().add( product) ;
+        } else {
+            throw  new Exception("The wrong product number is entered") ;
+        }
     }
 
-    public String getBasketTotalPrice() {
-        return "" ;
+    public int getBasketTotalPrice() {
+        int priceTotal = 0 ;
+        for( Product product : currentAccount.getShopBasket()){
+            priceTotal += product.getPrice() ;
+        }
+        return priceTotal ;
+
     }
 
     public void showUserDiscountCodes() {
+        for( Discount discount : currentAccount.getDiscountsList()){
+            showDiscount( discount);
+            System.out.println("------------------------");
+        }
     }
 }
