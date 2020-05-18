@@ -19,6 +19,7 @@ public class PurchaseMenu extends Menu {
         core.addProductToShopBasket(product);
         this.parentMenu.show();
         this.parentMenu.execute();
+        //teeeeeeeeeeeeeeest
     }
 
 }

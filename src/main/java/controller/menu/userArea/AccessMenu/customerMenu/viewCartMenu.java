@@ -14,7 +14,7 @@ public class viewCartMenu extends Menu {
         subMenu.put( 3 , getIncreaseProductMenu()) ;
         subMenu.put( 4 , getDecreaseProductMenu()) ;
         subMenu.put( 5 , getTotalPriceMenu()) ;
-        subMenu.put(6 , getPurchaseMenu()) ;
+        subMenu.put(6 ,  new PurchaseMenu( this)) ;
         setSubmenus( subMenu);
 
     }

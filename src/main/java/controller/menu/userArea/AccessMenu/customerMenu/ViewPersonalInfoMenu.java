@@ -16,7 +16,6 @@ public class ViewPersonalInfoMenu extends Menu {
         setSubmenus( subMenu);
     }
 
-//
     private Menu getEditFirstNameMenu() {
         return new Menu("Edit First Name ", this) {
             @Override
