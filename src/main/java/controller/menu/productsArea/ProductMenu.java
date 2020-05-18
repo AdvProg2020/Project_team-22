@@ -11,7 +11,9 @@ public class ProductMenu extends Menu {
         submenus.put(1, getCategoriesMenu());
         submenus.put(2, getProductsListMenu());
         submenus.put(3, getProductSearchMenu());
-        submenus.put(4, new ShowProductsMenu("Show products menu", this));
+        submenus.put(4, new FilteringMenu(this));
+        submenus.put(5, new SortingMenu(this));
+        submenus.put(6, new ShowProductsMenu("Show products menu", this));
         this.setSubmenus(submenus);
     }
 
@@ -20,16 +22,15 @@ public class ProductMenu extends Menu {
             @Override
             public void show() {
                 System.out.println(this.getName() + ":");
-                System.out.println("Enter Back to return");
             }
 
             @Override
             public void execute() {
-                String input = scanner.nextLine();
-                core.showResultOfProductSearch(input);
-                if (input.equalsIgnoreCase("back")) {
-                    this.parentMenu.show();
-                    this.parentMenu.execute();
+                String input = null;
+                try {
+                    core.showResultOfProductSearch(input);
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
                 }
             }
         };
@@ -40,17 +41,13 @@ public class ProductMenu extends Menu {
             @Override
             public void show() {
                 System.out.println(this.getName() + ":");
-                System.out.println("Enter Back to return");
             }
 
             @Override
             public void execute() {
                 core.showProductsList();
-                String input = scanner.nextLine();
-                if (input.equalsIgnoreCase("back")) {
-                    this.parentMenu.show();
-                    this.parentMenu.execute();
-                }
+                this.parentMenu.show();
+                this.parentMenu.execute();
             }
         };
     }
@@ -60,17 +57,13 @@ public class ProductMenu extends Menu {
             @Override
             public void show() {
                 System.out.println(this.getName() + ":");
-                System.out.println("Enter Back to return");
             }
 
             @Override
             public void execute() {
                 core.showCategories();
-                String input = scanner.nextLine();
-                if (input.equalsIgnoreCase("back")) {
-                    this.parentMenu.show();
-                    this.parentMenu.execute();
-                }
+                this.parentMenu.show();
+                this.parentMenu.execute();
             }
         };
     }
