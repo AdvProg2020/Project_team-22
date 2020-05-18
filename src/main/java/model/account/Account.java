@@ -24,7 +24,8 @@ public class Account implements Serializable {
     private ArrayList<Log> logsList = new ArrayList<>();
     private ArrayList<Product> shopBasket = new ArrayList<>();
 
-    public Account(String username, String firstName, String lastName, String email, String phone, String password, Role role) throws Exception {
+    public Account(String username, String firstName, String lastName, String email,
+                   String phone, String password, Role role) throws Exception {
         setUsername(username);
         setFirstName(firstName);
         setLastName(lastName);
@@ -32,6 +33,17 @@ public class Account implements Serializable {
         setPhone(phone);
         setPassword(password);
         setRole(role);
+    }
+    public Account(String username, String firstName, String lastName, String email,
+                   String phone, String password, Role role, String companyName) throws Exception {
+        setUsername(username);
+        setFirstName(firstName);
+        setLastName(lastName);
+        setEmail(email);
+        setPhone(phone);
+        setPassword(password);
+        setRole(role);
+        setCompanyName(companyName);
     }
 
     public String getUsername() {
@@ -162,7 +174,7 @@ public class Account implements Serializable {
 
     @Override
     public String toString() {
-        return "Account{" +
+        String toString = "Account{" +
                 "username='" + username + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
@@ -170,11 +182,13 @@ public class Account implements Serializable {
                 ", phone='" + phone + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +
-                ", companyName='" + companyName + '\'' +
                 ", discountsList=" + discountsList +
                 ", credit=" + credit +
-                ", logsList=" + logsList +
-                '}';
+                ", logsList=" + logsList;
+        if (role.equals(Role.SALESMAN)) {
+            toString = toString + ", companyName=" + companyName;
+        }
+        return toString + '}';
     }
 
     public void setShopBasket(ArrayList<Product> shopBasket) {

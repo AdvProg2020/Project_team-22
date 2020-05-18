@@ -27,6 +27,6 @@ public class CategoryTest {
 
     @Test
     public void getProductsListTest(){
-        Assert.assertEquals(testCategory.getProductsList(), null);
+        Assert.assertEquals(new ArrayList<>(), testCategory.getProductsList());
     }
 }

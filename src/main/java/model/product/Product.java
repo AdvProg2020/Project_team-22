@@ -29,6 +29,7 @@ public class Product implements Serializable {
         this.category = category;
         this.description = description;
         this.comments = new ArrayList<>();
+        this.stockStatus = StockStatus.AVAILABLE;
         productId = UUID.randomUUID().toString();
     }
 

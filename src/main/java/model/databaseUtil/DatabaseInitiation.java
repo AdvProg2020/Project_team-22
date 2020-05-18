@@ -45,11 +45,11 @@ public class DatabaseInitiation {
 
     private static void loadAllAccounts() {
         try {
-            FileInputStream fileInput = new FileInputStream("src/database/accounts.ser");
-            ObjectInputStream fileOutput = new ObjectInputStream(fileInput);
-            Database.allAccounts = (ArrayList) fileOutput.readObject();
-            fileOutput.close();
-            fileInput.close();
+            FileInputStream fileInputStream = new FileInputStream("src/database/accounts.ser");
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            Database.allAccounts = (ArrayList) objectInputStream.readObject();
+            objectInputStream.close();
+            fileInputStream.close();
         } catch (IOException ioe) {
             ioe.printStackTrace();
         } catch (ClassNotFoundException c) {

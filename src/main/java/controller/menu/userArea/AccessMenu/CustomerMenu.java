@@ -120,6 +120,4 @@ public class CustomerMenu extends Menu {
             }
         };
     }
-
-
 }

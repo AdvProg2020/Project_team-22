@@ -55,7 +55,7 @@ public class Database {
         addAllRequestsToDatabaseFile();
     }
 
-    public static void addComments(Comment comment){
+    public static void addComment(Comment comment){
         allComments.add(comment);
         addAllCommentsToDatabaseFile();
     }
@@ -108,7 +108,6 @@ public class Database {
         }
     }
 
-
     public static void addAllLogsToDatabaseFile() {
         try {
             FileOutputStream fileOutput = new FileOutputStream("src/database/accounts.ser");
@@ -156,6 +155,7 @@ public class Database {
             ioe.printStackTrace();
         }
     }
+
     public static void addAllCommentsToDatabaseFile() {
         try {
             FileOutputStream fileOutput = new FileOutputStream("src/database/comments.ser");

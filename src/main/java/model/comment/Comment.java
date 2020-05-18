@@ -66,4 +66,15 @@ public class Comment implements Serializable {
     public void setHasBought(boolean hasBought) {
         this.hasBought = hasBought;
     }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "account=" + account +
+                ", product=" + product +
+                ", opinionTitle='" + opinionTitle + '\'' +
+                ", opinionContent='" + opinionContent + '\'' +
+                ", hasBought=" + hasBought +
+                '}';
+    }
 }
