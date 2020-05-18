@@ -401,7 +401,6 @@ public class Core {
             System.out.println(e.getMessage());
             Database.addDiscount(discount);
         }
-        //createDiscount(scanner);
     }
 
     public void configureDiscountAllowedUsers(Scanner scanner, String discountCode) throws Exception {
