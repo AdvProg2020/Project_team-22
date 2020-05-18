@@ -627,6 +627,7 @@ public class Core {
             System.out.println("You have not logged in yet");
         } else {
             currentAccount = null;
+            System.out.println("You logged out successfully");
         }
     }
 }
