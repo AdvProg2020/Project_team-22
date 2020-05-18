@@ -17,7 +17,7 @@ public class CommandProcessor {
         System.out.println("Hello!\nWelcome to marketing\n");
     }
 
-    public void run() throws Exception {
+    public void run()  {
         //System.out.println(Database.getAllProducts());
         System.out.println(Database.getAllAccounts());
         Menu.setScanner(this.scanner);

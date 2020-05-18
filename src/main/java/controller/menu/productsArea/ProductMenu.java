@@ -1,6 +1,7 @@
 package main.java.controller.menu.productsArea;
 
 import main.java.controller.menu.Menu;
+import main.java.controller.menu.userArea.RegisterAndLoginMenu;
 
 import java.util.HashMap;
 
@@ -12,6 +13,7 @@ public class ProductMenu extends Menu {
         submenus.put(2, getProductsListMenu());
         submenus.put(3, getProductSearchMenu());
         submenus.put(4, new ShowProductsMenu("Show products menu", this));
+        submenus.put(5, new RegisterAndLoginMenu(this));
         this.setSubmenus(submenus);
     }
 
