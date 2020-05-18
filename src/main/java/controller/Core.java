@@ -561,6 +561,7 @@ public class Core {
             System.out.println("product price:\n" + product.getPrice());
             System.out.println("product average point:\n" + product.getAveragePoint());
             System.out.println("product description:\n" + product.getDescription());
+            System.out.println("number of this product: \n" + product.getDescription() + "\n");
             sum += product.getPrice();
         }
         System.out.println("The total price is " + sum);
