@@ -46,15 +46,12 @@ public class Core {
         return currentAccount;
     }
 
-    ////
     public void showProductsContainOff() {
     }
 
-    /////////
     public void sortByCustomProperty(String property) {
     }
 
-    ///////////
     public void sortByGeneralProperty(String property) {
     }
 
@@ -660,10 +657,12 @@ public class Core {
         Database.removeRequest(request);
     }
 
-    public boolean checkAccess(Role role){
-        return currentAccount.getRole().equals(role);
+    public void logoutUser() {
+        if (currentAccount == null){
+            System.out.println("You have not logged in yet");
+        } else {
+            currentAccount = null;
+            System.out.println("You logged out successfully");
+        }
     }
-
-
-
 }
