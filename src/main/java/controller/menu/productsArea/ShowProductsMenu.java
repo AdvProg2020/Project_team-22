@@ -18,7 +18,8 @@ public class ShowProductsMenu extends Menu {
         submenus.put(4, getCompareProductsMenu());
         submenus.put(5, getShowProductCommentsMenu());
         submenus.put(6, getAddCommentMenu());
-        submenus.put(7, new RegisterAndLoginAndLogoutMenu(this));
+        submenus.put(7, getWritePointForProductMenu());
+        submenus.put(8, new RegisterAndLoginAndLogoutMenu(this));
         this.setSubmenus(submenus);
     }
 
@@ -132,14 +133,53 @@ public class ShowProductsMenu extends Menu {
             public void execute() {
                 String id = scanner.nextLine();
                 Product product = Database.getProductByProductId(id);
-                System.out.println("Enter your comment title:");
-                String title = scanner.nextLine();
-                System.out.println("Enter your comment content:");
-                String content = scanner.nextLine();
-                core.addComment(product, new Comment(title, content));
-                this.parentMenu.show();
-                this.parentMenu.execute();
+                if (product == null) {
+                    System.out.println("Invalid product id");
+                } else {
+                    System.out.println("Enter your comment title:");
+                    String title = scanner.nextLine();
+                    System.out.println("Enter your comment content:");
+                    String content = scanner.nextLine();
+                    core.addComment(product, new Comment(title, content));
+                    this.parentMenu.show();
+                    this.parentMenu.execute();
+                }
             }
         };
     }
+
+    private Menu getWritePointForProductMenu() {
+        return new Menu("Write point for product", this) {
+            @Override
+            public void show() {
+                System.out.println(this.getName() + ":");
+                System.out.println("Enter yor product id");
+            }
+
+            @Override
+            public void execute() {
+                String id = scanner.nextLine();
+                Product product = Database.getProductByProductId(id);
+                if (core.currentAccount.hasBoughtTheProduct(product)) {
+                    if (product == null) {
+                        System.out.println("Invalid product id");
+                    } else {
+                        System.out.println("Enter point between 5 (Very Good) and 0 (Very Bad)");
+                        String point = scanner.nextLine();
+                        double pointNo = Integer.parseInt(point);
+                        if (pointNo >= 0 && pointNo <= 5) {
+                            core.addPointForProduct(pointNo, product);
+                        } else {
+                            System.out.println("Invalid pint number");
+                        }
+                        this.parentMenu.show();
+                        this.parentMenu.execute();
+                    }
+                } else {
+                    System.out.println("You have not bought this product");
+                }
+            }
+        };
+    }
+
 }

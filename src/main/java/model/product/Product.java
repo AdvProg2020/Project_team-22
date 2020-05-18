@@ -7,6 +7,8 @@ import main.java.model.databaseUtil.Database;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class Product implements Serializable {
@@ -19,7 +21,7 @@ public class Product implements Serializable {
     private StockStatus stockStatus;
     private String category;
     private String description;
-    private int averagePoint;
+    private Map<String, Double> points;
     private ArrayList<Comment> comments;
 
     public Product(String name, String brand, String price, String category, String description) {
@@ -29,6 +31,7 @@ public class Product implements Serializable {
         this.category = category;
         this.description = description;
         this.comments = new ArrayList<>();
+        this.points = new HashMap<>();
         this.stockStatus = StockStatus.AVAILABLE;
         productId = UUID.randomUUID().toString();
     }
@@ -69,8 +72,12 @@ public class Product implements Serializable {
         return description;
     }
 
-    public int getAveragePoint() {
-        return averagePoint;
+    public double getAveragePoint() {
+        double sum = 0;
+        for (Double point : points.values()) {
+            sum += point;
+        }
+        return sum / points.size();
     }
 
     public ArrayList<Comment> getComments() {
@@ -113,10 +120,6 @@ public class Product implements Serializable {
         this.description = description;
     }
 
-    public void setAveragePoint(int averagePoint) {
-        this.averagePoint = averagePoint;
-    }
-
     public void setComments(ArrayList<Comment> comments) {
         this.comments = comments;
     }
@@ -124,6 +127,10 @@ public class Product implements Serializable {
     public void addComment(Comment comment){
         comments.add(comment);
         Database.addAllProductsToDatabaseFile();
+    }
+
+    public void addPointForProduct(Account account, double point){
+        points.put(account.getUsername(), point);
     }
 
     @Override

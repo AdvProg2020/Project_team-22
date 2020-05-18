@@ -62,7 +62,7 @@ public class Core {
 
     public void showCurrentFilters() {
         System.out.print("price filter: ");
-        if(filters.get(1)) {
+        if (filters.get(1)) {
             System.out.println("Enabled");
             System.out.println("Starting price: " + startPrice);
             System.out.println("Highest price: " + highestPrice);
@@ -70,13 +70,13 @@ public class Core {
             System.out.println("Disabled");
         }
         System.out.print("availability filter: ");
-        if(filters.get(2)) {
+        if (filters.get(2)) {
             System.out.println("Enabled");
         } else {
             System.out.println("Disabled");
         }
         System.out.print("Category Filter: ");
-        if(filters.get(3)) {
+        if (filters.get(3)) {
             System.out.println("Enabled\nCategory names:");
             for (String categoryName : categoryNames) {
                 System.out.println(categoryName);
@@ -86,28 +86,28 @@ public class Core {
         }
     }
 
-    public void disableFilter(int select, Scanner scanner) throws Exception{
-        if(select > 4) {
+    public void disableFilter(int select, Scanner scanner) throws Exception {
+        if (select > 4) {
             throw new Exception("invalid input");
         }
-        if(!filters.get(select)) {
+        if (!filters.get(select)) {
             throw new Exception("filter already disabled");
         }
         switch (select) {
             case 1:
-                filters.put(1 ,false);
+                filters.put(1, false);
                 break;
             case 2:
-                filters.put(2 ,false);
+                filters.put(2, false);
                 break;
             case 3:
                 System.out.println("Enter category name to disable");
                 String name = scanner.nextLine();
-                if(!categoryNames.contains(name)) {
+                if (!categoryNames.contains(name)) {
                     throw new Exception("invalid category name");
                 }
                 categoryNames.remove(name);
-                if(categoryNames.size() == 0) {
+                if (categoryNames.size() == 0) {
                     filters.put(3, false);
                 }
                 break;
@@ -116,7 +116,7 @@ public class Core {
     }
 
     public void enableFilter(int select, Scanner scanner) throws Exception {
-        if(select > 3) {
+        if (select > 3) {
             throw new Exception("invalid input");
         }
         switch (select) {
@@ -125,26 +125,26 @@ public class Core {
                 startPrice = Integer.parseInt(scanner.nextLine());
                 System.out.println("enter highest price:");
                 highestPrice = Integer.parseInt(scanner.nextLine());
-                if(highestPrice <= startPrice) {
+                if (highestPrice <= startPrice) {
                     throw new Exception("highest price should be more than starting price");
                 }
                 filters.put(1, true);
                 break;
             case 2:
-                if(filters.get(2)) {
+                if (filters.get(2)) {
                     throw new Exception("filter already enabled!");
                 }
                 filters.put(2, true);
                 break;
-                ///availability
+            ///availability
             case 3:
                 ///category
                 System.out.println("Enter category name");
                 String name = scanner.nextLine();
-                if(Database.getCategoryByName(name) == null) {
+                if (Database.getCategoryByName(name) == null) {
                     throw new Exception("category does not exists!");
                 }
-                if(categoryNames.contains(name)) {
+                if (categoryNames.contains(name)) {
                     throw new Exception("category already selected!");
                 }
                 categoryNames.add(name);
@@ -155,7 +155,7 @@ public class Core {
 
     public void showProductsList() {
         for (Product product : Database.getAllProducts()) {
-            if(getPriceStatus(product) && getAvailabilityStatus(product) && getCategoryStatus(product)) {
+            if (getPriceStatus(product) && getAvailabilityStatus(product) && getCategoryStatus(product)) {
                 showProductInfo(product);
                 System.out.println("\\\\\\\\\\\\\\\\");
             }
@@ -163,8 +163,8 @@ public class Core {
     }
 
     private boolean getCategoryStatus(Product product) {
-        if(filters.get(3)) {
-            if(categoryNames.contains(product.getCategory())) {
+        if (filters.get(3)) {
+            if (categoryNames.contains(product.getCategory())) {
                 return true;
             } else {
                 return false;
@@ -175,8 +175,8 @@ public class Core {
     }
 
     private boolean getAvailabilityStatus(Product product) {
-        if(filters.get(2)) {
-            if(!product.getStockStatus().equals(StockStatus.AVAILABLE)) {
+        if (filters.get(2)) {
+            if (!product.getStockStatus().equals(StockStatus.AVAILABLE)) {
                 return false;
             } else {
                 return true;
@@ -188,8 +188,8 @@ public class Core {
 
 
     private boolean getPriceStatus(Product product) {
-        if(filters.get(1)) {
-            return  (product.getPrice() <= highestPrice && product.getPrice() >= startPrice);
+        if (filters.get(1)) {
+            return (product.getPrice() <= highestPrice && product.getPrice() >= startPrice);
         } else {
             return true;
         }
@@ -236,7 +236,7 @@ public class Core {
     }
 
     public void changeAccountPassword(String lastPassword, String newPassword) throws Exception {
-        if(!currentAccount.getPassword().equals(lastPassword)) {
+        if (!currentAccount.getPassword().equals(lastPassword)) {
             throw new Exception("old password is incorrect");
         }
         currentAccount.setPassword(newPassword);
@@ -250,7 +250,7 @@ public class Core {
         currentAccount.setEmail(newEmail);
     }
 
-    public void changeAccountLastName(String newLastName) throws Exception{
+    public void changeAccountLastName(String newLastName) throws Exception {
         currentAccount.setLastName(newLastName);
     }
 
@@ -341,11 +341,9 @@ public class Core {
         return true;
     }
 
-    public void writeComment(String comment, Product product) {
-    }
-
-    public void writePointForProduct(int point, Product product) {
-
+    public void addPointForProduct(double point, Product product) {
+        product.addPointForProduct(currentAccount, point);
+        Database.addAllProductsToDatabaseFile();
     }
 
     public void createOff(Off off) {
@@ -607,17 +605,14 @@ public class Core {
     }
 
     public void addComment(Product product, Comment comment) {
-        if (product != null) {
-            comment.setAccount(currentAccount);
-            comment.setProduct(product);
-            comment.setOpinionStatus(CommentStatus.WAITING_FOR_CONFIRM);
-            comment.setHasBought(currentAccount.hasBoughtTheProduct(product));
-            product.addComment(comment);
-            Database.addComment(comment);
-            Database.addAllCommentsToDatabaseFile();
-        } else {
-            System.out.println("Invalid product id");
-        }
+        comment.setAccount(currentAccount);
+        comment.setProduct(product);
+        comment.setOpinionStatus(CommentStatus.WAITING_FOR_CONFIRM);
+        comment.setHasBought(currentAccount.hasBoughtTheProduct(product));
+        product.addComment(comment);
+        Database.addComment(comment);
+        Database.addAllCommentsToDatabaseFile();
+
     }
 
     public void showRequest(String requestId) throws Exception {
@@ -658,7 +653,7 @@ public class Core {
     }
 
     public void logoutUser() {
-        if (currentAccount == null){
+        if (currentAccount == null) {
             System.out.println("You have not logged in yet");
         } else {
             currentAccount = null;
