@@ -24,11 +24,15 @@ public class RegisterAndLoginAndLogoutMenu extends Menu {
 
             @Override
             public void execute() {
-                System.out.println("Enter username");
-                String username = scanner.nextLine();
-                System.out.println("Enter password");
-                String password = scanner.nextLine();
-                core.loginUser(username, password);
+                if (core.currentAccount == null) {
+                    System.out.println("Enter username");
+                    String username = scanner.nextLine();
+                    System.out.println("Enter password");
+                    String password = scanner.nextLine();
+                    core.loginUser(username, password);
+                } else {
+                    System.out.println("\tYou are now logged in!!");
+                }
                 this.parentMenu.show();
                 this.parentMenu.execute();
 
@@ -45,14 +49,19 @@ public class RegisterAndLoginAndLogoutMenu extends Menu {
 
             @Override
             public void execute() {
-                System.out.println("Enter username");
-                String username = scanner.nextLine();
-                System.out.println("Enter password");
-                String password = scanner.nextLine();
-                core.registerUser(username, password, scanner);
-                this.parentMenu.show();
-                this.parentMenu.execute();
+                if (core.currentAccount == null) {
+                    System.out.println("Enter username");
+                    String username = scanner.nextLine();
+                    System.out.println("Enter password");
+                    String password = scanner.nextLine();
+                    core.registerUser(username, password, scanner);
+                    this.parentMenu.show();
+                    this.parentMenu.execute();
+                } else {
+                    System.out.println("You are logged in. First logout to register");
+                }
             }
+
         };
     }
 

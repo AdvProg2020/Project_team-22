@@ -621,4 +621,12 @@ public class Core {
         System.out.println("request rejected");
         Database.removeRequest(request);
     }
+
+    public void logoutUser() {
+        if (currentAccount == null){
+            System.out.println("You have not logged in yet");
+        } else {
+            currentAccount = null;
+        }
+    }
 }
