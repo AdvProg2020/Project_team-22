@@ -19,6 +19,7 @@ public class Account implements Serializable {
     private String password;
     private Role role;
     private String companyName; ////// Just for SALESMAN /////
+    private ArrayList<String> discountsCodes = new ArrayList<>();
     private ArrayList<Discount> discountsList = new ArrayList<>();
     private int credit;
     private ArrayList<Log> logsList = new ArrayList<>();
@@ -44,6 +45,14 @@ public class Account implements Serializable {
         setPassword(password);
         setRole(role);
         setCompanyName(companyName);
+    }
+
+    public void addDiscountCode(String code){
+        discountsCodes.add(code);
+    }
+
+    public ArrayList<String> getDiscountsCodes() {
+        return discountsCodes;
     }
 
     public String getUsername() {
@@ -172,6 +181,14 @@ public class Account implements Serializable {
         return matcher;
     }
 
+    public void addDiscount(Discount discount){
+        this.discountsList.add(discount);
+    }
+
+    public void removeDiscount(Discount discount){
+        this.discountsList.remove(discount);
+    }
+
     @Override
     public String toString() {
         String toString = "Account{" +
@@ -188,7 +205,7 @@ public class Account implements Serializable {
         if (role.equals(Role.SALESMAN)) {
             toString = toString + ", companyName=" + companyName;
         }
-        return toString + '}';
+        return toString + "}\n";
     }
 
     public void setShopBasket(ArrayList<Product> shopBasket) {

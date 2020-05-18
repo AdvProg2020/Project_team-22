@@ -14,11 +14,11 @@ public class CommandProcessor {
     public CommandProcessor(Core manager) {
         this.manager = manager;
         scanner = new Scanner(System.in);
-        System.out.println("\tHello!\nWelcome to marketing\n");
+        System.out.println("Hello!\nWelcome to marketing\n");
     }
 
     public void run()  {
-        //System.out.println(Database.getAllProducts());
+        System.out.println(Database.getAllAccounts());
         Menu.setScanner(this.scanner);
         Menu.setCore(this.manager);
         Menu currentMenu = new MainMenu();

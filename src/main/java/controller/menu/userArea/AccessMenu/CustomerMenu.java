@@ -11,7 +11,8 @@ public class CustomerMenu extends Menu {
         HashMap<Integer, Menu> submenus = new HashMap<>();
         submenus.put(1, getConfirmShopBasketMenu());
         submenus.put(2, getShowShopBasketMenu());
-        submenus.put(3, new RegisterAndLoginAndLogoutMenu(this));
+        submenus.put(3, getShowDiscountCodesMenu());
+        submenus.put(7, new RegisterAndLoginAndLogoutMenu(this));
         this.setSubmenus(submenus);
     }
 
@@ -41,6 +42,22 @@ public class CustomerMenu extends Menu {
             @Override
             public void execute() {
                 core.confirmShopBasket();
+                this.parentMenu.show();
+                this.parentMenu.execute();
+            }
+        };
+    }
+
+    private Menu getShowDiscountCodesMenu() {
+        return new Menu("Show discount codes", this) {
+            @Override
+            public void show() {
+                System.out.println(this.getName() + ":");
+            }
+
+            @Override
+            public void execute() {
+                core.showCustomerDiscount();
                 this.parentMenu.show();
                 this.parentMenu.execute();
             }

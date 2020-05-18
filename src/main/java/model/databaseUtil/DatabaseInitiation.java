@@ -16,13 +16,20 @@ public class DatabaseInitiation {
         loadAllProducts();
         loadAllComments();
         loadAllOffs();
-
-
-        loadAllAccounts();
         loadAllLogs();
         loadAllCategories();
+        loadAllAccounts();
         loadAllDiscounts();
         loadAllRequests();
+        loadAllAccountsDiscount();
+    }
+
+    private static void loadAllAccountsDiscount() {
+        for (Account account : Database.getAllAccounts()) {
+            for (String discountsCode : account.getDiscountsCodes()) {
+                account.addDiscount(Database.getDiscountByDiscountCode(discountsCode));
+            }
+        }
     }
 
     private static void loadAllComments() {

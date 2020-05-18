@@ -372,6 +372,7 @@ public class Core {
         System.out.println("Enter frequency");
         String frequency = scanner.nextLine();
         Database.addDiscount(new Discount(code, startTime, endTime, Integer.parseInt(discountPercent), Integer.parseInt(discountAmount), Integer.parseInt(frequency)));
+        System.out.println("Discount created");
     }
 
     private LocalDate generateLocalDate(Scanner scanner) {
@@ -400,7 +401,7 @@ public class Core {
             System.out.println(e.getMessage());
             Database.addDiscount(discount);
         }
-        createDiscount(scanner);
+        //createDiscount(scanner);
     }
 
     public void configureDiscountAllowedUsers(Scanner scanner, String discountCode) throws Exception {
@@ -424,6 +425,9 @@ public class Core {
         while (!(input = scanner.nextLine()).equals("end")) {
             if (input.equals("select all")) {
                 discount.addAllowedAccounts(Database.getAllAccounts());
+                for (Account account : Database.getAllAccounts()) {
+                    account.addDiscount(discount);
+                }
                 System.out.println("all accounts added");
                 break;
             }
@@ -433,7 +437,9 @@ public class Core {
             if (Database.getAccountByUsername(input) == null) {
                 throw new Exception("user does not exists!");
             }
-            accounts.add(Database.getAccountByUsername(input));
+            Account allowedAccount = Database.getAccountByUsername(input);
+            allowedAccount.addDiscount(discount);
+            accounts.add(allowedAccount);
             discount.addAllowedAccounts(accounts);
             accounts.removeAll(accounts);
             Database.addAllAccountsToDatabaseFile();
@@ -450,6 +456,9 @@ public class Core {
         while (!(input = scanner.nextLine()).equals("end")) {
             if (input.equals("select all")) {
                 discount.removeAllowedAccounts(Database.getAllAccounts());
+                for (Account account : Database.getAllAccounts()) {
+                    account.removeDiscount(discount);
+                }
                 System.out.println("all accounts removed");
                 break;
             }
@@ -459,9 +468,13 @@ public class Core {
             if (Database.getAccountByUsername(input) == null) {
                 throw new Exception("user does not exists!");
             }
-            accounts.add(Database.getAccountByUsername(input));
+            Account allowedAccount = Database.getAccountByUsername(input);
+            allowedAccount.removeDiscount(discount);
+            accounts.add(allowedAccount);
             discount.removeAllowedAccounts(accounts);
             accounts.removeAll(accounts);
+            Database.addAllAccountsToDatabaseFile();
+            Database.addAllDiscountsToDatabaseFile();
             System.out.println("account removed");
         }
     }
@@ -669,6 +682,16 @@ public class Core {
         } else {
             currentAccount = null;
             System.out.println("You logged out successfully");
+        }
+    }
+
+    public void showCustomerDiscount() {
+        for (Discount discount : currentAccount.getDiscountsList()) {
+            System.out.println("discount code is:  " + discount.getDiscountCode());
+            System.out.println("discount percent:  " + discount.getDiscountPercent());
+            System.out.println("start time:  " + discount.getStartTime());
+            System.out.println("end time:  " + discount.getEndTime());
+            System.out.println("max amount:  " + discount.getMaxDiscountAmount());
         }
     }
 }
