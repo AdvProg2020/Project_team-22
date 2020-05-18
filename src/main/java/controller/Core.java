@@ -694,4 +694,17 @@ public class Core {
             System.out.println("max amount:  " + discount.getMaxDiscountAmount());
         }
     }
+
+    public void decreaseProductInShopBasket(String productid) {
+    }
+
+    public void increaseProductInShopBasket(String productid) {
+    }
+
+    public String getBasketTotalPrice() {
+        return "" ;
+    }
+
+    public void showUserDiscountCodes() {
+    }
 }
