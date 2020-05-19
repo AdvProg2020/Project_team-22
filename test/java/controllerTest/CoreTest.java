@@ -1,4 +1,4 @@
-package controllerTest;
+package java.controllerTest;
 
 import main.java.controller.Core;
 import main.java.model.account.Account;

@@ -1,6 +1,7 @@
 package main.java.controller.menu.userArea.AccessMenu;
 
 import main.java.controller.menu.Menu;
+import main.java.controller.menu.userArea.AccessMenu.customerMenu.CustomerMenu;
 import main.java.controller.menu.userArea.AccessMenu.managerMenu.ManagerMenu;
 import main.java.controller.menu.userArea.RegisterAndLoginAndLogoutMenu;
 

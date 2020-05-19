@@ -2,6 +2,7 @@ package main.java.controller.menu;
 
 import main.java.controller.Core;
 import main.java.controller.menu.userArea.AccessMenu.SalesmanMenu;
+import main.java.controller.menu.userArea.AccessMenu.customerMenu.CustomerMenu;
 import main.java.controller.menu.userArea.AccessMenu.managerMenu.ManagerMenu;
 import main.java.controller.menu.userArea.UserMenu;
 import main.java.model.account.Role;
