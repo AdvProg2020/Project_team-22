@@ -18,6 +18,7 @@ import main.java.model.request.Type;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -29,7 +30,9 @@ public class Core {
     private HashMap<Integer, Boolean> filters = new HashMap<>();
     private long startPrice;
     private long highestPrice;
-    private ArrayList<String> categoryNames;
+    private ArrayList<String> categoryNames = new ArrayList<>();
+    private int currentSort = 0;
+    private ArrayList<Product> products = new ArrayList<>();
 
     public Core() {
         setFilters();
@@ -541,11 +544,11 @@ public class Core {
         if (product == null) {
             System.out.println("Invalid product id");
 
-        } else if (product.getStockStatus().equals(StockStatus.NOT_AVAILABLE)){
+        } else if (product.getStockStatus().equals(StockStatus.NOT_AVAILABLE)) {
             System.out.println("this product is not available");
         } else if (product.getNumberOfProduct() < number) {
             System.out.println("We have " + product.getNumberOfProduct() + " item");
-        }else {
+        } else {
             currentAccount.addProductToShopBasket(product);
             product.decreaseNumberOfProduct(number);
         }
@@ -660,7 +663,15 @@ public class Core {
         System.out.println("Request type: " + request.getType());
         System.out.println("User " + request.getAccount().getUsername() + " has requested");
         System.out.println("Company name: " + request.getAccount().getCompanyName());
-        //System.out.println("Number of product : " + (ProductRequest)request.get);
+        if (request instanceof ProductRequest) {
+            Product product = ((ProductRequest) request).getProduct();
+            System.out.println("Request for product: " + product.getNumberOfProduct() + " number of" + product.getName()
+                    + " with product id: " + product.getProductId());
+        } else {
+            Off off = ((OffRequest) request).getOff();
+            System.out.println("Request for off with id: " + off.getOffId() + '\n'
+                    + "see more details in off panel");
+        }
     }
 
     public void acceptRequestById(String requestId) throws Exception {
@@ -725,7 +736,7 @@ public class Core {
     public void increaseProductNumber(int number, Product product) {
         if (number > product.getNumberOfProduct()) {
             System.out.println("We have " + product.getNumberOfProduct() + " item of this product");
-        } else if (number  < 0) {
+        } else if (number < 0) {
             System.out.println("Enter positive number");
         } else {
             for (int i = 0; i < number; i++) {
@@ -733,4 +744,117 @@ public class Core {
             }
         }
     }
+
+
+    private void sortByPrice(boolean type) {
+        for (int i = 0; i < Database.getAllProducts().size() - 1; i++) {
+            for (int j = i + 1; j < Database.getAllProducts().size(); j++) {
+                if (type) {
+                    if (Database.getAllProducts().get(i).getPrice() > Database.getAllProducts().get(j).getPrice()) {
+                        Collections.swap(Database.getAllProducts(), i, j);
+                    }
+                } else {
+                    if (Database.getAllProducts().get(i).getPrice() < Database.getAllProducts().get(j).getPrice()) {
+                        Collections.swap(Database.getAllProducts(), i, j);
+                    }
+                }
+            }
+        }
+    }
+
+    private void sortByAveragePoint(boolean type) {
+        for (int i = 0; i < Database.getAllProducts().size() - 1; i++) {
+            for (int j = i + 1; j < Database.getAllProducts().size(); j++) {
+                if (type) {
+                    if (Database.getAllProducts().get(i).getAveragePoint() > Database.getAllProducts().get(j).getAveragePoint()) {
+                        Collections.swap(Database.getAllProducts(), i, j);
+                    }
+                } else {
+                    if (Database.getAllProducts().get(i).getAveragePoint() < Database.getAllProducts().get(j).getAveragePoint()) {
+                        Collections.swap(Database.getAllProducts(), i, j);
+                    }
+                }
+            }
+        }
+    }
+
+    private void sortByName(boolean type) {
+        for (int i = 0; i < Database.getAllProducts().size() - 1; i++) {
+            for (int j = i + 1; j < Database.getAllProducts().size(); j++) {
+                if (type) {
+                    if (Database.getAllProducts().get(i).getName().compareTo(Database.getAllProducts().get(j).getName()) > 0) {
+                        Collections.swap(Database.getAllProducts(), i, j);
+                    }
+                } else {
+                    if (Database.getAllProducts().get(i).getName().compareTo(Database.getAllProducts().get(j).getName()) < 0) {
+                        Collections.swap(Database.getAllProducts(), i, j);
+                    }
+                }
+            }
+        }
+    }
+
+    public void disableSort() throws Exception {
+        if (currentSort == 0) {
+            throw new Exception("no sort is already enabled");
+        }
+        Database.getAllProducts().removeAll(Database.getAllProducts());
+        Database.getAllProducts().addAll(products);
+        currentSort = 0;
+        System.out.println("sort disabled");
+    }
+
+    public void showCurrentSort() {
+        if (currentSort == 0) {
+            System.out.println("no sort already enabled");
+            return;
+        }
+        if (currentSort < 6) {
+            System.out.print("price \\ ");
+        } else if (currentSort < 9) {
+            System.out.print("average point \\ ");
+        } else if (currentSort < 12) {
+            System.out.print("name \\ ");
+        }
+
+        if (currentSort % 3 == 1) {
+            System.out.println("Ascending");
+        } else {
+            System.out.println("Descending");
+        }
+    }
+
+    public void doSort(int select, Scanner scanner) throws Exception {
+        if (select > 4) {
+            throw new Exception("invalid input");
+        }
+        System.out.println("1. Ascending\n2. Descending");
+        int type = Integer.parseInt(scanner.nextLine());
+        if (type > 2) {
+            throw new Exception("invalid input");
+        }
+        if ((select * 3) + type == currentSort) {
+            throw new Exception("sort already enabled!");
+        }
+        if (currentSort == 0) {
+            products.addAll(Database.getAllProducts());
+        }
+        currentSort = (select * 3) + type;
+        boolean setType;
+        if (type == 1) {
+            setType = true;
+        } else {
+            setType = false;
+        }
+
+        if (currentSort < 6) {
+            sortByPrice(setType);
+        } else if (currentSort < 9) {
+            sortByAveragePoint(setType);
+        } else if (currentSort < 12) {
+            sortByName(setType);
+        }
+        System.out.println("sort enabled");
+    }
+
 }

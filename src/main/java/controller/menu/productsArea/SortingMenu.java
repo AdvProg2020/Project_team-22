@@ -19,7 +19,7 @@ public class SortingMenu extends Menu {
         return new Menu("show available Sorts", this) {
             @Override
             public void show() {
-                System.out.println("Available filters:\n1. price\n2. availability\n3. category\n4. name\n");
+                System.out.println("Available sorts:\n1. price (Ascending\\Descending)\n2. average point  (Ascending\\Descending)\n3. name  (Ascending\\Descending)");
             }
 
             @Override
@@ -32,10 +32,18 @@ public class SortingMenu extends Menu {
         return new Menu("enable Sort", this) {
             @Override
             public void show() {
+                System.out.println("select from sorts:\n1. price\n2. average point\n3. name");
             }
 
             @Override
             public void execute() {
+                String input = scanner.nextLine();
+                try {
+                    int select = Integer.parseInt(input);
+                    core.doSort(select, scanner);
+                }catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
             }
         };
     }
@@ -48,6 +56,11 @@ public class SortingMenu extends Menu {
 
             @Override
             public void execute() {
+                try {
+                    core.disableSort();
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
             }
         };
     }
@@ -56,10 +69,12 @@ public class SortingMenu extends Menu {
         return new Menu("current Sort", this) {
             @Override
             public void show() {
+                System.out.println("current sort:");
             }
 
             @Override
             public void execute() {
+                core.showCurrentSort();
             }
         };
     }
