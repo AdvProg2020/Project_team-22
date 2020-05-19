@@ -17,6 +17,6 @@ public class ProductRequest extends Request{
 
     @Override
     public String toString() {
-        return "ID: " + getId() + "Type: " + getType();
+        return "ID: " + getId() + " Type: " + getType();
     }
 }

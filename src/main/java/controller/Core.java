@@ -521,6 +521,7 @@ public class Core {
     public void sellProduct(Product product) {
         product.setSalesman(currentAccount);
         Database.addRequest(new ProductRequest(product, Type.ADD));
+        System.out.println("The request was sent");
     }
 
     public void compareProduct(Product firstProduct, Product secondProduct) {
@@ -656,7 +657,8 @@ public class Core {
         if (request == null) {
             throw new Exception("invalid request id");
         }
-        System.out.println(requestId);
+        System.out.println(request.getType());
+        System.out.println(request.get);
     }
 
     public void acceptRequestById(String requestId) throws Exception {
