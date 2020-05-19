@@ -28,8 +28,8 @@ public class ProductTest {
 
     @Test
     public void getCategoryTest(){
-        product.setCategory("food");
-        Assert.assertEquals(product.getCategory(), "food");
+        product.setCategoryName("food");
+        Assert.assertEquals(product.getCategoryName(), "food");
     }
 
     @Test

@@ -5,23 +5,23 @@ import main.java.model.product.Product;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Properties;
+import java.util.Map;
 
 public class Category implements Serializable {
     private String name;
-    private ArrayList<String> properties = new ArrayList<>();
+    private Map<Integer, String> properties = new HashMap<>();
     private ArrayList<Product> productsList = new ArrayList<>();
 
     public Category(String name, HashMap<Integer, String> properties) {
         this.name = name;
-
+        this.properties = properties;
     }
 
     public String getName() {
         return name;
     }
 
-    public ArrayList<String> getProperties() {
+    public Map<Integer, String> getProperties() {
         return properties;
     }
 
@@ -33,7 +33,16 @@ public class Category implements Serializable {
         this.name = name;
     }
 
-    public void addProperty(String property){
-        this.properties.add(property);
+    public void addProperty(String property, int number){
+        this.properties.put(number, property);
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "name='" + name + '\'' +
+                ", properties=" + properties +
+                ", productsList=" + productsList +
+                '}';
     }
 }

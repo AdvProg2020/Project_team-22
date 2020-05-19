@@ -16,7 +16,6 @@ import main.java.model.request.ProductRequest;
 import main.java.model.request.Request;
 import main.java.model.request.Type;
 
-import java.sql.Time;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,7 +26,7 @@ public class Core {
     public Account currentAccount = null;
 
     //private static Account onlineAccount = new Account();
-    private static ArrayList<Product> shopBasket = new ArrayList<>();
+    //private static ArrayList<Product> shopBasket = new ArrayList<>();
     private HashMap<Integer, Boolean> filters = new HashMap<>();
     private long startPrice;
     private long highestPrice;
@@ -435,11 +434,12 @@ public class Core {
                 } else {
                     try {
                         Database.addAccount(new Account(username, firstName, lastName, email, phone, password, role));
+                        System.out.println("You registered successfully");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                System.out.println("You registered successfully");
+
             } else {
                 System.out.println("Invalid input!");
             }
@@ -593,10 +593,6 @@ public class Core {
         }
     }
 
-    public void editDiscount(Discount discount, Time endTime, double discountPercent, int maxDiscountAmount) {
-
-    }
-
     public void createCategory(String name, HashMap<Integer, String> properties) throws Exception {
         Database.addCategory(new Category(name, properties));
     }
@@ -620,9 +616,9 @@ public class Core {
         }
         Category category = Database.getCategoryByName(name);
         System.out.println("category name: " + name);
-        /*for (Integer num : category.getProperties().keySet()) {
+        for (Integer num : category.getProperties().keySet()) {
             System.out.println(num + ". " + category.getProperties().get(num));
-        }*/
+        }
         System.out.println("enter new Information below:\nenter new name: ");
         Database.removeCategory(category);
         try {
@@ -668,16 +664,20 @@ public class Core {
 
     public void showShopBasket() {
         int sum = 0;
+        ArrayList<Product> checkedProduct = new ArrayList<>();
         for (Product product : currentAccount.getShopBasket()) {
-            System.out.println("product Id:\n" + product.getProductId());
-            System.out.println("product name:\n" + product.getName());
-            System.out.println("product category:\n" + product.getCategory());
-            System.out.println("product brand:\n" + product.getBrand());
-            System.out.println("product price:\n" + product.getPrice());
-            System.out.println("product average point:\n" + product.getAveragePoint());
-            System.out.println("product description:\n" + product.getDescription());
-            System.out.println("number of this product: \n" + product.getDescription() + "\n");
-            sum += product.getPrice();
+            if (!checkedProduct.contains(product)) {
+                System.out.println("product Id:\n" + product.getProductId());
+                System.out.println("product name:\n" + product.getName());
+                System.out.println("product category:\n" + product.getCategoryName());
+                System.out.println("product brand:\n" + product.getBrand());
+                System.out.println("product price:\n" + product.getPrice());
+                System.out.println("product average point:\n" + product.getAveragePoint());
+                System.out.println("product description:\n" + product.getDescription());
+                System.out.println("number of this product: \n" + currentAccount.getNumberOfProductInCart(product) + "\n");
+                sum += product.getPrice();
+                checkedProduct.add(product);
+            }
         }
         System.out.println("The total price is " + sum);
     }
@@ -698,9 +698,10 @@ public class Core {
 
     public void showProductInfo(Product product) {
         if (product != null) {
+            System.out.println("product id: " + product.getProductId());
             System.out.println("product name: " + product.getName());
             System.out.println("product brand: " + product.getBrand());
-            System.out.println("product category: " + product.getCategory());
+            System.out.println("product category: " + product.getCategoryName());
             System.out.println("product description: " + product.getDescription());
             System.out.println("product average point: " + product.getAveragePoint());
             System.out.println("product price: " + product.getPrice());
@@ -720,7 +721,7 @@ public class Core {
 
     public void showProductAttribute(Product product) {
         if (product != null) {
-            Category category = Database.getCategoryByName(product.getCategory());
+            Category category = Database.getCategoryByName(product.getCategoryName());
             System.out.println("category name:" + category.getName());
             System.out.println("category properties" + category.getProperties());
         } else {
@@ -807,6 +808,23 @@ public class Core {
             System.out.println("start time:  " + discount.getStartTime());
             System.out.println("end time:  " + discount.getEndTime());
             System.out.println("max amount:  " + discount.getMaxDiscountAmount());
+        }
+    }
+
+    public void decreaseProductNumber(int number, Product product) {
+        if (currentAccount.getNumberOfProductInCart(product) < number) {
+            System.out.println("You have less then " + number + " in your cart");
+        } else {
+            for (int i = 0; i < number; i++) {
+                currentAccount.deleteProductFromCart(product);
+            }
+            System.out.println("Item removed");
+        }
+    }
+
+    public void increaseProductNumber(int number, Product product) {
+        for (int i = 0; i < number; i++) {
+            currentAccount.addProductToShopBasket(product);
         }
     }
 

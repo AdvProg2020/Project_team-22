@@ -1,6 +1,7 @@
 package main.java.model.product;
 
 
+import main.java.model.Category;
 import main.java.model.account.Account;
 import main.java.model.comment.Comment;
 import main.java.model.databaseUtil.Database;
@@ -19,16 +20,18 @@ public class Product implements Serializable {
     private int price;
     private Account salesman;
     private StockStatus stockStatus;
-    private String category;
+    private String categoryName;
+    private Category category;
     private String description;
     private Map<String, Double> points;
     private ArrayList<Comment> comments;
 
-    public Product(String name, String brand, String price, String category, String description) {
+    public Product(String name, String brand, String price, String categoryName, String description) {
         this.name = name;
         this.brand = brand;
         this.price = Integer.parseInt(price);
-        this.category = category;
+        this.categoryName = categoryName;
+        this.category = Database.getCategoryByName(categoryName);
         this.description = description;
         this.comments = new ArrayList<>();
         this.points = new HashMap<>();
@@ -64,8 +67,8 @@ public class Product implements Serializable {
         return stockStatus;
     }
 
-    public String getCategory() {
-        return category;
+    public String getCategoryName() {
+        return categoryName;
     }
 
     public String getDescription() {
@@ -78,6 +81,10 @@ public class Product implements Serializable {
             sum += point;
         }
         return sum / points.size();
+    }
+
+    public Category getCategory() {
+        return category;
     }
 
     public ArrayList<Comment> getComments() {
@@ -112,8 +119,8 @@ public class Product implements Serializable {
         this.stockStatus = stockStatus;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public void setDescription(String description) {
@@ -122,6 +129,10 @@ public class Product implements Serializable {
 
     public void setComments(ArrayList<Comment> comments) {
         this.comments = comments;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public void addComment(Comment comment){

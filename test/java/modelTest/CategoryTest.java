@@ -18,8 +18,8 @@ public class CategoryTest {
     @Test
     public void getProperties() {
         ArrayList<String> testProperties = new ArrayList<>();
-        testCategory.addProperty("cheap");
-        testCategory.addProperty("pasteurise");
+        testCategory.addProperty("cheap",1);
+        testCategory.addProperty("pasteurise",2);
         testProperties.add("cheap");
         testProperties.add("pasteurise");
         Assert.assertEquals(testCategory.getProperties(), testProperties);

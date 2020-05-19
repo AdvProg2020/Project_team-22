@@ -22,6 +22,13 @@ public class DatabaseInitiation {
         loadAllDiscounts();
         loadAllRequests();
         loadAllAccountsDiscount();
+        loadProductsCategory();
+    }
+
+    private static void loadProductsCategory() {
+        for (Product product : Database.getAllProducts()) {
+            product.setCategory(Database.getCategoryByName(product.getCategoryName()));
+        }
     }
 
     private static void loadAllAccountsDiscount() {
