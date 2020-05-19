@@ -520,7 +520,7 @@ public class Core {
 
     public void sellProduct(Product product) {
         product.setSalesman(currentAccount);
-        Database.addRequest(new ProductRequest(product, Type.ADD));
+        Database.addRequest(new ProductRequest(product, Type.ADD, currentAccount));
         System.out.println("The request was sent");
     }
 
@@ -657,8 +657,10 @@ public class Core {
         if (request == null) {
             throw new Exception("invalid request id");
         }
-        System.out.println(request.getType());
-        System.out.println(request.get);
+        System.out.println("Request type: " + request.getType());
+        System.out.println("User " + request.getAccount().getUsername() + " has requested");
+        System.out.println("Company name: " + request.getAccount().getCompanyName());
+        //System.out.println("Number of product : " + (ProductRequest)request.get);
     }
 
     public void acceptRequestById(String requestId) throws Exception {
