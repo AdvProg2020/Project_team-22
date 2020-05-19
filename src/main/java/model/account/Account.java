@@ -226,4 +226,22 @@ public class Account implements Serializable {
         }
         return false;
     }
+
+    public boolean isTheProductInCart(Product product){
+        return shopBasket.contains(product);
+    }
+
+    public int getNumberOfProductInCart(Product product) {
+        int outNum = 0;
+        for (Product productInCart : shopBasket) {
+            if (productInCart.getProductId().equals(product.getProductId())) {
+                outNum++;
+            }
+        }
+        return outNum;
+    }
+
+    public void deleteProductFromCart(Product product) {
+        shopBasket.remove(product);
+    }
 }

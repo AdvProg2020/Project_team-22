@@ -318,11 +318,12 @@ public class Core {
                 } else {
                     try {
                         Database.addAccount(new Account(username, firstName, lastName, email, phone, password, role));
+                        System.out.println("You registered successfully");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                System.out.println("You registered successfully");
+
             } else {
                 System.out.println("Invalid input!");
             }
@@ -547,16 +548,20 @@ public class Core {
 
     public void showShopBasket() {
         int sum = 0;
+        ArrayList<Product> checkedProduct = new ArrayList<>();
         for (Product product : currentAccount.getShopBasket()) {
-            System.out.println("product Id:\n" + product.getProductId());
-            System.out.println("product name:\n" + product.getName());
-            System.out.println("product category:\n" + product.getCategory());
-            System.out.println("product brand:\n" + product.getBrand());
-            System.out.println("product price:\n" + product.getPrice());
-            System.out.println("product average point:\n" + product.getAveragePoint());
-            System.out.println("product description:\n" + product.getDescription());
-            System.out.println("number of this product: \n" + product.getDescription() + "\n");
-            sum += product.getPrice();
+            if (!checkedProduct.contains(product)) {
+                System.out.println("product Id:\n" + product.getProductId());
+                System.out.println("product name:\n" + product.getName());
+                System.out.println("product category:\n" + product.getCategory());
+                System.out.println("product brand:\n" + product.getBrand());
+                System.out.println("product price:\n" + product.getPrice());
+                System.out.println("product average point:\n" + product.getAveragePoint());
+                System.out.println("product description:\n" + product.getDescription());
+                System.out.println("number of this product: \n" + currentAccount.getNumberOfProductInCart(product) + "\n");
+                sum += product.getPrice();
+                checkedProduct.add(product);
+            }
         }
         System.out.println("The total price is " + sum);
     }
@@ -686,6 +691,23 @@ public class Core {
             System.out.println("start time:  " + discount.getStartTime());
             System.out.println("end time:  " + discount.getEndTime());
             System.out.println("max amount:  " + discount.getMaxDiscountAmount());
+        }
+    }
+
+    public void decreaseProductNumber(int number, Product product) {
+        if (currentAccount.getNumberOfProductInCart(product) < number) {
+            System.out.println("You have less then " + number + " in your cart");
+        } else {
+            for (int i = 0; i < number; i++) {
+                currentAccount.deleteProductFromCart(product);
+            }
+            System.out.println("Item removed");
+        }
+    }
+
+    public void increaseProductNumber(int number, Product product) {
+        for (int i = 0; i < number; i++) {
+            currentAccount.addProductToShopBasket(product);
         }
     }
 }
