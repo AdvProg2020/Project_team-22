@@ -32,6 +32,4 @@ public class CoreTest {
         testComments.add(testComment);
         Assert.assertEquals(testProduct.getComments(), testComments);
     }
-
-
 }
