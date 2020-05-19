@@ -26,7 +26,7 @@ public class Core {
     public Account currentAccount = null;
 
     //private static Account onlineAccount = new Account();
-    private static ArrayList<Product> shopBasket = new ArrayList<>();
+    //private static ArrayList<Product> shopBasket = new ArrayList<>();
     private HashMap<Integer, Boolean> filters = new HashMap<>();
     private long startPrice;
     private long highestPrice;
@@ -186,7 +186,6 @@ public class Core {
         }
     }
 
-
     private boolean getPriceStatus(Product product) {
         if (filters.get(1)) {
             return (product.getPrice() <= highestPrice && product.getPrice() >= startPrice);
@@ -211,7 +210,6 @@ public class Core {
             System.out.println(category.getName());
         }
     }
-
 
     public void showProfileInfo(Account account) {
         System.out.print("First name: " + account.getFirstName() + "\n" +
@@ -476,10 +474,6 @@ public class Core {
             Database.addAllDiscountsToDatabaseFile();
             System.out.println("account removed");
         }
-    }
-
-    public void editDiscount(Discount discount, Time endTime, double discountPercent, int maxDiscountAmount) {
-
     }
 
     public void createCategory(String name, HashMap<Integer, String> properties) throws Exception {
