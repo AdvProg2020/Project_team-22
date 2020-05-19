@@ -1,4 +1,5 @@
 import main.java.controller.Core;
+import main.java.model.databaseUtil.Database;
 import main.java.model.databaseUtil.DatabaseInitiation;
 import main.java.view.CommandProcessor;
 

@@ -7,6 +7,7 @@ import main.java.model.account.Role;
 import main.java.model.comment.Comment;
 import main.java.model.comment.CommentStatus;
 import main.java.model.databaseUtil.Database;
+import main.java.model.log.BuyLog;
 import main.java.model.off.Off;
 import main.java.model.product.Product;
 import main.java.model.product.ProductStatus;
@@ -549,7 +550,7 @@ public class Core {
         } else if (product.getNumberOfProduct() < number) {
             System.out.println("We have " + product.getNumberOfProduct() + " item");
         } else {
-            currentAccount.addProductToShopBasket(product);
+            currentAccount.addProductToShopBasket(product, number);
             product.decreaseNumberOfProduct(number);
         }
     }
@@ -574,16 +575,46 @@ public class Core {
         System.out.println("The total price is " + sum);
     }
 
-    public void confirmShopBasket() {
+    public void confirmShopBasket(Scanner scanner) {
         int totalPrice = 0;
         for (Product product : currentAccount.getShopBasket()) {
             totalPrice += product.getPrice();
         }
+        System.out.println("Enter your address");
+        String address = scanner.nextLine();
+        System.out.println("Enter any other description");
+        String description = scanner.nextLine();
+        System.out.println("Enter your discount code or enter -1 if you don't have");
+        String discountCode = scanner.nextLine();
+        Discount discount = Database.getDiscountByDiscountCode(discountCode);
+        if (!discountCode.equals("-1")) {
+            if (discount == null) {
+                System.out.println("Fail to confirm shop basket\n" +
+                        "there is not a discount with this code");
+                return;
+            }
+            if (!discount.getAllowedAccount().contains(currentAccount)) {
+                System.out.println("Fail to confirm shop basket\n" +
+                        "this discount code is not for you!");
+                return;
+            }
+            double discountMoney = totalPrice * discount.getDiscountPercent() / 100;
+            if (discountMoney > discount.getMaxDiscountAmount()) {
+                discountMoney = discount.getMaxDiscountAmount();
+            }
+            totalPrice -= discountMoney;
+            System.out.println("You a got " + discountMoney + " Toman discount");
+        }
         if (totalPrice > currentAccount.getCredit()) {
             System.out.println("Not enough credit");
-        } else {
-            System.out.println("");
+            return;
         }
+        ArrayList<Account> tempList = new ArrayList<>();
+        tempList.add(currentAccount);
+        discount.removeAllowedAccounts(tempList);
+        currentAccount.setCredit(currentAccount.getCredit() - totalPrice);
+        currentAccount.addBuyLog(new BuyLog(discount, description, address));
+        System.out.println("Your shopping has been done");
     }
 
     public void showDiscount(Discount discount) {
@@ -665,7 +696,7 @@ public class Core {
         System.out.println("Company name: " + request.getAccount().getCompanyName());
         if (request instanceof ProductRequest) {
             Product product = ((ProductRequest) request).getProduct();
-            System.out.println("Request for product: " + product.getNumberOfProduct() + " number of" + product.getName()
+            System.out.println("Request for product: " + product.getNumberOfProduct() + " number of " + product.getName()
                     + " with product id: " + product.getProductId());
         } else {
             Off off = ((OffRequest) request).getOff();
@@ -739,12 +770,10 @@ public class Core {
         } else if (number < 0) {
             System.out.println("Enter positive number");
         } else {
-            for (int i = 0; i < number; i++) {
-                currentAccount.addProductToShopBasket(product);
-            }
+            currentAccount.addProductToShopBasket(product, number);
+
         }
     }
-
 
     private void sortByPrice(boolean type) {
         for (int i = 0; i < Database.getAllProducts().size() - 1; i++) {

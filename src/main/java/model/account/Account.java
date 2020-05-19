@@ -2,6 +2,7 @@ package main.java.model.account;
 
 import main.java.model.Discount;
 import main.java.model.databaseUtil.Database;
+import main.java.model.log.BuyLog;
 import main.java.model.log.Log;
 import main.java.model.product.Product;
 
@@ -23,6 +24,7 @@ public class Account implements Serializable {
     private ArrayList<Discount> discountsList = new ArrayList<>();
     private int credit;
     private ArrayList<Log> logsList = new ArrayList<>();
+    private ArrayList<String> logsListCode = new ArrayList<>();
     private ArrayList<Product> shopBasket = new ArrayList<>();
     private ArrayList<String> shopBasketProductId = new ArrayList<>();
 
@@ -94,6 +96,10 @@ public class Account implements Serializable {
 
     public int getCredit() {
         return credit;
+    }
+
+    public ArrayList<String> getLogsListCode() {
+        return logsListCode;
     }
 
     public ArrayList<Log> getLogsList() {
@@ -217,9 +223,12 @@ public class Account implements Serializable {
         this.shopBasket = shopBasket;
     }
 
-    public void addProductToShopBasket(Product product) {
-        shopBasket.add(product);
+    public void addProductToShopBasket(Product product, int number) {
+        for (int i = 0; i < number; i++) {
+            shopBasket.add(product);
+        }
         shopBasketProductId.add(product.getProductId());
+        Database.addAllAccountsToDatabaseFile();
     }
 
     public boolean hasBoughtTheProduct(Product product) {
@@ -250,5 +259,12 @@ public class Account implements Serializable {
     public void deleteProductFromCart(Product product) {
         shopBasket.remove(product);
         shopBasketProductId.remove(product.getProductId());
+    }
+
+    public void addBuyLog(BuyLog buyLog) {
+        logsList.add(buyLog);
+        logsListCode.add(buyLog.getLogId());
+        Database.addAllLogsToDatabaseFile();
+        Database.addAllAccountsToDatabaseFile();
     }
 }

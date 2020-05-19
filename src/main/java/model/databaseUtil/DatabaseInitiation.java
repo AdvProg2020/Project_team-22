@@ -3,6 +3,7 @@ package main.java.model.databaseUtil;
 import main.java.model.Discount;
 import main.java.model.account.Account;
 import main.java.model.comment.Comment;
+import main.java.model.log.BuyLog;
 import main.java.model.off.Off;
 import main.java.model.product.Product;
 
@@ -13,6 +14,8 @@ import java.util.ArrayList;
 
 public class DatabaseInitiation {
     public static void initializeDatabase() {
+        Database.addProduct(new Product("s", "s", "10",
+                "s", "s", 9));
         loadAllProducts();
         loadAllComments();
         loadAllOffs();
@@ -21,6 +24,7 @@ public class DatabaseInitiation {
         loadAllAccounts();
         loadAllAccountsShopBasket();
         loadAllDiscounts();
+        loadAllAccountsLogsList();
         loadAllRequests();
         loadAllAccountsDiscount();
         loadProductsCategory();
@@ -29,7 +33,7 @@ public class DatabaseInitiation {
     private static void loadAllAccountsShopBasket() {
         for (Account account : Database.getAllAccounts()) {
             for (String id : account.getShopBasketProductId()) {
-                account.addProductToShopBasket(Database.getProductByProductId(id));
+                account.addProductToShopBasket(Database.getProductByProductId(id), 1);
             }
         }
     }
@@ -182,6 +186,14 @@ public class DatabaseInitiation {
                 productsList.add(Database.getProductByProductId(productId));
             }
             off.setProductsList(productsList);
+        }
+    }
+
+    private static void loadAllAccountsLogsList(){
+        for (Account account : Database.getAllAccounts()) {
+            for (String id : account.getLogsListCode()) {
+                account.addBuyLog((BuyLog) Database.getLogByLogId(id));
+            }
         }
     }
 

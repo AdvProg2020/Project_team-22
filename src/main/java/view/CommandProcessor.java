@@ -18,9 +18,9 @@ public class CommandProcessor {
     }
 
     public void run()  {
-        System.out.println(Database.getAllAccounts());
-        System.out.println(Database.getAllProducts());
-        System.out.println(Database.getAllCategories());
+//        System.out.println(Database.getAllAccounts());
+//        System.out.println(Database.getAllProducts());
+//        System.out.println(Database.getAllCategories());
         Menu.setScanner(this.scanner);
         Menu.setCore(this.manager);
         Menu currentMenu = new MainMenu();

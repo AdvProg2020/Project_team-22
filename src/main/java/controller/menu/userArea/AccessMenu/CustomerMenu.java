@@ -62,7 +62,7 @@ public class CustomerMenu extends Menu {
 
             @Override
             public void execute() {
-                core.confirmShopBasket();
+                core.confirmShopBasket(scanner);
                 this.parentMenu.show();
                 this.parentMenu.execute();
             }
