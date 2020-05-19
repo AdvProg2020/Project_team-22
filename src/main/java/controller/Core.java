@@ -16,7 +16,6 @@ import main.java.model.request.ProductRequest;
 import main.java.model.request.Request;
 import main.java.model.request.Type;
 
-import java.sql.Time;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -164,7 +163,7 @@ public class Core {
 
     private boolean getCategoryStatus(Product product) {
         if (filters.get(3)) {
-            if (categoryNames.contains(product.getCategory())) {
+            if (categoryNames.contains(product.getCategoryName())) {
                 return true;
             } else {
                 return false;
@@ -553,7 +552,7 @@ public class Core {
             if (!checkedProduct.contains(product)) {
                 System.out.println("product Id:\n" + product.getProductId());
                 System.out.println("product name:\n" + product.getName());
-                System.out.println("product category:\n" + product.getCategory());
+                System.out.println("product category:\n" + product.getCategoryName());
                 System.out.println("product brand:\n" + product.getBrand());
                 System.out.println("product price:\n" + product.getPrice());
                 System.out.println("product average point:\n" + product.getAveragePoint());
@@ -582,9 +581,10 @@ public class Core {
 
     public void showProductInfo(Product product) {
         if (product != null) {
+            System.out.println("product id: " + product.getProductId());
             System.out.println("product name: " + product.getName());
             System.out.println("product brand: " + product.getBrand());
-            System.out.println("product category: " + product.getCategory());
+            System.out.println("product category: " + product.getCategoryName());
             System.out.println("product description: " + product.getDescription());
             System.out.println("product average point: " + product.getAveragePoint());
             System.out.println("product price: " + product.getPrice());
@@ -604,7 +604,7 @@ public class Core {
 
     public void showProductAttribute(Product product) {
         if (product != null) {
-            Category category = Database.getCategoryByName(product.getCategory());
+            Category category = Database.getCategoryByName(product.getCategoryName());
             System.out.println("category name:" + category.getName());
             System.out.println("category properties" + category.getProperties());
         } else {

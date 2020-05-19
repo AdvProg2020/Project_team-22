@@ -46,10 +46,14 @@ public class SalesmanMenu extends Menu {
 
             @Override
             public void execute() {
-                Product product = new Product(productName, productBrand, productPrice, productCategory, productDescription);
-                core.sellProduct(product);
-                this.parentMenu.show();
-                this.parentMenu.execute();
+                if (Database.getCategoryByName(productCategory) == null) {
+                    System.out.println("Invalid category name");
+                } else {
+                    Product product = new Product(productName, productBrand, productPrice, productCategory, productDescription);
+                    core.sellProduct(product);
+                    this.parentMenu.show();
+                    this.parentMenu.execute();
+                }
             }
         };
     }

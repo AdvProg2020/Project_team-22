@@ -36,4 +36,13 @@ public class Category implements Serializable {
     public void addProperty(String property, int number){
         this.properties.put(number, property);
     }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "name='" + name + '\'' +
+                ", properties=" + properties +
+                ", productsList=" + productsList +
+                '}';
+    }
 }
