@@ -19,14 +19,15 @@ public class Product implements Serializable {
     private String brand;
     private int price;
     private Account salesman;
-    private StockStatus stockStatus;
     private String categoryName;
     private Category category;
     private String description;
     private Map<String, Double> points;
     private ArrayList<Comment> comments;
+    int numberOfProduct;
 
-    public Product(String name, String brand, String price, String categoryName, String description) {
+    public Product(String name, String brand, String price, String categoryName,
+                   String description, int numberOfProduct) {
         this.name = name;
         this.brand = brand;
         this.price = Integer.parseInt(price);
@@ -35,7 +36,7 @@ public class Product implements Serializable {
         this.description = description;
         this.comments = new ArrayList<>();
         this.points = new HashMap<>();
-        this.stockStatus = StockStatus.AVAILABLE;
+        this.numberOfProduct = numberOfProduct;
         productId = UUID.randomUUID().toString();
     }
 
@@ -64,11 +65,23 @@ public class Product implements Serializable {
     }
 
     public StockStatus getStockStatus() {
-        return stockStatus;
+        if (numberOfProduct > 0) {
+            return StockStatus.AVAILABLE;
+        } else {
+            return  StockStatus.NOT_AVAILABLE;
+        }
     }
 
     public String getCategoryName() {
         return categoryName;
+    }
+
+    public int getNumberOfProduct() {
+        return numberOfProduct;
+    }
+
+    public void decreaseNumberOfProduct(int numberOfProduct) {
+        this.numberOfProduct -= numberOfProduct;
     }
 
     public String getDescription() {
@@ -115,10 +128,6 @@ public class Product implements Serializable {
         this.salesman = salesman;
     }
 
-    public void setStockStatus(StockStatus stockStatus) {
-        this.stockStatus = stockStatus;
-    }
-
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
@@ -147,7 +156,7 @@ public class Product implements Serializable {
     @Override
     public String toString() {
         return "productId='" + productId + '\'' +
-                ", productStatus=" + productStatus +
+                ", stockStatus=" + getStockStatus() +
                 ", name='" + name + '\'' +
                 ", brand='" + brand + '\'' +
                 ", price=" + price +

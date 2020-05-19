@@ -37,7 +37,7 @@ public class CommentTest {
 
     @Test
     public void getProductTest(){
-        Product testProduct = new Product("milk", "PAK", "9000","food", "fresh");
+        Product testProduct = new Product("milk", "PAK", "9000","food", "fresh",2);
         testComment.setProduct(testProduct);
         Assert.assertEquals(testComment.getProduct(), testProduct);
     }

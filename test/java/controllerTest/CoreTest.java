@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class CoreTest {
     Core testCore = new Core();
-    Product testProduct = new Product("milk", "PAK", "9000", "food", "fresh");
+    Product testProduct = new Product("milk", "PAK", "9000", "food", "fresh",2);
     Comment testComment = new Comment("I recommend this", "Very fresh and good");
     Account testAccount;
 

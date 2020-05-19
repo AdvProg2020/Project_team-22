@@ -19,10 +19,19 @@ public class DatabaseInitiation {
         loadAllLogs();
         loadAllCategories();
         loadAllAccounts();
+        loadAllAccountsShopBasket();
         loadAllDiscounts();
         loadAllRequests();
         loadAllAccountsDiscount();
         loadProductsCategory();
+    }
+
+    private static void loadAllAccountsShopBasket() {
+        for (Account account : Database.getAllAccounts()) {
+            for (String id : account.getShopBasketProductId()) {
+                account.addProductToShopBasket(Database.getProductByProductId(id));
+            }
+        }
     }
 
     private static void loadProductsCategory() {

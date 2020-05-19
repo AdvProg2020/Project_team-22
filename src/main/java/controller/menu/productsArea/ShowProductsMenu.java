@@ -53,8 +53,10 @@ public class ShowProductsMenu extends Menu {
             @Override
             public void execute() {
                 String id = scanner.nextLine();
+                System.out.println("How many item do you want");
+                int number = Integer.parseInt(scanner.nextLine());
                 Product product = Database.getProductByProductId(id);
-                core.addProductToShopBasket(product);
+                core.addProductToShopBasket(product, number);
                 this.parentMenu.show();
                 this.parentMenu.execute();
             }

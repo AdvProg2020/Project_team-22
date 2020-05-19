@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class ProductTest {
     Product product = new Product("milk", "PAK", "9000",
-            "food", "fresh");
+            "food", "fresh",2);
 
     @Test
     public void getNameTest() {

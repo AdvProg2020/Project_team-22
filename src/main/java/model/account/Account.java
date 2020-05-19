@@ -24,6 +24,7 @@ public class Account implements Serializable {
     private int credit;
     private ArrayList<Log> logsList = new ArrayList<>();
     private ArrayList<Product> shopBasket = new ArrayList<>();
+    private ArrayList<String> shopBasketProductId = new ArrayList<>();
 
     public Account(String username, String firstName, String lastName, String email,
                    String phone, String password, Role role) throws Exception {
@@ -101,6 +102,10 @@ public class Account implements Serializable {
 
     public ArrayList<Product> getShopBasket() {
         return shopBasket;
+    }
+
+    public ArrayList<String> getShopBasketProductId() {
+        return shopBasketProductId;
     }
 
     public void setUsername(String username) throws Exception {
@@ -214,6 +219,7 @@ public class Account implements Serializable {
 
     public void addProductToShopBasket(Product product) {
         shopBasket.add(product);
+        shopBasketProductId.add(product.getProductId());
     }
 
     public boolean hasBoughtTheProduct(Product product) {
@@ -243,5 +249,6 @@ public class Account implements Serializable {
 
     public void deleteProductFromCart(Product product) {
         shopBasket.remove(product);
+        shopBasketProductId.remove(product.getProductId());
     }
 }

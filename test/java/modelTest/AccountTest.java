@@ -113,6 +113,6 @@ public class AccountTest {
 
         }
         ;
-        Assert.assertEquals(testAccount.hasBoughtTheProduct(new Product("milk", "pak", "10000", "food", "fresh")), false);
+        Assert.assertEquals(testAccount.hasBoughtTheProduct(new Product("milk", "pak", "10000", "food", "fresh",2)), false);
     }
 }

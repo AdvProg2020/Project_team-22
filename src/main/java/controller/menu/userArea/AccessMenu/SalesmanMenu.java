@@ -28,7 +28,7 @@ public class SalesmanMenu extends Menu {
             String productPrice;
             String productCategory;
             String productDescription;
-
+            int numberOfProduct;
             @Override
             public void show() {
                 System.out.println(this.getName() + ":");
@@ -42,6 +42,8 @@ public class SalesmanMenu extends Menu {
                 productCategory = scanner.nextLine();
                 System.out.println("Enter product description:");
                 productDescription = scanner.nextLine();
+                System.out.println("Enter product number:");
+                numberOfProduct = Integer.parseInt(scanner.nextLine());
             }
 
             @Override
@@ -49,7 +51,8 @@ public class SalesmanMenu extends Menu {
                 if (Database.getCategoryByName(productCategory) == null) {
                     System.out.println("Invalid category name");
                 } else {
-                    Product product = new Product(productName, productBrand, productPrice, productCategory, productDescription);
+                    Product product = new Product(productName, productBrand, productPrice,
+                            productCategory, productDescription, numberOfProduct);
                     core.sellProduct(product);
                     this.parentMenu.show();
                     this.parentMenu.execute();

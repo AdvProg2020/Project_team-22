@@ -520,8 +520,7 @@ public class Core {
 
     public void sellProduct(Product product) {
         product.setSalesman(currentAccount);
-        product.setStockStatus(StockStatus.AVAILABLE);
-        Database.addProduct(product);
+        Database.addRequest(new ProductRequest(product, Type.ADD));
     }
 
     public void compareProduct(Product firstProduct, Product secondProduct) {
@@ -537,11 +536,17 @@ public class Core {
         }
     }
 
-    public void addProductToShopBasket(Product product) {
-        if (product != null) {
-            currentAccount.addProductToShopBasket(product);
-        } else {
+    public void addProductToShopBasket(Product product, int number) {
+        if (product == null) {
             System.out.println("Invalid product id");
+
+        } else if (product.getStockStatus().equals(StockStatus.NOT_AVAILABLE)){
+            System.out.println("this product is not available");
+        } else if (product.getNumberOfProduct() < number) {
+            System.out.println("We have " + product.getNumberOfProduct() + " item");
+        }else {
+            currentAccount.addProductToShopBasket(product);
+            product.decreaseNumberOfProduct(number);
         }
     }
 
@@ -558,7 +563,7 @@ public class Core {
                 System.out.println("product average point:\n" + product.getAveragePoint());
                 System.out.println("product description:\n" + product.getDescription());
                 System.out.println("number of this product: \n" + currentAccount.getNumberOfProductInCart(product) + "\n");
-                sum += product.getPrice();
+                sum += product.getPrice() * currentAccount.getNumberOfProductInCart(product);
                 checkedProduct.add(product);
             }
         }
@@ -566,7 +571,15 @@ public class Core {
     }
 
     public void confirmShopBasket() {
-
+        int totalPrice = 0;
+        for (Product product : currentAccount.getShopBasket()) {
+            totalPrice += product.getPrice();
+        }
+        if (totalPrice > currentAccount.getCredit()) {
+            System.out.println("Not enough credit");
+        } else {
+            System.out.println("");
+        }
     }
 
     public void showDiscount(Discount discount) {
@@ -706,8 +719,14 @@ public class Core {
     }
 
     public void increaseProductNumber(int number, Product product) {
-        for (int i = 0; i < number; i++) {
-            currentAccount.addProductToShopBasket(product);
+        if (number > product.getNumberOfProduct()) {
+            System.out.println("We have " + product.getNumberOfProduct() + " item of this product");
+        } else if (number  < 0) {
+            System.out.println("Enter positive number");
+        } else {
+            for (int i = 0; i < number; i++) {
+                currentAccount.addProductToShopBasket(product);
+            }
         }
     }
 }

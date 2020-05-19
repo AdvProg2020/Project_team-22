@@ -38,7 +38,7 @@ public class CustomerMenu extends Menu {
     }
 
     private Menu getShowShopBasketMenu() {
-        return new Menu("Shop basket", this) {
+        return new Menu("Show shop basket", this) {
             @Override
             public void show() {
                 System.out.println(this.getName() + ":");
@@ -109,6 +109,7 @@ public class CustomerMenu extends Menu {
             }
         };
     }
+
     private Menu getDecreaseProductNumberInCartMenu() {
         return new Menu("Decrease the products number", this) {
             @Override
