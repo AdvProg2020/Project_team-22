@@ -1,20 +1,22 @@
-package main.java.controller;
+package controller;
 
-import main.java.model.Category;
-import main.java.model.Discount;
-import main.java.model.account.Account;
-import main.java.model.account.Role;
-import main.java.model.comment.Comment;
-import main.java.model.comment.CommentStatus;
-import main.java.model.databaseUtil.Database;
-import main.java.model.off.Off;
-import main.java.model.product.Product;
-import main.java.model.product.ProductStatus;
-import main.java.model.product.StockStatus;
-import main.java.model.request.OffRequest;
-import main.java.model.request.ProductRequest;
-import main.java.model.request.Request;
-import main.java.model.request.Type;
+
+
+import model.Category;
+import model.Discount;
+import model.account.Account;
+import model.account.Role;
+import model.comment.Comment;
+import model.comment.CommentStatus;
+import model.databaseUtil.Database;
+import model.off.Off;
+import model.product.Product;
+import model.product.ProductStatus;
+import model.product.StockStatus;
+import model.request.OffRequest;
+import model.request.ProductRequest;
+import model.request.Request;
+import model.request.Type;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -62,8 +64,8 @@ public class Core {
 
     }
 
-    private void sortByPrice(boolean type) {
-        for(int i=0; i < Database.getAllProducts().size()-1; i++) {
+    public void sortByPrice(boolean type) {
+        for(int i = 0; i < Database.getAllProducts().size()-1; i++) {
             for(int j=i+1; j < Database.getAllProducts().size(); j++) {
                 if(type) {
                     if(Database.getAllProducts().get(i).getPrice() > Database.getAllProducts().get(j).getPrice()) {

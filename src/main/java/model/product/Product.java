@@ -1,10 +1,10 @@
-package main.java.model.product;
+package model.product;
 
 
-import main.java.model.Category;
-import main.java.model.account.Account;
-import main.java.model.comment.Comment;
-import main.java.model.databaseUtil.Database;
+import model.Category;
+import model.account.Account;
+import model.comment.Comment;
+import model.databaseUtil.Database;
 
 import java.io.Serializable;
 import java.util.ArrayList;

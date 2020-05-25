@@ -1,11 +1,11 @@
-package main.java.controller.menu.userArea.AccessMenu.managerMenu;
+package controller.menu.userArea.AccessMenu.managerMenu;
 
-import main.java.controller.menu.Menu;
-import main.java.controller.menu.userArea.RegisterAndLoginAndLogoutMenu;
-import main.java.model.Discount;
-import main.java.model.product.Product;
-import main.java.model.product.ProductStatus;
-import main.java.model.product.StockStatus;
+import controller.menu.Menu;
+import controller.menu.userArea.RegisterAndLoginAndLogoutMenu;
+import model.Discount;
+import model.product.Product;
+import model.product.ProductStatus;
+import model.product.StockStatus;
 
 import java.sql.Time;
 import java.util.ArrayList;

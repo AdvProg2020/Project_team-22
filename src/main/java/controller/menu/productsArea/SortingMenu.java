@@ -1,6 +1,6 @@
-package main.java.controller.menu.productsArea;
+package controller.menu.productsArea;
 
-import main.java.controller.menu.Menu;
+import controller.menu.Menu;
 
 import java.util.HashMap;
 

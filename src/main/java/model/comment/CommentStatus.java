@@ -1,4 +1,4 @@
-package main.java.model.comment;
+package model.comment;
 
 import java.io.Serializable;
 

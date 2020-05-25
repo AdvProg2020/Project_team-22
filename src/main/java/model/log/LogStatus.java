@@ -1,4 +1,4 @@
-package main.java.model.log;
+package model.log;
 
 import java.io.Serializable;
 

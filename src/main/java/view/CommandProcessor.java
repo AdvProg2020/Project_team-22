@@ -1,9 +1,9 @@
-package main.java.view;
+package view;
 
-import main.java.controller.Core;
-import main.java.controller.menu.MainMenu;
-import main.java.controller.menu.Menu;
-import main.java.model.databaseUtil.Database;
+import controller.Core;
+import controller.menu.MainMenu;
+import controller.menu.Menu;
+import model.databaseUtil.Database;
 
 import java.util.Scanner;
 

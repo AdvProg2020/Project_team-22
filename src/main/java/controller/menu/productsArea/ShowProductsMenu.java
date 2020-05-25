@@ -1,10 +1,10 @@
-package main.java.controller.menu.productsArea;
+package controller.menu.productsArea;
 
-import main.java.controller.menu.Menu;
-import main.java.controller.menu.userArea.RegisterAndLoginAndLogoutMenu;
-import main.java.model.comment.Comment;
-import main.java.model.databaseUtil.Database;
-import main.java.model.product.Product;
+import controller.menu.Menu;
+import controller.menu.userArea.RegisterAndLoginAndLogoutMenu;
+import model.comment.Comment;
+import model.databaseUtil.Database;
+import model.product.Product;
 
 import java.util.HashMap;
 

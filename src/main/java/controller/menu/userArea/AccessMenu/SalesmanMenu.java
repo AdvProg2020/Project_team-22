@@ -1,10 +1,10 @@
-package main.java.controller.menu.userArea.AccessMenu;
+package controller.menu.userArea.AccessMenu;
 
-import main.java.controller.menu.Menu;
-import main.java.controller.menu.userArea.RegisterAndLoginAndLogoutMenu;
-import main.java.model.databaseUtil.Database;
-import main.java.model.off.Off;
-import main.java.model.product.Product;
+import controller.menu.Menu;
+import controller.menu.userArea.RegisterAndLoginAndLogoutMenu;
+import model.databaseUtil.Database;
+import model.off.Off;
+import model.product.Product;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

@@ -1,8 +1,8 @@
-package main.java.model.comment;
+package model.comment;
 
 
-import main.java.model.account.Account;
-import main.java.model.product.Product;
+import model.account.Account;
+import model.product.Product;
 
 import java.io.Serializable;
 

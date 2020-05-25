@@ -1,4 +1,4 @@
-package main.java.model.off;
+package model.off;
 
 import java.io.Serializable;
 

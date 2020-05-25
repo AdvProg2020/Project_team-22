@@ -1,7 +1,7 @@
-package main.java.model.request;
+package model.request;
 
-import main.java.model.databaseUtil.Database;
-import main.java.model.product.Product;
+import model.databaseUtil.Database;
+import model.product.Product;
 
 public class ProductRequest extends Request{
     private Product product;

@@ -1,9 +1,9 @@
-package main.java.model.account;
+package model.account;
 
-import main.java.model.Discount;
-import main.java.model.databaseUtil.Database;
-import main.java.model.log.Log;
-import main.java.model.product.Product;
+import model.Discount;
+import model.databaseUtil.Database;
+import model.log.Log;
+import model.product.Product;
 
 import java.io.Serializable;
 import java.util.ArrayList;

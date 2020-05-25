@@ -1,6 +1,6 @@
-package main.java.model.request;
+package model.request;
 
-import main.java.model.databaseUtil.Database;
+import model.databaseUtil.Database;
 
 import java.io.Serializable;
 import java.util.UUID;

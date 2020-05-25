@@ -1,8 +1,8 @@
-package main.java.controller.menu.userArea.AccessMenu.managerMenu;
+package controller.menu.userArea.AccessMenu.managerMenu;
 
-import main.java.controller.menu.Menu;
-import main.java.model.databaseUtil.Database;
-import main.java.model.request.Request;
+import controller.menu.Menu;
+import model.databaseUtil.Database;
+import model.request.Request;
 
 import java.util.Collections;
 import java.util.HashMap;

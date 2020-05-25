@@ -1,8 +1,8 @@
-package main.java.controller.menu.userArea;
+package controller.menu.userArea;
 
-import main.java.controller.menu.Menu;
-import main.java.controller.menu.userArea.AccessMenu.AccessMenu;
-import main.java.controller.menu.userArea.profileMenu.ProfileMenu;
+import controller.menu.Menu;
+import controller.menu.userArea.AccessMenu.AccessMenu;
+import controller.menu.userArea.profileMenu.ProfileMenu;
 
 import java.util.HashMap;
 

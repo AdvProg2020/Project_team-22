@@ -1,10 +1,10 @@
-package main.java.model.databaseUtil;
+package model.databaseUtil;
 
-import main.java.model.Discount;
-import main.java.model.account.Account;
-import main.java.model.comment.Comment;
-import main.java.model.off.Off;
-import main.java.model.product.Product;
+import model.Discount;
+import model.account.Account;
+import model.comment.Comment;
+import model.off.Off;
+import model.product.Product;
 
 import java.io.FileInputStream;
 import java.io.IOException;

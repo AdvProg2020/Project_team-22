@@ -1,7 +1,7 @@
-package main.java.controller.menu.userArea.AccessMenu.customerMenu;
+package controller.menu.userArea.AccessMenu.customerMenu;
 
-import main.java.controller.menu.Menu;
-import main.java.model.product.Product;
+import controller.menu.Menu;
+import model.product.Product;
 
 public class PurchaseMenu extends Menu {
     public PurchaseMenu( Menu parentMenu) {

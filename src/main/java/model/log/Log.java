@@ -1,7 +1,7 @@
-package main.java.model.log;
+package model.log;
 
-import main.java.model.account.Account;
-import main.java.model.product.Product;
+import model.account.Account;
+import model.product.Product;
 
 import java.io.Serializable;
 import java.util.ArrayList;

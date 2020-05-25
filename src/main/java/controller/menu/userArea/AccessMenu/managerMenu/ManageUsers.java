@@ -1,9 +1,9 @@
-package main.java.controller.menu.userArea.AccessMenu.managerMenu;
+package controller.menu.userArea.AccessMenu.managerMenu;
 
-import main.java.controller.menu.Menu;
-import main.java.model.account.Account;
-import main.java.model.account.Role;
-import main.java.model.databaseUtil.Database;
+import controller.menu.Menu;
+import model.account.Account;
+import model.account.Role;
+import model.databaseUtil.Database;
 
 import javax.xml.crypto.Data;
 import java.util.HashMap;

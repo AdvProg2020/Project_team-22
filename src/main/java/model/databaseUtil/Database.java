@@ -1,13 +1,13 @@
-package main.java.model.databaseUtil;
+package model.databaseUtil;
 
-import main.java.model.Category;
-import main.java.model.Discount;
-import main.java.model.account.Account;
-import main.java.model.comment.Comment;
-import main.java.model.log.Log;
-import main.java.model.off.Off;
-import main.java.model.product.Product;
-import main.java.model.request.Request;
+import model.Category;
+import model.Discount;
+import model.account.Account;
+import model.comment.Comment;
+import model.log.Log;
+import model.off.Off;
+import model.product.Product;
+import model.request.Request;
 
 
 import java.io.FileOutputStream;
@@ -16,14 +16,14 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class Database {
-    static ArrayList<Account> allAccounts = new ArrayList<>();
-    static ArrayList<Comment> allComments = new ArrayList<>();
-    static ArrayList<Product> allProducts = new ArrayList<>();
-    static ArrayList<Log> allLogs = new ArrayList<>();
-    static ArrayList<Category> allCategories = new ArrayList<>();
-    static ArrayList<Off> allOffs = new ArrayList<>();
-    static ArrayList<Discount> allDiscounts = new ArrayList<>();
-    static ArrayList<Request> allRequests = new ArrayList<>();
+    public static ArrayList<Account> allAccounts = new ArrayList<>();
+    public static ArrayList<Comment> allComments = new ArrayList<>();
+    public static ArrayList<Product> allProducts = new ArrayList<>();
+    public static ArrayList<Log> allLogs = new ArrayList<>();
+    public static ArrayList<Category> allCategories = new ArrayList<>();
+    public static ArrayList<Off> allOffs = new ArrayList<>();
+    public static ArrayList<Discount> allDiscounts = new ArrayList<>();
+    public static ArrayList<Request> allRequests = new ArrayList<>();
 
     public static void addOff(Off off){
         allOffs.add(off);

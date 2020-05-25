@@ -1,6 +1,6 @@
-package main.java.controller.menu.offsArea;
+package controller.menu.offsArea;
 
-import main.java.controller.menu.Menu;
+import controller.menu.Menu;
 
 import java.util.HashMap;
 

@@ -1,9 +1,9 @@
-package main.java.controller.menu.userArea.AccessMenu;
+package controller.menu.userArea.AccessMenu;
 
-import main.java.controller.menu.Menu;
-import main.java.controller.menu.userArea.AccessMenu.customerMenu.CustomerMenu;
-import main.java.controller.menu.userArea.AccessMenu.managerMenu.ManagerMenu;
-import main.java.controller.menu.userArea.RegisterAndLoginAndLogoutMenu;
+import controller.menu.Menu;
+import controller.menu.userArea.AccessMenu.customerMenu.CustomerMenu;
+import controller.menu.userArea.AccessMenu.managerMenu.ManagerMenu;
+import controller.menu.userArea.RegisterAndLoginAndLogoutMenu;
 
 import java.util.HashMap;
 

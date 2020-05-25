@@ -1,7 +1,7 @@
-package main.java.model.request;
+package model.request;
 
-import main.java.model.databaseUtil.Database;
-import main.java.model.off.Off;
+import model.databaseUtil.Database;
+import model.off.Off;
 
 public class OffRequest extends Request{
     private Off off;

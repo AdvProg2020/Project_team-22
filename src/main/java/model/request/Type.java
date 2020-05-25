@@ -1,4 +1,4 @@
-package main.java.model.request;
+package model.request;
 
 public enum Type {
     EDIT,
