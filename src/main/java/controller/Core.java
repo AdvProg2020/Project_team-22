@@ -64,7 +64,7 @@ public class Core {
 
     }
 
-    public void sortByPrice(boolean type) {
+    private void sortByPrice(boolean type) {
         for(int i = 0; i < Database.getAllProducts().size()-1; i++) {
             for(int j=i+1; j < Database.getAllProducts().size(); j++) {
                 if(type) {

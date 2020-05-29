@@ -1,4 +1,4 @@
-package model;
+package model.comment;
 
 import model.account.Account;
 import model.account.Role;

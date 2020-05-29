@@ -1,7 +1,6 @@
-package model;
+package model.account;
 
-import model.account.Account;
-import model.account.Role;
+
 import model.product.Product;
 import org.junit.Assert;
 import org.junit.Test;
@@ -11,13 +10,13 @@ public class AccountTest {
 
     @Test
     public void getUserNameTest() {
-        Account testAccount = null;
+        Account testAccount = null  ;
         try {
             testAccount = new Account("MHHSS", "mh", "soleymani", "hssoleymanmh@gmail.com", "09301395175", "mh:2301", Role.CUSTOMER);
         } catch (Exception e) {
 
         }
-        ;
+
         Assert.assertEquals(testAccount.getUsername(), "MHHSS");
     }
 
@@ -29,7 +28,6 @@ public class AccountTest {
         } catch (Exception e) {
 
         }
-        ;
         Assert.assertEquals(testAccount.getFirstName(), "mh");
     }
 
@@ -116,5 +114,10 @@ public class AccountTest {
         }
         ;
         Assert.assertEquals(testAccount.hasBoughtTheProduct(new Product("milk", "pak", "10000", "food", "fresh")), false);
+    }
+
+    @Test
+    public void setUsernameTestWithError(){
+
     }
 }

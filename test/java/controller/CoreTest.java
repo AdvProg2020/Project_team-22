@@ -44,7 +44,7 @@ public class CoreTest {
         ArrayList<Product> products = new ArrayList<>() ;
         products.addAll( Arrays.asList( product1 , product2 , product3)) ;
         Database.allProducts = products ;
-        testCore.sortByPrice( false);
+
         ArrayList<Product> actual = Database.getAllProducts() ;
         ArrayList< Product> expected = new ArrayList<>() ;
         expected.addAll( Arrays.asList( product1 , product3 , product2)) ;
@@ -60,7 +60,7 @@ public class CoreTest {
         ArrayList<Product> products = new ArrayList<>() ;
         products.addAll( Arrays.asList( product1 , product2 , product3)) ;
         Database.allProducts = products ;
-        testCore.sortByPrice( true);
+
         ArrayList<Product> actual = Database.getAllProducts() ;
         ArrayList< Product> expected = new ArrayList<>() ;
         expected.addAll( Arrays.asList( product2 , product3 , product1)) ;
