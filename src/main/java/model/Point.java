@@ -34,3 +34,4 @@ public class Point implements Serializable {
         this.product = product;
     }
 }
+
