@@ -21,10 +21,10 @@ public class CommandProcessor {
 //        System.out.println(Database.getAllAccounts());
 //        System.out.println(Database.getAllProducts());
 //        System.out.println(Database.getAllCategories());
-        Menu.setScanner(this.scanner);
-        Menu.setCore(this.manager);
-        Menu currentMenu = new MainMenu();
-        currentMenu.show();
-        currentMenu.execute();
+//        Menu.setScanner(this.scanner);
+//        Menu.setCore(this.manager);
+//        //Menu currentMenu = new MainMenu();
+//        currentMenu.show();
+//        currentMenu.execute();
     }
 }
