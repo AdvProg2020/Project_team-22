@@ -1,15 +1,21 @@
 package model.databaseUtil;
 
-import model.Discount;
-import model.account.Account;
-import model.comment.Comment;
-import model.off.Off;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import  model.Category;
+import  model.Discount;
+import  model.account.Account;
+import  model.comment.Comment;
+import  model.log.Log;
+import  model.off.Off;
 import model.product.Product;
+import  model.request.ProductRequest;
+import  model.request.Request;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class DatabaseInitiation {
     public static void initializeDatabase() {
@@ -40,17 +46,14 @@ public class DatabaseInitiation {
     }
 
     private static void loadAllComments() {
-        try {
-            FileInputStream fileInput = new FileInputStream("src/database/comments.ser");
-            ObjectInputStream fileOutput = new ObjectInputStream(fileInput);
-            Database.allComments = (ArrayList) fileOutput.readObject();
-            fileOutput.close();
-            fileInput.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        } catch (ClassNotFoundException c) {
-            System.out.println("Class not found");
-            c.printStackTrace();
+        try (FileReader reader = new FileReader("src/database/comments.json")) {
+            Type type = new TypeToken<ArrayList<Comment>>() {
+            }.getType();
+            Database.allComments = new Gson().fromJson(reader, type);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         for (Comment comment : Database.allComments) {
             Database.getProductByProductId(comment.getProduct().getProductId()).addComment(comment);
@@ -58,93 +61,80 @@ public class DatabaseInitiation {
     }
 
     private static void loadAllAccounts() {
-        try {
-            FileInputStream fileInputStream = new FileInputStream("src/database/accounts.ser");
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            Database.allAccounts = (ArrayList) objectInputStream.readObject();
-            objectInputStream.close();
-            fileInputStream.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        } catch (ClassNotFoundException c) {
-            System.out.println("Class not found");
-            c.printStackTrace();
+
+        try (FileReader reader = new FileReader("src/database/accounts.json")) {
+            Type type = new TypeToken<ArrayList<Account>>() {
+            }.getType();
+            Database.allAccounts = new Gson().fromJson(reader, type);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
     }
 
     private static void loadAllRequests() {
-        try {
-            FileInputStream fileInput = new FileInputStream("src/database/requests.ser");
-            ObjectInputStream fileOutput = new ObjectInputStream(fileInput);
-            Database.allRequests = (ArrayList) fileOutput.readObject();
-            fileOutput.close();
-            fileInput.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        } catch (ClassNotFoundException c) {
-            System.out.println("Class not found");
-            c.printStackTrace();
+        try (FileReader reader = new FileReader("src/database/requests.json")) {
+            Type type = new TypeToken<ArrayList<ProductRequest>>() {
+            }.getType();
+            Database.allRequests = new Gson().fromJson(reader, type);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
     }
 
     private static void loadAllProducts() {
-        try {
-            FileInputStream fileInput = new FileInputStream("src/database/products.ser");
-            ObjectInputStream fileOutput = new ObjectInputStream(fileInput);
-            Database.allProducts = (ArrayList) fileOutput.readObject();
-            fileOutput.close();
-            fileInput.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        } catch (ClassNotFoundException c) {
-            System.out.println("Class not found");
-            c.printStackTrace();
+        try (FileReader reader = new FileReader("src/database/products.json")) {
+            Type type = new TypeToken<ArrayList<Product>>() {
+            }.getType();
+            Database.allProducts = new Gson().fromJson(reader, type);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     private static void loadAllLogs() {
-        try {
-            FileInputStream fileInput = new FileInputStream("src/database/logs.ser");
-            ObjectInputStream fileOutput = new ObjectInputStream(fileInput);
-            Database.allLogs = (ArrayList) fileOutput.readObject();
-            fileOutput.close();
-            fileInput.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        } catch (ClassNotFoundException c) {
-            System.out.println("Class not found");
-            c.printStackTrace();
+        try (FileReader reader = new FileReader("src/database/logs.json")) {
+            Type type = new TypeToken<ArrayList<Log>>() {
+            }.getType();
+            Database.allLogs = new Gson().fromJson(reader, type);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     private static void loadAllCategories() {
-        try {
-            FileInputStream fileInput = new FileInputStream("src/database/categories.ser");
-            ObjectInputStream fileOutput = new ObjectInputStream(fileInput);
-            Database.allCategories = (ArrayList) fileOutput.readObject();
-            fileOutput.close();
-            fileInput.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        } catch (ClassNotFoundException c) {
-            System.out.println("Class not found");
-            c.printStackTrace();
+        try (FileReader reader = new FileReader("src/database/categories.json")) {
+            Type type = new TypeToken<ArrayList<Category>>() {
+            }.getType();
+            Database.allCategories = new Gson().fromJson(reader, type);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
     }
 
     private static void loadAllDiscounts() {
-        try {
-            FileInputStream fileInput = new FileInputStream("src/database/discounts.ser");
-            ObjectInputStream fileOutput = new ObjectInputStream(fileInput);
-            Database.allDiscounts = (ArrayList) fileOutput.readObject();
-            fileOutput.close();
-            fileInput.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        } catch (ClassNotFoundException c) {
-            System.out.println("Class not found");
-            c.printStackTrace();
+        try (FileReader reader = new FileReader("src/database/discounts.json")) {
+            Type type = new TypeToken<ArrayList<Discount>>() {
+            }.getType();
+            Database.allDiscounts = new Gson().fromJson(reader, type);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
         for (Discount discount : Database.allDiscounts) {
             ArrayList<Account> allowedAccount = new ArrayList<>();
             for (String allowedAccountUserName : discount.getAllowedAccountUserNames()) {
@@ -155,18 +145,16 @@ public class DatabaseInitiation {
     }
 
     private static void loadAllOffs() {
-        try {
-            FileInputStream fileInput = new FileInputStream("src/database/off.ser");
-            ObjectInputStream fileOutput = new ObjectInputStream(fileInput);
-            Database.allOffs = (ArrayList) fileOutput.readObject();
-            fileOutput.close();
-            fileInput.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        } catch (ClassNotFoundException c) {
-            System.out.println("Class not found");
-            c.printStackTrace();
+        try (FileReader reader = new FileReader("src/database/off.json")) {
+            Type type = new TypeToken<ArrayList<Off>>() {
+            }.getType();
+            Database.allOffs = new Gson().fromJson(reader, type);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
         for (Off off : Database.allOffs) {
             ArrayList<Product> productsList = new ArrayList<>();
             for (String productId : off.getProductsListId()) {
