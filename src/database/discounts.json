@@ -1,0 +1,20 @@
+[
+  {
+    "discountCode": "2301",
+    "startTime": {
+      "year": 2020,
+      "month": 12,
+      "day": 1
+    },
+    "endTime": {
+      "year": 2022,
+      "month": 1,
+      "day": 1
+    },
+    "discountPercent": 20.0,
+    "maxDiscountAmount": 100000,
+    "frequency": 100,
+    "allowedAccount": [],
+    "allowedAccountUserNames": []
+  }
+]

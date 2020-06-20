@@ -1,0 +1,43 @@
+[
+  {
+    "productId": "5ddf741b-5eff-4562-9998-a6a4445240f2",
+    "name": "milk",
+    "brand": "PAK",
+    "price": 9000,
+    "stockStatus": "AVAILABLE",
+    "categoryName": "food",
+    "description": "fresh",
+    "points": {},
+    "comments": []
+  },
+  {
+    "productId": "71cc62ee-83da-46ae-9ff7-44339e4e9b62",
+    "name": "milk",
+    "brand": "PAK",
+    "price": 9000,
+    "stockStatus": "AVAILABLE",
+    "categoryName": "food",
+    "category": {
+      "name": "food",
+      "productsList": []
+    },
+    "description": "fresh",
+    "points": {},
+    "comments": []
+  },
+  {
+    "productId": "a03def96-a013-4651-90f3-659862c3390c",
+    "name": "milk2",
+    "brand": "PAK",
+    "price": 9000,
+    "stockStatus": "AVAILABLE",
+    "categoryName": "food",
+    "category": {
+      "name": "food",
+      "productsList": []
+    },
+    "description": "fresh",
+    "points": {},
+    "comments": []
+  }
+]

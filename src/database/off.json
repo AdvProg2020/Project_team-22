@@ -1,0 +1,36 @@
+[
+  {
+    "offId": "30aca3d5-9f56-47c7-b1e4-3591736955dc",
+    "productsList": [
+      {
+        "productId": "test",
+        "name": "milk",
+        "brand": "PAK",
+        "price": 9000,
+        "stockStatus": "AVAILABLE",
+        "categoryName": "food",
+        "category": {
+          "name": "food",
+          "productsList": []
+        },
+        "description": "fresh",
+        "points": {},
+        "comments": []
+      }
+    ],
+    "productsListId": [
+      "test"
+    ],
+    "startTime": {
+      "year": 1397,
+      "month": 11,
+      "day": 2
+    },
+    "endTime": {
+      "year": 1398,
+      "month": 11,
+      "day": 2
+    },
+    "discountPercent": 30.0
+  }
+]

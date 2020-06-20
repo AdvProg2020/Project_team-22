@@ -1,0 +1,18 @@
+[
+  {
+    "product": {
+      "productId": "5ddf741b-5eff-4562-9998-a6a4445240f2",
+      "name": "milk",
+      "brand": "PAK",
+      "price": 9000,
+      "stockStatus": "AVAILABLE",
+      "categoryName": "food",
+      "description": "fresh",
+      "points": {},
+      "comments": []
+    },
+    "opinionTitle": "title",
+    "opinionContent": "content",
+    "hasBought": false
+  }
+]
