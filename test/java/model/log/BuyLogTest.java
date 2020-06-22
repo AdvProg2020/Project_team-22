@@ -12,7 +12,7 @@ public class BuyLogTest {
     public void discount(){
 
         try {
-            Discount discount = new Discount("2301", LocalDate.of(2020, 12, 1),
+            Discount discount = new Discount("23033", LocalDate.of(2020, 12, 1),
                     LocalDate.of(2022, 1, 1), 20, 100000, 100);
             log.setDiscount( discount);
 

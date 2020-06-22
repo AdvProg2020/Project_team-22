@@ -49,7 +49,7 @@ public class LogTest {
     @Test
     public void account(){
         try {
-            Account testAccount= new Account("MHHSS", "mh", "soleymani",
+            Account testAccount= new Account("MHHSS0", "mh", "soleymani",
                     "hssoleymanmh@gmail.com", "09301395175", "mh:2301", Role.CUSTOMER);
             testLog.setAccount( testAccount);
             Assert.assertEquals( "mh" , testLog.getAccount().getFirstName());

@@ -1,6 +1,6 @@
 [
   {
-    "offId": "30aca3d5-9f56-47c7-b1e4-3591736955dc",
+    "offId": "acc7c5ec-ae1d-49a6-a422-4298fd250727",
     "productsList": [
       {
         "productId": "test",
@@ -9,10 +9,6 @@
         "price": 9000,
         "stockStatus": "AVAILABLE",
         "categoryName": "food",
-        "category": {
-          "name": "food",
-          "productsList": []
-        },
         "description": "fresh",
         "points": {},
         "comments": []
