@@ -11,16 +11,12 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import main.java.controller.menu.offsArea.OffsMenu;
-import main.java.controller.menu.productsArea.ProductMenu;
-import main.java.controller.menu.userArea.RegisterAndLoginAndLogoutMenu;
 import main.java.controller.menu.userArea.UserMenu;
-
-import java.util.HashMap;
 
 public class MainMenu extends Application {
 
     private String path = "grocery-cart-with-item-1005638.jpg";
+    private UserMenu userMenu = new UserMenu();
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -44,17 +40,17 @@ public class MainMenu extends Application {
         root.setBackground(background);
 
 
-        Button start = new Button("user menu");
-        start.setMinWidth(220);
-        start.setBorder(new Border(new BorderStroke(Color.DARKGOLDENROD, BorderStrokeStyle.SOLID, new CornerRadii(20), new BorderWidths(3))));
-        start.setBackground(new Background(new BackgroundFill(Color.BLACK, new CornerRadii(23), Insets.EMPTY)));
-        start.setTextFill(Color.DARKKHAKI);
-        start.setFont(Font.loadFont("file:resources/fonts/zealot/ZealotCollegeItalic-Y24O.ttf", 20));
-        root.getChildren().add(start);
-        GridPane.setHalignment(start, HPos.CENTER);
-        GridPane.setValignment(start, VPos.CENTER);
-        GridPane.setColumnIndex(start, 1);
-        GridPane.setRowIndex(start, 8);
+        Button userMenuButton = new Button("user menu");
+        userMenuButton.setMinWidth(220);
+        userMenuButton.setBorder(new Border(new BorderStroke(Color.DARKGOLDENROD, BorderStrokeStyle.SOLID, new CornerRadii(20), new BorderWidths(3))));
+        userMenuButton.setBackground(new Background(new BackgroundFill(Color.BLACK, new CornerRadii(23), Insets.EMPTY)));
+        userMenuButton.setTextFill(Color.DARKKHAKI);
+        userMenuButton.setFont(Font.loadFont("file:resources/fonts/zealot/ZealotCollegeItalic-Y24O.ttf", 20));
+        root.getChildren().add(userMenuButton);
+        GridPane.setHalignment(userMenuButton, HPos.CENTER);
+        GridPane.setValignment(userMenuButton, VPos.CENTER);
+        GridPane.setColumnIndex(userMenuButton, 1);
+        GridPane.setRowIndex(userMenuButton, 8);
 
         //score board button
         Button scoreBoard = new Button("products");
@@ -113,8 +109,13 @@ public class MainMenu extends Application {
 
         });
 
-        start.setOnAction(e -> {
-
+        userMenuButton.setOnAction(e -> {
+            stage.close();
+            try {
+                userMenu.start(stage);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         });
 
         exit.setOnAction(e -> stage.close());
@@ -125,7 +126,7 @@ public class MainMenu extends Application {
 
         Scene scene = new Scene(root, 800, 600);
         stage.setScene(scene);
-        stage.setTitle("Space invaders");
+        stage.setTitle("online market");
         stage.setResizable(false);
         stage.show();
     }
