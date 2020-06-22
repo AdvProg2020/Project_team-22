@@ -75,9 +75,8 @@ public abstract class Menu {
                 nextMenu = submenus.get(chosenMenu);
             }
             if(!nextMenu.equals(this.parentMenu)) {
-                if(nextMenu instanceof UserMenu && core.getCurrentAccount() == null) {
-                    throw new Exception("login or register first");
-                } else if(nextMenu instanceof ManagerMenu && core.getCurrentAccount().getRole() != Role.MANAGER) {
+//                if(nextMenu instanceof UserMenu && core.getCurrentAccount() == null) {
+                if(nextMenu instanceof ManagerMenu && core.getCurrentAccount().getRole() != Role.MANAGER) {
                     throw new Exception("you are not a manager!");
                 } else if(nextMenu instanceof SalesmanMenu && core.getCurrentAccount().getRole() != Role.SALESMAN) {
                     throw new Exception("you are not a salesman!");
