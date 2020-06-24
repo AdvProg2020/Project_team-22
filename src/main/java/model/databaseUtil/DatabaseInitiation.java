@@ -74,7 +74,7 @@ public class DatabaseInitiation {
         try {
             FileInputStream fileInputStream = new FileInputStream("src/database/accounts.ser");
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            Database.allAccounts = (ArrayList) objectInputStream.readObject();
+            Database.allAccounts = (ArrayList)objectInputStream.readObject();
             objectInputStream.close();
             fileInputStream.close();
         } catch (IOException ioe) {

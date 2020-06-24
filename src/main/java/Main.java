@@ -1,6 +1,7 @@
 package main.java;
 
 import javafx.application.Application;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -10,12 +11,15 @@ import main.java.controller.Core;
 import main.java.model.databaseUtil.DatabaseInitiation;
 import main.java.view.CommandProcessor;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 
 public class Main extends Application {
 
     public static void main(String[] args)  {
-        DatabaseInitiation.initializeDatabase();
-        Core core = new Core();
+        //DatabaseInitiation.initializeDatabase();
+        //Core core = new Core();
         //CommandProcessor commandProcessor = new CommandProcessor(core);
         //commandProcessor.run();
         launch(args);
@@ -24,6 +28,7 @@ public class Main extends Application {
 
     private Scene register;
     private Scene login;
+    public static Core core = new Core();
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -48,4 +53,6 @@ public class Main extends Application {
         stage.setResizable(false);
         stage.show();
     }
+
+
 }

@@ -3,6 +3,7 @@ package main.java.model.databaseUtil;
 import main.java.model.Category;
 import main.java.model.Discount;
 import main.java.model.account.Account;
+import main.java.model.account.Role;
 import main.java.model.comment.Comment;
 import main.java.model.log.Log;
 import main.java.model.off.Off;
@@ -286,6 +287,15 @@ public class Database {
             }
         }
         return null;
+    }
+
+    public static boolean managerExists() {
+        for (Account account : allAccounts) {
+            if(account.getRole() == Role.MANAGER) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static ArrayList<Product> getAllProducts() {
