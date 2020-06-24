@@ -13,6 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.java.Main;
 import main.java.controller.AlertBox;
@@ -29,6 +30,7 @@ public class LoginAndLogoutMenu extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        stage.initModality(Modality.APPLICATION_MODAL);
         GridPane root = new GridPane();
         root.setVgap(4);
         BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(153, 204, 255) , null, null);

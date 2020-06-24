@@ -14,6 +14,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.java.controller.AlertBox;
 import main.java.model.account.Account;
@@ -27,6 +28,7 @@ public class RegisterMenu extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        stage.initModality(Modality.APPLICATION_MODAL);
         GridPane root = new GridPane();
         root.setVgap(4);
         root.setHgap(12);
