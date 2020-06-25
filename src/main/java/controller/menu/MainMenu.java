@@ -11,15 +11,19 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import main.java.controller.menu.userArea.LoginAndLogoutMenu;
 import main.java.controller.menu.userArea.UserMenu;
+import main.java.model.databaseUtil.DatabaseInitiation;
 
 public class MainMenu extends Application {
 
     private String path = "grocery-cart-with-item-1005638.jpg";
     private UserMenu userMenu = new UserMenu();
+    private LoginAndLogoutMenu loginAndLogoutMenu= new LoginAndLogoutMenu();
 
     @Override
     public void start(Stage stage) throws Exception {
+        //DatabaseInitiation.initializeDatabase();
         GridPane root = new GridPane();
         //root.setGridLinesVisible(true);
         final int numCols = 3 ;
@@ -42,10 +46,11 @@ public class MainMenu extends Application {
 
         Button userMenuButton = new Button("user menu");
         userMenuButton.setMinWidth(220);
-        userMenuButton.setBorder(new Border(new BorderStroke(Color.DARKGOLDENROD, BorderStrokeStyle.SOLID, new CornerRadii(20), new BorderWidths(3))));
-        userMenuButton.setBackground(new Background(new BackgroundFill(Color.BLACK, new CornerRadii(23), Insets.EMPTY)));
+        userMenuButton.setBorder(new Border(new BorderStroke(Color.DARKGOLDENROD, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+        userMenuButton.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(12), Insets.EMPTY)));
         userMenuButton.setTextFill(Color.DARKKHAKI);
-        userMenuButton.setFont(Font.loadFont("file:resources/fonts/zealot/ZealotCollegeItalic-Y24O.ttf", 20));
+        //userMenuButton.setStyle("-fx-font-weight: bold;");
+        userMenuButton.setFont(Font.loadFont("file:resources/fonts/DroidSerif-Regular.ttf", 20));
         root.getChildren().add(userMenuButton);
         GridPane.setHalignment(userMenuButton, HPos.CENTER);
         GridPane.setValignment(userMenuButton, VPos.CENTER);
@@ -53,60 +58,64 @@ public class MainMenu extends Application {
         GridPane.setRowIndex(userMenuButton, 8);
 
         //score board button
-        Button scoreBoard = new Button("products");
-        scoreBoard.setMinWidth(220);
-        scoreBoard.setBorder(new Border(new BorderStroke(Color.BROWN, BorderStrokeStyle.SOLID, new CornerRadii(20), new BorderWidths(3))));
-        scoreBoard.setBackground(new Background(new BackgroundFill(Color.BLACK, new CornerRadii(23), Insets.EMPTY)));
-        scoreBoard.setTextFill(Color.SALMON);
-        scoreBoard.setFont(Font.loadFont("file:resources/fonts/zealot/ZealotCollegeItalic-Y24O.ttf", 20));
-        root.getChildren().add(scoreBoard);
-        GridPane.setHalignment(scoreBoard, HPos.CENTER);
-        GridPane.setValignment(scoreBoard, VPos.CENTER);
-        GridPane.setColumnIndex(scoreBoard, 1);
-        GridPane.setRowIndex(scoreBoard, 10);
+        Button products = new Button("products");
+        products.setMinWidth(220);
+        products.setBorder(new Border(new BorderStroke(Color.BROWN, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+        products.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(12), Insets.EMPTY)));
+        products.setTextFill(Color.SALMON);
+        products.setFont(Font.loadFont("file:resources/fonts/DroidSerif-Regular.ttf", 20));
+        root.getChildren().add(products);
+        GridPane.setHalignment(products, HPos.CENTER);
+        GridPane.setValignment(products, VPos.CENTER);
+        GridPane.setColumnIndex(products, 1);
+        GridPane.setRowIndex(products, 10);
 
-        Button singIn = new Button("Register | Login");
-        singIn.setMinWidth(220);
-        singIn.setBorder(new Border(new BorderStroke(Color.SADDLEBROWN, BorderStrokeStyle.SOLID, new CornerRadii(20), new BorderWidths(3))));
-        singIn.setBackground(new Background(new BackgroundFill(Color.BLACK, new CornerRadii(23), Insets.EMPTY)));
-        singIn.setTextFill(Color.SANDYBROWN);
-        singIn.setFont(Font.loadFont("file:resources/fonts/zealot/ZealotCollegeItalic-Y24O.ttf", 20));
-        root.getChildren().add(singIn);
-        GridPane.setHalignment(singIn, HPos.CENTER);
-        GridPane.setValignment(singIn, VPos.CENTER);
-        GridPane.setColumnIndex(singIn, 1);
-        GridPane.setRowIndex(singIn, 12);
+        Button login = new Button("Register | Login");
+        login.setMinWidth(220);
+        login.setBorder(new Border(new BorderStroke(Color.SADDLEBROWN, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+        login.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(12), Insets.EMPTY)));
+        login.setTextFill(Color.SANDYBROWN);
+        login.setFont(Font.loadFont("file:resources/fonts/DroidSerif-Regular.ttf", 20));
+        root.getChildren().add(login);
+        GridPane.setHalignment(login, HPos.CENTER);
+        GridPane.setValignment(login, VPos.CENTER);
+        GridPane.setColumnIndex(login, 1);
+        GridPane.setRowIndex(login, 12);
 
-        Button changeName = new Button("Offs");
-        changeName.setMinWidth(220);
-        changeName.setBorder(new Border(new BorderStroke(Color.MEDIUMBLUE, BorderStrokeStyle.SOLID, new CornerRadii(20), new BorderWidths(3))));
-        changeName.setBackground(new Background(new BackgroundFill(Color.BLACK, new CornerRadii(23), Insets.EMPTY)));
-        changeName.setTextFill(Color.DEEPSKYBLUE);
-        changeName.setFont(Font.loadFont("file:resources/fonts/zealot/ZealotCollegeItalic-Y24O.ttf", 20));
-        root.getChildren().add(changeName);
-        GridPane.setHalignment(changeName, HPos.CENTER);
-        GridPane.setValignment(changeName, VPos.CENTER);
-        GridPane.setColumnIndex(changeName, 1);
-        GridPane.setRowIndex(changeName, 14);
+        Button offs = new Button("Offs");
+        offs.setMinWidth(220);
+        offs.setBorder(new Border(new BorderStroke(Color.MEDIUMBLUE, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+        offs.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(12), Insets.EMPTY)));
+        offs.setTextFill(Color.DEEPSKYBLUE);
+        offs.setFont(Font.loadFont("file:resources/fonts/DroidSerif-Regular.ttf", 20));
+        root.getChildren().add(offs);
+        GridPane.setHalignment(offs, HPos.CENTER);
+        GridPane.setValignment(offs, VPos.CENTER);
+        GridPane.setColumnIndex(offs, 1);
+        GridPane.setRowIndex(offs, 14);
 
         Button exit = new Button("Exit");
         exit.setMinWidth(220);
-        exit.setBorder(new Border(new BorderStroke(Color.PURPLE, BorderStrokeStyle.SOLID, new CornerRadii(20), new BorderWidths(3))));
-        exit.setBackground(new Background(new BackgroundFill(Color.BLACK, new CornerRadii(23), Insets.EMPTY)));
+        exit.setBorder(new Border(new BorderStroke(Color.PURPLE, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+        exit.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(12), Insets.EMPTY)));
         exit.setTextFill(Color.MEDIUMPURPLE);
-        exit.setFont(Font.loadFont("file:resources/fonts/zealot/ZealotCollegeItalic-Y24O.ttf", 20));
+        exit.setFont(Font.loadFont("file:resources/fonts/DroidSerif-Regular.ttf", 20));
         root.getChildren().add(exit);
         GridPane.setHalignment(exit, HPos.CENTER);
         GridPane.setValignment(exit, VPos.CENTER);
         GridPane.setColumnIndex(exit, 1);
         GridPane.setRowIndex(exit, 16);
 
-        changeName.setOnAction(e -> {
+        offs.setOnAction(e -> {
 
         });
 
-        singIn.setOnAction(e -> {
-
+        login.setOnAction(e -> {
+            try {
+                loginAndLogoutMenu.start(new Stage());
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
         });
 
         userMenuButton.setOnAction(e -> {
@@ -118,11 +127,66 @@ public class MainMenu extends Application {
             }
         });
 
+
+
         exit.setOnAction(e -> stage.close());
 
-        scoreBoard.setOnAction(e -> {
 
+        userMenuButton.setOnMouseEntered(e -> {
+            userMenuButton.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+            userMenuButton.setBackground(new Background(new BackgroundFill(Color.DARKKHAKI, new CornerRadii(12), Insets.EMPTY)));
+            userMenuButton.setTextFill(Color.WHITE);
         });
+        userMenuButton.setOnMouseExited(e -> {
+            userMenuButton.setBorder(new Border(new BorderStroke(Color.DARKGOLDENROD, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+            userMenuButton.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(12), Insets.EMPTY)));
+            userMenuButton.setTextFill(Color.DARKKHAKI);
+        });
+
+        products.setOnMouseEntered(e -> {
+            products.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+            products.setBackground(new Background(new BackgroundFill(Color.SALMON, new CornerRadii(12), Insets.EMPTY)));
+            products.setTextFill(Color.WHITE);
+        });
+        products.setOnMouseExited(e -> {
+            products.setBorder(new Border(new BorderStroke(Color.BROWN, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+            products.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(12), Insets.EMPTY)));
+            products.setTextFill(Color.SALMON);
+        });
+
+        login.setOnMouseEntered(e -> {
+            login.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+            login.setBackground(new Background(new BackgroundFill(Color.SADDLEBROWN, new CornerRadii(12), Insets.EMPTY)));
+            login.setTextFill(Color.WHITE);
+        });
+        login.setOnMouseExited(e -> {
+            login.setBorder(new Border(new BorderStroke(Color.SADDLEBROWN, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+            login.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(12), Insets.EMPTY)));
+            login.setTextFill(Color.SANDYBROWN);
+        });
+
+        offs.setOnMouseEntered(e -> {
+            offs.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+            offs.setBackground(new Background(new BackgroundFill(Color.MEDIUMBLUE, new CornerRadii(12), Insets.EMPTY)));
+            offs.setTextFill(Color.WHITE);
+        });
+        offs.setOnMouseExited(e -> {
+            offs.setBorder(new Border(new BorderStroke(Color.MEDIUMBLUE, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+            offs.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(12), Insets.EMPTY)));
+            offs.setTextFill(Color.DEEPSKYBLUE);
+        });
+
+        exit.setOnMouseEntered(e -> {
+            exit.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+            exit.setBackground(new Background(new BackgroundFill(Color.PURPLE, new CornerRadii(12), Insets.EMPTY)));
+            exit.setTextFill(Color.WHITE);
+        });
+        exit.setOnMouseExited(e -> {
+            exit.setBorder(new Border(new BorderStroke(Color.PURPLE, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+            exit.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(12), Insets.EMPTY)));
+            exit.setTextFill(Color.MEDIUMPURPLE);
+        });
+
 
         Scene scene = new Scene(root, 800, 600);
         stage.setScene(scene);
@@ -130,4 +194,5 @@ public class MainMenu extends Application {
         stage.setResizable(false);
         stage.show();
     }
+
 }

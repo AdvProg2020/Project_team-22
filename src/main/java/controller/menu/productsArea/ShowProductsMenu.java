@@ -1,7 +1,6 @@
 package main.java.controller.menu.productsArea;
 
 import main.java.controller.menu.Menu;
-import main.java.controller.menu.userArea.RegisterAndLoginAndLogoutMenu;
 import main.java.model.comment.Comment;
 import main.java.model.databaseUtil.Database;
 import main.java.model.product.Product;
@@ -19,7 +18,7 @@ public class ShowProductsMenu extends Menu {
         submenus.put(5, getShowProductCommentsMenu());
         submenus.put(6, getAddCommentMenu());
         submenus.put(7, getWritePointForProductMenu());
-        submenus.put(8, new RegisterAndLoginAndLogoutMenu(this));
+        //submenus.put(8, new RegisterAndLoginAndLogoutMenu(this));
         this.setSubmenus(submenus);
     }
 

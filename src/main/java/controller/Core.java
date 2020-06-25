@@ -34,7 +34,6 @@ public class Core {
     private ArrayList<String> categoryNames = new ArrayList<>();
     private int currentSort = 0;
     private ArrayList<Product> products = new ArrayList<>();
-
     public Core() {
         setFilters();
     }
@@ -259,80 +258,67 @@ public class Core {
         currentAccount.setFirstName(newName);
     }
 
-    public boolean loginUser(String username, String password) {
-        Account account = Database.getAccountByUsername(username);
-        if (account == null) {
-            System.out.println("There is not a user with this name");
-            return false;
-        } else {
-            if (account.getPassword().equals(password)) {
-                System.out.println("You logged in successfully");
-                currentAccount = account;
-                return true;
-            } else {
-                System.out.println("Wrong password");
-                return false;
-            }
-        }
+    public void setCurrentAccount(Account currentAccount) {
+        this.currentAccount = currentAccount;
     }
-
-    public void registerUser(String username, String password, Scanner scanner) {
-        if (Database.getAccountByUsername(username) != null) {
-            System.out.println("This user is already existed");
-        } else {
-            System.out.println("Enter your first name");
-            String firstName = scanner.nextLine();
-            System.out.println("Enter your last name");
-            String lastName = scanner.nextLine();
-            System.out.println("Enter your email address");
-            String email = scanner.nextLine();
-            System.out.println("Enter your phone");
-            String phone = scanner.nextLine();
-            Role role = null;
-            String companyName;
-            System.out.println("Select your role:\n" +
-                    "1:   CUSTOMER\n" +
-                    "2:   SALESMAN");
-            if (isTheFirstManager()) {
-                System.out.println("3:   MANAGER");
-            }
-            String choice = scanner.nextLine();
-            if (choice.equals("1") || choice.equals("2") || (choice.equals("3") && isTheFirstManager())) {
-                switch (choice) {
-                    case "1":
-                        role = Role.CUSTOMER;
-                        break;
-                    case "2":
-                        role = Role.SALESMAN;
-                        break;
-                    case "3":
-                        role = Role.MANAGER;
-                        break;
-                }
-                if (role.equals(Role.SALESMAN)) {
-                    System.out.println("Enter your company name");
-                    companyName = scanner.nextLine();
-                    try {
-                        Database.addAccount(new Account(username, firstName, lastName, email, phone,
-                                password, role, companyName));
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    try {
-                        Database.addAccount(new Account(username, firstName, lastName, email, phone, password, role));
-                        System.out.println("You registered successfully");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-
-            } else {
-                System.out.println("Invalid input!");
-            }
-        }
-
-    }
+//
+//    public void registerUser(String username, String password, Scanner scanner) {
+//        if (Database.getAccountByUsername(username) != null) {
+//            System.out.println("This user is already exists");
+//        } else {
+//            System.out.println("Enter your first name");
+//            String firstName = scanner.nextLine();
+//            System.out.println("Enter your last name");
+//            String lastName = scanner.nextLine();
+//            System.out.println("Enter your email address");
+//            String email = scanner.nextLine();
+//            System.out.println("Enter your phone");
+//            String phone = scanner.nextLine();
+//            Role role = null;
+//            String companyName;
+//            System.out.println("Select your role:\n" +
+//                    "1:   CUSTOMER\n" +
+//                    "2:   SALESMAN");
+//            if (isTheFirstManager()) {
+//                System.out.println("3:   MANAGER");
+//            }
+//            String choice = scanner.nextLine();
+//            if (choice.equals("1") || choice.equals("2") || (choice.equals("3") && isTheFirstManager())) {
+//                switch (choice) {
+//                    case "1":
+//                        role = Role.CUSTOMER;
+//                        break;
+//                    case "2":
+//                        role = Role.SALESMAN;
+//                        break;
+//                    case "3":
+//                        role = Role.MANAGER;
+//                        break;
+//                }
+//                if (role.equals(Role.SALESMAN)) {
+//                    System.out.println("Enter your company name");
+//                    companyName = scanner.nextLine();
+//                    try {
+//                        Database.addAccount(new Account(username, firstName, lastName, email, phone,
+//                                password, role, companyName));
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//                } else {
+//                    try {
+//                        Database.addAccount(new Account(username, firstName, lastName, email, phone, password, role));
+//                        System.out.println("You registered successfully");
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//
+//            } else {
+//                System.out.println("Invalid input!");
+//            }
+//        }
+//
+//    }
 
     private boolean isTheFirstManager() {
         for (Account account : Database.getAllAccounts()) {

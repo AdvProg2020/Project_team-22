@@ -56,51 +56,36 @@ public class UserMenu extends Application {
         root.setBackground(background);
 
 
-        Button managerMenuButton = new Button("manager menu");
-        managerMenuButton.setMinWidth(220);
-        managerMenuButton.setBorder(new Border(new BorderStroke(Color.DARKGOLDENROD, BorderStrokeStyle.SOLID, new CornerRadii(20), new BorderWidths(3))));
-        managerMenuButton.setBackground(new Background(new BackgroundFill(Color.BLACK, new CornerRadii(23), Insets.EMPTY)));
-        managerMenuButton.setTextFill(Color.DARKKHAKI);
-        managerMenuButton.setFont(Font.loadFont("file:resources/fonts/zealot/ZealotCollegeItalic-Y24O.ttf", 20));
-        root.getChildren().add(managerMenuButton);
-        GridPane.setHalignment(managerMenuButton, HPos.CENTER);
-        GridPane.setValignment(managerMenuButton, VPos.CENTER);
-        GridPane.setColumnIndex(managerMenuButton, 1);
-        GridPane.setRowIndex(managerMenuButton, 5);
+        Button accessMenuButton = new Button("access menu");
+        accessMenuButton.setMinWidth(220);
+        accessMenuButton.setBorder(new Border(new BorderStroke(Color.DARKGOLDENROD, BorderStrokeStyle.SOLID, new CornerRadii(20), new BorderWidths(3))));
+        accessMenuButton.setBackground(new Background(new BackgroundFill(Color.BLACK, new CornerRadii(23), Insets.EMPTY)));
+        accessMenuButton.setTextFill(Color.DARKKHAKI);
+        accessMenuButton.setFont(Font.loadFont("file:resources/fonts/zealot/ZealotCollegeItalic-Y24O.ttf", 20));
+        root.getChildren().add(accessMenuButton);
+        GridPane.setHalignment(accessMenuButton, HPos.CENTER);
+        GridPane.setValignment(accessMenuButton, VPos.CENTER);
+        GridPane.setColumnIndex(accessMenuButton, 1);
+        GridPane.setRowIndex(accessMenuButton, 5);
 
-        Button customerMenuButton = new Button("customer menu");
-        customerMenuButton.setMinWidth(220);
-        customerMenuButton.setBorder(new Border(new BorderStroke(Color.BROWN, BorderStrokeStyle.SOLID, new CornerRadii(20), new BorderWidths(3))));
-        customerMenuButton.setBackground(new Background(new BackgroundFill(Color.BLACK, new CornerRadii(23), Insets.EMPTY)));
-        customerMenuButton.setTextFill(Color.SALMON);
-        customerMenuButton.setFont(Font.loadFont("file:resources/fonts/zealot/ZealotCollegeItalic-Y24O.ttf", 20));
-        root.getChildren().add(customerMenuButton);
-        GridPane.setHalignment(customerMenuButton, HPos.CENTER);
-        GridPane.setValignment(customerMenuButton, VPos.CENTER);
-        GridPane.setColumnIndex(customerMenuButton, 0);
-        GridPane.setRowIndex(customerMenuButton, 5);
+        Button profileMenuButton = new Button("profile menu");
+        profileMenuButton.setMinWidth(220);
+        profileMenuButton.setBorder(new Border(new BorderStroke(Color.BROWN, BorderStrokeStyle.SOLID, new CornerRadii(20), new BorderWidths(3))));
+        profileMenuButton.setBackground(new Background(new BackgroundFill(Color.BLACK, new CornerRadii(23), Insets.EMPTY)));
+        profileMenuButton.setTextFill(Color.SALMON);
+        profileMenuButton.setFont(Font.loadFont("file:resources/fonts/zealot/ZealotCollegeItalic-Y24O.ttf", 20));
+        root.getChildren().add(profileMenuButton);
+        GridPane.setHalignment(profileMenuButton, HPos.CENTER);
+        GridPane.setValignment(profileMenuButton, VPos.CENTER);
+        GridPane.setColumnIndex(profileMenuButton, 0);
+        GridPane.setRowIndex(profileMenuButton, 5);
 
-        Button salesmanMenuButton = new Button("salesman menu");
-        salesmanMenuButton.setMinWidth(220);
-        salesmanMenuButton.setBorder(new Border(new BorderStroke(Color.SADDLEBROWN, BorderStrokeStyle.SOLID, new CornerRadii(20), new BorderWidths(3))));
-        salesmanMenuButton.setBackground(new Background(new BackgroundFill(Color.BLACK, new CornerRadii(23), Insets.EMPTY)));
-        salesmanMenuButton.setTextFill(Color.SANDYBROWN);
-        salesmanMenuButton.setFont(Font.loadFont("file:resources/fonts/zealot/ZealotCollegeItalic-Y24O.ttf", 20));
-        root.getChildren().add(salesmanMenuButton);
-        GridPane.setHalignment(salesmanMenuButton, HPos.CENTER);
-        GridPane.setValignment(salesmanMenuButton, VPos.CENTER);
-        GridPane.setColumnIndex(salesmanMenuButton, 2);
-        GridPane.setRowIndex(salesmanMenuButton, 5);
 
-        salesmanMenuButton.setOnAction(e -> {
-
-        });
-
-        managerMenuButton.setOnAction(e -> {
+        accessMenuButton.setOnAction(e -> {
             
         });
 
-        customerMenuButton.setOnAction(e -> {
+        profileMenuButton.setOnAction(e -> {
 
         });
 
