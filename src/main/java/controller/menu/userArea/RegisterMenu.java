@@ -28,7 +28,6 @@ public class RegisterMenu extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        stage.initModality(Modality.APPLICATION_MODAL);
         GridPane root = new GridPane();
         root.setVgap(4);
         root.setHgap(12);

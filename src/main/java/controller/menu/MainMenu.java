@@ -1,7 +1,6 @@
 package main.java.controller.menu;
 
 import javafx.application.Application;
-import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
@@ -16,9 +15,6 @@ import main.java.controller.menu.userArea.LoginAndLogoutMenu;
 import main.java.controller.menu.userArea.UserMenu;
 import main.java.model.databaseUtil.DatabaseInitiation;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 public class MainMenu extends Application {
 
     private String path = "grocery-cart-with-item-1005638.jpg";
@@ -27,7 +23,7 @@ public class MainMenu extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        DatabaseInitiation.initializeDatabase();
+        //DatabaseInitiation.initializeDatabase();
         GridPane root = new GridPane();
         //root.setGridLinesVisible(true);
         final int numCols = 3 ;

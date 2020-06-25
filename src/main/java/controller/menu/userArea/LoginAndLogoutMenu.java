@@ -10,19 +10,15 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.java.Main;
 import main.java.controller.AlertBox;
-import main.java.controller.menu.Menu;
 import main.java.model.account.Account;
 import main.java.model.databaseUtil.Database;
 
-import java.nio.file.LinkOption;
-import java.util.HashMap;
 
 public class LoginAndLogoutMenu extends Application {
 
