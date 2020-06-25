@@ -113,10 +113,20 @@ public class DataBaseTest {
 
     @Test
     public void addComment(){
-        Comment testComment = new Comment("title", "content");
-        testComment.setProduct( product);
-        Database.addProduct( product);
-        Database.addComment( testComment);
+        try {
+            Comment testComment = new Comment("title", "content");
+
+                Account account = new Account("MHHSS", "mh", "soleymani",
+                        "hssoleymanmh@gmail.com", "09301395175",
+                        "mh:2301", Role.CUSTOMER);
+            testComment.setProduct( product);
+            testComment.setAccount( account);
+            Database.addProduct( product);
+            Database.addComment( testComment);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Test

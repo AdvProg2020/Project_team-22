@@ -41,10 +41,18 @@ public class Core {
     }
 
     public void setFilters() {
-        filters.put(1, false);
-        filters.put(2, false);
-        filters.put(3, false);
+        filters.put(1, false); // price filter
+        filters.put(2, false); // availability filter
+        filters.put(3, false); // category filter
     }
+
+    public HashMap<Integer, Boolean> getFilters() {
+        return filters;
+    }
+
+//    public void setFilters(HashMap<Integer, Boolean> filters) {
+//        this.filters = filters;
+//    }
 
     public Account getCurrentAccount() {
         return currentAccount;
@@ -236,7 +244,7 @@ public class Core {
             throw new Exception("invalid input");
         }
         switch (select) {
-            case 1:
+            case 1: // price
                 System.out.println("enter starting price:");
                 startPrice = Integer.parseInt(scanner.nextLine());
                 System.out.println("enter highest price:");
@@ -246,13 +254,13 @@ public class Core {
                 }
                 filters.put(1, true);
                 break;
-            case 2:
+            case 2:  ///availability
                 if (filters.get(2)) {
                     throw new Exception("filter already enabled!");
                 }
                 filters.put(2, true);
                 break;
-            ///availability
+
             case 3:
                 ///category
                 System.out.println("Enter category name");
@@ -685,7 +693,6 @@ public class Core {
     }
 
     public void confirmShopBasket() {
-
     }
 
     public void showDiscount(Discount discount) {
@@ -733,10 +740,12 @@ public class Core {
 
     public void showComments(Product product) {
         if (product != null) {
-            for (Comment comment : product.getComments()) {
-                System.out.println("Account: " + comment.getAccount().getUsername());
-                System.out.println("Title: " + comment.getOpinionTitle());
-                System.out.println("Content: " + comment.getOpinionContent() + "\n");
+            for (Comment comment : Database.allComments) {
+                if( comment.getProduct().getProductId().equals( product.getProductId())) {
+                    System.out.println("Account: " + comment.getAccount().getUsername());
+                    System.out.println("Title: " + comment.getOpinionTitle());
+                    System.out.println("Content: " + comment.getOpinionContent() + "\n");
+                }
             }
             if (product.getComments().size() == 0) {
                 System.out.println("There is no comment");
@@ -751,9 +760,9 @@ public class Core {
         comment.setProduct(product);
         comment.setOpinionStatus(CommentStatus.WAITING_FOR_CONFIRM);
         comment.setHasBought(currentAccount.hasBoughtTheProduct(product));
-        product.addComment(comment);
+//        product.addComment(comment);
         Database.addComment(comment);
-        Database.addAllCommentsToDatabaseFile();
+//        Database.addAllCommentsToDatabaseFile();
 
     }
 
