@@ -11,6 +11,8 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import main.java.Main;
+import main.java.controller.AlertBox;
 import main.java.controller.menu.userArea.LoginAndLogoutMenu;
 import main.java.controller.menu.userArea.UserMenu;
 import main.java.model.databaseUtil.DatabaseInitiation;
@@ -23,7 +25,7 @@ public class MainMenu extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        //DatabaseInitiation.initializeDatabase();
+        DatabaseInitiation.initializeDatabase();
         GridPane root = new GridPane();
         //root.setGridLinesVisible(true);
         final int numCols = 3 ;
@@ -119,11 +121,15 @@ public class MainMenu extends Application {
         });
 
         userMenuButton.setOnAction(e -> {
-            stage.close();
-            try {
-                userMenu.start(stage);
-            } catch (Exception ex) {
-                ex.printStackTrace();
+            if (Main.core.currentAccount != null) {
+                stage.close();
+                try {
+                    userMenu.start(stage);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            } else {
+                AlertBox.display("login error", "please login first!");
             }
         });
 

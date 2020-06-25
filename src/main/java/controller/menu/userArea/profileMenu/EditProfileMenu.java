@@ -124,7 +124,7 @@ public class EditProfileMenu extends Menu {
                 System.out.println("Enter new first name");
                 String newName = scanner.nextLine();
                 try {
-                    core.changeAccountName(newName);
+                    core.changeAccountFirstName(newName);
                     System.out.println("first name changed!");
                 } catch (Exception e) {
                     System.out.println(e.getMessage());

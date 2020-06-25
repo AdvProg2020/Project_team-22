@@ -254,7 +254,7 @@ public class Core {
         currentAccount.setLastName(newLastName);
     }
 
-    public void changeAccountName(String newName) throws Exception {
+    public void changeAccountFirstName(String newName) throws Exception {
         currentAccount.setFirstName(newName);
     }
 
