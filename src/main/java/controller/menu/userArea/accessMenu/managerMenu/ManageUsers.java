@@ -1,13 +1,11 @@
-package main.java.controller.menu.userArea.AccessMenu.managerMenu;
+package main.java.controller.menu.userArea.accessMenu.managerMenu;
 
 import main.java.controller.menu.Menu;
 import main.java.model.account.Account;
 import main.java.model.account.Role;
 import main.java.model.databaseUtil.Database;
 
-import javax.xml.crypto.Data;
 import java.util.HashMap;
-import java.util.Objects;
 
 public class ManageUsers extends Menu {
     public ManageUsers(Menu parentMenu) {

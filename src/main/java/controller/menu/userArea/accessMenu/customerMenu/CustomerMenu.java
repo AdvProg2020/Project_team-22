@@ -1,4 +1,4 @@
-package main.java.controller.menu.userArea.AccessMenu;
+package main.java.controller.menu.userArea.accessMenu.customerMenu;
 
 import javafx.application.Application;
 import javafx.geometry.HPos;
