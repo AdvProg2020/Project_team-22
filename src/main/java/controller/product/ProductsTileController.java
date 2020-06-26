@@ -16,11 +16,11 @@ public class ProductsTileController {
     @FXML
     private VBox vbox;
 
-    @FXML
-    private StackPane picStackPane;
-
-    @FXML
-    private ImageView picImageView;
+//    @FXML
+//    private StackPane picStackPane;
+//
+//    @FXML
+//    private ImageView picImageView;
 
     @FXML
     private Label infoLabel;
@@ -39,7 +39,6 @@ public class ProductsTileController {
     }
 
     public ProductsTileController(Product product) {
-        System.out.println("hereeeeeeeeeeeeee");
         this.product = product ;
         this.core = new Core() ;
     }

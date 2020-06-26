@@ -871,4 +871,12 @@ public class Core {
         System.out.println("sort enabled");
     }
 
+    public int shopBasketTotalPrice() {
+        int total = 0 ;
+        for ( Product product : this.currentAccount.getShopBasket()){
+            total += product.getPrice() ;
+        }
+        return  total ;
+    }
+
 }
