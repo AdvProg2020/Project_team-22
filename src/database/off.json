@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "offId": "79f6168a-f6c3-4d5a-bd7c-220ce43eb8f4",
+    "productsList": [],
+    "productsListId": [],
+    "startTime": {
+      "year": 1,
+      "month": 2,
+      "day": 2
+    },
+    "endTime": {
+      "year": 2,
+      "month": 2,
+      "day": 2
+    },
+    "discountPercent": 2.0
+  }
+]

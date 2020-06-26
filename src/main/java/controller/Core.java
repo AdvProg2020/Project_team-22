@@ -336,7 +336,6 @@ public class Core {
 
     public void createOff(Off off) {
         Database.addOff(off);
-
     }
 
     public void editOff(Off off, ArrayList<Product> productsList, LocalDate startTime, LocalDate endTime, double discountPercent) {

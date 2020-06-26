@@ -264,7 +264,7 @@ public class SalesmanMenu extends Application {
 
         createOffButton.setOnAction(e -> {
             try {
-                new main.java.controller.menu.userArea.accessMenu.customerMenu.ShopBasketMenu().start(new Stage());
+                new CreateOff().start(new Stage());
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
