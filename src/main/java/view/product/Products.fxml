@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fitToWidth="true" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: balck;" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controller.product.ProductsController">
+<ScrollPane fitToWidth="true" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: balck;" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" >
    <content>
       <StackPane fx:id="stackPane">
          <children>
@@ -29,7 +29,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <Button focusTraversable="false" layoutY="21.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="33.0" style="-fx-background-radius: 100;" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="21.0">
+                        <Button fx:id="back" focusTraversable="false" layoutY="21.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="33.0" style="-fx-background-radius: 100;" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="21.0">
                            <graphic>
                               <ImageView fitHeight="18.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

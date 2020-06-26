@@ -3,10 +3,13 @@ package main.java.controller.off;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import main.java.model.Category;
 import main.java.model.databaseUtil.Database;
 import main.java.model.off.Off;
@@ -21,9 +24,30 @@ public class OffsController {
     @FXML
     private ComboBox<String> categories;
     @FXML
+    private Button back;
+
+    private  Stage stage ;
+    private  GridPane gridPane ;
+
+    @FXML
     public void initialize(){
         addProduct() ;
         initCategory() ;
+        initBackButton() ;
+    }
+
+    public OffsController(Stage stage , GridPane gridPane) {
+        this.stage = stage ;
+        this.gridPane = gridPane ;
+    }
+
+    private void initBackButton() {
+        back.setOnAction(event -> {
+            stage.getScene().setRoot( gridPane);
+            stage.setTitle("online market");
+            stage.setResizable(false);
+        });
+
     }
 
     private void initCategory() {

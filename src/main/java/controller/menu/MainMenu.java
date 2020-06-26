@@ -1,9 +1,11 @@
 package main.java.controller.menu;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -15,7 +17,12 @@ import main.java.Main;
 import main.java.controller.AlertBox;
 import main.java.controller.menu.userArea.LoginAndLogoutMenu;
 import main.java.controller.menu.userArea.UserMenu;
+import main.java.controller.off.OffsController;
+import main.java.controller.product.ProductsController;
+import main.java.controller.product.ProductsTileController;
 import main.java.model.databaseUtil.DatabaseInitiation;
+
+import java.io.IOException;
 
 public class MainMenu extends Application {
 
@@ -90,6 +97,7 @@ public class MainMenu extends Application {
         offs.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(12), Insets.EMPTY)));
         offs.setTextFill(Color.DEEPSKYBLUE);
         offs.setFont(Font.loadFont("file:resources/fonts/DroidSerif-Regular.ttf", 20));
+
         root.getChildren().add(offs);
         GridPane.setHalignment(offs, HPos.CENTER);
         GridPane.setValignment(offs, VPos.CENTER);
@@ -108,7 +116,29 @@ public class MainMenu extends Application {
         GridPane.setColumnIndex(exit, 1);
         GridPane.setRowIndex(exit, 16);
 
+        products.setOnAction( event -> {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource( "/main/java/view/product/Products.fxml"));
+                fxmlLoader.setController(new ProductsController( stage , root));
+                stage.getScene().setRoot(  fxmlLoader.load());
+                stage.setResizable(true);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        });
         offs.setOnAction(e -> {
+
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource( "/main/java/view/off/Offs.fxml"));
+                fxmlLoader.setController(new OffsController( stage , root));
+                stage.getScene().setRoot(  fxmlLoader.load());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            stage.setResizable(true);
+
 
         });
 
@@ -194,7 +224,7 @@ public class MainMenu extends Application {
         });
 
 
-        Scene scene = new Scene(root, 800, 600);
+        Scene scene = new Scene(root, 900, 600);
         stage.setScene(scene);
         stage.setTitle("online market");
         stage.setResizable(false);
