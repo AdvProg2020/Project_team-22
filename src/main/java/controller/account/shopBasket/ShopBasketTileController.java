@@ -32,11 +32,9 @@ public class ShopBasketTileController {
         initIncreasor() ;
     }
 
-
-
-    public ShopBasketTileController(Product product , VBox parentVbox) {
+    public ShopBasketTileController(Product product , VBox parentVbox , Core core ) {
         this.product = product ;
-        this.core = new Core() ;
+        this.core = core ;
         this.parentVbox = parentVbox ;
     }
 
@@ -49,12 +47,13 @@ public class ShopBasketTileController {
     private void initDecreasor() {
         decreasor.setOnMousePressed( event -> {
             int num =  Integer.valueOf(countLabel.getText()) ;
-            if(  num == 1 ){
+            if(  num == 0 ){
                 parentVbox.getChildren().remove( gride);
             } else{
                 num-- ;
                 countLabel.setText( String.valueOf( num));
             }
+
         });
     }
     private void initIncreasor() {
@@ -66,7 +65,5 @@ public class ShopBasketTileController {
             }
         });
     }
-
-
 
 }

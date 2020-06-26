@@ -14,7 +14,7 @@
    <content>
       <StackPane fx:id="stackPane">
          <children>
-            <VBox fx:id="vbox" spacing="30.0">
+            <VBox spacing="30.0">
                <children>
                   <AnchorPane prefHeight="51.0" prefWidth="938.0">
                      <VBox.margin>
@@ -28,7 +28,7 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <VBox prefWidth="100.0" style="-fx-border-color: #dad8d8; -fx-border-radius: 5; -fx-background-radius: 5; -fx-background-color: white;">
+                  <VBox fx:id="vbox" prefWidth="100.0" style="-fx-border-color: #dad8d8; -fx-border-radius: 5; -fx-background-radius: 5; -fx-background-color: white;">
                      <children>
                         <AnchorPane prefHeight="64.0" prefWidth="793.0">
                            <children>
@@ -44,7 +44,7 @@
                               <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="26.0" prefWidth="195.0" spacing="6.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="22.0">
                                  <children>
                                     <Label text="تومان" />
-                                    <Label prefHeight="26.0" prefWidth="154.0">
+                                    <Label fx:id="totalPriceLabel" prefHeight="26.0" prefWidth="159.0">
                                        <font>
                                           <Font size="17.0" />
                                        </font>
