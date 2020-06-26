@@ -14,7 +14,7 @@
     "logsListCode": [],
     "shopBasket": [
       {
-        "productId": "538f358c-2a71-4ce8-83c5-b129f5a12023",
+        "productId": "a3e79dfc-90d0-4409-b3fd-22202577ac43",
         "name": "ماست تازه ",
         "brand": "پاک ",
         "price": 9000,
@@ -25,7 +25,7 @@
         "numberOfProduct": 2
       },
       {
-        "productId": "7d885383-0e97-4615-a175-7f3caf796e36",
+        "productId": "7e6ce485-7472-42fd-82c4-60381d11898f",
         "name": "پنیر تازه ",
         "brand": "پاک ",
         "price": 8000,
@@ -36,7 +36,7 @@
         "numberOfProduct": 2
       },
       {
-        "productId": "1d0a3429-3fbc-4366-995c-3284134d418b",
+        "productId": "0d17ba06-1ebd-4771-970a-a2b32d5b542d",
         "name": "تخم مرغ تازه ",
         "brand": "پاک ",
         "price": 45000,
@@ -50,229 +50,19 @@
     "shopBasketProductId": []
   },
   {
-    "username": "a",
-    "firstName": "a",
-    "lastName": "a",
-    "email": "a@a.a",
-    "phone": "09121111111",
-    "password": "a",
-    "role": "SALESMAN",
-    "companyName": "pak",
+    "username": "mamali",
+    "firstName": "mamali",
+    "lastName": "cdwes",
+    "email": "crdwe@gmail.com",
+    "phone": "09121121212",
+    "password": "1111",
+    "role": "MANAGER",
     "discountsCodes": [],
     "discountsList": [],
     "credit": 0,
     "logsList": [],
     "logsListCode": [],
-    "shopBasket": [
-      {
-        "productId": "942cafda-a8a9-4469-83e5-21f648abc211",
-        "name": "milk",
-        "brand": "PAK",
-        "price": 1000,
-        "categoryName": "food",
-        "description": "fresh",
-        "points": {},
-        "comments": [],
-        "numberOfProduct": 10
-      },
-      {
-        "productId": "942cafda-a8a9-4469-83e5-21f648abc211",
-        "name": "milk",
-        "brand": "PAK",
-        "price": 1000,
-        "categoryName": "food",
-        "description": "fresh",
-        "points": {},
-        "comments": [],
-        "numberOfProduct": 10
-      },
-      {
-        "productId": "3f8ed54c-aa87-4279-b6d8-ab858a606824",
-        "name": "milk",
-        "brand": "PAK",
-        "price": 1000,
-        "categoryName": "food",
-        "description": "fresh",
-        "points": {},
-        "comments": [],
-        "numberOfProduct": 10
-      },
-      {
-        "productId": "3f8ed54c-aa87-4279-b6d8-ab858a606824",
-        "name": "milk",
-        "brand": "PAK",
-        "price": 1000,
-        "categoryName": "food",
-        "description": "fresh",
-        "points": {},
-        "comments": [],
-        "numberOfProduct": 10
-      },
-      {
-        "productId": "2cce6452-8d26-4a2a-81c6-05c8acf2ae5a",
-        "name": "milk",
-        "brand": "PAK",
-        "price": 1000,
-        "categoryName": "food",
-        "description": "fresh",
-        "points": {},
-        "comments": [],
-        "numberOfProduct": 10
-      },
-      {
-        "productId": "2cce6452-8d26-4a2a-81c6-05c8acf2ae5a",
-        "name": "milk",
-        "brand": "PAK",
-        "price": 1000,
-        "categoryName": "food",
-        "description": "fresh",
-        "points": {},
-        "comments": [],
-        "numberOfProduct": 10
-      },
-      {
-        "productId": "94be3a82-755a-4957-a6ba-251dd7f931bc",
-        "name": "milk",
-        "brand": "PAK",
-        "price": 1000,
-        "categoryName": "food",
-        "description": "fresh",
-        "points": {},
-        "comments": [],
-        "numberOfProduct": 10
-      },
-      {
-        "productId": "94be3a82-755a-4957-a6ba-251dd7f931bc",
-        "name": "milk",
-        "brand": "PAK",
-        "price": 1000,
-        "categoryName": "food",
-        "description": "fresh",
-        "points": {},
-        "comments": [],
-        "numberOfProduct": 10
-      },
-      {
-        "productId": "849e89ca-3f3a-4d6f-9433-0e44bcc07e82",
-        "name": "milk",
-        "brand": "PAK",
-        "price": 1000,
-        "categoryName": "food",
-        "description": "fresh",
-        "points": {},
-        "comments": [],
-        "numberOfProduct": 10
-      },
-      {
-        "productId": "849e89ca-3f3a-4d6f-9433-0e44bcc07e82",
-        "name": "milk",
-        "brand": "PAK",
-        "price": 1000,
-        "categoryName": "food",
-        "description": "fresh",
-        "points": {},
-        "comments": [],
-        "numberOfProduct": 10
-      },
-      {
-        "productId": "a2d5b6c7-611f-4889-8093-4627a5d2a9f1",
-        "name": "milk",
-        "brand": "PAK",
-        "price": 1000,
-        "categoryName": "food",
-        "description": "fresh",
-        "points": {},
-        "comments": [],
-        "numberOfProduct": 10
-      },
-      {
-        "productId": "a2d5b6c7-611f-4889-8093-4627a5d2a9f1",
-        "name": "milk",
-        "brand": "PAK",
-        "price": 1000,
-        "categoryName": "food",
-        "description": "fresh",
-        "points": {},
-        "comments": [],
-        "numberOfProduct": 10
-      },
-      {
-        "productId": "36014836-af4f-4a8e-bba5-44a16c7f445b",
-        "name": "milk",
-        "brand": "PAK",
-        "price": 1000,
-        "categoryName": "food",
-        "description": "fresh",
-        "points": {},
-        "comments": [],
-        "numberOfProduct": 10
-      },
-      {
-        "productId": "36014836-af4f-4a8e-bba5-44a16c7f445b",
-        "name": "milk",
-        "brand": "PAK",
-        "price": 1000,
-        "categoryName": "food",
-        "description": "fresh",
-        "points": {},
-        "comments": [],
-        "numberOfProduct": 10
-      },
-      {
-        "productId": "06e8cc6f-91b8-4f6e-b1bc-ed6274b5a7c4",
-        "name": "milk",
-        "brand": "PAK",
-        "price": 1000,
-        "categoryName": "food",
-        "description": "fresh",
-        "points": {},
-        "comments": [],
-        "numberOfProduct": 10
-      },
-      {
-        "productId": "06e8cc6f-91b8-4f6e-b1bc-ed6274b5a7c4",
-        "name": "milk",
-        "brand": "PAK",
-        "price": 1000,
-        "categoryName": "food",
-        "description": "fresh",
-        "points": {},
-        "comments": [],
-        "numberOfProduct": 10
-      },
-      {
-        "productId": "21a2a4ed-f922-4857-882c-3618f8c81323",
-        "name": "milk",
-        "brand": "PAK",
-        "price": 1000,
-        "categoryName": "food",
-        "description": "fresh",
-        "points": {},
-        "comments": [],
-        "numberOfProduct": 10
-      },
-      {
-        "productId": "21a2a4ed-f922-4857-882c-3618f8c81323",
-        "name": "milk",
-        "brand": "PAK",
-        "price": 1000,
-        "categoryName": "food",
-        "description": "fresh",
-        "points": {},
-        "comments": [],
-        "numberOfProduct": 10
-      }
-    ],
-    "shopBasketProductId": [
-      "942cafda-a8a9-4469-83e5-21f648abc211",
-      "3f8ed54c-aa87-4279-b6d8-ab858a606824",
-      "2cce6452-8d26-4a2a-81c6-05c8acf2ae5a",
-      "94be3a82-755a-4957-a6ba-251dd7f931bc",
-      "849e89ca-3f3a-4d6f-9433-0e44bcc07e82",
-      "a2d5b6c7-611f-4889-8093-4627a5d2a9f1",
-      "36014836-af4f-4a8e-bba5-44a16c7f445b",
-      "06e8cc6f-91b8-4f6e-b1bc-ed6274b5a7c4",
-      "21a2a4ed-f922-4857-882c-3618f8c81323"
-    ]
+    "shopBasket": [],
+    "shopBasketProductId": []
   }
 ]

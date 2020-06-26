@@ -4,11 +4,13 @@ import main.java.model.Category;
 import main.java.model.account.Account;
 import main.java.model.account.Role;
 import main.java.model.databaseUtil.Database;
+import main.java.model.off.Off;
 import main.java.model.product.Product;
 import org.junit.Assert;
 import org.junit.Test;
 
 import javax.xml.crypto.Data;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -34,7 +36,6 @@ public class DataBaseUtil {
         Product product2 = new Product("ماست تازه ", "پاک ", "9000",
                 "غذا", "fresh", 2);
 
-
         Database.addProduct(product2);
 
         Product product3 = new Product("پنیر تازه ", "پاک ", "8000",
@@ -43,8 +44,15 @@ public class DataBaseUtil {
 
         Product product4 = new Product("تخم مرغ تازه ", "پاک ", "45000",
                 "غذا", "fresh", 2);
-
         Database.addProduct(product4);
+
+        LocalDate sTime = LocalDate.of( 1398,2 ,3) ;
+        LocalDate eTime = LocalDate.of( 1398,3 ,6) ;
+        ArrayList<Product> offProducts = new ArrayList<>() ;
+        offProducts.add( product2) ;
+        offProducts.add( product3) ;
+        Off off = new Off( offProducts , sTime , eTime , 30) ;
+        Database.addOff( off);
     }
 
     @Test

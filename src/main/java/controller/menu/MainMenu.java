@@ -1,9 +1,11 @@
 package main.java.controller.menu;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -15,7 +17,11 @@ import main.java.Main;
 import main.java.controller.AlertBox;
 import main.java.controller.menu.userArea.LoginAndLogoutMenu;
 import main.java.controller.menu.userArea.UserMenu;
+import main.java.model.databaseUtil.Database;
 import main.java.model.databaseUtil.DatabaseInitiation;
+import main.java.model.product.Product;
+
+import java.io.IOException;
 
 public class MainMenu extends Application {
 
@@ -130,6 +136,16 @@ public class MainMenu extends Application {
                 }
             } else {
                 AlertBox.display("login error", "please login first!");
+            }
+        });
+
+        products.setOnAction(e -> {
+            try {
+                Parent parent = FXMLLoader.load(getClass().getResource("/main/java/view/product/Products.fxml"));
+                stage.setScene(new Scene(parent , 900, 600));
+                stage.show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
         });
 
