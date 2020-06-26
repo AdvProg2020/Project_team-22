@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vbox" alignment="CENTER" prefHeight="370.0" prefWidth="250.0" spacing="3.0" style="-fx-background-color: white; -fx-border-color: rgb(200,200,200 ,0.5);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="vbox" alignment="CENTER" prefHeight="400.0" prefWidth="250.0" spacing="3.0" style="-fx-background-color: white; -fx-border-color: rgb(200,200,200 ,0.5);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <StackPane fx:id="picStackPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="238.0" prefWidth="238.0">
          <children>
@@ -45,13 +45,18 @@
             <Insets right="10.0" />
          </VBox.margin>
       </AnchorPane>
-      <Label fx:id="priceLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefHeight="46.0" prefWidth="248.0" text="18500  تومان" textAlignment="RIGHT" textFill="#0a0a0a">
+      <Label fx:id="priceLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefHeight="33.0" prefWidth="248.0" text="18500  تومان" textAlignment="RIGHT" textFill="#0a0a0a">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
          <padding>
             <Insets right="10.0" />
          </padding>
+      </Label>
+      <Label fx:id="categoryLabel" alignment="TOP_LEFT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="46.0" prefWidth="238.0" text="دسته بندی : " textFill="#656262">
+         <VBox.margin>
+            <Insets right="10.0" />
+         </VBox.margin>
       </Label>
    </children>
 </VBox>
