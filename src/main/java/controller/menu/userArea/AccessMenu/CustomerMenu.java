@@ -14,16 +14,8 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import main.java.Main;
 import main.java.controller.AlertBox;
-import main.java.controller.menu.MainMenu;
-import main.java.controller.menu.Menu;
-import main.java.controller.menu.userArea.AccessMenu.managerMenu.ManagerMenu;
 import main.java.controller.menu.userArea.UserMenu;
 import main.java.controller.menu.userArea.profileMenu.ProfileMenu;
-import main.java.model.account.Role;
-import main.java.model.databaseUtil.Database;
-import main.java.model.product.Product;
-
-import java.util.HashMap;
 
 public class CustomerMenu extends Application {
     /*
@@ -176,7 +168,7 @@ public class CustomerMenu extends Application {
         Background background = new Background(backgroundImage);
         root.setBackground(background);
 
-        Button showCreditButton = new Button("Your credit");
+        Button showCreditButton = new Button("My Credit");
         showCreditButton.setMinWidth(200);
         showCreditButton.setBorder(new Border(new BorderStroke(Color.BROWN, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
         showCreditButton.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(12), Insets.EMPTY)));
@@ -188,20 +180,20 @@ public class CustomerMenu extends Application {
         GridPane.setColumnIndex(showCreditButton, 0);
         GridPane.setRowIndex(showCreditButton, 2);
 
-        Button profileMenuButton = new Button("Profile menu");
-        profileMenuButton.setMinWidth(200);
-        profileMenuButton.setBorder(new Border(new BorderStroke(Color.SADDLEBROWN, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
-        profileMenuButton.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(12), Insets.EMPTY)));
-        profileMenuButton.setTextFill(Color.SANDYBROWN);
-        profileMenuButton.setFont(Font.loadFont("file:resources/fonts/DroidSerif-Regular.ttf", 20));
-        root.getChildren().add(profileMenuButton);
-        GridPane.setHalignment(profileMenuButton, HPos.CENTER);
-        GridPane.setValignment(profileMenuButton, VPos.CENTER);
-        GridPane.setColumnIndex(profileMenuButton, 0);
-        GridPane.setRowIndex(profileMenuButton, 4);
+        Button showShopBasketButton = new Button("My Cart");
+        showShopBasketButton.setMinWidth(200);
+        showShopBasketButton.setBorder(new Border(new BorderStroke(Color.SADDLEBROWN, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+        showShopBasketButton.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(12), Insets.EMPTY)));
+        showShopBasketButton.setTextFill(Color.SANDYBROWN);
+        showShopBasketButton.setFont(Font.loadFont("file:resources/fonts/DroidSerif-Regular.ttf", 20));
+        root.getChildren().add(showShopBasketButton);
+        GridPane.setHalignment(showShopBasketButton, HPos.CENTER);
+        GridPane.setValignment(showShopBasketButton, VPos.CENTER);
+        GridPane.setColumnIndex(showShopBasketButton, 0);
+        GridPane.setRowIndex(showShopBasketButton, 4);
 
         Button back = new Button("Back");
-        back.setMinWidth(100);
+        back.setMinWidth(200);
         back.setBorder(new Border(new BorderStroke(Color.PURPLE, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
         back.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(12), Insets.EMPTY)));
         back.setTextFill(Color.MEDIUMPURPLE);
@@ -209,10 +201,10 @@ public class CustomerMenu extends Application {
         root.getChildren().add(back);
         GridPane.setHalignment(back, HPos.CENTER);
         GridPane.setValignment(back, VPos.CENTER);
-        GridPane.setColumnIndex(back, 3);
+        GridPane.setColumnIndex(back, 0);
         GridPane.setRowIndex(back, 16);
 
-        profileMenuButton.setOnAction(e -> {
+        showShopBasketButton.setOnAction(e -> {
             try {
                 if (Main.core.currentAccount != null)
                     new ProfileMenu().start(new Stage());
@@ -249,15 +241,15 @@ public class CustomerMenu extends Application {
             showCreditButton.setTextFill(Color.SALMON);
         });
 
-        profileMenuButton.setOnMouseEntered(e -> {
-            profileMenuButton.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
-            profileMenuButton.setBackground(new Background(new BackgroundFill(Color.SADDLEBROWN, new CornerRadii(12), Insets.EMPTY)));
-            profileMenuButton.setTextFill(Color.WHITE);
+        showShopBasketButton.setOnMouseEntered(e -> {
+            showShopBasketButton.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+            showShopBasketButton.setBackground(new Background(new BackgroundFill(Color.SADDLEBROWN, new CornerRadii(12), Insets.EMPTY)));
+            showShopBasketButton.setTextFill(Color.WHITE);
         });
-        profileMenuButton.setOnMouseExited(e -> {
-            profileMenuButton.setBorder(new Border(new BorderStroke(Color.SADDLEBROWN, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
-            profileMenuButton.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(12), Insets.EMPTY)));
-            profileMenuButton.setTextFill(Color.SANDYBROWN);
+        showShopBasketButton.setOnMouseExited(e -> {
+            showShopBasketButton.setBorder(new Border(new BorderStroke(Color.SADDLEBROWN, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+            showShopBasketButton.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(12), Insets.EMPTY)));
+            showShopBasketButton.setTextFill(Color.SANDYBROWN);
         });
 
         back.setOnMouseEntered(e -> {
