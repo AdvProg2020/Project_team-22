@@ -1,7 +1,6 @@
 package main.java.model.request;
 
 import main.java.model.account.Account;
-import main.java.model.databaseUtil.Database;
 import main.java.model.product.Product;
 
 public class ProductRequest extends Request{

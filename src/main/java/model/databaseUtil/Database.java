@@ -1,30 +1,33 @@
 package main.java.model.databaseUtil;
 
-import main.java.model.Category;
-import main.java.model.Discount;
-import main.java.model.account.Account;
-import main.java.model.account.Role;
-import main.java.model.comment.Comment;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import  main.java.model.Category;
+import  main.java.model.Discount;
+import  main.java.model.account.Account;
+import  main.java.model.comment.Comment;
 import main.java.model.log.Log;
-import main.java.model.off.Off;
+import  main.java.model.off.Off;
 import main.java.model.product.Product;
-import main.java.model.request.Request;
+import  main.java.model.request.Request;
 
 
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class Database {
-    static ArrayList<Account> allAccounts = new ArrayList<>();
-    static ArrayList<Comment> allComments = new ArrayList<>();
-    static ArrayList<Product> allProducts = new ArrayList<>();
-    static ArrayList<Log> allLogs = new ArrayList<>();
-    static ArrayList<Category> allCategories = new ArrayList<>();
-    static ArrayList<Off> allOffs = new ArrayList<>();
-    static ArrayList<Discount> allDiscounts = new ArrayList<>();
-    static ArrayList<Request> allRequests = new ArrayList<>();
+    public static ArrayList<Account> allAccounts = new ArrayList<>();
+    public static ArrayList<Comment> allComments = new ArrayList<>();
+    public static ArrayList<Product> allProducts = new ArrayList<>();
+    public static ArrayList<Log> allLogs = new ArrayList<>();
+    public static ArrayList<Category> allCategories = new ArrayList<>();
+    public static ArrayList<Off> allOffs = new ArrayList<>();
+    public static ArrayList<Discount> allDiscounts = new ArrayList<>();
+    public static ArrayList<Request> allRequests = new ArrayList<>();
+
 
     public static void addOff(Off off){
         allOffs.add(off);
@@ -74,98 +77,74 @@ public class Database {
     }
 
     public static void addAllAccountsToDatabaseFile() {
-        try {
-            FileOutputStream fileOutput = new FileOutputStream("src/database/accounts.ser");
-            ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
-            objectOutput.writeObject(allAccounts);
-            objectOutput.close();
-            fileOutput.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            try (FileWriter writer = new FileWriter("src/database/accounts.json")) {
+                gson.toJson(allAccounts, writer);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
     }
 
     public static void addAllProductsToDatabaseFile() {
-        try {
-            FileOutputStream fileOutput = new FileOutputStream("src/database/products.ser");
-            ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
-            objectOutput.writeObject(allProducts);
-            objectOutput.close();
-            fileOutput.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        try (FileWriter writer = new FileWriter("src/database/products.json")) {
+            gson.toJson(allProducts, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     public static void addAllRequestsToDatabaseFile() {
-        try {
-            FileOutputStream fileOutput = new FileOutputStream("src/database/requests.ser");
-            ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
-            objectOutput.writeObject(allRequests);
-            objectOutput.close();
-            fileOutput.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        try (FileWriter writer = new FileWriter("src/database/requests.json")) {
+            gson.toJson(allRequests, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     public static void addAllLogsToDatabaseFile() {
-        try {
-            FileOutputStream fileOutput = new FileOutputStream("src/database/accounts.ser");
-            ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
-            objectOutput.writeObject(allLogs);
-            objectOutput.close();
-            fileOutput.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        try (FileWriter writer = new FileWriter("src/database/logs.json")) {
+            gson.toJson(allLogs, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     public static void addAllCategoriesToDatabaseFile() {
-        try {
-            FileOutputStream fileOutput = new FileOutputStream("src/database/categories.ser");
-            ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
-            objectOutput.writeObject(allCategories);
-            objectOutput.close();
-            fileOutput.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        try (FileWriter writer = new FileWriter("src/database/categories.json")) {
+            gson.toJson(allCategories, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     public static void addAllOffsToDatabaseFile() {
-        try {
-            FileOutputStream fileOutput = new FileOutputStream("src/database/off.ser");
-            ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
-            objectOutput.writeObject(allOffs);
-            objectOutput.close();
-            fileOutput.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        try (FileWriter writer = new FileWriter("src/database/off.json")) {
+            gson.toJson(allOffs, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     public static void addAllDiscountsToDatabaseFile() {
-        try {
-            FileOutputStream fileOutput = new FileOutputStream("src/database/discounts.ser");
-            ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
-            objectOutput.writeObject(allDiscounts);
-            objectOutput.close();
-            fileOutput.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        try (FileWriter writer = new FileWriter("src/database/discounts.json")) {
+            gson.toJson(allDiscounts, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     public static void addAllCommentsToDatabaseFile() {
-        try {
-            FileOutputStream fileOutput = new FileOutputStream("src/database/comments.ser");
-            ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
-            objectOutput.writeObject(allComments);
-            objectOutput.close();
-            fileOutput.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        try (FileWriter writer = new FileWriter("src/database/comments.json")) {
+            gson.toJson(allComments, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -280,22 +259,13 @@ public class Database {
 
     public static Off getOffForThisGood(Product product) {
         for (Off off : allOffs) {
-            for (Product productInOffList : off.getProductsList()) {
-                if (productInOffList.getProductId().equals(product.getProductId())){
+            for (String id : off.getProductsListId()) {
+                if ( id.equals(product.getProductId())){
                     return off;
                 }
             }
         }
         return null;
-    }
-
-    public static boolean managerExists() {
-        for (Account account : allAccounts) {
-            if(account.getRole() == Role.MANAGER) {
-                return true;
-            }
-        }
-        return false;
     }
 
     public static ArrayList<Product> getAllProducts() {
