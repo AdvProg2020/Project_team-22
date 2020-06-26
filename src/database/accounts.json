@@ -48,5 +48,21 @@
       }
     ],
     "shopBasketProductId": []
+  },
+  {
+    "username": "mamali",
+    "firstName": "mamali",
+    "lastName": "cdwes",
+    "email": "crdwe@gmail.com",
+    "phone": "09121121212",
+    "password": "1111",
+    "role": "MANAGER",
+    "discountsCodes": [],
+    "discountsList": [],
+    "credit": 0,
+    "logsList": [],
+    "logsListCode": [],
+    "shopBasket": [],
+    "shopBasketProductId": []
   }
 ]
