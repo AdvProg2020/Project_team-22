@@ -24,6 +24,7 @@ public class ShopBasketTileController {
     Product product ;
     Core core ;
     VBox parentVbox ;
+    private Label totalPriceLabel;
 
     @FXML
     private void initialize(){
@@ -32,10 +33,12 @@ public class ShopBasketTileController {
         initIncreasor() ;
     }
 
-    public ShopBasketTileController(Product product , VBox parentVbox , Core core ) {
+    public ShopBasketTileController(Product product , VBox parentVbox , Core core , Label totalPriceLabel) {
         this.product = product ;
         this.core = core ;
         this.parentVbox = parentVbox ;
+        this.totalPriceLabel = totalPriceLabel ;
+
     }
 
     public void intiProductTile(){
@@ -44,6 +47,11 @@ public class ShopBasketTileController {
         nameLabel.setText( product.getName());
 
     }
+
+    public Label getNameLabel() {
+        return nameLabel;
+    }
+
     private void initDecreasor() {
         decreasor.setOnMousePressed( event -> {
             int num =  Integer.valueOf(countLabel.getText()) ;
@@ -52,16 +60,20 @@ public class ShopBasketTileController {
             } else{
                 num-- ;
                 countLabel.setText( String.valueOf( num));
+                core.decreaseProductNumber( 1 , product);
+                totalPriceLabel.setText( String.valueOf( this.core.shopBasketTotalPrice()));
             }
-
         });
     }
+
     private void initIncreasor() {
         increasor.setOnMousePressed( event -> {
             int num =  Integer.valueOf(countLabel.getText()) ;
             if(  num < product.getNumberOfProduct()){
                 num++ ;
                 countLabel.setText( String.valueOf( num));
+                core.increaseProductNumber( 1 , product);
+                totalPriceLabel.setText( String.valueOf( this.core.shopBasketTotalPrice()));
             }
         });
     }

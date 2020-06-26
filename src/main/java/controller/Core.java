@@ -874,9 +874,10 @@ public class Core {
 
     public int shopBasketTotalPrice() {
         int total = 0 ;
-        for ( Product product : currentAccount.getShopBasket()){
+        for ( Product product : this.currentAccount.getShopBasket()){
             total += product.getPrice() ;
         }
         return  total ;
     }
+
 }

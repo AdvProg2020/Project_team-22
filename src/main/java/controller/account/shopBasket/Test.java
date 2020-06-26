@@ -20,8 +20,6 @@ public class Test extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource( "/main/java/view/account/shopbasket/ShopBasket.fxml"));
         fxmlLoader.setController(new ShopBasketController(core ));
         Parent root = fxmlLoader.load();
-
-
         primaryStage.setScene(new Scene(root, 900
                 , 600));
         primaryStage.show();
