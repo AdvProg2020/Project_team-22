@@ -14,7 +14,7 @@ import java.util.UUID;
 
 public class Product implements Serializable {
     private String productId;
-    private ProductStatus productStatus;
+    private StockStatus productStatus;
     private String name;
     private String brand;
     private int price;
@@ -22,7 +22,7 @@ public class Product implements Serializable {
     private String categoryName;
     private Category category;
     private String description;
-    private Map<String, Double> points;
+    private Map<String, Integer> points;
     private ArrayList<Comment> comments;
     int numberOfProduct;
 
@@ -44,8 +44,12 @@ public class Product implements Serializable {
         return productId;
     }
 
-    public ProductStatus getProductStatus() {
+    public StockStatus getProductStatus() {
         return productStatus;
+    }
+
+    public Map<String, Integer> getPoints() {
+        return points;
     }
 
     public String getName() {
@@ -89,8 +93,11 @@ public class Product implements Serializable {
     }
 
     public double getAveragePoint() {
+        if(points.size() == 0) {
+            return 0;
+        }
         double sum = 0;
-        for (Double point : points.values()) {
+        for (int point : points.values()) {
             sum += point;
         }
         return sum / points.size();
@@ -98,6 +105,10 @@ public class Product implements Serializable {
 
     public Category getCategory() {
         return category;
+    }
+
+    public void setNumberOfProduct(int numberOfProduct) {
+        this.numberOfProduct = numberOfProduct;
     }
 
     public ArrayList<Comment> getComments() {
@@ -108,7 +119,7 @@ public class Product implements Serializable {
         this.productId = productId;
     }
 
-    public void setProductStatus(ProductStatus productStatus) {
+    public void setProductStatus(StockStatus productStatus) {
         this.productStatus = productStatus;
     }
 
@@ -149,7 +160,7 @@ public class Product implements Serializable {
         Database.addAllProductsToDatabaseFile();
     }
 
-    public void addPointForProduct(Account account, double point){
+    public void addPointForProduct(Account account, int point){
         points.put(account.getUsername(), point);
     }
 

@@ -13,7 +13,6 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import main.java.controller.menu.userArea.LoginAndLogoutMenu;
 import main.java.controller.menu.userArea.UserMenu;
-import main.java.model.databaseUtil.DatabaseInitiation;
 
 public class MainMenu extends Application {
 

@@ -329,7 +329,7 @@ public class Core {
         return true;
     }
 
-    public void addPointForProduct(double point, Product product) {
+    public void addPointForProduct(int point, Product product) {
         product.addPointForProduct(currentAccount, point);
         Database.addAllProductsToDatabaseFile();
     }
