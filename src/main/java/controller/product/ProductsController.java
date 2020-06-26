@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import main.java.controller.menu.productsArea.ProductMenu;
 import main.java.model.databaseUtil.Database;
 import main.java.model.product.Product;
 
@@ -31,7 +33,6 @@ public class ProductsController {
     public void intiProductTile( Product product){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource( "/main/java/view/product/ProductsTile.fxml"));
-
             fxmlLoader.setController(new ProductsTileController( product));
             Parent root = fxmlLoader.load();
             root.setOnMouseEntered(event -> {
@@ -40,13 +41,18 @@ public class ProductsController {
                 ds.setOffsetY(1.0);
                 ds.setOffsetX(1.0);
                 ds.setColor( new Color(0.5 ,0.5 , 0.5 , 1.0));
-                root.setEffect( ds);
+                root.setEffect(ds);
             });
             root.setOnMouseExited( event -> {
                 root.setEffect(null);
             });
             root.setOnMousePressed(event -> {
-                     ////////////////////////// load a product  //////////////////////////////////////////////
+                Stage stage = new Stage();
+                try {
+                    new ProductMenu(product).start(stage);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             });
             tilePane.getChildren().add(root) ;
         } catch (IOException e) {
