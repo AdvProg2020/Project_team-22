@@ -1,4 +1,4 @@
-package main.java.controller.product;
+package main.java.controller.off;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,12 +9,12 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import main.java.model.Category;
 import main.java.model.databaseUtil.Database;
+import main.java.model.off.Off;
 import main.java.model.product.Product;
 
-import javax.xml.crypto.Data;
 import java.io.IOException;
 
-public class ProductsController {
+public class OffsController {
 
     @FXML
     private TilePane tilePane;
@@ -46,22 +46,28 @@ public class ProductsController {
     private void updateProduct() {
         for(Product product : Database.getAllProducts()){
             if( categories.getValue().equals(product.getCategoryName() )) {
-                intiProductTile(product);
+                Off off = Database.getOffForThisGood(product);
+                if (off != null) {
+                    intiProductTile( product  , off) ;
+                }
             }
         }
     }
 
     private void addProduct() {
         for(Product product : Database.getAllProducts()){
-            intiProductTile( product);
+            Off off = Database.getOffForThisGood(product);
+            if (off != null) {
+                intiProductTile( product  , off) ;
+            }
         }
     }
 
-    public void intiProductTile( Product product){
+    public void intiProductTile( Product product , Off off) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource( "/main/java/view/product/ProductsTile.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource( "/main/java/view/off/OffsTile.fxml"));
 
-            fxmlLoader.setController(new ProductsTileController( product));
+            fxmlLoader.setController(new OffsTileController( product , off));
             Parent root = fxmlLoader.load();
             root.setOnMouseEntered(event -> {
                 DropShadow ds = new DropShadow();

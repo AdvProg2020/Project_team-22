@@ -1,13 +1,10 @@
 [
   {
-    "name": "alo",
-    "properties": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
+    "name": "غذا",
+    "productsList": []
+  },
+  {
+    "name": "پوشاک",
     "productsList": []
   }
 ]

@@ -1,284 +1,81 @@
 [
   {
-    "productId": "46f5b434-eea0-4513-90a8-89c2fcd8a6a1",
-    "name": "phone",
-    "brand": "samsung",
-    "price": 1000,
-    "categoryName": "elect",
-    "description": "this is a good phone",
-    "points": {
-      "mamali1": 3
+    "productId": "5585634e-5e65-407f-a4a1-f1f0b251d4a3",
+    "name": "توپ تازه ",
+    "brand": "پاک ",
+    "price": 9000,
+    "categoryName": "وسیله",
+    "category": {
+      "name": "پوشاک",
+      "properties": {
+        "1": " سایز ",
+        "2": "رنگ "
+      },
+      "productsList": []
     },
-    "comments": [
-      {
-        "account": {
-          "username": "mamali1",
-          "firstName": "mohammad ali",
-          "lastName": "khodabandelou",
-          "email": "mamali@gmail.com",
-          "phone": "09120149635",
-          "password": "11111111",
-          "role": "CUSTOMER",
-          "discountsCodes": [],
-          "discountsList": [],
-          "credit": 0,
-          "logsList": [],
-          "logsListCode": [],
-          "shopBasket": [],
-          "shopBasketProductId": []
-        },
-        "accountUsername": "mamali1",
-        "opinionTitle": "njl",
-        "opinionContent": "njl\nihlbjli",
-        "hasBought": false
-      }
-    ],
-    "numberOfProduct": 10
-  },
-  {
-    "productId": "19ef7f0f-a6c9-4f10-b408-0899f5fd2f3c",
-    "name": "phone",
-    "brand": "samsung",
-    "price": 1000,
-    "categoryName": "elect",
-    "description": "this is a good phone",
+    "description": "fresh",
     "points": {},
     "comments": [],
-    "numberOfProduct": 10
+    "numberOfProduct": 2
   },
   {
-    "productId": "fc1f2ed7-d25b-452b-b99b-3b7bda786a74",
-    "name": "phone",
-    "brand": "samsung",
-    "price": 1000,
-    "categoryName": "elect",
-    "description": "this is a good phone",
-    "points": {},
-    "comments": [
-      {
-        "account": {
-          "username": "mamali1",
-          "firstName": "mohammad ali",
-          "lastName": "khodabandelou",
-          "email": "mamali@gmail.com",
-          "phone": "09120149635",
-          "password": "11111111",
-          "role": "CUSTOMER",
-          "discountsCodes": [],
-          "discountsList": [],
-          "credit": 0,
-          "logsList": [],
-          "logsListCode": [],
-          "shopBasket": [],
-          "shopBasketProductId": []
-        },
-        "accountUsername": "mamali1",
-        "opinionTitle": "hello",
-        "opinionContent": "hello\nthis is a good phone but it is expensive",
-        "hasBought": false
-      },
-      {
-        "account": {
-          "username": "mamali1",
-          "firstName": "mohammad ali",
-          "lastName": "khodabandelou",
-          "email": "mamali@gmail.com",
-          "phone": "09120149635",
-          "password": "11111111",
-          "role": "CUSTOMER",
-          "discountsCodes": [],
-          "discountsList": [],
-          "credit": 0,
-          "logsList": [],
-          "logsListCode": [],
-          "shopBasket": [],
-          "shopBasketProductId": []
-        },
-        "accountUsername": "mamali1",
-        "opinionTitle": "hello",
-        "opinionContent": "hello\nthis is a good phone but it is expensive",
-        "hasBought": false
-      },
-      {
-        "account": {
-          "username": "mamali1",
-          "firstName": "mohammad ali",
-          "lastName": "khodabandelou",
-          "email": "mamali@gmail.com",
-          "phone": "09120149635",
-          "password": "11111111",
-          "role": "CUSTOMER",
-          "discountsCodes": [],
-          "discountsList": [],
-          "credit": 0,
-          "logsList": [],
-          "logsListCode": [],
-          "shopBasket": [],
-          "shopBasketProductId": []
-        },
-        "accountUsername": "mamali1",
-        "opinionTitle": "hello",
-        "opinionContent": "hello\nthis is a good phone but it is expensive",
-        "hasBought": false
-      },
-      {
-        "account": {
-          "username": "mamali1",
-          "firstName": "mohammad ali",
-          "lastName": "khodabandelou",
-          "email": "mamali@gmail.com",
-          "phone": "09120149635",
-          "password": "11111111",
-          "role": "CUSTOMER",
-          "discountsCodes": [],
-          "discountsList": [],
-          "credit": 0,
-          "logsList": [],
-          "logsListCode": [],
-          "shopBasket": [],
-          "shopBasketProductId": []
-        },
-        "accountUsername": "mamali1",
-        "opinionTitle": "hello",
-        "opinionContent": "hello\nthis is a good phone but it is expensive",
-        "hasBought": false
-      },
-      {
-        "account": {
-          "username": "mamali1",
-          "firstName": "mohammad ali",
-          "lastName": "khodabandelou",
-          "email": "mamali@gmail.com",
-          "phone": "09120149635",
-          "password": "11111111",
-          "role": "CUSTOMER",
-          "discountsCodes": [],
-          "discountsList": [],
-          "credit": 0,
-          "logsList": [],
-          "logsListCode": [],
-          "shopBasket": [],
-          "shopBasketProductId": []
-        },
-        "accountUsername": "mamali1",
-        "opinionTitle": "hello",
-        "opinionContent": "hello\nthis is a good phone but it is expensive",
-        "hasBought": false
-      }
-    ],
-    "numberOfProduct": 10
-  },
-  {
-    "productId": "9b7f964b-1019-4fff-9cc7-521805217ace",
-    "name": "phone",
-    "brand": "samsung",
-    "price": 1000,
-    "categoryName": "elect",
-    "description": "this is a good phone",
-    "points": {
-      "mamali1": 4
+    "productId": "7faa80b9-5c8b-407e-a384-540bdc16d726",
+    "name": "پالتو  ",
+    "brand": "جین وست ",
+    "price": 9000,
+    "categoryName": "پوشاک",
+    "category": {
+      "name": "پوشاک",
+      "productsList": []
     },
-    "comments": [
-      {
-        "account": {
-          "username": "mamali1",
-          "firstName": "mohammad ali",
-          "lastName": "khodabandelou",
-          "email": "mamali@gmail.com",
-          "phone": "09120149635",
-          "password": "11111111",
-          "role": "CUSTOMER",
-          "discountsCodes": [],
-          "discountsList": [],
-          "credit": 0,
-          "logsList": [],
-          "logsListCode": [],
-          "shopBasket": [],
-          "shopBasketProductId": []
-        },
-        "accountUsername": "mamali1",
-        "opinionTitle": "hello",
-        "opinionContent": "hello\nthis is a good phone but it is expensive",
-        "hasBought": false
-      },
-      {
-        "account": {
-          "username": "mamali1",
-          "firstName": "mohammad ali",
-          "lastName": "khodabandelou",
-          "email": "mamali@gmail.com",
-          "phone": "09120149635",
-          "password": "11111111",
-          "role": "CUSTOMER",
-          "discountsCodes": [],
-          "discountsList": [],
-          "credit": 0,
-          "logsList": [],
-          "logsListCode": [],
-          "shopBasket": [],
-          "shopBasketProductId": []
-        },
-        "accountUsername": "mamali1",
-        "opinionTitle": "hello",
-        "opinionContent": "hello\nthis is a good phone but it is expensive",
-        "hasBought": false
-      },
-      {
-        "account": {
-          "username": "mamali1",
-          "firstName": "mohammad ali",
-          "lastName": "khodabandelou",
-          "email": "mamali@gmail.com",
-          "phone": "09120149635",
-          "password": "11111111",
-          "role": "CUSTOMER",
-          "discountsCodes": [],
-          "discountsList": [],
-          "credit": 0,
-          "logsList": [],
-          "logsListCode": [],
-          "shopBasket": [],
-          "shopBasketProductId": []
-        },
-        "accountUsername": "mamali1",
-        "opinionTitle": "hello",
-        "opinionContent": "hello\nthis is a good phone but it is expensive",
-        "hasBought": false
-      }
-    ],
-    "numberOfProduct": 10
-  },
-  {
-    "productId": "25da214c-46ad-4995-8cfe-ef92a4044c87",
-    "name": "phone",
-    "brand": "samsung",
-    "price": 1000,
-    "categoryName": "elect",
-    "description": "this is a good phone",
+    "description": "fresh",
     "points": {},
     "comments": [],
-    "numberOfProduct": 10
+    "numberOfProduct": 2
   },
   {
-    "productId": "aa0d9a9d-b0f0-4de2-b9e9-a90d020a082b",
-    "name": "phone",
-    "brand": "samsung",
-    "price": 1000,
-    "categoryName": "elect",
-    "description": "this is a good phone",
+    "productId": "90638aee-cd02-405a-90b7-bd1982a96892",
+    "name": "ماست تازه ",
+    "brand": "پاک ",
+    "price": 9000,
+    "categoryName": "غذا",
+    "category": {
+      "name": "غذا",
+      "productsList": []
+    },
+    "description": "fresh",
     "points": {},
     "comments": [],
-    "numberOfProduct": 10
+    "numberOfProduct": 2
   },
   {
-    "productId": "1edabc9d-29e5-4311-8803-7db4a8d7e3f9",
-    "name": "phone",
-    "brand": "samsung",
-    "price": 1000,
-    "categoryName": "elect",
-    "description": "this is a good phone",
+    "productId": "d61e19a0-ed2e-4cbf-8de4-1df3ac56b762",
+    "name": "پنیر تازه ",
+    "brand": "پاک ",
+    "price": 8000,
+    "categoryName": "غذا",
+    "category": {
+      "name": "غذا",
+      "productsList": []
+    },
+    "description": "fresh",
     "points": {},
     "comments": [],
-    "numberOfProduct": 10
+    "numberOfProduct": 2
+  },
+  {
+    "productId": "146c9df3-f8d6-4395-a3a2-927011e0cc09",
+    "name": "تخم مرغ تازه ",
+    "brand": "پاک ",
+    "price": 45000,
+    "categoryName": "غذا",
+    "category": {
+      "name": "غذا",
+      "productsList": []
+    },
+    "description": "fresh",
+    "points": {},
+    "comments": [],
+    "numberOfProduct": 2
   }
 ]
