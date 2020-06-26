@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
 <GridPane hgap="10.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="130.0" prefWidth="785.0" style="-fx-background-color: white; -fx-background-radius: 5; -fx-border-color: transparent transparent #dad8d8 transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
@@ -22,17 +23,25 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <ImageView fitHeight="96.0" fitWidth="109.0" pickOnBounds="true" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowSpan="3">
-         <image>
-            <Image url="@../../../../../../../../Pictures/7.PNG" />
-         </image>
+      <StackPane style="-fx-border-color: #dad8d8; -fx-border-radius: 5;" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.rowSpan="3">
          <GridPane.margin>
-            <Insets bottom="15.0" right="30.0" top="10.0" />
+            <Insets bottom="40.0" left="20.0" right="20.0" top="10.0" />
          </GridPane.margin>
-      </ImageView>
-      <Label nodeOrientation="RIGHT_TO_LEFT" prefHeight="21.0" prefWidth="279.0" text=" کشک 500 گرمی مهرام" GridPane.columnIndex="2" GridPane.halignment="LEFT">
+         <children>
+            <ImageView fitHeight="56.0" fitWidth="60.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../../database/picture/product/photo-video-slr-camera-icon-512x512-pixel-12.png" />
+               </image>
+            </ImageView>
+         </children>
+         <padding>
+            <Insets bottom="25.0" top="25.0" />
+         </padding>
+      </StackPane>
+      <Label fx:id="nameLabel" nodeOrientation="RIGHT_TO_LEFT" prefHeight="21.0" prefWidth="279.0" text=" کشک 500 گرمی مهرام" GridPane.columnIndex="2" GridPane.halignment="LEFT">
          <font>
             <Font size="15.0" />
          </font>
@@ -42,7 +51,7 @@
       </Label>
       <HBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="27.0" prefWidth="137.0" spacing="3.0" style="-fx-background-color: white; -fx-background-radius: 5; -fx-border-color: #dad8d8; -fx-border-radius: 5;" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <children>
-            <Button mnemonicParsing="false" prefHeight="18.0" prefWidth="29.0" style="-fx-background-color: white;" text="+">
+            <Button fx:id="increasor" mnemonicParsing="false" prefHeight="18.0" prefWidth="29.0" style="-fx-background-color: white;" text="+">
                <font>
                   <Font size="20.0" />
                </font>
@@ -50,7 +59,7 @@
                   <Insets bottom="-5.0" top="-5.0" />
                </padding>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="28.0" style="-fx-background-color: white;" text="1">
+            <Button fx:id="countLabel" mnemonicParsing="false" prefHeight="20.0" prefWidth="28.0" style="-fx-background-color: white;" text="1">
                <font>
                   <Font size="16.0" />
                </font>
@@ -58,7 +67,7 @@
                   <Insets bottom="-2.0" top="-2.0" />
                </padding>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="16.0" prefWidth="29.0" style="-fx-background-color: white;" text="-">
+            <Button fx:id="decreasor" mnemonicParsing="false" prefHeight="16.0" prefWidth="29.0" style="-fx-background-color: white;" text="-">
                <font>
                   <Font size="20.0" />
                </font>
@@ -80,7 +89,7 @@
          </GridPane.margin>
          <children>
             <Label prefHeight="17.0" prefWidth="72.0" text="تومان" />
-            <Label prefHeight="26.0" prefWidth="209.0">
+            <Label fx:id="priceLabel" prefHeight="26.0" prefWidth="209.0">
                <font>
                   <Font size="17.0" />
                </font>
