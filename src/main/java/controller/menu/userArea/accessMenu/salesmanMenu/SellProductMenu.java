@@ -256,14 +256,4 @@ public class SellProductMenu extends Application {
         stage.setResizable(false);
         stage.show();
     }
-
-    private boolean isCompanySet(TextField getCompanyName) {
-        if (role1 != Role.SALESMAN) {
-            return true;
-        }
-        if (getCompanyName.getText().trim().isEmpty()) {
-            return false;
-        }
-        return true;
-    }
 }
