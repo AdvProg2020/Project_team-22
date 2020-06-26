@@ -1,21 +1,27 @@
-package main.java.controller.menu.userArea.AccessMenu;
+package main.java.controller.menu.userArea.accessMenu.customerMenu;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.java.Main;
-import main.java.controller.AlertBox;
 import main.java.controller.menu.userArea.UserMenu;
-import main.java.controller.menu.userArea.profileMenu.ProfileMenu;
+import main.java.model.Discount;
+import main.java.model.comment.Comment;
 
 public class CustomerMenu extends Application {
     /*
@@ -178,7 +184,7 @@ public class CustomerMenu extends Application {
         GridPane.setHalignment(showCreditButton, HPos.CENTER);
         GridPane.setValignment(showCreditButton, VPos.CENTER);
         GridPane.setColumnIndex(showCreditButton, 0);
-        GridPane.setRowIndex(showCreditButton, 2);
+        GridPane.setRowIndex(showCreditButton, 4);
 
         Button showShopBasketButton = new Button("My Cart");
         showShopBasketButton.setMinWidth(200);
@@ -190,7 +196,19 @@ public class CustomerMenu extends Application {
         GridPane.setHalignment(showShopBasketButton, HPos.CENTER);
         GridPane.setValignment(showShopBasketButton, VPos.CENTER);
         GridPane.setColumnIndex(showShopBasketButton, 0);
-        GridPane.setRowIndex(showShopBasketButton, 4);
+        GridPane.setRowIndex(showShopBasketButton, 6);
+
+        Button discountCodesButton = new Button("Discount Codes");
+        discountCodesButton.setMinWidth(200);
+        discountCodesButton.setBorder(new Border(new BorderStroke(Color.MEDIUMBLUE, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+        discountCodesButton.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(12), Insets.EMPTY)));
+        discountCodesButton.setTextFill(Color.DEEPSKYBLUE);
+        discountCodesButton.setFont(Font.loadFont("file:resources/fonts/DroidSerif-Regular.ttf", 20));
+        root.getChildren().add(discountCodesButton);
+        GridPane.setHalignment(discountCodesButton, HPos.CENTER);
+        GridPane.setValignment(discountCodesButton, VPos.CENTER);
+        GridPane.setColumnIndex(discountCodesButton, 0);
+        GridPane.setRowIndex(discountCodesButton, 8);
 
         Button back = new Button("Back");
         back.setMinWidth(200);
@@ -206,14 +224,14 @@ public class CustomerMenu extends Application {
 
         showShopBasketButton.setOnAction(e -> {
             try {
-                if (Main.core.currentAccount != null)
-                    new ProfileMenu().start(new Stage());
-                else {
-                    AlertBox.display("Login error", "first login!");
-                }
-            } catch (Exception e1) {
-                e1.printStackTrace();
+                new main.java.controller.menu.userArea.accessMenu.customerMenu.ShopBasketMenu().start(new Stage());
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
+        });
+
+        discountCodesButton.setOnAction(e -> {
+            showDiscountCodes();
         });
 
         back.setOnAction(e -> {
@@ -263,10 +281,60 @@ public class CustomerMenu extends Application {
             back.setTextFill(Color.MEDIUMPURPLE);
         });
 
+        discountCodesButton.setOnMouseEntered(e -> {
+            discountCodesButton.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+            discountCodesButton.setBackground(new Background(new BackgroundFill(Color.MEDIUMBLUE, new CornerRadii(12), Insets.EMPTY)));
+            discountCodesButton.setTextFill(Color.WHITE);
+        });
+        discountCodesButton.setOnMouseExited(e -> {
+            discountCodesButton.setBorder(new Border(new BorderStroke(Color.MEDIUMBLUE, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+            discountCodesButton.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(12), Insets.EMPTY)));
+            discountCodesButton.setTextFill(Color.DEEPSKYBLUE);
+        });
+
         Scene scene = new Scene(root, 800, 600);
         stage.setScene(scene);
-        stage.setTitle("online market");
+        stage.setTitle("Customer menu");
         stage.setResizable(false);
         stage.show();
     }
+
+    private void showDiscountCodes() {
+        Stage stage = new Stage();
+        TableView<Discount> discounts = new TableView<>();
+        stage.initModality(Modality.APPLICATION_MODAL);
+
+        //discountCode column
+        TableColumn<Discount, String> discountCode = new TableColumn<>("Discount Code");
+        discountCode.setMinWidth(150);
+        discountCode.setCellValueFactory(new PropertyValueFactory<>("discountCode"));
+
+        //discountPercent column
+        TableColumn<Discount, String> discountPercent = new TableColumn<>("Discount Percent");
+        discountPercent.setMinWidth(150);
+        discountPercent.setCellValueFactory(new PropertyValueFactory<>("discountPercent"));
+
+        //maxAmount column
+        TableColumn<Discount, String> maxAmount = new TableColumn<>("Max Amount");
+        maxAmount.setMinWidth(150);
+        maxAmount.setCellValueFactory(new PropertyValueFactory<>("maxDiscountAmount"));
+
+        discounts.setItems(getAllDiscounts());
+        discounts.getColumns().addAll(discountCode, discountPercent, maxAmount);
+        VBox vBox = new VBox();
+        vBox.setFillWidth(true);
+        vBox.getChildren().addAll(discounts);
+
+        Scene scene = new Scene(vBox);
+        stage.setScene(scene);
+        stage.setTitle("Discounts");
+        stage.show();
+    }
+
+    private ObservableList<Discount> getAllDiscounts() {
+        ObservableList<Discount> discounts = FXCollections.observableArrayList();
+        discounts.addAll(Main.core.currentAccount.getDiscountsList());
+        return discounts;
+    }
 }
+

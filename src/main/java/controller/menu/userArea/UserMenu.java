@@ -14,15 +14,11 @@ import javafx.stage.Stage;
 import main.java.Main;
 import main.java.controller.AlertBox;
 import main.java.controller.menu.MainMenu;
-import main.java.controller.menu.Menu;
-import main.java.controller.menu.userArea.AccessMenu.AccessMenu;
-import main.java.controller.menu.userArea.AccessMenu.CustomerMenu;
-import main.java.controller.menu.userArea.AccessMenu.SalesmanMenu;
-import main.java.controller.menu.userArea.AccessMenu.managerMenu.ManagerMenu;
+import main.java.controller.menu.userArea.accessMenu.customerMenu.CustomerMenu;
+import main.java.controller.menu.userArea.accessMenu.salesmanMenu.SalesmanMenu;
+import main.java.controller.menu.userArea.accessMenu.managerMenu.ManagerMenu;
 import main.java.controller.menu.userArea.profileMenu.ProfileMenu;
 import main.java.model.account.Role;
-
-import java.util.HashMap;
 
 //public class UserMenu extends Menu {
 //    public UserMenu (Menu parentMenu) {
@@ -175,7 +171,7 @@ public class UserMenu extends Application {
 
         Scene scene = new Scene(root, 800, 600);
         stage.setScene(scene);
-        stage.setTitle("online market");
+        stage.setTitle("user menu");
         stage.setResizable(false);
         stage.show();
     }
