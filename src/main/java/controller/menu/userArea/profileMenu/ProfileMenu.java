@@ -297,6 +297,9 @@ public class ProfileMenu extends Application {
                             AlertBox.display("changing profile", "profile successfully changed!");
                             Database.addAllAccountsToDatabaseFile();
                         }
+                    } else {
+                        AlertBox.display("changing profile", "profile successfully changed!");
+                        Database.addAllAccountsToDatabaseFile();
                     }
                 } catch (Exception E) {
                     AlertBox.display("changing profile", E.getMessage());

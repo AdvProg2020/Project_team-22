@@ -76,13 +76,7 @@ public abstract class Menu {
             }
             if(!nextMenu.equals(this.parentMenu)) {
 //                if(nextMenu instanceof UserMenu && core.getCurrentAccount() == null) {
-                if(nextMenu instanceof ManagerMenu && core.getCurrentAccount().getRole() != Role.MANAGER) {
-                    throw new Exception("you are not a manager!");
-                } else if(nextMenu instanceof SalesmanMenu && core.getCurrentAccount().getRole() != Role.SALESMAN) {
-                    throw new Exception("you are not a salesman!");
-                } else if(nextMenu instanceof CustomerMenu && core.getCurrentAccount().getRole() != Role.CUSTOMER) {
-                    throw new Exception("you are not a customer!");
-                }
+//                if(nextMenu instanceof ManagerMenu && core.getCurrentAccount().getRole() != Role.MANAGER) {
             }
             nextMenu.show();
             nextMenu.execute();
