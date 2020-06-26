@@ -119,6 +119,19 @@ public class LoginAndLogoutMenu extends Application {
         GridPane.setColumnIndex(register, 0);
         GridPane.setRowIndex(register, 7);
 
+        Button logout = new Button("Logout");
+        logout.setMinWidth(200);
+        logout.setMinHeight(30);
+        logout.setBorder(new Border(new BorderStroke(Color.BLUE, BorderStrokeStyle.SOLID, new CornerRadii(5), new BorderWidths(1))));
+        logout.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(8), Insets.EMPTY)));
+        logout.setTextFill(Color.BLACK);
+        logout.setFont(Font.loadFont("file:resources/fonts/DroidSerif-Regular.ttf", 12));
+        root.getChildren().add(logout);
+        GridPane.setHalignment(logout, HPos.CENTER);
+        GridPane.setValignment(logout, VPos.TOP);
+        GridPane.setColumnIndex(logout, 0);
+        GridPane.setRowIndex(logout, 9);
+
         login.setOnAction(e -> {
             if(!getPassword.getText().trim().isEmpty() && !getUserName.getText().trim().isEmpty()) {
                 String name = getUserName.getText();
@@ -175,6 +188,14 @@ public class LoginAndLogoutMenu extends Application {
             }
         });
 
+        logout.setOnAction(e -> {
+            if(Main.core.currentAccount != null) {
+                Main.core.currentAccount = null;
+                AlertBox.display("logout", "you logged out");
+            }
+        });
+
+
 
 
 
@@ -190,8 +211,23 @@ public class LoginAndLogoutMenu extends Application {
                 }
             }
         });
-
         checkButton.start();
+
+        Thread check = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    if(Main.core.getCurrentAccount() == null) {
+                        logout.setStyle("-fx-opacity: .5");
+                    } else {
+                        logout.setStyle("-fx-opacity: 1");
+                    }
+                }
+            }
+        });
+        check.start();
+
+
 
 
         stage.setOnCloseRequest(e -> {

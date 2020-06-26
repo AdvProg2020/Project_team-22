@@ -14,8 +14,7 @@ public class Test extends Application {
     public void start(Stage primaryStage) throws Exception{
         DatabaseInitiation.initializeDatabase();
         Parent root = FXMLLoader.load(getClass().getResource("/main/java/view/product/Products.fxml"));
-        primaryStage.setScene(new Scene(root, 900
-                , 600));
+        primaryStage.setScene(new Scene(root, 900, 600));
         primaryStage.show();
 
     }

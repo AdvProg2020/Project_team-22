@@ -33,17 +33,18 @@ public class ProductMenu extends Application {
     private Account account;
     private int state = 5;
 
-//    public ProductMenu(Product product) {
-//    }
+    public ProductMenu(Product product) {
+        this.product = product;
+    }
 
     @Override
     public void start(Stage stage) throws Exception {
         try {
-            account = new Account("mamali", "mohammad ali", "khodabandelou", "mamali@gmail.com", "09120149635", "11111111", Role.CUSTOMER);
-            product = new Product("phone", "samsung", "1000", "mobilephone", "this is a good phone", 10);
-            Comment comment = new Comment("hello", "this is a good phone but it is expensive");
-            comment.setAccount(account);
-            product.addComment(comment);
+            account = new Account("mamali1", "mohammad ali", "khodabandelou", "mamali@gmail.com", "09120149635", "11111111", Role.CUSTOMER);
+            //product = new Product("phone", "samsung", "1000", "mobilephone", "this is a good phone", 10);
+//            Comment comment = new Comment("hello", "this is a good phone but it is expensive");
+//            comment.setAccount(account);
+//            product.addComment(comment);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -101,23 +102,32 @@ public class ProductMenu extends Application {
         addComment.setTranslateX(550);
         addComment.setTranslateY(345);
 
+
+
+
         Text categoryName= new Text("Category:     folan"/* + product.getCategoryName()*/);
         root.getChildren().add(categoryName);
         categoryName.setFill(Color.BLACK);
         categoryName.setFont(Font.loadFont("file:resources/fonts/PlatNomor-WyVnn.ttf", 18));
         categoryName.setTranslateX(15);
         categoryName.setTranslateY(50);
+//
+//        String text = "hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello ";
+//        //max line length = 60
+//        StringBuilder finalText = new StringBuilder(text);
+//        if(finalText.length() > 60) {
+//            int enterNums = finalText.length() / 60;
+//            for(int i=0; i < enterNums; i++) {
+//                finalText.insert((i+1)*60, "\n");
+//            }
+//        }
 
-        String text = "hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello ";
-        //max line length = 60
-        StringBuilder finalText = new StringBuilder(text);
-        if(finalText.length() > 60) {
-            int enterNums = finalText.length() / 60;
-            for(int i=0; i < enterNums; i++) {
-                finalText.insert((i+1)*60, "\n");
-            }
-        }
-        Text categoryDescribe= new Text( finalText.toString() /*product.getCategory().getProperties()*/);
+        String text = null;
+//        for (Integer integer : product.getCategory().getProperties().keySet()) {
+//            text += integer + ". " + product.getCategory().getProperties().get(integer) + "\n";
+//        }
+
+        Text categoryDescribe= new Text( text /*product.getCategory().getProperties()*/);
         root.getChildren().add(categoryDescribe);
         categoryDescribe.maxWidth(300);
         categoryDescribe.maxHeight(200);

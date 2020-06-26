@@ -7,10 +7,7 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -28,6 +25,7 @@ import main.java.controller.menu.userArea.accessMenu.managerMenu.ManagerMenu;
 import main.java.controller.menu.userArea.profileMenu.ProfileMenu;
 import main.java.model.Discount;
 import main.java.model.account.Role;
+import main.java.model.databaseUtil.Database;
 import main.java.model.databaseUtil.DatabaseInitiation;
 
     /*public SalesmanMenu(Menu parentMenu) {
@@ -262,6 +260,20 @@ public class SalesmanMenu extends Application {
         GridPane.setColumnIndex(backButton, 0);
         GridPane.setRowIndex(backButton, 16);
 
+        TextField editingOffCode = new TextField("Enter Off Code For Editing");
+        editingOffCode.setBackground(new Background(new BackgroundFill(Color.rgb(255, 255, 255), new CornerRadii(12), Insets.EMPTY)));
+        editingOffCode.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(12), new BorderWidths(2))));
+        editingOffCode.setMinHeight(45);
+        editingOffCode.setMinWidth(50);
+        editingOffCode.setStyle("-fx-text-inner-color: black;");
+        editingOffCode.setFont(Font.loadFont("file:resources/fonts/DroidSerif-Regular.ttf", 12));
+        root.getChildren().add(editingOffCode);
+        GridPane.setHalignment(editingOffCode, HPos.CENTER);
+        GridPane.setValignment(editingOffCode, VPos.CENTER);
+        GridPane.setColumnIndex(editingOffCode, 1);
+        GridPane.setRowIndex(editingOffCode, 10);
+
+
         createOffButton.setOnAction(e -> {
             try {
                 new CreateOff().start(new Stage());
@@ -271,7 +283,15 @@ public class SalesmanMenu extends Application {
         });
 
         editOffButton.setOnAction(e -> {
-            showDiscountCodes();
+            try {
+                if (Database.getOffByOffId(editingOffCode.getText()) == null) {
+                    AlertBox.display("Error", "Invalid off id!");
+                } else {
+                    new EditOff(Database.getOffByOffId(editingOffCode.getText())).start(new Stage());
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         });
 
         backButton.setOnAction(e -> {
@@ -342,41 +362,4 @@ public class SalesmanMenu extends Application {
         stage.show();
     }
 
-    private void showDiscountCodes() {
-        Stage stage = new Stage();
-        TableView<Discount> discounts = new TableView<>();
-        stage.initModality(Modality.APPLICATION_MODAL);
-
-        //discountCode column
-        TableColumn<Discount, String> discountCode = new TableColumn<>("Discount Code");
-        discountCode.setMinWidth(150);
-        discountCode.setCellValueFactory(new PropertyValueFactory<>("discountCode"));
-
-        //discountPercent column
-        TableColumn<Discount, String> discountPercent = new TableColumn<>("Discount Percent");
-        discountPercent.setMinWidth(150);
-        discountPercent.setCellValueFactory(new PropertyValueFactory<>("discountPercent"));
-
-        //maxAmount column
-        TableColumn<Discount, String> maxAmount = new TableColumn<>("Max Amount");
-        maxAmount.setMinWidth(150);
-        maxAmount.setCellValueFactory(new PropertyValueFactory<>("maxDiscountAmount"));
-
-        discounts.setItems(getAllDiscounts());
-        discounts.getColumns().addAll(discountCode, discountPercent, maxAmount);
-        VBox vBox = new VBox();
-        vBox.setFillWidth(true);
-        vBox.getChildren().addAll(discounts);
-
-        Scene scene = new Scene(vBox);
-        stage.setScene(scene);
-        stage.setTitle("Discounts");
-        stage.show();
-    }
-
-    private ObservableList<Discount> getAllDiscounts() {
-        ObservableList<Discount> discounts = FXCollections.observableArrayList();
-        discounts.addAll(Main.core.currentAccount.getDiscountsList());
-        return discounts;
-    }
 }

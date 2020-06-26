@@ -24,8 +24,13 @@ import main.java.model.product.Product;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class CreateOff extends Application {
+public class EditOff extends Application {
     Role role1 = null;
+    Off off;
+
+    public EditOff(Off off) {
+        this.off = off;
+    }
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -175,7 +180,7 @@ public class CreateOff extends Application {
         GridPane.setColumnIndex(productId6, 1);
         GridPane.setRowIndex(productId6, 10);
 
-        TextField startYear = new TextField();
+        TextField startYear = new TextField("" + off.getStartTime().getYear());
         startYear.setBackground(new Background(new BackgroundFill(Color.rgb(229, 204, 255), new CornerRadii(7), Insets.EMPTY)));
         startYear.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(5), new BorderWidths(2))));
         startYear.setMinHeight(30);
@@ -187,7 +192,7 @@ public class CreateOff extends Application {
         GridPane.setColumnIndex(startYear, 0);
         GridPane.setRowIndex(startYear, 1);
 
-        TextField startMonth = new TextField();
+        TextField startMonth = new TextField("" + off.getStartTime().getMonthValue());
         startMonth.setBackground(new Background(new BackgroundFill(Color.rgb(229, 204, 255), new CornerRadii(7), Insets.EMPTY)));
         startMonth.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(5), new BorderWidths(2))));
         startMonth.setMinHeight(30);
@@ -199,7 +204,7 @@ public class CreateOff extends Application {
         GridPane.setColumnIndex(startMonth, 0);
         GridPane.setRowIndex(startMonth, 3);
 
-        TextField startDay = new TextField();
+        TextField startDay = new TextField("" + off.getStartTime().getDayOfMonth());
         startDay.setBackground(new Background(new BackgroundFill(Color.rgb(229, 204, 255), new CornerRadii(7), Insets.EMPTY)));
         startDay.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(5), new BorderWidths(2))));
         startDay.setMinHeight(30);
@@ -211,7 +216,7 @@ public class CreateOff extends Application {
         GridPane.setColumnIndex(startDay, 0);
         GridPane.setRowIndex(startDay, 5);
 
-        TextField endYear = new TextField();
+        TextField endYear = new TextField("" + off.getEndTime().getYear());
         endYear.setBackground(new Background(new BackgroundFill(Color.rgb(229, 204, 255), new CornerRadii(7), Insets.EMPTY)));
         endYear.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(5), new BorderWidths(2))));
         endYear.setMinHeight(30);
@@ -223,7 +228,7 @@ public class CreateOff extends Application {
         GridPane.setColumnIndex(endYear, 0);
         GridPane.setRowIndex(endYear, 7);
 
-        TextField endMonth = new TextField();
+        TextField endMonth = new TextField("" + off.getEndTime().getMonthValue());
         endMonth.setBackground(new Background(new BackgroundFill(Color.rgb(229, 204, 255), new CornerRadii(7), Insets.EMPTY)));
         endMonth.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(5), new BorderWidths(2))));
         endMonth.setMinHeight(30);
@@ -235,7 +240,7 @@ public class CreateOff extends Application {
         GridPane.setColumnIndex(endMonth, 0);
         GridPane.setRowIndex(endMonth, 9);
 
-        TextField endDay = new TextField();
+        TextField endDay = new TextField("" + off.getEndTime().getDayOfMonth());
         endDay.setBackground(new Background(new BackgroundFill(Color.rgb(229, 204, 255), new CornerRadii(7), Insets.EMPTY)));
         endDay.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(5), new BorderWidths(2))));
         endDay.setMinHeight(30);
@@ -247,7 +252,7 @@ public class CreateOff extends Application {
         GridPane.setColumnIndex(endDay, 0);
         GridPane.setRowIndex(endDay, 11);
 
-        TextField offPercent = new TextField();
+        TextField offPercent = new TextField("" + off.getDiscountPercent());
         offPercent.setBackground(new Background(new BackgroundFill(Color.rgb(229, 204, 255), new CornerRadii(7), Insets.EMPTY)));
         offPercent.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(5), new BorderWidths(2))));
         offPercent.setMinHeight(30);
@@ -259,7 +264,7 @@ public class CreateOff extends Application {
         GridPane.setColumnIndex(offPercent, 0);
         GridPane.setRowIndex(offPercent, 13);
 
-        TextField productInOffId1 = new TextField();
+        TextField productInOffId1 = new TextField(off.getProductsList().size() > 0 ? off.getProductsList().get(0).getProductId() : "");
         productInOffId1.setBackground(new Background(new BackgroundFill(Color.rgb(229, 204, 255), new CornerRadii(7), Insets.EMPTY)));
         productInOffId1.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(5), new BorderWidths(2))));
         productInOffId1.setMinHeight(30);
@@ -271,7 +276,7 @@ public class CreateOff extends Application {
         GridPane.setColumnIndex(productInOffId1, 1);
         GridPane.setRowIndex(productInOffId1, 1);
 
-        TextField productInOffId2 = new TextField();
+        TextField productInOffId2 = new TextField(off.getProductsList().size() > 1 ? off.getProductsList().get(1).getProductId() : "");
         productInOffId2.setBackground(new Background(new BackgroundFill(Color.rgb(229, 204, 255), new CornerRadii(7), Insets.EMPTY)));
         productInOffId2.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(5), new BorderWidths(2))));
         productInOffId2.setMinHeight(30);
@@ -283,7 +288,7 @@ public class CreateOff extends Application {
         GridPane.setColumnIndex(productInOffId2, 1);
         GridPane.setRowIndex(productInOffId2, 3);
 
-        TextField productInOffId3 = new TextField();
+        TextField productInOffId3 = new TextField(off.getProductsList().size() > 2 ? off.getProductsList().get(2).getProductId() : "");
         productInOffId3.setBackground(new Background(new BackgroundFill(Color.rgb(229, 204, 255), new CornerRadii(7), Insets.EMPTY)));
         productInOffId3.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(5), new BorderWidths(2))));
         productInOffId3.setMinHeight(30);
@@ -295,7 +300,7 @@ public class CreateOff extends Application {
         GridPane.setColumnIndex(productInOffId3, 1);
         GridPane.setRowIndex(productInOffId3, 5);
 
-        TextField productInOffId4 = new TextField();
+        TextField productInOffId4 = new TextField(off.getProductsList().size() > 3 ? off.getProductsList().get(3).getProductId() : "");
         productInOffId4.setBackground(new Background(new BackgroundFill(Color.rgb(229, 204, 255), new CornerRadii(7), Insets.EMPTY)));
         productInOffId4.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(5), new BorderWidths(2))));
         productInOffId4.setMinHeight(30);
@@ -307,7 +312,7 @@ public class CreateOff extends Application {
         GridPane.setColumnIndex(productInOffId4, 1);
         GridPane.setRowIndex(productInOffId4, 7);
 
-        TextField productInOffId5 = new TextField();
+        TextField productInOffId5 = new TextField(off.getProductsList().size() > 4 ? off.getProductsList().get(4).getProductId() : "");
         productInOffId5.setBackground(new Background(new BackgroundFill(Color.rgb(229, 204, 255), new CornerRadii(7), Insets.EMPTY)));
         productInOffId5.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(5), new BorderWidths(2))));
         productInOffId5.setMinHeight(30);
@@ -319,7 +324,7 @@ public class CreateOff extends Application {
         GridPane.setColumnIndex(productInOffId5, 1);
         GridPane.setRowIndex(productInOffId5, 9);
 
-        TextField productInOffId6 = new TextField();
+        TextField productInOffId6 = new TextField(off.getProductsList().size() > 5 ? off.getProductsList().get(5).getProductId() : "");
         productInOffId6.setBackground(new Background(new BackgroundFill(Color.rgb(229, 204, 255), new CornerRadii(7), Insets.EMPTY)));
         productInOffId6.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(5), new BorderWidths(2))));
         productInOffId6.setMinHeight(30);
@@ -332,20 +337,20 @@ public class CreateOff extends Application {
         GridPane.setRowIndex(productInOffId6, 11);
 
 
-        Button createButton = new Button("Create");
-        createButton.setMinWidth(100);
-        createButton.setMinHeight(25);
-        createButton.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(5), new BorderWidths(1))));
-        createButton.setBackground(new Background(new BackgroundFill(Color.rgb(204, 102, 0), new CornerRadii(8), Insets.EMPTY)));
-        createButton.setTextFill(Color.WHITE);
-        createButton.setFont(Font.loadFont("file:resources/fonts/DroidSerif-Regular.ttf", 17));
-        root.getChildren().add(createButton);
-        GridPane.setHalignment(createButton, HPos.CENTER);
-        GridPane.setValignment(createButton, VPos.BOTTOM);
-        GridPane.setColumnIndex(createButton, 1);
-        GridPane.setRowIndex(createButton, 13);
+        Button modifyButton = new Button("Modify");
+        modifyButton.setMinWidth(100);
+        modifyButton.setMinHeight(25);
+        modifyButton.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(5), new BorderWidths(1))));
+        modifyButton.setBackground(new Background(new BackgroundFill(Color.rgb(204, 102, 0), new CornerRadii(8), Insets.EMPTY)));
+        modifyButton.setTextFill(Color.WHITE);
+        modifyButton.setFont(Font.loadFont("file:resources/fonts/DroidSerif-Regular.ttf", 17));
+        root.getChildren().add(modifyButton);
+        GridPane.setHalignment(modifyButton, HPos.CENTER);
+        GridPane.setValignment(modifyButton, VPos.BOTTOM);
+        GridPane.setColumnIndex(modifyButton, 1);
+        GridPane.setRowIndex(modifyButton, 13);
 
-        createButton.setOnAction(e -> {
+        modifyButton.setOnAction(e -> {
             try {
                 if (!startYear.getText().trim().isEmpty() && !startMonth.getText().trim().isEmpty() && !startDay.getText().trim().isEmpty() && !endYear.getText().trim().isEmpty() && !endMonth.getText().trim().isEmpty() && !endDay.getText().trim().isEmpty() && !offPercent.getText().trim().isEmpty() && !startDay.getText().trim().isEmpty()) {
                     ArrayList<Product> productsList = new ArrayList<>();
@@ -367,11 +372,10 @@ public class CreateOff extends Application {
                     if (!productInOffId6.getText().isEmpty()) {
                         productsList.add(Database.getProductByProductId(productInOffId6.getText()));
                     }
-                    Off off = new Off(productsList, LocalDate.of(Integer.parseInt(startYear.getText()), Integer.parseInt(startMonth.getText()), Integer.parseInt(startDay.getText())),
-                            LocalDate.of(Integer.parseInt(endYear.getText()), Integer.parseInt(endMonth.getText()), Integer.parseInt(endDay.getText())), Integer.parseInt(offPercent.getText()));
-                    Main.core.createOff(off);
-                    AlertBox.display("Create off", "off by id\n" + off.getOffId() + "\ncreated successfully");
-                    System.out.println(off.getOffId());
+                    off.setProductsList(productsList);
+                    off.setStartTime(LocalDate.of(Integer.parseInt(startYear.getText()), Integer.parseInt(startMonth.getText()), Integer.parseInt(startDay.getText())));
+                    off.setEndTime(LocalDate.of(Integer.parseInt(endYear.getText()), Integer.parseInt(endMonth.getText()), Integer.parseInt(endDay.getText())));
+                    AlertBox.display("Edit off", "off edited successfully");
                 }
             } catch (NullPointerException ignored) {
             } catch (Exception exc) {
@@ -379,22 +383,22 @@ public class CreateOff extends Application {
             }
         });
 
-        createButton.setOnMouseEntered(e ->
+        modifyButton.setOnMouseEntered(e ->
 
         {
             if (!startYear.getText().trim().isEmpty() && !startMonth.getText().trim().isEmpty() && !endYear.getText().trim().isEmpty() && !startDay.getText().trim().isEmpty()) {
-                createButton.setBorder(new Border(new BorderStroke(Color.rgb(204, 102, 0), BorderStrokeStyle.SOLID, new CornerRadii(5), new BorderWidths(1))));
-                createButton.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(8), Insets.EMPTY)));
-                createButton.setTextFill(Color.rgb(204, 102, 0));
+                modifyButton.setBorder(new Border(new BorderStroke(Color.rgb(204, 102, 0), BorderStrokeStyle.SOLID, new CornerRadii(5), new BorderWidths(1))));
+                modifyButton.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(8), Insets.EMPTY)));
+                modifyButton.setTextFill(Color.rgb(204, 102, 0));
             }
         });
 
-        createButton.setOnMouseExited(e ->
+        modifyButton.setOnMouseExited(e ->
 
         {
-            createButton.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(5), new BorderWidths(1))));
-            createButton.setBackground(new Background(new BackgroundFill(Color.rgb(204, 102, 0), new CornerRadii(8), Insets.EMPTY)));
-            createButton.setTextFill(Color.WHITE);
+            modifyButton.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(5), new BorderWidths(1))));
+            modifyButton.setBackground(new Background(new BackgroundFill(Color.rgb(204, 102, 0), new CornerRadii(8), Insets.EMPTY)));
+            modifyButton.setTextFill(Color.WHITE);
         });
 
 
@@ -414,9 +418,9 @@ public class CreateOff extends Application {
                 while (true) {
                     if (!startYear.getText().trim().isEmpty() && !startMonth.getText().trim().isEmpty() && !startDay.getText().trim().isEmpty() && !endYear.getText().trim().isEmpty()
                             && !endMonth.getText().trim().isEmpty() && !endDay.getText().trim().isEmpty() && !offPercent.getText().trim().isEmpty()) {
-                        createButton.setStyle("-fx-opacity: 1");
+                        modifyButton.setStyle("-fx-opacity: 1");
                     } else {
-                        createButton.setStyle("-fx-opacity: .5");
+                        modifyButton.setStyle("-fx-opacity: .5");
                     }
                 }
             }
