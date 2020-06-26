@@ -4,11 +4,8 @@ import main.java.model.account.Account;
 import main.java.model.databaseUtil.Database;
 
 import java.io.Serializable;
-import java.sql.Time;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class Discount implements Serializable {
     private String discountCode;
