@@ -541,7 +541,7 @@ public class Core {
         }
     }
 
-    public void showShopBasket() {
+    /*public void showShopBasket() {
         int sum = 0;
         ArrayList<Product> checkedProduct = new ArrayList<>();
         for (Product product : currentAccount.getShopBasket()) {
@@ -559,7 +559,7 @@ public class Core {
             }
         }
         System.out.println("The total price is " + sum);
-    }
+    }*/
 
     public void confirmShopBasket(Scanner scanner) {
         int totalPrice = 0;

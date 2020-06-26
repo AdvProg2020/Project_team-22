@@ -16,7 +16,11 @@ import main.java.controller.AlertBox;
 import main.java.controller.menu.MainMenu;
 import main.java.controller.menu.Menu;
 import main.java.controller.menu.userArea.AccessMenu.AccessMenu;
+import main.java.controller.menu.userArea.AccessMenu.CustomerMenu;
+import main.java.controller.menu.userArea.AccessMenu.SalesmanMenu;
+import main.java.controller.menu.userArea.AccessMenu.managerMenu.ManagerMenu;
 import main.java.controller.menu.userArea.profileMenu.ProfileMenu;
+import main.java.model.account.Role;
 
 import java.util.HashMap;
 
@@ -110,6 +114,29 @@ public class UserMenu extends Application {
                 new MainMenu().start(new Stage());
             } catch (Exception ex) {
                 ex.printStackTrace();
+            }
+        });
+
+        accessMenuButton.setOnAction(e -> {
+            stage.close();
+            if (Main.core.currentAccount.getRole().equals(Role.CUSTOMER)) {
+                try {
+                    new CustomerMenu().start(new Stage());
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            } else if (Main.core.currentAccount.getRole().equals(Role.SALESMAN)) {
+                try {
+                    new SalesmanMenu().start(new Stage());
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            } else {
+                try {
+                    new ManagerMenu().start(new Stage());
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
             }
         });
 

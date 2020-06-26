@@ -267,4 +267,24 @@ public class Account implements Serializable {
         Database.addAllLogsToDatabaseFile();
         Database.addAllAccountsToDatabaseFile();
     }
+
+    public void showShopBasket() {
+        int sum = 0;
+        ArrayList<Product> checkedProduct = new ArrayList<>();
+        for (Product product : this.getShopBasket()) {
+            if (!checkedProduct.contains(product)) {
+                System.out.println("product Id:\n" + product.getProductId());
+                System.out.println("product name:\n" + product.getName());
+                System.out.println("product category:\n" + product.getCategoryName());
+                System.out.println("product brand:\n" + product.getBrand());
+                System.out.println("product price:\n" + product.getPrice());
+                System.out.println("product average point:\n" + product.getAveragePoint());
+                System.out.println("product description:\n" + product.getDescription());
+                System.out.println("number of this product: \n" + this.getNumberOfProductInCart(product) + "\n");
+                sum += product.getPrice() * this.getNumberOfProductInCart(product);
+                checkedProduct.add(product);
+            }
+        }
+        System.out.println("The total price is " + sum);
+    }
 }
