@@ -1,6 +1,5 @@
 package controller.menu;
 
-import model.Core;
 import controller.menu.userArea.AccessMenu.SalesmanMenu;
 import controller.menu.userArea.AccessMenu.customerMenu.CustomerMenu;
 import controller.menu.userArea.AccessMenu.managerMenu.ManagerMenu;

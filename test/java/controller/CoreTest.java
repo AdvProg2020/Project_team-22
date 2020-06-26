@@ -1,6 +1,6 @@
-package model;
+package controller;
 
-import model.Core;
+import controller.menu.Core;
 import model.Discount;
 import model.account.Account;
 import model.account.Role;
