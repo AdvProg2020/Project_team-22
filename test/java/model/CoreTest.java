@@ -1,5 +1,6 @@
-package controller;
+package model;
 
+import model.Core;
 import model.Discount;
 import model.account.Account;
 import model.account.Role;
@@ -17,7 +18,6 @@ import org.junit.Test;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class CoreTest {
     Core testCore = new Core();
@@ -253,7 +253,7 @@ public class CoreTest {
     @Test
     public void showUserDiscountCodesTest() {
         try {
-              Discount testDiscount = new Discount("2301", LocalDate.of(2020, 12, 1),
+              Discount testDiscount = new Discount("2301233", LocalDate.of(2020, 12, 1),
                     LocalDate.of(2022, 1, 1), 20, 100000, 100);
             ArrayList<Discount> list = new ArrayList<>() ;
             list.add( testDiscount) ;

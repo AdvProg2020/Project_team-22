@@ -13,7 +13,7 @@ public class DiscountTest {
 
     {
         try {
-            testDiscount = new Discount("2301", LocalDate.of(2020, 12, 1),
+            testDiscount = new Discount("2301889", LocalDate.of(2020, 12, 1),
                     LocalDate.of(2022, 1, 1), 20, 100000, 100);
         } catch (Exception e) {
             e.printStackTrace();
@@ -24,7 +24,7 @@ public class DiscountTest {
     public void getDiscountCodeTest() {
         try {
 //            testDiscount.setDiscountCode("2201");
-            Assert.assertEquals("2301", testDiscount.getDiscountCode());
+            Assert.assertEquals("2301889", testDiscount.getDiscountCode());
         } catch (Exception e) {
             e.printStackTrace();
         }

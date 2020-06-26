@@ -1,5 +1,5 @@
 
-import controller.Core;
+import model.Core;
 import model.databaseUtil.DatabaseInitiation;
 import view.CommandProcessor;
 

@@ -1,6 +1,6 @@
 package view;
 
-import controller.Core;
+import model.Core;
 import controller.menu.MainMenu;
 import controller.menu.Menu;
 import model.databaseUtil.Database;

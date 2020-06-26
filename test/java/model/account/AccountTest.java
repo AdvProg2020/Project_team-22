@@ -17,7 +17,7 @@ public class AccountTest {
     Account testAccount2 = null  ;
     {
         try {
-            testAccount1 = new Account("MHHSS", "mh", "soleymani", "hssoleymanmh@gmail.com", "09301395175", "mh:2301", Role.CUSTOMER);
+            testAccount1 = new Account("testAct", "mh", "soleymani", "hssoleymanmh@gmail.com", "09301395175", "mh:2301", Role.CUSTOMER);
             testAccount2 = new Account("Test", "alireza", "alireza", "agh@gmail.com", "09101111111", "mh:23011", Role.SALESMAN , "company");
         } catch (Exception e) {
 
@@ -26,7 +26,7 @@ public class AccountTest {
 
     @Test
     public void getUserNameTest() {
-        Assert.assertEquals(testAccount1.getUsername(), "MHHSS");
+        Assert.assertEquals("testAct", testAccount1.getUsername());
     }
 
     @Test
@@ -98,7 +98,7 @@ public class AccountTest {
     @Test
     public void discount(){
         try {
-            Discount testDiscount = new Discount("2301", LocalDate.of(2020, 12, 1),
+            Discount testDiscount = new Discount("230152", LocalDate.of(2020, 12, 1),
                     LocalDate.of(2022, 1, 1), 20, 100000, 100);
             Discount testDiscount2 = new Discount("23011", LocalDate.of(2020, 12, 1),
                     LocalDate.of(2022, 1, 1), 20, 100000, 100);

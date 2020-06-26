@@ -12,5 +12,33 @@
     "credit": 0,
     "logsList": [],
     "shopBasket": []
+  },
+  {
+    "username": "MHHSS56",
+    "firstName": "mh",
+    "lastName": "soleymani",
+    "email": "hssoleymanmh@gmail.com",
+    "phone": "09301395175",
+    "password": "mh:2301",
+    "role": "CUSTOMER",
+    "discountsCodes": [],
+    "discountsList": [],
+    "credit": 0,
+    "logsList": [],
+    "shopBasket": []
+  },
+  {
+    "username": "test58",
+    "firstName": "mh",
+    "lastName": "soleymani",
+    "email": "hssoleymanmh@gmail.com",
+    "phone": "09301395175",
+    "password": "mh:2301",
+    "role": "CUSTOMER",
+    "discountsCodes": [],
+    "discountsList": [],
+    "credit": 0,
+    "logsList": [],
+    "shopBasket": []
   }
 ]
