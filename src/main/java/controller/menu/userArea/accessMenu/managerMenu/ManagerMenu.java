@@ -15,7 +15,7 @@ import main.java.Main;
 import main.java.controller.AlertBox;
 import main.java.controller.menu.MainMenu;
 import main.java.controller.menu.userArea.accessMenu.customerMenu.CustomerMenu;
-import main.java.controller.menu.userArea.accessMenu.SalesmanMenu;
+import main.java.controller.menu.userArea.accessMenu.salesmanMenu.SalesmanMenu;
 import main.java.controller.menu.userArea.profileMenu.ProfileMenu;
 import main.java.model.account.Role;
 

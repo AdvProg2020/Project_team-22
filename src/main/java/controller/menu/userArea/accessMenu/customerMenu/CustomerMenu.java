@@ -224,7 +224,7 @@ public class CustomerMenu extends Application {
 
         showShopBasketButton.setOnAction(e -> {
             try {
-                new ShopBasketMenu().start(new Stage());
+                new main.java.controller.menu.userArea.accessMenu.customerMenu.ShopBasketMenu().start(new Stage());
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -294,7 +294,7 @@ public class CustomerMenu extends Application {
 
         Scene scene = new Scene(root, 800, 600);
         stage.setScene(scene);
-        stage.setTitle("online market");
+        stage.setTitle("Customer menu");
         stage.setResizable(false);
         stage.show();
     }

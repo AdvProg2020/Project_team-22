@@ -14,6 +14,7 @@ import  main.java.model.request.Request;
 
 import java.io.*;
 import java.lang.reflect.Type;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -29,6 +30,11 @@ public class DatabaseInitiation {
         loadAllRequests();
         loadAllAccountsDiscount();
         loadProductsCategory();
+        try {
+            Database.getAccountByUsername("a").addProductToShopBasket(new Product("milk", "PAK", "1000", "food", "fresh", 10), 2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private static void loadProductsCategory() {
