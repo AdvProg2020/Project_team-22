@@ -141,7 +141,9 @@ public class ShowProductsMenu extends Menu {
                     String title = scanner.nextLine();
                     System.out.println("Enter your comment content:");
                     String content = scanner.nextLine();
-                    core.addComment(product, new Comment(title, content));
+                    Comment comment = new Comment(title, content);
+                    comment.setAccount(core.currentAccount);
+                    core.addComment(product, comment);
                     this.parentMenu.show();
                     this.parentMenu.execute();
                 }
@@ -167,7 +169,7 @@ public class ShowProductsMenu extends Menu {
                     } else {
                         System.out.println("Enter point between 5 (Very Good) and 0 (Very Bad)");
                         String point = scanner.nextLine();
-                        double pointNo = Integer.parseInt(point);
+                        int pointNo = Integer.parseInt(point);
                         if (pointNo >= 0 && pointNo <= 5) {
                             core.addPointForProduct(pointNo, product);
                         } else {

@@ -15,7 +15,6 @@ import main.java.Main;
 import main.java.controller.AlertBox;
 import main.java.controller.menu.userArea.LoginAndLogoutMenu;
 import main.java.controller.menu.userArea.UserMenu;
-import main.java.model.databaseUtil.DatabaseInitiation;
 
 public class MainMenu extends Application {
 
