@@ -268,23 +268,45 @@ public class Account implements Serializable {
         Database.addAllAccountsToDatabaseFile();
     }
 
-    public void showShopBasket() {
+    public String showShopBasket() {
+        int sum = 0;
+        StringBuilder out = new StringBuilder();
+        ArrayList<Product> checkedProduct = new ArrayList<>();
+        for (Product product : this.getShopBasket()) {
+            if (!checkedProduct.contains(product)) {
+                out.append("product Id:\n").append(product.getProductId());
+                out.append("product name:\n").append(product.getName());
+                out.append("product category:\n").append(product.getCategoryName());
+                out.append("product brand:\n").append(product.getBrand());
+                out.append("product price:\n").append(product.getPrice());
+                out.append("product average point:\n").append(product.getAveragePoint());
+                out.append("product description:\n").append(product.getDescription());
+                out.append("number of this product: \n").append(this.getNumberOfProductInCart(product)).append("\n");
+                checkedProduct.add(product);
+            }
+        }
+        return out.toString();
+    }
+
+    public int getTotalPrice() {
         int sum = 0;
         ArrayList<Product> checkedProduct = new ArrayList<>();
         for (Product product : this.getShopBasket()) {
             if (!checkedProduct.contains(product)) {
-                System.out.println("product Id:\n" + product.getProductId());
-                System.out.println("product name:\n" + product.getName());
-                System.out.println("product category:\n" + product.getCategoryName());
-                System.out.println("product brand:\n" + product.getBrand());
-                System.out.println("product price:\n" + product.getPrice());
-                System.out.println("product average point:\n" + product.getAveragePoint());
-                System.out.println("product description:\n" + product.getDescription());
-                System.out.println("number of this product: \n" + this.getNumberOfProductInCart(product) + "\n");
                 sum += product.getPrice() * this.getNumberOfProductInCart(product);
                 checkedProduct.add(product);
             }
         }
-        System.out.println("The total price is " + sum);
+        return sum;
+    }
+
+    public void showDiscountCodes() {
+        for (Discount discount : this.getDiscountsList()) {
+            System.out.println("discount code is:  " + discount.getDiscountCode());
+            System.out.println("discount percent:  " + discount.getDiscountPercent());
+            System.out.println("start time:  " + discount.getStartTime());
+            System.out.println("end time:  " + discount.getEndTime());
+            System.out.println("max amount:  " + discount.getMaxDiscountAmount());
+        }
     }
 }

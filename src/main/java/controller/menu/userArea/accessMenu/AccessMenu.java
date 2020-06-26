@@ -1,7 +1,6 @@
-package main.java.controller.menu.userArea.AccessMenu;
+package main.java.controller.menu.userArea.accessMenu;
 
 import main.java.controller.menu.Menu;
-import main.java.controller.menu.userArea.AccessMenu.managerMenu.ManagerMenu;
 
 import java.util.HashMap;
 
@@ -16,4 +15,3 @@ public class AccessMenu extends Menu {
         this.setSubmenus(submenus);
     }
 }
-

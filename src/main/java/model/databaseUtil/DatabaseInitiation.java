@@ -10,6 +10,7 @@ import main.java.model.product.Product;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class DatabaseInitiation {
@@ -28,6 +29,11 @@ public class DatabaseInitiation {
         loadAllRequests();
         loadAllAccountsDiscount();
         loadProductsCategory();
+        try {
+            Database.getAccountByUsername("a").addDiscount(new Discount("911", LocalDate.of(2020,12,12), LocalDate.of(2020,12,20), 12, 100, 2));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private static void loadAllAccountsShopBasket() {

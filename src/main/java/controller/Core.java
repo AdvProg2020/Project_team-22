@@ -729,7 +729,7 @@ public class Core {
         }
     }
 
-    public void showCustomerDiscount() {
+    /*public void showCustomerDiscount() {
         for (Discount discount : currentAccount.getDiscountsList()) {
             System.out.println("discount code is:  " + discount.getDiscountCode());
             System.out.println("discount percent:  " + discount.getDiscountPercent());
@@ -737,7 +737,7 @@ public class Core {
             System.out.println("end time:  " + discount.getEndTime());
             System.out.println("max amount:  " + discount.getMaxDiscountAmount());
         }
-    }
+    }*/
 
     public void decreaseProductNumber(int number, Product product) {
         if (currentAccount.getNumberOfProductInCart(product) < number) {
