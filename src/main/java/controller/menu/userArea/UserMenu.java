@@ -11,6 +11,9 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import main.java.Main;
+import main.java.controller.AlertBox;
+import main.java.controller.menu.MainMenu;
 import main.java.controller.menu.Menu;
 import main.java.controller.menu.userArea.AccessMenu.AccessMenu;
 import main.java.controller.menu.userArea.profileMenu.ProfileMenu;
@@ -32,12 +35,9 @@ import java.util.HashMap;
 
 public class UserMenu extends Application {
 
-    private String path = "selectRole-background.jpg";
-
     @Override
     public void start(Stage stage) throws Exception {
         GridPane root = new GridPane();
-//root.setGridLinesVisible(true);
         final int numCols = 3;
         final int numRows = 20;
         for (int i = 0; i < numCols; i++) {
@@ -51,42 +51,99 @@ public class UserMenu extends Application {
             root.getRowConstraints().add(rowConst);
         }
 
+        String path = "userMenu-background.jpg";
         BackgroundImage backgroundImage = new BackgroundImage(new Image("file:resources/images/background/" + path), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1.0, 1.0, true, true, false, false));
         Background background = new Background(backgroundImage);
         root.setBackground(background);
 
-
-        Button accessMenuButton = new Button("access menu");
-        accessMenuButton.setMinWidth(220);
-        accessMenuButton.setBorder(new Border(new BorderStroke(Color.DARKGOLDENROD, BorderStrokeStyle.SOLID, new CornerRadii(20), new BorderWidths(3))));
-        accessMenuButton.setBackground(new Background(new BackgroundFill(Color.BLACK, new CornerRadii(23), Insets.EMPTY)));
-        accessMenuButton.setTextFill(Color.DARKKHAKI);
-        accessMenuButton.setFont(Font.loadFont("file:resources/fonts/zealot/ZealotCollegeItalic-Y24O.ttf", 20));
+        Button accessMenuButton = new Button("Access menu");
+        accessMenuButton.setMinWidth(500);
+        accessMenuButton.setBorder(new Border(new BorderStroke(Color.BROWN, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+        accessMenuButton.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(12), Insets.EMPTY)));
+        accessMenuButton.setTextFill(Color.SALMON);
+        accessMenuButton.setFont(Font.loadFont("file:resources/fonts/DroidSerif-Regular.ttf", 20));
         root.getChildren().add(accessMenuButton);
         GridPane.setHalignment(accessMenuButton, HPos.CENTER);
         GridPane.setValignment(accessMenuButton, VPos.CENTER);
         GridPane.setColumnIndex(accessMenuButton, 1);
-        GridPane.setRowIndex(accessMenuButton, 5);
+        GridPane.setRowIndex(accessMenuButton, 2);
 
-        Button profileMenuButton = new Button("profile menu");
-        profileMenuButton.setMinWidth(220);
-        profileMenuButton.setBorder(new Border(new BorderStroke(Color.BROWN, BorderStrokeStyle.SOLID, new CornerRadii(20), new BorderWidths(3))));
-        profileMenuButton.setBackground(new Background(new BackgroundFill(Color.BLACK, new CornerRadii(23), Insets.EMPTY)));
-        profileMenuButton.setTextFill(Color.SALMON);
-        profileMenuButton.setFont(Font.loadFont("file:resources/fonts/zealot/ZealotCollegeItalic-Y24O.ttf", 20));
+        Button profileMenuButton = new Button("Profile menu");
+        profileMenuButton.setMinWidth(500);
+        profileMenuButton.setBorder(new Border(new BorderStroke(Color.SADDLEBROWN, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+        profileMenuButton.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(12), Insets.EMPTY)));
+        profileMenuButton.setTextFill(Color.SANDYBROWN);
+        profileMenuButton.setFont(Font.loadFont("file:resources/fonts/DroidSerif-Regular.ttf", 20));
         root.getChildren().add(profileMenuButton);
         GridPane.setHalignment(profileMenuButton, HPos.CENTER);
         GridPane.setValignment(profileMenuButton, VPos.CENTER);
-        GridPane.setColumnIndex(profileMenuButton, 0);
-        GridPane.setRowIndex(profileMenuButton, 5);
+        GridPane.setColumnIndex(profileMenuButton, 1);
+        GridPane.setRowIndex(profileMenuButton, 4);
 
-
-        accessMenuButton.setOnAction(e -> {
-            
-        });
+        Button back = new Button("Back");
+        back.setMinWidth(100);
+        back.setBorder(new Border(new BorderStroke(Color.PURPLE, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+        back.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(12), Insets.EMPTY)));
+        back.setTextFill(Color.MEDIUMPURPLE);
+        back.setFont(Font.loadFont("file:resources/fonts/DroidSerif-Regular.ttf", 20));
+        root.getChildren().add(back);
+        GridPane.setHalignment(back, HPos.CENTER);
+        GridPane.setValignment(back, VPos.CENTER);
+        GridPane.setColumnIndex(back, 0);
+        GridPane.setRowIndex(back, 16);
 
         profileMenuButton.setOnAction(e -> {
+            try {
+                if (Main.core.currentAccount != null)
+                    new ProfileMenu().start(new Stage());
+                else {
+                    AlertBox.display("Login error", "first login!");
+                }
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        });
 
+        back.setOnAction(e -> {
+            stage.close();
+            try {
+                new MainMenu().start(new Stage());
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        accessMenuButton.setOnMouseEntered(e -> {
+            accessMenuButton.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+            accessMenuButton.setBackground(new Background(new BackgroundFill(Color.SALMON, new CornerRadii(12), Insets.EMPTY)));
+            accessMenuButton.setTextFill(Color.WHITE);
+        });
+        accessMenuButton.setOnMouseExited(e -> {
+            accessMenuButton.setBorder(new Border(new BorderStroke(Color.BROWN, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+            accessMenuButton.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(12), Insets.EMPTY)));
+            accessMenuButton.setTextFill(Color.SALMON);
+        });
+
+        profileMenuButton.setOnMouseEntered(e -> {
+            profileMenuButton.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+            profileMenuButton.setBackground(new Background(new BackgroundFill(Color.SADDLEBROWN, new CornerRadii(12), Insets.EMPTY)));
+            profileMenuButton.setTextFill(Color.WHITE);
+        });
+        profileMenuButton.setOnMouseExited(e -> {
+            profileMenuButton.setBorder(new Border(new BorderStroke(Color.SADDLEBROWN, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+            profileMenuButton.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(12), Insets.EMPTY)));
+            profileMenuButton.setTextFill(Color.SANDYBROWN);
+        });
+
+        back.setOnMouseEntered(e -> {
+            back.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+            back.setBackground(new Background(new BackgroundFill(Color.PURPLE, new CornerRadii(12), Insets.EMPTY)));
+            back.setTextFill(Color.WHITE);
+        });
+        back.setOnMouseExited(e -> {
+            back.setBorder(new Border(new BorderStroke(Color.PURPLE, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(3))));
+            back.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(12), Insets.EMPTY)));
+            back.setTextFill(Color.MEDIUMPURPLE);
         });
 
         Scene scene = new Scene(root, 800, 600);

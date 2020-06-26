@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 public class Comment implements Serializable {
     private Account account;
+    private String accountUsername;
     private Product product;
     private String opinionTitle;
     private String opinionContent;
@@ -16,7 +17,7 @@ public class Comment implements Serializable {
 
     public Comment(String opinionTitle, String opinionContent) {
         this.opinionTitle = opinionTitle;
-        this.opinionContent = opinionContent;
+        this.opinionContent = opinionTitle + "\n" + opinionContent;
     }
 
     public Account getAccount() {
@@ -35,6 +36,10 @@ public class Comment implements Serializable {
         return opinionContent;
     }
 
+    public String getAccountUsername() {
+        return accountUsername;
+    }
+
     public CommentStatus getOpinionStatus() {
         return opinionStatus;
     }
@@ -45,6 +50,7 @@ public class Comment implements Serializable {
 
     public void setAccount(Account account) {
         this.account = account;
+        accountUsername = account.getUsername();
     }
 
     public void setProduct(Product product) {
