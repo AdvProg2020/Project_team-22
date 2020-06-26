@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import main.java.Main;
 import main.java.controller.AlertBox;
 import main.java.model.account.Account;
+import main.java.model.databaseUtil.Database;
 
 
 public class LoginAndLogoutMenu extends Application {

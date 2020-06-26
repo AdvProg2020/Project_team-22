@@ -39,13 +39,14 @@ public class ProductsTileController {
     }
 
     public ProductsTileController(Product product) {
+        System.out.println("hereeeeeeeeeeeeee");
         this.product = product ;
         this.core = new Core() ;
     }
 
     private void initTile() {
 
-        infoLabel.setText( product.getName() + "-" );
+        infoLabel.setText( product.getName() + "  " + product.getBrand() );
         if( product.getNumberOfProduct() > 0) {
 
             priceLabel.setText( product.getPrice() + " تومان");

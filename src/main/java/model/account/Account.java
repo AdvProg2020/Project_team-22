@@ -1,6 +1,7 @@
 package main.java.model.account;
 
 import main.java.model.Discount;
+import main.java.model.databaseUtil.Database;
 import main.java.model.log.BuyLog;
 import main.java.model.log.Log;
 import main.java.model.product.Product;

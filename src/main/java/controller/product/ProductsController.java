@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
+import main.java.model.databaseUtil.Database;
 import main.java.model.product.Product;
 
 import java.io.IOException;
@@ -29,7 +30,7 @@ public class ProductsController {
 
     public void intiProductTile( Product product){
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/ProductsTile.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource( "/main/java/view/product/ProductsTile.fxml"));
 
             fxmlLoader.setController(new ProductsTileController( product));
             Parent root = fxmlLoader.load();

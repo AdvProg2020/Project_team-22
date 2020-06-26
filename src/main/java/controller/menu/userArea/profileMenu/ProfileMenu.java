@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import main.java.Main;
 import main.java.controller.AlertBox;
 import main.java.model.account.Role;
+import main.java.model.databaseUtil.Database;
 
 public class ProfileMenu extends Application {
     /*public ProfileMenu (Menu parentMenu) {
