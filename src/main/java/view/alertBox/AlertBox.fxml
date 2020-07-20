@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="185.0" prefWidth="384.0" styleClass="anchor-pane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <children>
+      <Button fx:id="close" alignment="CENTER" layoutX="142.0" layoutY="108.0" mnemonicParsing="false" prefHeight="5.0" prefWidth="99.0" text="close" />
+      <Text fx:id="alertMessage" fill="WHITE" layoutX="57.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text1" text="Alert Message" wrappingWidth="270.13670349121094" />
+   </children>
+</AnchorPane>

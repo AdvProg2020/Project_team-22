@@ -7,10 +7,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import main.java.controller.mainMenu.MainMenuController;
+import main.java.model.account.Account;
 
 
 public class Main extends Application {
 
+    public static Account currentAccount;
     public FXMLLoader fxmlLoader;
 
     @Override
@@ -25,7 +27,7 @@ public class Main extends Application {
 
     }
     //"/main/java/view/product/Products.fxml"
-    //"/main/java/view/menu/Register.fxml"
+    //"/main/java/view/menu/AlertBox.fxml"
 
 
     public static void main(String[] args) {

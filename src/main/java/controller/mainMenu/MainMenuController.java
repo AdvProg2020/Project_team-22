@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import main.java.controller.loginAndRegister.LoginController;
 import main.java.controller.product.ProductsController;
 
 import java.io.IOException;
@@ -41,7 +42,7 @@ public class MainMenuController {
     public void initProductsMenu() {
         productsMenu.setOnAction(b -> {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/product/Products.fxml"));
-            //fxmlLoader.setController(new ProductsController(stage));
+            fxmlLoader.setController(new ProductsController(stage));
             Parent root = null;
             try {
                 root = fxmlLoader.load();
@@ -49,7 +50,6 @@ public class MainMenuController {
                 ex.printStackTrace();
             }
             stage.setScene(new Scene(root, 947, 537));
-            stage.initModality(Modality.APPLICATION_MODAL);
             stage.setResizable(false);
             stage.show();
         });
@@ -59,7 +59,7 @@ public class MainMenuController {
         loginOrRegister.setOnAction(e -> {
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/login/Login.fxml"));
-            //fxmlLoader.setController(new MainMenuController(primaryStage));
+            fxmlLoader.setController(new LoginController(stage));
             Parent root = null;
             try {
                 root = fxmlLoader.load();
@@ -72,6 +72,10 @@ public class MainMenuController {
             stage.show();
         });
     }
+
+
+
+
 
 
 }
