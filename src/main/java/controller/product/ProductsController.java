@@ -35,7 +35,6 @@ public class ProductsController {
         addProduct() ;
         initCategory() ;
         initBackButton() ;
-
     }
 
     private void initBackButton() {
@@ -44,12 +43,11 @@ public class ProductsController {
             stage.setTitle("online market");
             stage.setResizable(false);
         });
-
     }
 
-    public ProductsController(Stage stage , GridPane gridPane) {
+    public ProductsController(Stage stage) {
         this.stage = stage ;
-        this.gridPane = gridPane ;
+        //this.gridPane = gridPane ;
     }
 
     private void initCategory() {

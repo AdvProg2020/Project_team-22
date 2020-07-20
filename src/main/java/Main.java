@@ -1,53 +1,35 @@
 package main.java;
 
-
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
-import main.java.controller.Core;
+import main.java.controller.mainMenu.MainMenuController;
 
 
 public class Main extends Application {
 
-    public static void main(String[] args)  {
-        //DatabaseInitiation.initializeDatabase();
-        //Core core = new Core();
-        //CommandProcessor commandProcessor = new CommandProcessor(core);
-        //commandProcessor.run();
-        launch(args);
-    }
-
-
-    private Scene register;
-    private Scene login;
-    public static Core core = new Core();
+    public FXMLLoader fxmlLoader;
 
     @Override
-    public void start(Stage stage) throws Exception {
-        GridPane root = new GridPane();
-        root.setGridLinesVisible(true);
-        final int numCols = 7 ;
-        final int numRows = 20 ;
-        for (int i = 0; i < numCols; i++) {
-            ColumnConstraints colConst = new ColumnConstraints();
-            colConst.setPercentWidth(100.0 / numCols);
-            root.getColumnConstraints().add(colConst);
-        }
-        for (int i = 0; i < numRows; i++) {
-            RowConstraints rowConst = new RowConstraints();
-            rowConst.setPercentHeight(100.0 / numRows);
-            root.getRowConstraints().add(rowConst);
-        }
+    public void start(Stage primaryStage) throws Exception{
+        //DatabaseInitiation.initializeDatabase();
+        fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/mainMenu/MainMenu.fxml"));
+        fxmlLoader.setController(new MainMenuController(primaryStage));
+        Parent root = fxmlLoader.load();
+        primaryStage.setScene(new Scene(root, 947, 537));
+        primaryStage.setResizable(false);
+        primaryStage.show();
 
-        Scene scene = new Scene(root, 800, 600);
-        stage.setScene(scene);
-        stage.setTitle("online market");
-        stage.setResizable(false);
-        stage.show();
     }
+    //"/main/java/view/product/Products.fxml"
+    //"/main/java/view/menu/Register.fxml"
 
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 
 }

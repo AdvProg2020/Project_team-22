@@ -1,0 +1,68 @@
+[
+  {
+    "username": "Ali_Reza",
+    "firstName": "alireza",
+    "lastName": "soleymani",
+    "email": "agh@gmail.com",
+    "phone": "09301395175",
+    "password": "mh:2301",
+    "role": "CUSTOMER",
+    "discountsCodes": [],
+    "discountsList": [],
+    "credit": 0,
+    "logsList": [],
+    "logsListCode": [],
+    "shopBasket": [
+      {
+        "productId": "a3e79dfc-90d0-4409-b3fd-22202577ac43",
+        "name": "ماست تازه ",
+        "brand": "پاک ",
+        "price": 9000,
+        "categoryName": "food",
+        "description": "fresh",
+        "points": {},
+        "comments": [],
+        "numberOfProduct": 2
+      },
+      {
+        "productId": "7e6ce485-7472-42fd-82c4-60381d11898f",
+        "name": "پنیر تازه ",
+        "brand": "پاک ",
+        "price": 8000,
+        "categoryName": "food",
+        "description": "fresh",
+        "points": {},
+        "comments": [],
+        "numberOfProduct": 2
+      },
+      {
+        "productId": "0d17ba06-1ebd-4771-970a-a2b32d5b542d",
+        "name": "تخم مرغ تازه ",
+        "brand": "پاک ",
+        "price": 45000,
+        "categoryName": "food",
+        "description": "fresh",
+        "points": {},
+        "comments": [],
+        "numberOfProduct": 2
+      }
+    ],
+    "shopBasketProductId": []
+  },
+  {
+    "username": "mamali",
+    "firstName": "mamali",
+    "lastName": "cdwes",
+    "email": "crdwe@gmail.com",
+    "phone": "09121121212",
+    "password": "1111",
+    "role": "MANAGER",
+    "discountsCodes": [],
+    "discountsList": [],
+    "credit": 0,
+    "logsList": [],
+    "logsListCode": [],
+    "shopBasket": [],
+    "shopBasketProductId": []
+  }
+]
