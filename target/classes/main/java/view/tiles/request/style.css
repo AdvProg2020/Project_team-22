@@ -5,10 +5,10 @@
 
 .button
 {
-    -fx-background-color: #CF7311;
+    -fx-background-color: #188612;
     -fx-text-fill: #FFFFFF;
     -fx-font-family: "Tello Stick";
-    -fx-font-size: 20;
+    -fx-font-size: 15;
     -fx-alignment: center;
 }
 
@@ -24,6 +24,48 @@
     -fx-text-fill: #060101;
 }
 
+.button1
+{
+    -fx-background-color: #9C2323;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Tello Stick";
+    -fx-font-size: 15;
+    -fx-alignment: center;
+}
+
+.button1:hover
+{
+    -fx-background-color: #D5BC85;
+    -fx-text-fill: #060101;
+}
+
+.button1:pressed
+{
+    -fx-background-color: #C0A538;
+    -fx-text-fill: #060101;
+}
+
+.button2
+{
+    -fx-background-color: #785715;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Tello Stick";
+    -fx-font-size: 15;
+    -fx-alignment: center;
+}
+
+.button2:hover
+{
+    -fx-background-color: #D5BC85;
+    -fx-text-fill: #060101;
+}
+
+.button2:pressed
+{
+    -fx-background-color: #C0A538;
+    -fx-text-fill: #060101;
+}
+
 .pane
 {
     -fx-background-color: #CC4C0C;
@@ -32,7 +74,15 @@
 .text1
 {
     -fx-font-family: "Tello Stick";
-    -fx-font-size: 50;
+    -fx-font-size: 20;
+    -fx-text-alignment: center;
+}
+
+.text2
+{
+    -fx-font-family: "Tello Stick";
+    -fx-font-size: 15;
+    -fx-text-alignment: center;
 }
 
 .text-field

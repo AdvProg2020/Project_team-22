@@ -9,10 +9,10 @@ import java.util.Map;
 
 public class Category implements Serializable {
     private String name;
-    private Map<Integer, String> properties = new HashMap<>();
+    private ArrayList<String> properties = new ArrayList<>();
     private ArrayList<Product> productsList = new ArrayList<>();
 
-    public Category(String name, HashMap<Integer, String> properties) {
+    public Category(String name, ArrayList<String> properties) {
         this.name = name;
         this.properties = properties;
     }
@@ -21,7 +21,7 @@ public class Category implements Serializable {
         return name;
     }
 
-    public Map<Integer, String> getProperties() {
+    public ArrayList<String> getProperties() {
         return properties;
     }
 
@@ -33,8 +33,8 @@ public class Category implements Serializable {
         this.name = name;
     }
 
-    public void addProperty(String property, int number){
-        this.properties.put(number, property);
+    public void addProperty(String property){
+        this.properties.add(property);
     }
 
     @Override

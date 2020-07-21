@@ -50,8 +50,8 @@ public class ProductsTileController {
         if( product.getCategoryName() != null &&  product.getCategory() !=null){
             if( product.getCategory().getProperties() != null &&  product.getCategory().getProperties().size() >0 ){
                 categoryLabel.setText( categoryLabel.getText() + " - " ) ;
-                for( String key : product.getCategory().getProperties().values()){
-                    categoryLabel.setText( categoryLabel.getText() + "," + key ) ;
+                for( String property : product.getCategory().getProperties()){
+                    categoryLabel.setText( categoryLabel.getText() + "," + property ) ;
                 }
             }
         }

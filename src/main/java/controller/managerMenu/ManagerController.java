@@ -12,10 +12,8 @@ import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 import main.java.controller.mainMenu.MainMenuController;
 import main.java.controller.managerMenu.createManager.CreateManagerController;
-import main.java.controller.tilesController.AccountTileController;
-import main.java.controller.tilesController.OffRequestTileController;
-import main.java.controller.tilesController.ProductRequestTileController;
-import main.java.controller.tilesController.ProductTileController;
+import main.java.controller.tilesController.*;
+import main.java.model.Category;
 import main.java.model.account.Account;
 import main.java.model.databaseUtil.Database;
 import main.java.model.product.Product;
@@ -55,6 +53,7 @@ public class ManagerController {
     private ArrayList<Parent> accountTiles = new ArrayList<>();
     private ArrayList<Parent> productTiles = new ArrayList<>();
     private ArrayList<Parent> requestTiles = new ArrayList<>();
+    private ArrayList<Parent> categoryTiles = new ArrayList<>();
 
     public ManagerController(Stage stage) {
         this.stage = stage;
@@ -69,6 +68,7 @@ public class ManagerController {
         initAccounts();
         initProducts();
         initRequests();
+        initCategories();
         initAddManger();
     }
 
@@ -92,9 +92,41 @@ public class ManagerController {
 
 
 
+    private void initCategories() {
+        categories.setOnAction(e -> {
+            tilePane.getChildren().removeAll(categoryTiles);
+            tilePane.getChildren().removeAll(requestTiles);
+            tilePane.getChildren().removeAll(accountTiles);
+            tilePane.getChildren().removeAll(productTiles);
+            initAddCategories();
+        });
+    }
+
+    private void initAddCategories() {
+        for(Category category : Database.getAllCategories()){
+            initCategoryTile(category);
+        }
+    }
+
+    public void initCategoryTile(Category category){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource( "/main/java/view/tiles/category/CategoryTile.fxml"));
+            CategoryTileController categoryTileController = new CategoryTileController(category, tilePane);
+            fxmlLoader.setController(categoryTileController);
+            Parent root = fxmlLoader.load();
+            categoryTileController.setParent(root);
+            tilePane.getChildren().add(root) ;
+            categoryTiles.add(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     private void initRequests() {
         requests.setOnAction(e -> {
+            tilePane.getChildren().removeAll(categoryTiles);
             tilePane.getChildren().removeAll(requestTiles);
             tilePane.getChildren().removeAll(accountTiles);
             tilePane.getChildren().removeAll(productTiles);
@@ -137,6 +169,7 @@ public class ManagerController {
 
     private void initAccounts() {
         users.setOnAction(e -> {
+            tilePane.getChildren().removeAll(categoryTiles);
             tilePane.getChildren().removeAll(requestTiles);
             tilePane.getChildren().removeAll(accountTiles);
             tilePane.getChildren().removeAll(productTiles);
@@ -166,6 +199,7 @@ public class ManagerController {
 
     private void initProducts() {
         products.setOnAction(e -> {
+            tilePane.getChildren().removeAll(categoryTiles);
             tilePane.getChildren().removeAll(requestTiles);
             tilePane.getChildren().removeAll(accountTiles);
             tilePane.getChildren().removeAll(productTiles);

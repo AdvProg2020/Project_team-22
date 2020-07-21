@@ -9,10 +9,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import main.java.model.product.Product;
 import main.java.model.request.OffRequest;
 
-public class OffRequestTileProducts {
+import java.util.ArrayList;
+
+public class TileProducts {
 
 
-    private OffRequest offRequest;
+
+    private ArrayList<Product> products;
 
     @FXML
     private TableView<Product> table;
@@ -31,10 +34,6 @@ public class OffRequestTileProducts {
     @FXML
     private TableColumn<Product, Double> point;
 
-    public OffRequestTileProducts(OffRequest offRequest) {
-        this.offRequest = offRequest;
-    }
-
     @FXML
     public void initialize(){
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -49,10 +48,13 @@ public class OffRequestTileProducts {
     }
 
 
+    public TileProducts(ArrayList<Product> products) {
+        this.products = products;
+    }
 
     public ObservableList<Product> getProducts() {
         ObservableList<Product> players = FXCollections.observableArrayList();
-        players.addAll(offRequest.getOff().getProductsList());
+        players.addAll(products);
         return players;
     }
 }

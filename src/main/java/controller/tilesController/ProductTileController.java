@@ -64,6 +64,7 @@ public class ProductTileController {
                 ex.printStackTrace();
             }
         });
+        Database.addAllProductsToDatabaseFile();
     }
 
     private void initEffect() {

@@ -16,10 +16,6 @@
     "brand": "jeans",
     "price": 9000,
     "categoryName": "clothes",
-    "category": {
-      "name": "clothes",
-      "productsList": []
-    },
     "description": "good",
     "points": {},
     "comments": [],
@@ -46,10 +42,6 @@
     "brand": "armani",
     "price": 8000,
     "categoryName": "clothes",
-    "category": {
-      "name": "clothes",
-      "productsList": []
-    },
     "description": "fresh",
     "points": {},
     "comments": [],

@@ -464,10 +464,10 @@ public class Core {
             System.out.println("account removed");
         }
     }
-
-    public void createCategory(String name, HashMap<Integer, String> properties) throws Exception {
-        Database.addCategory(new Category(name, properties));
-    }
+//
+//    public void createCategory(String name, HashMap<Integer, String> properties) throws Exception {
+//        Database.addCategory(new Category(name, properties));
+//    }
 
     public HashMap<Integer, String> setCategoryProperties(Scanner scanner) {
         HashMap<Integer, String> properties = new HashMap<>();
@@ -481,27 +481,27 @@ public class Core {
         }
         return properties;
     }
-
-    public void editCategory(Scanner scanner, String name) throws Exception {
-        if (Database.getCategoryByName(name) == null) {
-            throw new Exception("category does not exists!");
-        }
-        Category category = Database.getCategoryByName(name);
-        System.out.println("category name: " + name);
-        for (Integer num : category.getProperties().keySet()) {
-            System.out.println(num + ". " + category.getProperties().get(num));
-        }
-        System.out.println("enter new Information below:\nenter new name: ");
-        Database.removeCategory(category);
-        try {
-            String newName = scanner.nextLine();
-            createCategory(newName, setCategoryProperties(scanner));
-            System.out.println("category successfully edited");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            Database.addCategory(category);
-        }
-    }
+//
+//    public void editCategory(Scanner scanner, String name) throws Exception {
+//        if (Database.getCategoryByName(name) == null) {
+//            throw new Exception("category does not exists!");
+//        }
+//        Category category = Database.getCategoryByName(name);
+//        System.out.println("category name: " + name);
+//        for (Integer num : category.getProperties().keySet()) {
+//            System.out.println(num + ". " + category.getProperties().get(num));
+//        }
+//        System.out.println("enter new Information below:\nenter new name: ");
+//        Database.removeCategory(category);
+//        try {
+//            String newName = scanner.nextLine();
+//            createCategory(newName, setCategoryProperties(scanner));
+//            System.out.println("category successfully edited");
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//            Database.addCategory(category);
+//        }
+//    }
 
     public void editProductInfo(ProductStatus productStatus, int price, StockStatus stockStatus, String description) {
 

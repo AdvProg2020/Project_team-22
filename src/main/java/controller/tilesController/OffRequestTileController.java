@@ -11,12 +11,9 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import main.java.controller.managerMenu.createManager.CreateManagerController;
 import main.java.model.databaseUtil.Database;
 import main.java.model.off.OffStatus;
-import main.java.model.product.ProductStatus;
 import main.java.model.request.OffRequest;
-import main.java.model.request.ProductRequest;
 import main.java.model.request.Type;
 
 import java.io.IOException;
@@ -67,7 +64,7 @@ public class OffRequestTileController {
             //stage.close();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/tiles/request/ProductRequestTile.fxml"));
             Stage stage1 = new Stage();
-            fxmlLoader.setController(new OffRequestTileProducts(offRequest));
+            fxmlLoader.setController(new TileProducts(offRequest.getOff().getProductsList()));
             Parent root = null;
             try {
                 root = fxmlLoader.load();
