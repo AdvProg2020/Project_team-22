@@ -1,0 +1,43 @@
+@font-face
+{
+    src: url('TelloStick.ttf');
+}
+
+.button
+{
+    -fx-background-color: #CF7311;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Tello Stick";
+    -fx-font-size: 20;
+    -fx-alignment: center;
+}
+
+.button:hover
+{
+    -fx-background-color: #D5BC85;
+    -fx-text-fill: #060101;
+}
+
+.button:pressed
+{
+    -fx-background-color: #C0A538;
+    -fx-text-fill: #060101;
+}
+
+.pane
+{
+    -fx-background-color: #CC4C0C;
+}
+
+.text1
+{
+    -fx-font-family: "Tello Stick";
+    -fx-font-size: 50;
+}
+
+.text-field
+{
+    -fx-font-family: "Tello Stick";
+    -fx-font-size: 15;
+}
+

@@ -76,7 +76,7 @@ public class LoginController {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-            stage.setScene(new Scene(root, 600, 400));
+            stage.setScene(new Scene(root, 823, 462));
             stage.setResizable(false);
             stage.show();
         });

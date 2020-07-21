@@ -91,7 +91,6 @@ public class RegisterController {
                         Database.addAccount(new Account(uName, fName, lName, Email, pNum, pass, fRole));
                     }
                     display("you registered successfully!", new Stage());
-                    //AlertBox.display("register", "you registered successfully!");
                     firstName.clear();
                     lastName.clear();
                     username.clear();
@@ -100,9 +99,9 @@ public class RegisterController {
                     email.clear();
                     companyName.clear();
                     role = null;
+                    stage.close();
                 } catch (Exception E) {
                     display(E.getMessage(), new Stage());
-                    //AlertBox.display("register", E.getMessage());
                 }
             }
         });

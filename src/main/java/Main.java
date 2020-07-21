@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import main.java.controller.mainMenu.MainMenuController;
 import main.java.model.account.Account;
+import main.java.model.databaseUtil.DatabaseInitiation;
 
 
 public class Main extends Application {
@@ -17,14 +18,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        //DatabaseInitiation.initializeDatabase();
+        DatabaseInitiation.initializeDatabase();
         fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/mainMenu/MainMenu.fxml"));
         fxmlLoader.setController(new MainMenuController(primaryStage));
         Parent root = fxmlLoader.load();
         primaryStage.setScene(new Scene(root, 947, 537));
         primaryStage.setResizable(false);
         primaryStage.show();
-
     }
     //"/main/java/view/product/Products.fxml"
     //"/main/java/view/menu/AlertBox.fxml"

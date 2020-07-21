@@ -5,9 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.java.controller.loginAndRegister.LoginController;
+import main.java.controller.managerMenu.ManagerController;
 import main.java.controller.product.ProductsController;
 
 import java.io.IOException;
@@ -33,13 +35,15 @@ public class MainMenuController {
     private Button productsMenu;
 
 
+
     @FXML
     public void initialize(){
         initProductsMenu();
         initLoginMenu();
+        initAccessMenu();
     }
 
-    public void initProductsMenu() {
+    private void initProductsMenu() {
         productsMenu.setOnAction(b -> {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/product/Products.fxml"));
             fxmlLoader.setController(new ProductsController(stage));
@@ -55,7 +59,7 @@ public class MainMenuController {
         });
     }
 
-    public void initLoginMenu() {
+    private void initLoginMenu() {
         loginOrRegister.setOnAction(e -> {
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/login/Login.fxml"));
@@ -73,9 +77,20 @@ public class MainMenuController {
         });
     }
 
-
-
-
-
+    private void initAccessMenu() {
+        accessMenu.setOnAction(b -> {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/managerMenu/ManagerMenu.fxml"));
+            fxmlLoader.setController(new ManagerController(stage));
+            Parent root = null;
+            try {
+                root = fxmlLoader.load();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            stage.setScene(new Scene(root, 947, 537));
+            stage.setResizable(false);
+            stage.show();
+        });
+    }
 
 }

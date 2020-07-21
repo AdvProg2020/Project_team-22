@@ -72,6 +72,14 @@ public class Database {
         addAllCategoriesToDatabaseFile();
     }
 
+    public static void removeAccount(Account account) throws Exception {
+        if(account == null) {
+            throw new Exception("Account does not exists!");
+        }
+        allAccounts.remove(account);
+        addAllAccountsToDatabaseFile();
+    }
+
     public static ArrayList<Category> getAllCategories() {
         return allCategories;
     }

@@ -9,9 +9,15 @@
     -fx-font-size: 15;
 }
 
+.text2
+{
+    -fx-font-family: "Tello Stick";
+    -fx-font-size: 50;
+}
+
 .button
 {
-    -fx-background-color: #CF7311;
+    -fx-background-color: #9B1972;
     -fx-text-fill: #FFFFFF;
     -fx-font-family: "Tello Stick";
     -fx-font-size: 20;
@@ -28,4 +34,9 @@
 {
     -fx-background-color: #C0A538;
     -fx-text-fill: #060101;
+}
+
+.pane
+{
+    -fx-background-color: #9B1972;
 }

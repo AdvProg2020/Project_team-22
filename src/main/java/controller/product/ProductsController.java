@@ -11,11 +11,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import main.java.controller.mainMenu.MainMenuController;
 import main.java.model.Category;
 import main.java.model.databaseUtil.Database;
 import main.java.model.product.Product;
 
-import javax.xml.crypto.Data;
 import java.io.IOException;
 
 public class ProductsController {
@@ -38,10 +38,18 @@ public class ProductsController {
     }
 
     private void initBackButton() {
-        back.setOnAction(event -> {
-            stage.getScene().setRoot( gridPane);
-            stage.setTitle("online market");
+        back.setOnMouseClicked(e -> {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/mainMenu/MainMenu.fxml"));
+            fxmlLoader.setController(new MainMenuController(stage));
+            Parent root = null;
+            try {
+                root = fxmlLoader.load();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            stage.setScene(new Scene(root, 947, 537));
             stage.setResizable(false);
+            stage.show();
         });
     }
 

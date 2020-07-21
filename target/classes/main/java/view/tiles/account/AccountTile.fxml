@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="329.0" prefWidth="344.0" styleClass="anchor-pane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <FontAwesomeIconView glyphName="USER_ALT" layoutX="115.0" layoutY="117.0" size="120" text="" wrappingWidth="103.99995422363281" />
+      <ComboBox fx:id="changeRole" layoutX="249.0" layoutY="21.0" prefHeight="25.0" prefWidth="70.0" promptText="Role" />
+      <Button fx:id="done" layoutX="86.0" layoutY="283.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="161.0" text="Done" />
+      <CheckBox fx:id="remove" layoutX="14.0" layoutY="25.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="70.0" text="Remove" />
+      <Text layoutX="41.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text1" text="User name" wrappingWidth="62.0" />
+      <Text fx:id="username" layoutX="218.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text2" text="mamali" wrappingWidth="62.0" />
+      <Text layoutX="41.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text1" text="Role" wrappingWidth="62.0" />
+      <Text fx:id="role" layoutX="175.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text2" text="manager" wrappingWidth="147.33331298828125" />
+      <Text layoutX="41.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text1" text="E-mail" wrappingWidth="62.0" />
+      <Text fx:id="email" layoutX="161.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text2" text="mamali@gmail.com" wrappingWidth="176.00000762939453" />
+      <TextField fx:id="company" alignment="CENTER" layoutX="86.0" layoutY="238.0" promptText="Company name" styleClass="text1" />
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+   <opaqueInsets>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </opaqueInsets>
+</AnchorPane>
