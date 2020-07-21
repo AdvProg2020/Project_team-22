@@ -69,6 +69,7 @@ public class SalesmanController {
         tilePane.setHgap(13);
         initBack();
         initAddProduct();
+        initCategories();
     }
 
 
@@ -106,39 +107,39 @@ public class SalesmanController {
             stage.show();
         });
     }
-//
-//
-//
-//    private void initCategories() {
-//        categories.setOnAction(e -> {
-//            tilePane.getChildren().removeAll(categoryTiles);
-//            tilePane.getChildren().removeAll(requestTiles);
-//            tilePane.getChildren().removeAll(accountTiles);
-//            tilePane.getChildren().removeAll(productTiles);
-//            initAddCategories();
-//        });
-//    }
-//
-//    private void initAddCategories() {
-//        for(Category category : Database.getAllCategories()){
-//            initCategoryTile(category);
-//        }
-//    }
-//
-//    public void initCategoryTile(Category category){
-//        try {
-//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource( "/main/java/view/tiles/category/CategoryTile.fxml"));
-//            CategoryTileController categoryTileController = new CategoryTileController(category, tilePane);
-//            fxmlLoader.setController(categoryTileController);
-//            Parent root = fxmlLoader.load();
-//            categoryTileController.setParent(root);
-//            tilePane.getChildren().add(root) ;
-//            categoryTiles.add(root);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
+
+
+
+    private void initCategories() {
+        categories.setOnAction(e -> {
+            tilePane.getChildren().removeAll(categoryTiles);
+            tilePane.getChildren().removeAll(requestTiles);
+            tilePane.getChildren().removeAll(accountTiles);
+            tilePane.getChildren().removeAll(productTiles);
+            initAddCategories();
+        });
+    }
+
+    private void initAddCategories() {
+        for(Category category : Database.getAllCategories()){
+            initCategoryTile(category);
+        }
+    }
+
+    public void initCategoryTile(Category category){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource( "/main/java/view/tiles/category/CategoryTile.fxml"));
+            CategoryTileController categoryTileController = new CategoryTileController(category, tilePane, true);
+            fxmlLoader.setController(categoryTileController);
+            Parent root = fxmlLoader.load();
+            categoryTileController.setParent(root);
+            tilePane.getChildren().add(root) ;
+            categoryTiles.add(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 //
 //
 //

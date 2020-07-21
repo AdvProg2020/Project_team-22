@@ -34,6 +34,26 @@
     -fx-text-fill: #060101;
 }
 
+
+.button1
+{
+    -fx-background-color: #B60101;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Tello Stick";
+    -fx-font-size: 23;
+    -fx-alignment: center;
+}
+
+.button1 .glyph-icon{
+    /*-fx-fill: #FFFFFF;*/
+}
+
+.button1:hover
+{
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #060101;
+}
+
 .label
 {
     -fx-font-family: "Tello Stick";

@@ -1,58 +1,10 @@
 [
   {
-    "productId": "5585634e-5e65-407f-a4a1-f1f0b251d4a3",
-    "name": "Ball",
-    "brand": "Adidas",
-    "price": 9000,
-    "categoryName": "Sport",
-    "description": "good",
-    "points": {},
-    "comments": [],
-    "numberOfProduct": 2
-  },
-  {
-    "productId": "7faa80b9-5c8b-407e-a384-540bdc16d726",
-    "name": "T-shirt",
-    "brand": "jeans",
-    "price": 9000,
-    "categoryName": "clothes",
-    "description": "good",
-    "points": {},
-    "comments": [],
-    "numberOfProduct": 2
-  },
-  {
-    "productId": "90638aee-cd02-405a-90b7-bd1982a96892",
-    "name": "milk",
-    "brand": "pak",
-    "price": 9000,
-    "categoryName": "food",
-    "category": {
-      "name": "food",
-      "productsList": []
-    },
-    "description": "fresh",
-    "points": {},
-    "comments": [],
-    "numberOfProduct": 2
-  },
-  {
-    "productId": "d61e19a0-ed2e-4cbf-8de4-1df3ac56b762",
-    "name": "jacket",
-    "brand": "armani",
-    "price": 8000,
-    "categoryName": "clothes",
-    "description": "fresh",
-    "points": {},
-    "comments": [],
-    "numberOfProduct": 2
-  },
-  {
-    "productId": "1bb37c73-18e1-428b-8991-e82eb3904927",
+    "productId": "d8168103-2093-4430-af45-dd0c41a532c5",
     "productStatus": "CONFIRMED",
-    "name": "milk",
-    "brand": "damdaran",
-    "price": 1000,
+    "name": "ball",
+    "brand": "adidas",
+    "price": 15,
     "salesman": {
       "username": "ali",
       "firstName": "ali",
@@ -70,47 +22,57 @@
       "shopBasket": [],
       "shopBasketProductId": []
     },
-    "categoryName": "food",
+    "categoryName": "sport",
     "category": {
-      "name": "food",
-      "productsList": []
-    },
-    "description": "",
-    "points": {},
-    "comments": [],
-    "numberOfProduct": 5
-  },
-  {
-    "productId": "4c5851ec-9a13-4e25-8e4e-57908c848a3a",
-    "productStatus": "CONFIRMED",
-    "name": "papaer",
-    "brand": "Paper one",
-    "price": 120,
-    "salesman": {
-      "username": "ali",
-      "firstName": "ali",
-      "lastName": "khodabandelou",
-      "email": "ali@gmail.com",
-      "phone": "09120149635",
-      "password": "1111",
-      "role": "SALESMAN",
-      "companyName": "adidas",
-      "discountsCodes": [],
-      "discountsList": [],
-      "credit": 0,
-      "logsList": [],
-      "logsListCode": [],
-      "shopBasket": [],
-      "shopBasketProductId": []
-    },
-    "categoryName": "food",
-    "category": {
-      "name": "food",
-      "productsList": []
+      "name": "sport",
+      "properties": [
+        "one",
+        "tow",
+        "dadada",
+        ""
+      ]
     },
     "description": "",
     "points": {},
     "comments": [],
     "numberOfProduct": 100
+  },
+  {
+    "productId": "9a6bc3e9-13b5-4dae-a2c4-c8b6883ef2d5",
+    "productStatus": "CONFIRMED",
+    "name": "milk",
+    "brand": "paak",
+    "price": 1,
+    "salesman": {
+      "username": "ali",
+      "firstName": "ali",
+      "lastName": "khodabandelou",
+      "email": "ali@gmail.com",
+      "phone": "09120149635",
+      "password": "1111",
+      "role": "SALESMAN",
+      "companyName": "adidas",
+      "discountsCodes": [],
+      "discountsList": [],
+      "credit": 0,
+      "logsList": [],
+      "logsListCode": [],
+      "shopBasket": [],
+      "shopBasketProductId": []
+    },
+    "categoryName": "food",
+    "category": {
+      "name": "food",
+      "properties": [
+        "zh",
+        "z",
+        "zh",
+        "bfsgxx"
+      ]
+    },
+    "description": "",
+    "points": {},
+    "comments": [],
+    "numberOfProduct": 25
   }
 ]

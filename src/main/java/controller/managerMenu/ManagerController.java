@@ -9,7 +9,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.TilePane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import main.java.controller.loginAndRegister.LoginController;
 import main.java.controller.mainMenu.MainMenuController;
 import main.java.controller.managerMenu.createManager.CreateManagerController;
 import main.java.controller.tilesController.*;
@@ -43,6 +45,8 @@ public class ManagerController {
     @FXML
     private Button edit;
     @FXML
+    private Button addCategory;
+    @FXML
     private TilePane tilePane;
     @FXML
     private Label market;
@@ -70,11 +74,30 @@ public class ManagerController {
         initRequests();
         initCategories();
         initAddManger();
+        initAddCategory();
     }
 
 
+    private void initAddCategory() {
+        addCategory.setOnAction(e -> {
+            Stage stage = new Stage();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/addCategory/AddCategory.fxml"));
+            fxmlLoader.setController(new AddCategoryController(stage));
+            Parent root = null;
+            try {
+                root = fxmlLoader.load();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            stage.setScene(new Scene(root, 224, 331));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
+            stage.show();
+        });
+    }
 
-    public void initBack() {
+
+    private void initBack() {
         market.setOnMouseClicked(e -> {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/mainMenu/MainMenu.fxml"));
                 fxmlLoader.setController(new MainMenuController(stage));
@@ -111,7 +134,7 @@ public class ManagerController {
     public void initCategoryTile(Category category){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource( "/main/java/view/tiles/category/CategoryTile.fxml"));
-            CategoryTileController categoryTileController = new CategoryTileController(category, tilePane);
+            CategoryTileController categoryTileController = new CategoryTileController(category, tilePane, false);
             fxmlLoader.setController(categoryTileController);
             Parent root = fxmlLoader.load();
             categoryTileController.setParent(root);

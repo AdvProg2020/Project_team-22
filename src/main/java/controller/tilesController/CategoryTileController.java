@@ -12,9 +12,11 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import main.java.controller.managerMenu.EditCategoryController;
 import main.java.model.Category;
 import main.java.model.databaseUtil.Database;
 import main.java.model.off.OffStatus;
+import main.java.model.product.Product;
 import main.java.model.request.Type;
 
 import java.io.IOException;
@@ -39,9 +41,14 @@ public class CategoryTileController {
     private Category category;
     private TilePane tilePane;
     private Parent parent;
+    private boolean buttons;
 
     @FXML
     public void initialize(){
+        if(buttons) {
+            pane.getChildren().remove(remove);
+            pane.getChildren().remove(edit);
+        }
         setProperties();
         initEdit();
         initRemove();
@@ -49,17 +56,24 @@ public class CategoryTileController {
         initShowProducts();
     }
 
-    public CategoryTileController(Category category, TilePane tilePane) {
+    public CategoryTileController(Category category, TilePane tilePane, boolean buttons) {
         this.category = category;
         this.tilePane = tilePane;
+        this.buttons = buttons;
     }
 
     private void initShowProducts() {
         view.setOnAction(e -> {
             //stage.close();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/tiles/request/ProductRequestTile.fxml"));
+            ArrayList<Product> products = new ArrayList<>();
+            for (Product product : Database.getAllProducts()) {
+                if(product.getCategoryName().equals(category.getName())) {
+                    products.add(product);
+                }
+            }
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/tiles/request/ViewOffProducts.fxml"));
             Stage stage1 = new Stage();
-            fxmlLoader.setController(new TileProducts(category.getProductsList()));
+            fxmlLoader.setController(new TileProducts(products));
             Parent root = null;
             try {
                 root = fxmlLoader.load();
@@ -74,11 +88,24 @@ public class CategoryTileController {
 
     private void setProperties() {
         name.setText(category.getName());
-        //properties.getItems().addAll(category.getProperties());
+        properties.getItems().addAll(category.getProperties());
     }
 
     private void initEdit() {
-
+        edit.setOnAction(e -> {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/editCategory/EditCategory.fxml"));
+            Stage stage1 = new Stage();
+            fxmlLoader.setController(new EditCategoryController(stage1, category));
+            Parent root = null;
+            try {
+                root = fxmlLoader.load();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            stage1.setScene(new Scene(root, 224, 331));
+            stage1.setResizable(false);
+            stage1.show();
+        });
     }
 
     private void initRemove() {

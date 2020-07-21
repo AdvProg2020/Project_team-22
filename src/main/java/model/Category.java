@@ -10,10 +10,15 @@ import java.util.Map;
 public class Category implements Serializable {
     private String name;
     private ArrayList<String> properties = new ArrayList<>();
-    private ArrayList<Product> productsList = new ArrayList<>();
+    //private ArrayList<Product> productsList = new ArrayList<>();
 
     public Category(String name, ArrayList<String> properties) {
         this.name = name;
+        this.properties = properties;
+    }
+
+
+    public void setProperties(ArrayList<String> properties) {
         this.properties = properties;
     }
 
@@ -24,10 +29,10 @@ public class Category implements Serializable {
     public ArrayList<String> getProperties() {
         return properties;
     }
-
-    public ArrayList<Product> getProductsList() {
-        return productsList;
-    }
+//
+//    public ArrayList<Product> getProductsList() {
+//        return productsList;
+//    }
 
     public void setName(String name) {
         this.name = name;
@@ -42,7 +47,6 @@ public class Category implements Serializable {
         return "Category{" +
                 "name='" + name + '\'' +
                 ", properties=" + properties +
-                ", productsList=" + productsList +
                 '}';
     }
 }

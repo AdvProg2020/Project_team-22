@@ -1,6 +1,20 @@
 [
   {
+    "name": "sport",
+    "properties": [
+      "one",
+      "tow",
+      "dadada",
+      ""
+    ]
+  },
+  {
     "name": "food",
-    "productsList": []
+    "properties": [
+      "zh",
+      "z",
+      "zh",
+      "bfsgxx"
+    ]
   }
 ]
