@@ -45,6 +45,27 @@
     -fx-text-fill: #060101;
 }
 
+.button2
+{
+    -fx-background-color: #785715;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Tello Stick";
+    -fx-font-size: 15;
+    -fx-alignment: center;
+}
+
+.button2:hover
+{
+    -fx-background-color: #D5BC85;
+    -fx-text-fill: #060101;
+}
+
+.button2:pressed
+{
+    -fx-background-color: #C0A538;
+    -fx-text-fill: #060101;
+}
+
 .pane
 {
     -fx-background-color: #CC4C0C;

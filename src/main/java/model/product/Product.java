@@ -14,15 +14,19 @@ import java.util.UUID;
 
 public class Product implements Serializable {
     private String productId;
-    private StockStatus productStatus;
+    private ProductStatus productStatus;
+    private StockStatus stockStatus;
     private String name;
     private String brand;
     private int price;
     private Account salesman;
+    private String salesmanName;
     private String categoryName;
+    private String companyName;
     private Category category;
     private String description;
     private Map<String, Integer> points;
+    private Double averagePoint;
     private ArrayList<Comment> comments;
     int numberOfProduct;
 
@@ -40,11 +44,19 @@ public class Product implements Serializable {
         productId = UUID.randomUUID().toString();
     }
 
+    public String getSalesmanName() {
+        return salesman.getUsername();
+    }
+
+    public String getCompanyName() {
+        return salesman.getCompanyName();
+    }
+
     public String getProductId() {
         return productId;
     }
 
-    public StockStatus getProductStatus() {
+    public ProductStatus getProductStatus() {
         return productStatus;
     }
 
@@ -119,8 +131,12 @@ public class Product implements Serializable {
         this.productId = productId;
     }
 
-    public void setProductStatus(StockStatus productStatus) {
+    public void setProductStatus(ProductStatus productStatus) {
         this.productStatus = productStatus;
+    }
+
+    public void setStockStatus(StockStatus stockStatus) {
+        this.stockStatus = stockStatus;
     }
 
     public void setName(String name) {

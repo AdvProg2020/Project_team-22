@@ -1,46 +1,50 @@
 package main.java.controller.tilesController;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import main.java.controller.managerMenu.createManager.CreateManagerController;
 import main.java.model.databaseUtil.Database;
-import main.java.model.product.Product;
+import main.java.model.off.OffStatus;
 import main.java.model.product.ProductStatus;
+import main.java.model.request.OffRequest;
 import main.java.model.request.ProductRequest;
-import main.java.model.request.Request;
 import main.java.model.request.Type;
 
-public class ProductRequestTileController {
+import java.io.IOException;
+
+public class OffRequestTileController {
 
 
     @FXML
     private AnchorPane pane;
     @FXML
-    private Text type;
+    private Text percent;
     @FXML
-    private Text name;
+    private Text start;
     @FXML
-    private Text brand;
-    @FXML
-    private Text category;
-    @FXML
-    private Text price;
-    @FXML
-    private Text company;
+    private Text end;
     @FXML
     private Text status;
+    @FXML
+    private Text salesman;
     @FXML
     private Button accept;
     @FXML
     private Button decline;
+    @FXML
+    private Button view;
 
 
-    private ProductRequest productRequest;
+    private OffRequest offRequest;
     private TilePane tilePane;
     private Parent parent;
 
@@ -50,26 +54,43 @@ public class ProductRequestTileController {
         initAccept();
         initEffect();
         initDecline();
+        initShowProducts();
     }
 
-    public ProductRequestTileController(ProductRequest productRequest, TilePane tilePane) {
-        this.productRequest = productRequest;
+    public OffRequestTileController(OffRequest offRequest, TilePane tilePane) {
+        this.offRequest = offRequest;
         this.tilePane = tilePane;
     }
 
+    private void initShowProducts() {
+        view.setOnAction(e -> {
+            //stage.close();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/tiles/request/ProductRequestTile.fxml"));
+            Stage stage1 = new Stage();
+            fxmlLoader.setController(new OffRequestTileProducts(offRequest));
+            Parent root = null;
+            try {
+                root = fxmlLoader.load();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            stage1.setScene(new Scene(root, 672, 400));
+            stage1.setResizable(false);
+            stage1.show();
+        });
+    }
+
     private void setProperties() {
-        type.setText("Product request");
-        name.setText(productRequest.getProduct().getName());
-        brand.setText(productRequest.getProduct().getBrand());
-        category.setText(productRequest.getProduct().getCategoryName());
-        price.setText(productRequest.getProduct().getPrice() + "$");
-        company.setText(productRequest.getProduct().getSalesman().getCompanyName());
-        status.setText(productRequest.getType() + "");
+        percent.setText(offRequest.getOff().getDiscountPercent() +"");
+        start.setText(offRequest.getOff().getStartTime() + "");
+        end.setText(offRequest.getOff().getEndTime() + "");
+        status.setText(offRequest.getType() + "");
+        salesman.setText(offRequest.getAccount().getUsername());
     }
 
     private void initDecline() {
         decline.setOnAction(e -> {
-            Database.removeRequest(productRequest);
+            Database.removeRequest(offRequest);
             tilePane.getChildren().remove(parent);
             Database.addAllProductsToDatabaseFile();
         });
@@ -77,19 +98,19 @@ public class ProductRequestTileController {
 
     private void initAccept() {
         accept.setOnAction(e -> {
-            if(productRequest.getType() == Type.ADD) {
+            if(offRequest.getType() == Type.ADD) {
                 try {
-                    productRequest.getProduct().setProductStatus(ProductStatus.CONFIRMED);
-                    Database.addProduct(productRequest.getProduct());
-                    Database.removeRequest(productRequest);
+                    offRequest.getOff().setOffStatus(OffStatus.CONFIRMED);
+                    Database.addOff(offRequest.getOff());
+                    Database.removeRequest(offRequest);
                     tilePane.getChildren().remove(parent);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
-            } else if(productRequest.getType() == Type.EDIT) {
+            } else if(offRequest.getType() == Type.EDIT) {
                 try {
-                    productRequest.getProduct().setProductStatus(ProductStatus.CONFIRMED);
-                    Database.removeRequest(productRequest);
+                    offRequest.getOff().setOffStatus(OffStatus.CONFIRMED);
+                    Database.removeRequest(offRequest);
                     tilePane.getChildren().remove(parent);
                 } catch (Exception ex) {
                     ex.printStackTrace();
