@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="371.0" prefWidth="439.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <children>
+      <TextField fx:id="name" layoutX="24.0" layoutY="26.0" prefHeight="16.0" prefWidth="161.0" promptText="Name" styleClass="text1" stylesheets="@style.css">
+         <font>
+            <Font name="Tello Stick" size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="brand" layoutX="24.0" layoutY="81.0" prefHeight="16.0" prefWidth="161.0" promptText="Brand" styleClass="text1">
+         <font>
+            <Font name="Tello Stick" size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="price" layoutX="24.0" layoutY="135.0" prefHeight="16.0" prefWidth="161.0" promptText="Price" styleClass="text1">
+         <font>
+            <Font name="Tello Stick" size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="number" layoutX="24.0" layoutY="191.0" prefHeight="16.0" prefWidth="161.0" promptText="Number" styleClass="text1">
+         <font>
+            <Font name="Tello Stick" size="18.0" />
+         </font>
+      </TextField>
+      <ComboBox fx:id="comboBox" layoutX="24.0" layoutY="252.0" prefHeight="25.0" prefWidth="161.0" promptText="Category" />
+      <Button fx:id="chooseFile" layoutX="216.0" layoutY="243.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="195.0" text="Choose photo" />
+      <Button fx:id="sendRequest" layoutX="216.0" layoutY="302.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="195.0" text="Send Request" />
+      <ImageView fx:id="profileImage" fitHeight="195.0" fitWidth="212.0" layoutX="216.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../database/resources/images/avatar/download.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

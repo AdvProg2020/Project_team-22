@@ -46,5 +46,71 @@
     "points": {},
     "comments": [],
     "numberOfProduct": 2
+  },
+  {
+    "productId": "1bb37c73-18e1-428b-8991-e82eb3904927",
+    "productStatus": "CONFIRMED",
+    "name": "milk",
+    "brand": "damdaran",
+    "price": 1000,
+    "salesman": {
+      "username": "ali",
+      "firstName": "ali",
+      "lastName": "khodabandelou",
+      "email": "ali@gmail.com",
+      "phone": "09120149635",
+      "password": "1111",
+      "role": "SALESMAN",
+      "companyName": "adidas",
+      "discountsCodes": [],
+      "discountsList": [],
+      "credit": 0,
+      "logsList": [],
+      "logsListCode": [],
+      "shopBasket": [],
+      "shopBasketProductId": []
+    },
+    "categoryName": "food",
+    "category": {
+      "name": "food",
+      "productsList": []
+    },
+    "description": "",
+    "points": {},
+    "comments": [],
+    "numberOfProduct": 5
+  },
+  {
+    "productId": "4c5851ec-9a13-4e25-8e4e-57908c848a3a",
+    "productStatus": "CONFIRMED",
+    "name": "papaer",
+    "brand": "Paper one",
+    "price": 120,
+    "salesman": {
+      "username": "ali",
+      "firstName": "ali",
+      "lastName": "khodabandelou",
+      "email": "ali@gmail.com",
+      "phone": "09120149635",
+      "password": "1111",
+      "role": "SALESMAN",
+      "companyName": "adidas",
+      "discountsCodes": [],
+      "discountsList": [],
+      "credit": 0,
+      "logsList": [],
+      "logsListCode": [],
+      "shopBasket": [],
+      "shopBasketProductId": []
+    },
+    "categoryName": "food",
+    "category": {
+      "name": "food",
+      "productsList": []
+    },
+    "description": "",
+    "points": {},
+    "comments": [],
+    "numberOfProduct": 100
   }
 ]

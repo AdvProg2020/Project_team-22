@@ -13,6 +13,7 @@ import main.java.controller.alertBox.AlertBoxController;
 import main.java.controller.loginAndRegister.LoginController;
 import main.java.controller.managerMenu.ManagerController;
 import main.java.controller.product.ProductsController;
+import main.java.controller.salesmanMenu.SalesmanController;
 import main.java.model.account.Role;
 
 import java.io.IOException;
@@ -99,7 +100,17 @@ public class MainMenuController {
             } else if(Main.currentAccount.getRole() == Role.CUSTOMER) {
 
             } else if(Main.currentAccount.getRole() == Role.SALESMAN) {
-
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/salesmanMenu/SalesmanMenu.fxml"));
+                fxmlLoader.setController(new SalesmanController(stage));
+                Parent root = null;
+                try {
+                    root = fxmlLoader.load();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                stage.setScene(new Scene(root, 947, 537));
+                stage.setResizable(false);
+                stage.show();
             }
         });
     }

@@ -28,7 +28,7 @@ public class Product implements Serializable {
     private Map<String, Integer> points;
     private Double averagePoint;
     private ArrayList<Comment> comments;
-    int numberOfProduct;
+    private int numberOfProduct;
 
     public Product(String name, String brand, String price, String categoryName,
                    String description, int numberOfProduct) {
