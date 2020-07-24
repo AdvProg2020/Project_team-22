@@ -9,6 +9,8 @@ import  main.java.model.comment.Comment;
 import main.java.model.log.Log;
 import  main.java.model.off.Off;
 import main.java.model.product.Product;
+import main.java.model.request.OffRequest;
+import main.java.model.request.ProductRequest;
 import  main.java.model.request.Request;
 
 
@@ -16,6 +18,7 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Database {
@@ -26,7 +29,18 @@ public class Database {
     public static ArrayList<Category> allCategories = new ArrayList<>();
     public static ArrayList<Off> allOffs = new ArrayList<>();
     public static ArrayList<Discount> allDiscounts = new ArrayList<>();
-    public static ArrayList<Request> allRequests = new ArrayList<>();
+    public static ArrayList<OffRequest> allOffRequests = new ArrayList<>();
+    public static ArrayList<ProductRequest> allProductRequests = new ArrayList<>();
+
+
+    public static void checkOffs() {
+        LocalDate localDate = LocalDate.now();
+        for (Off off : allOffs) {
+            if(off.getEndTime().isBefore(localDate)) {
+                allOffs.remove(off);
+            }
+        }
+    }
 
 
     public static void addOff(Off off){
@@ -54,9 +68,13 @@ public class Database {
         addAllCategoriesToDatabaseFile();
     }
 
-    public static void addRequest(Request request) {
-        allRequests.add(request);
-        addAllRequestsToDatabaseFile();
+    public static void addProductRequest(ProductRequest request) {
+        allProductRequests.add(request);
+        addAllProductRequestsToDatabaseFile();
+    }
+    public static void addOffRequest(OffRequest request) {
+        allOffRequests.add(request);
+        addAllOffRequestsToDatabaseFile();
     }
 
     public static void addComment(Comment comment){
@@ -102,14 +120,24 @@ public class Database {
         }
     }
 
-    public static void addAllRequestsToDatabaseFile() {
+    public static void addAllProductRequestsToDatabaseFile() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        try (FileWriter writer = new FileWriter("src/database/requests.json")) {
-            gson.toJson(allRequests, writer);
+        try (FileWriter writer = new FileWriter("src/database/productsRequests.json")) {
+            gson.toJson(allProductRequests, writer);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    public static void addAllOffRequestsToDatabaseFile() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        try (FileWriter writer = new FileWriter("src/database/offRequests.json")) {
+            gson.toJson(allOffRequests, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public static void addAllLogsToDatabaseFile() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -173,15 +201,15 @@ public class Database {
         }
         return null;
     }
-
-    public static Request getRequestByRequestId(String requestId) {
-        for (Request request : allRequests) {
-            if(request.getId().equals(requestId)) {
-                return request;
-            }
-        }
-        return null;
-    }
+//
+//    public static Request getRequestByRequestId(String requestId) {
+//        for (Request request : allRequests) {
+//            if(request.getId().equals(requestId)) {
+//                return request;
+//            }
+//        }
+//        return null;
+//    }
 
     public static Log getLogByLogId(String logId) {
         for (Log log : allLogs) {
@@ -260,9 +288,14 @@ public class Database {
         return allAccounts;
     }
 
-    public static void removeRequest(Request request) {
-        allRequests.remove(request);
-        addAllRequestsToDatabaseFile();
+    public static void removeProductRequest(Request request) {
+        allProductRequests.remove(request);
+        addAllProductRequestsToDatabaseFile();
+    }
+
+    public static void removeOffRequest(Request request) {
+        allOffRequests.remove(request);
+        addAllOffRequestsToDatabaseFile();
     }
 
     public static Off getOffForThisGood(Product product) {
@@ -276,11 +309,23 @@ public class Database {
         return null;
     }
 
+    public static ArrayList<OffRequest> getAllOffRequests() {
+        return allOffRequests;
+    }
+
+    public static ArrayList<ProductRequest> getAllProductRequests() {
+        return allProductRequests;
+    }
+
+    public static ArrayList<Off> getAllOffs() {
+        return allOffs;
+    }
+
     public static ArrayList<Product> getAllProducts() {
         return allProducts;
     }
 
-    public static ArrayList<Request> getAllRequests() {
-        return allRequests;
-    }
+//    public static ArrayList<Request> getAllRequests() {
+//        return allRequests;
+//    }
 }

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fitToWidth="true" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: balck;" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane fitToWidth="true" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: balck;" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <StackPane fx:id="stackPane">
          <children>
@@ -24,7 +24,7 @@
                         <Insets left="30.0" right="30.0" top="10.0" />
                      </VBox.margin>
                      <children>
-                        <Label maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="15.0" prefWidth="758.0" text="حراج ها" textAlignment="RIGHT" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="25.0">
+                        <Label maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="15.0" prefWidth="758.0" text="Offs" textAlignment="RIGHT" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="25.0">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -42,12 +42,12 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="0.0" prefWidth="998.0">
                      <children>
-                        <Label maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="15.0" prefWidth="758.0" text="دسته بندی :" textAlignment="RIGHT" textFill="#808080" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0">
+                        <Label alignment="CENTER_RIGHT" layoutY="13.0" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="20.0" prefWidth="822.0" text="Category" textAlignment="RIGHT" textFill="#808080" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="13.0">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="categories" focusTraversable="false" layoutX="682.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="106.0" AnchorPane.topAnchor="8.0" />
+                        <ComboBox fx:id="categories" focusTraversable="false" layoutX="189.0" layoutY="10.0" prefWidth="150.0" AnchorPane.rightAnchor="599.0" AnchorPane.topAnchor="10.0" />
                      </children>
                      <VBox.margin>
                         <Insets left="30.0" right="30.0" />

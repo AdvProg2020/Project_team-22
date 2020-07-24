@@ -15,6 +15,7 @@ import main.java.controller.mainMenu.MainMenuController;
 import main.java.model.Category;
 import main.java.model.databaseUtil.Database;
 import main.java.model.product.Product;
+import main.java.model.product.ProductStatus;
 
 import java.io.IOException;
 
@@ -59,13 +60,13 @@ public class ProductsController {
     }
 
     private void initCategory() {
-        categories.getItems().add("همه دسته ها") ;
+        categories.getItems().add("All categories") ;
         for(Category category : Database.getAllCategories()){
             categories.getItems().add( category.getName()) ;
         }
-        categories.setValue( "همه دسته ها");
+        categories.setValue("All categories");
         categories.valueProperty().addListener((observableValue, preValue, newValue) -> {
-            if( newValue == "همه دسته ها") {
+            if( newValue == "All categories") {
                 tilePane.getChildren().clear();
                 addProduct();
             }else {
@@ -85,7 +86,9 @@ public class ProductsController {
 
     private void addProduct() {
         for(Product product : Database.getAllProducts()){
-            intiProductTile( product);
+            if(product.getProductStatus() == ProductStatus.CONFIRMED) {
+                intiProductTile( product);
+            }
         }
     }
 

@@ -16,5 +16,23 @@
       "zh",
       "bfsgxx"
     ]
+  },
+  {
+    "name": "clothes",
+    "properties": [
+      "cds",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "name": "phone",
+    "properties": [
+      " vfsd",
+      "",
+      "",
+      ""
+    ]
   }
 ]

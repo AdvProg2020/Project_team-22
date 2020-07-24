@@ -63,7 +63,7 @@ public class AddProductController {
                     Product product = new Product(nameOfProduct, brandOfProduct, priceOfProduct, category.getName(), "", numberOfProduct);
                     product.setProductStatus(ProductStatus.MAKING);
                     product.setSalesman(Main.currentAccount);
-                    Database.addRequest(new ProductRequest(product, Type.ADD, Main.currentAccount));
+                    Database.addProductRequest(new ProductRequest(product, Type.ADD, Main.currentAccount));
                     display("Request sent", new Stage());
                     stage.close();
                 } catch (Exception E) {

@@ -11,6 +11,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.TilePane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import main.java.Main;
 import main.java.controller.loginAndRegister.LoginController;
 import main.java.controller.mainMenu.MainMenuController;
 import main.java.controller.managerMenu.createManager.CreateManagerController;
@@ -18,7 +19,10 @@ import main.java.controller.tilesController.*;
 import main.java.model.Category;
 import main.java.model.account.Account;
 import main.java.model.databaseUtil.Database;
+import main.java.model.off.Off;
+import main.java.model.off.OffStatus;
 import main.java.model.product.Product;
+import main.java.model.product.ProductStatus;
 import main.java.model.request.OffRequest;
 import main.java.model.request.ProductRequest;
 import main.java.model.request.Request;
@@ -63,15 +67,75 @@ public class SalesmanController {
     }
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         scrollPane.setPadding(new Insets(7, 7, 7, 7));
         tilePane.setVgap(13);
         tilePane.setHgap(13);
         initBack();
         initAddProduct();
         initCategories();
+        initProducts();
+        initAddOff();
+        initOffs();
     }
 
+
+    private void initOffs() {
+        offs.setOnAction(e -> {
+            tilePane.getChildren().removeAll(categoryTiles);
+            tilePane.getChildren().removeAll(requestTiles);
+            tilePane.getChildren().removeAll(accountTiles);
+            tilePane.getChildren().removeAll(productTiles);
+            initAddOffs();
+        });
+    }
+
+    private void initAddOffs() {
+
+        ArrayList<Off> offArrayList = new ArrayList<>();
+        for (Off off : Database.getAllOffs()) {
+            if(off.getSalesmanUsername().equals(Main.currentAccount.getUsername()) && off.getOffStatus() == OffStatus.CONFIRMED) {
+                offArrayList.add(off);
+            }
+        }
+        for (Off off : offArrayList) {
+            initOffTile(off);
+        }
+    }
+
+    public void initOffTile(Off off) {
+        try {
+            FXMLLoader fxmlLoader;
+            fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/tiles/request/OffRequestTile.fxml"));
+            OffRequestTileController offRequestTileController = new OffRequestTileController(null, tilePane, off);
+            fxmlLoader.setController(offRequestTileController);
+            Parent root = fxmlLoader.load();
+            offRequestTileController.setParent(root);
+            tilePane.getChildren().add(root);
+            requestTiles.add(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private void initAddOff() {
+        addOff.setOnAction(e -> {
+            Stage stage = new Stage();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/addOff/AddOff.fxml"));
+            fxmlLoader.setController(new AddOffController(stage));
+            Parent root = null;
+            try {
+                root = fxmlLoader.load();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            stage.setScene(new Scene(root, 757, 379));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
+            stage.show();
+        });
+    }
 
 
     public void initBack() {
@@ -109,7 +173,6 @@ public class SalesmanController {
     }
 
 
-
     private void initCategories() {
         categories.setOnAction(e -> {
             tilePane.getChildren().removeAll(categoryTiles);
@@ -121,19 +184,19 @@ public class SalesmanController {
     }
 
     private void initAddCategories() {
-        for(Category category : Database.getAllCategories()){
+        for (Category category : Database.getAllCategories()) {
             initCategoryTile(category);
         }
     }
 
-    public void initCategoryTile(Category category){
+    public void initCategoryTile(Category category) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource( "/main/java/view/tiles/category/CategoryTile.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/tiles/category/CategoryTile.fxml"));
             CategoryTileController categoryTileController = new CategoryTileController(category, tilePane, true);
             fxmlLoader.setController(categoryTileController);
             Parent root = fxmlLoader.load();
             categoryTileController.setParent(root);
-            tilePane.getChildren().add(root) ;
+            tilePane.getChildren().add(root);
             categoryTiles.add(root);
         } catch (IOException e) {
             e.printStackTrace();
@@ -205,37 +268,39 @@ public class SalesmanController {
 //            e.printStackTrace();
 //        }
 //    }
-//
-//    private void initProducts() {
-//        products.setOnAction(e -> {
-//            tilePane.getChildren().removeAll(categoryTiles);
-//            tilePane.getChildren().removeAll(requestTiles);
-//            tilePane.getChildren().removeAll(accountTiles);
-//            tilePane.getChildren().removeAll(productTiles);
-//            initAddProducts();
-//        });
-//    }
-//
-//    private void initAddProducts() {
-//        for(Product product : Database.getAllProducts()){
-//            initProductTile( product);
-//        }
-//    }
-//
-//    public void initProductTile( Product product){
-//        try {
-//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource( "/main/java/view/tiles/product/ProductTile.fxml"));
-//            ProductTileController productTileController = new ProductTileController(product, tilePane);
-//            fxmlLoader.setController(productTileController);
-//            Parent root = fxmlLoader.load();
-//            productTileController.setParent(root);
-//            tilePane.getChildren().add(root) ;
-//            productTiles.add(root);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
+
+    private void initProducts() {
+        products.setOnAction(e -> {
+            tilePane.getChildren().removeAll(categoryTiles);
+            tilePane.getChildren().removeAll(requestTiles);
+            tilePane.getChildren().removeAll(accountTiles);
+            tilePane.getChildren().removeAll(productTiles);
+            initAddProducts();
+        });
+    }
+
+    private void initAddProducts() {
+        for (Product product : Database.getAllProducts()) {
+            if (product.getSalesman().getUsername().equals(Main.currentAccount.getUsername()) && product.getProductStatus() == ProductStatus.CONFIRMED) {
+                initProductTile(product);
+            }
+        }
+    }
+
+    public void initProductTile(Product product) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/tiles/product/ProductTile.fxml"));
+            ProductTileController productTileController = new ProductTileController(product, tilePane, false, true);
+            fxmlLoader.setController(productTileController);
+            Parent root = fxmlLoader.load();
+            productTileController.setParent(root);
+            tilePane.getChildren().add(root);
+            productTiles.add(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 //    private void initAddManger() {
 //        addManager.setOnAction(e -> {
 //            //stage.close();

@@ -1,6 +1,8 @@
 package main.java.model.product;
 
 
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import main.java.model.Category;
 import main.java.model.account.Account;
 import main.java.model.comment.Comment;
@@ -29,6 +31,21 @@ public class Product implements Serializable {
     private Double averagePoint;
     private ArrayList<Comment> comments;
     private int numberOfProduct;
+    private boolean set = false;
+
+//
+//    private void initAdd() {
+//        add.setOnAction();
+//    }
+
+
+    public boolean isSet() {
+        return set;
+    }
+
+    public void setSet(boolean set) {
+        this.set = set;
+    }
 
     public Product(String name, String brand, String price, String categoryName,
                    String description, int numberOfProduct) {
@@ -190,6 +207,7 @@ public class Product implements Serializable {
                 ", salesman=" + salesman +
                 ", category='" + category + '\'' +
                 ", description='" + description + '\'' +
+                ", set='" + set + '\'' +
                 '}';
     }
 }

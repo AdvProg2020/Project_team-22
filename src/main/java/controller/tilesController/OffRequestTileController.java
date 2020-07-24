@@ -10,8 +10,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import main.java.Main;
+import main.java.controller.alertBox.AlertBoxController;
+import main.java.controller.salesmanMenu.EditOffController;
+import main.java.controller.salesmanMenu.EditProductController;
 import main.java.model.databaseUtil.Database;
+import main.java.model.off.Off;
 import main.java.model.off.OffStatus;
 import main.java.model.request.OffRequest;
 import main.java.model.request.Type;
@@ -26,6 +32,8 @@ public class OffRequestTileController {
     @FXML
     private Text percent;
     @FXML
+    private Text type;
+    @FXML
     private Text start;
     @FXML
     private Text end;
@@ -33,6 +41,10 @@ public class OffRequestTileController {
     private Text status;
     @FXML
     private Text salesman;
+    @FXML
+    private Text st;
+    @FXML
+    private Text sa;
     @FXML
     private Button accept;
     @FXML
@@ -44,9 +56,18 @@ public class OffRequestTileController {
     private OffRequest offRequest;
     private TilePane tilePane;
     private Parent parent;
+    private Off change;
 
     @FXML
-    public void initialize(){
+    public void initialize() {
+        if (change != null) {
+            accept.setText("Edit");
+            decline.setText("Remove");
+            pane.getChildren().remove(status);
+            pane.getChildren().remove(salesman);
+            pane.getChildren().remove(st);
+            pane.getChildren().remove(sa);
+        }
         setProperties();
         initAccept();
         initEffect();
@@ -54,17 +75,22 @@ public class OffRequestTileController {
         initShowProducts();
     }
 
-    public OffRequestTileController(OffRequest offRequest, TilePane tilePane) {
+    public OffRequestTileController(OffRequest offRequest, TilePane tilePane, Off change) {
         this.offRequest = offRequest;
         this.tilePane = tilePane;
+        this.change = change;
     }
 
     private void initShowProducts() {
         view.setOnAction(e -> {
             //stage.close();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/tiles/request/ProductRequestTile.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/tiles/request/ViewOffProducts.fxml"));
             Stage stage1 = new Stage();
-            fxmlLoader.setController(new TileProducts(offRequest.getOff().getProductsList()));
+            if (change == null) {
+                fxmlLoader.setController(new TileProducts(offRequest.getOff().getProductsList()));
+            } else {
+                fxmlLoader.setController(new TileProducts(change.getProductsList()));
+            }
             Parent root = null;
             try {
                 root = fxmlLoader.load();
@@ -78,16 +104,28 @@ public class OffRequestTileController {
     }
 
     private void setProperties() {
-        percent.setText(offRequest.getOff().getDiscountPercent() +"");
-        start.setText(offRequest.getOff().getStartTime() + "");
-        end.setText(offRequest.getOff().getEndTime() + "");
-        status.setText(offRequest.getType() + "");
-        salesman.setText(offRequest.getAccount().getUsername());
+        if (change == null) {
+            type.setText("Off request");
+            percent.setText(offRequest.getOff().getDiscountPercent() + "");
+            start.setText(offRequest.getOff().getStartTime() + "");
+            end.setText(offRequest.getOff().getEndTime() + "");
+            status.setText(offRequest.getType() + "");
+            salesman.setText(offRequest.getAccount().getUsername());
+        } else {
+            type.setText("Off");
+            percent.setText(change.getDiscountPercent() + "");
+            start.setText(change.getStartTime() + "");
+            end.setText(change.getEndTime() + "");
+        }
     }
 
     private void initDecline() {
         decline.setOnAction(e -> {
-            Database.removeRequest(offRequest);
+            if (change == null) {
+                Database.removeOffRequest(offRequest);
+            } else {
+                Database.removeOff(change);
+            }
             tilePane.getChildren().remove(parent);
             Database.addAllProductsToDatabaseFile();
         });
@@ -95,25 +133,45 @@ public class OffRequestTileController {
 
     private void initAccept() {
         accept.setOnAction(e -> {
-            if(offRequest.getType() == Type.ADD) {
+            if (change == null) {
+                if (offRequest.getType() == Type.ADD) {
+                    try {
+                        offRequest.getOff().setOffStatus(OffStatus.CONFIRMED);
+                        Database.addOff(offRequest.getOff());
+                        Database.removeOffRequest(offRequest);
+                        tilePane.getChildren().remove(parent);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                } else if (offRequest.getType() == Type.EDIT) {
+                    try {
+                        offRequest.getOff().setOffStatus(OffStatus.CONFIRMED);
+                        Database.removeOffRequest(offRequest);
+                        tilePane.getChildren().remove(parent);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            } else {
+                //redirect to edit off controller
+                Stage stage = new Stage();
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/editOff/EditOff.fxml"));
+                EditOffController editOffController = new EditOffController(stage);
+                editOffController.setProducts(change.getProductsList());
+                editOffController.setOff(change);
+                fxmlLoader.setController(editOffController);
+                Parent root = null;
                 try {
-                    offRequest.getOff().setOffStatus(OffStatus.CONFIRMED);
-                    Database.addOff(offRequest.getOff());
-                    Database.removeRequest(offRequest);
-                    tilePane.getChildren().remove(parent);
-                } catch (Exception ex) {
+                    root = fxmlLoader.load();
+                } catch (IOException ex) {
                     ex.printStackTrace();
                 }
-            } else if(offRequest.getType() == Type.EDIT) {
-                try {
-                    offRequest.getOff().setOffStatus(OffStatus.CONFIRMED);
-                    Database.removeRequest(offRequest);
-                    tilePane.getChildren().remove(parent);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
+                stage.setScene(new Scene(root, 757, 378));
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setResizable(false);
+                stage.show();
             }
-            Database.addAllRequestsToDatabaseFile();
+            Database.addAllOffRequestsToDatabaseFile();
             Database.addAllProductsToDatabaseFile();
         });
     }
@@ -124,15 +182,30 @@ public class OffRequestTileController {
             ds.setSpread(0);
             ds.setOffsetY(1.0);
             ds.setOffsetX(1.0);
-            ds.setColor( new Color(0.5 ,0.5 , 0.5 , 1.0));
-            pane.setEffect( ds);
+            ds.setColor(new Color(0.5, 0.5, 0.5, 1.0));
+            pane.setEffect(ds);
         });
-        pane.setOnMouseExited( event -> {
+        pane.setOnMouseExited(event -> {
             pane.setEffect(null);
         });
     }
 
     public void setParent(Parent parent) {
         this.parent = parent;
+    }
+
+    private void display(String message, Stage stage) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/alertBox/AlertBox.fxml"));
+        fxmlLoader.setController(new AlertBoxController(message, stage));
+        Parent root = null;
+        try {
+            root = fxmlLoader.load();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        stage.setScene(new Scene(root, 384, 185));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
+        stage.show();
     }
 }

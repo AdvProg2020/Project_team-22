@@ -59,17 +59,26 @@ public class ProductRequestTileController {
 
     private void setProperties() {
         type.setText("Product request");
-        name.setText(productRequest.getProduct().getName());
-        brand.setText(productRequest.getProduct().getBrand());
-        category.setText(productRequest.getProduct().getCategoryName());
-        price.setText(productRequest.getProduct().getPrice() + "$");
-        company.setText(productRequest.getProduct().getSalesman().getCompanyName());
-        status.setText(productRequest.getType() + "");
+        if(productRequest.getType() == Type.EDIT) {
+            name.setText(productRequest.getEditProduct().getName());
+            brand.setText(productRequest.getEditProduct().getBrand());
+            category.setText(productRequest.getEditProduct().getCategoryName());
+            price.setText(productRequest.getEditProduct().getPrice() + "$");
+            company.setText(productRequest.getEditProduct().getSalesman().getCompanyName());
+            status.setText(productRequest.getType() + "");
+        } else {
+            name.setText(productRequest.getProduct().getName());
+            brand.setText(productRequest.getProduct().getBrand());
+            category.setText(productRequest.getProduct().getCategoryName());
+            price.setText(productRequest.getProduct().getPrice() + "$");
+            company.setText(productRequest.getProduct().getSalesman().getCompanyName());
+            status.setText(productRequest.getType() + "");
+        }
     }
 
     private void initDecline() {
         decline.setOnAction(e -> {
-            Database.removeRequest(productRequest);
+            Database.removeProductRequest(productRequest);
             tilePane.getChildren().remove(parent);
             Database.addAllProductsToDatabaseFile();
         });
@@ -81,21 +90,23 @@ public class ProductRequestTileController {
                 try {
                     productRequest.getProduct().setProductStatus(ProductStatus.CONFIRMED);
                     Database.addProduct(productRequest.getProduct());
-                    Database.removeRequest(productRequest);
+                    Database.removeProductRequest(productRequest);
                     tilePane.getChildren().remove(parent);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
             } else if(productRequest.getType() == Type.EDIT) {
                 try {
-                    productRequest.getProduct().setProductStatus(ProductStatus.CONFIRMED);
-                    Database.removeRequest(productRequest);
+                    productRequest.getEditProduct().setProductStatus(ProductStatus.CONFIRMED);
+                    Database.removeProduct(productRequest.getProduct());
+                    Database.addProduct(productRequest.getEditProduct());
+                    Database.removeProductRequest(productRequest);
                     tilePane.getChildren().remove(parent);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
             }
-            Database.addAllRequestsToDatabaseFile();
+            Database.addAllProductRequestsToDatabaseFile();
             Database.addAllProductsToDatabaseFile();
         });
     }

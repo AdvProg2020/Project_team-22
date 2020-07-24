@@ -9,6 +9,7 @@ import  main.java.model.comment.Comment;
 import  main.java.model.log.Log;
 import  main.java.model.off.Off;
 import main.java.model.product.Product;
+import main.java.model.request.OffRequest;
 import  main.java.model.request.ProductRequest;
 import  main.java.model.request.Request;
 
@@ -27,7 +28,8 @@ public class DatabaseInitiation {
         loadAllCategories();
         loadAllAccounts();
         loadAllDiscounts();
-        loadAllRequests();
+        loadAllOffRequests();
+        loadAllProductRequests();
         loadAllAccountsDiscount();
         loadProductsCategory();
         try {
@@ -37,11 +39,15 @@ public class DatabaseInitiation {
         }
     }
 
+
+
     private static void loadProductsCategory() {
         for (Product product : Database.getAllProducts()) {
             product.setCategory(Database.getCategoryByName(product.getCategoryName()));
         }
     }
+
+
 
     private static void loadAllAccountsDiscount() {
         for (Account account : Database.getAllAccounts()) {
@@ -80,17 +86,28 @@ public class DatabaseInitiation {
 
     }
 
-    private static void loadAllRequests() {
-        try (FileReader reader = new FileReader("src/database/requests.json")) {
+    private static void loadAllProductRequests() {
+        try (FileReader reader = new FileReader("src/database/productsRequests.json")) {
             Type type = new TypeToken<ArrayList<ProductRequest>>() {
             }.getType();
-            Database.allRequests = new Gson().fromJson(reader, type);
+            Database.allProductRequests = new Gson().fromJson(reader, type);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
+    private static void loadAllOffRequests() {
+        try (FileReader reader = new FileReader("src/database/offRequests.json")) {
+            Type type = new TypeToken<ArrayList<OffRequest>>() {
+            }.getType();
+            Database.allOffRequests = new Gson().fromJson(reader, type);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void loadAllProducts() {

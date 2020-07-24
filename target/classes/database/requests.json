@@ -1,1 +1,62 @@
-[]
+[
+  {
+    "product": {
+      "productId": "54dd6d50-247b-4744-aa11-7ed1112803bf",
+      "productStatus": "MAKING",
+      "name": "drtyr",
+      "brand": "dstdrth",
+      "price": 34,
+      "salesman": {
+        "username": "ali",
+        "firstName": "ali",
+        "lastName": "khodabandelou",
+        "email": "ali@gmail.com",
+        "phone": "09120149635",
+        "password": "1111",
+        "role": "SALESMAN",
+        "companyName": "adidas",
+        "discountsCodes": [],
+        "discountsList": [],
+        "credit": 0,
+        "logsList": [],
+        "logsListCode": [],
+        "shopBasket": [],
+        "shopBasketProductId": []
+      },
+      "categoryName": "phone",
+      "category": {
+        "name": "phone",
+        "properties": [
+          " vfsd",
+          "",
+          "",
+          ""
+        ]
+      },
+      "description": "",
+      "points": {},
+      "comments": [],
+      "numberOfProduct": 34,
+      "set": false
+    },
+    "type": "ADD",
+    "id": "acd02535-44df-4d99-b87c-c3e13a02f5fa",
+    "account": {
+      "username": "ali",
+      "firstName": "ali",
+      "lastName": "khodabandelou",
+      "email": "ali@gmail.com",
+      "phone": "09120149635",
+      "password": "1111",
+      "role": "SALESMAN",
+      "companyName": "adidas",
+      "discountsCodes": [],
+      "discountsList": [],
+      "credit": 0,
+      "logsList": [],
+      "logsListCode": [],
+      "shopBasket": [],
+      "shopBasketProductId": []
+    }
+  }
+]

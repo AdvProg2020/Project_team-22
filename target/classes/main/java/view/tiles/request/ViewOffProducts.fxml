@@ -3,7 +3,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 
-<TableView fx:id="table" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="672.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+<TableView fx:id="table" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="672.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <columns>
       <TableColumn fx:id="name" prefWidth="110.0" text="Product name" />
       <TableColumn fx:id="brand" prefWidth="90.0" text="Brand" />
@@ -11,6 +11,6 @@
       <TableColumn fx:id="company" prefWidth="90.0" text="Company" />
     <TableColumn fx:id="salesman" prefWidth="96.69066687011718" text="Salesman" />
       <TableColumn fx:id="category" prefWidth="90.0" text="Category" />
-      <TableColumn fx:id="point" prefWidth="108.0" text="Average point" />
+      <TableColumn fx:id="point" prefWidth="108.33331298828125" text="Average point" />
   </columns>
 </TableView>

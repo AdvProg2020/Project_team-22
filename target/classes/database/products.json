@@ -1,10 +1,10 @@
 [
   {
-    "productId": "d8168103-2093-4430-af45-dd0c41a532c5",
+    "productId": "6eaff253-7fdc-42bd-b7db-85113d14eb60",
     "productStatus": "CONFIRMED",
     "name": "ball",
     "brand": "adidas",
-    "price": 15,
+    "price": 20,
     "salesman": {
       "username": "ali",
       "firstName": "ali",
@@ -35,14 +35,15 @@
     "description": "",
     "points": {},
     "comments": [],
-    "numberOfProduct": 100
+    "numberOfProduct": 15,
+    "set": true
   },
   {
-    "productId": "9a6bc3e9-13b5-4dae-a2c4-c8b6883ef2d5",
+    "productId": "2fc233a6-7250-4998-a623-6dd40bcfe7e9",
     "productStatus": "CONFIRMED",
-    "name": "milk",
-    "brand": "paak",
-    "price": 1,
+    "name": "cds",
+    "brand": "vse",
+    "price": 21,
     "salesman": {
       "username": "ali",
       "firstName": "ali",
@@ -73,6 +74,46 @@
     "description": "",
     "points": {},
     "comments": [],
-    "numberOfProduct": 25
+    "numberOfProduct": 1212,
+    "set": true
+  },
+  {
+    "productId": "fd88301d-acaf-4838-a0d7-3e0180fa1000",
+    "productStatus": "CONFIRMED",
+    "name": "galaxy note 8",
+    "brand": "samsung",
+    "price": 800,
+    "salesman": {
+      "username": "ali",
+      "firstName": "ali",
+      "lastName": "khodabandelou",
+      "email": "ali@gmail.com",
+      "phone": "09120149635",
+      "password": "1111",
+      "role": "SALESMAN",
+      "companyName": "adidas",
+      "discountsCodes": [],
+      "discountsList": [],
+      "credit": 0,
+      "logsList": [],
+      "logsListCode": [],
+      "shopBasket": [],
+      "shopBasketProductId": []
+    },
+    "categoryName": "phone",
+    "category": {
+      "name": "phone",
+      "properties": [
+        " vfsd",
+        "",
+        "",
+        ""
+      ]
+    },
+    "description": "",
+    "points": {},
+    "comments": [],
+    "numberOfProduct": 40,
+    "set": true
   }
 ]

@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import main.java.controller.mainMenu.MainMenuController;
 import main.java.model.account.Account;
+import main.java.model.databaseUtil.Database;
 import main.java.model.databaseUtil.DatabaseInitiation;
 
 
@@ -19,6 +20,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         DatabaseInitiation.initializeDatabase();
+        Database.checkOffs();
         fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/mainMenu/MainMenu.fxml"));
         fxmlLoader.setController(new MainMenuController(primaryStage));
         Parent root = fxmlLoader.load();
@@ -33,5 +35,6 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
 
 }

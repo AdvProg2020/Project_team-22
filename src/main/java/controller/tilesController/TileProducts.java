@@ -3,6 +3,7 @@ package main.java.controller.tilesController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -44,17 +45,18 @@ public class TileProducts {
         category.setCellValueFactory(new PropertyValueFactory<>("categoryName"));
         point.setCellValueFactory(new PropertyValueFactory<>("averagePoint"));
         table.setItems(getProducts());
-        table.getColumns().addAll(name, brand, price, company, salesman, category, point);
     }
+
 
 
     public TileProducts(ArrayList<Product> products) {
         this.products = products;
     }
 
+
     public ObservableList<Product> getProducts() {
-        ObservableList<Product> players = FXCollections.observableArrayList();
-        players.addAll(products);
-        return players;
+        ObservableList<Product> products1 = FXCollections.observableArrayList();
+        products1.addAll(products);
+        return products1;
     }
 }

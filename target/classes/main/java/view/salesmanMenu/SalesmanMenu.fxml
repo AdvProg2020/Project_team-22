@@ -20,7 +20,7 @@
                         <FontAwesomeIconView glyphName="SHOPPING_CART" size="30" />
                     </graphic>
                 </Label>
-                <Button fx:id="products" mnemonicParsing="false" prefHeight="53.0" prefWidth="256.0" text="  Products">
+                <Button fx:id="products" mnemonicParsing="false" prefHeight="53.0" prefWidth="256.0" text="  My products">
                     <cursor>
                         <Cursor fx:constant="DEFAULT" />
                     </cursor>
@@ -34,7 +34,7 @@
                         <Insets left="10.0" />
                     </padding>
                 </Button>
-                <Button fx:id="categories" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="281.0" text="  Categories">
+                <Button fx:id="categories" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="281.0" text="  Available categories">
                     <cursor>
                         <Cursor fx:constant="DEFAULT" />
                     </cursor>
@@ -48,7 +48,7 @@
                         <Insets left="10.0" />
                     </padding>
                 </Button>
-            <Button fx:id="offs" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="281.0" text="  Offs">
+            <Button fx:id="offs" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="281.0" text="  My offs">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -59,7 +59,7 @@
                   <Insets left="10.0" />
                </padding>
             </Button>
-            <Button fx:id="advertisements" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="281.0" text="  Advertisements">
+            <Button fx:id="advertisements" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="281.0" text="  My advertisements">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>

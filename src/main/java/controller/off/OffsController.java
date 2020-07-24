@@ -3,6 +3,7 @@ package main.java.controller.off;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.effect.DropShadow;
@@ -10,9 +11,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import main.java.controller.mainMenu.MainMenuController;
 import main.java.model.Category;
 import main.java.model.databaseUtil.Database;
 import main.java.model.off.Off;
+import main.java.model.off.OffStatus;
 import main.java.model.product.Product;
 
 import java.io.IOException;
@@ -36,28 +39,35 @@ public class OffsController {
         initBackButton() ;
     }
 
-    public OffsController(Stage stage , GridPane gridPane) {
+    public OffsController(Stage stage) {
         this.stage = stage ;
-        this.gridPane = gridPane ;
+        //this.gridPane = gridPane ;
     }
 
     private void initBackButton() {
-        back.setOnAction(event -> {
-            stage.getScene().setRoot( gridPane);
-            stage.setTitle("online market");
+        back.setOnMouseClicked(e -> {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/mainMenu/MainMenu.fxml"));
+            fxmlLoader.setController(new MainMenuController(stage));
+            Parent root = null;
+            try {
+                root = fxmlLoader.load();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            stage.setScene(new Scene(root, 947, 537));
             stage.setResizable(false);
+            stage.show();
         });
-
     }
 
     private void initCategory() {
-        categories.getItems().add("همه دسته ها") ;
+        categories.getItems().add("All categories") ;
         for(Category category : Database.getAllCategories()){
             categories.getItems().add( category.getName()) ;
         }
-        categories.setValue( "همه دسته ها");
+        categories.setValue( "All categories");
         categories.valueProperty().addListener((observableValue, preValue, newValue) -> {
-            if( newValue == "همه دسته ها") {
+            if( newValue == "All categories") {
                 tilePane.getChildren().clear();
                 addProduct();
             }else {
@@ -71,7 +81,7 @@ public class OffsController {
         for(Product product : Database.getAllProducts()){
             if( categories.getValue().equals(product.getCategoryName() )) {
                 Off off = Database.getOffForThisGood(product);
-                if (off != null) {
+                if (off != null && off.getOffStatus() == OffStatus.CONFIRMED) {
                     intiProductTile( product  , off) ;
                 }
             }
@@ -81,7 +91,7 @@ public class OffsController {
     private void addProduct() {
         for(Product product : Database.getAllProducts()){
             Off off = Database.getOffForThisGood(product);
-            if (off != null) {
+            if (off != null && off.getOffStatus() == OffStatus.CONFIRMED) {
                 intiProductTile( product  , off) ;
             }
         }
@@ -90,7 +100,6 @@ public class OffsController {
     public void intiProductTile( Product product , Off off) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource( "/main/java/view/off/OffsTile.fxml"));
-
             fxmlLoader.setController(new OffsTileController( product , off));
             Parent root = fxmlLoader.load();
             root.setOnMouseEntered(event -> {

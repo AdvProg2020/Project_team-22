@@ -1,52 +1,62 @@
 [
   {
-    "offId": "0b8429cf-9084-48cf-b86e-57d980e9cb2a",
+    "offId": "5b6ef6de-6057-4583-8844-c1bffbf67ecb",
     "productsList": [
       {
-        "productId": "90638aee-cd02-405a-90b7-bd1982a96892",
-        "name": "ماست تازه ",
-        "brand": "پاک ",
-        "price": 9000,
-        "categoryName": "غذا",
-        "category": {
-          "name": "غذا",
-          "productsList": []
+        "productId": "6eaff253-7fdc-42bd-b7db-85113d14eb60",
+        "productStatus": "CONFIRMED",
+        "name": "ball",
+        "brand": "adidas",
+        "price": 20,
+        "salesman": {
+          "username": "ali",
+          "firstName": "ali",
+          "lastName": "khodabandelou",
+          "email": "ali@gmail.com",
+          "phone": "09120149635",
+          "password": "1111",
+          "role": "SALESMAN",
+          "companyName": "adidas",
+          "discountsCodes": [],
+          "discountsList": [],
+          "credit": 0,
+          "logsList": [],
+          "logsListCode": [],
+          "shopBasket": [],
+          "shopBasketProductId": []
         },
-        "description": "fresh",
+        "categoryName": "sport",
+        "category": {
+          "name": "sport",
+          "properties": [
+            "one",
+            "tow",
+            "dadada",
+            ""
+          ]
+        },
+        "description": "",
         "points": {},
         "comments": [],
-        "numberOfProduct": 2
-      },
-      {
-        "productId": "d61e19a0-ed2e-4cbf-8de4-1df3ac56b762",
-        "name": "پنیر تازه ",
-        "brand": "پاک ",
-        "price": 8000,
-        "categoryName": "غذا",
-        "category": {
-          "name": "غذا",
-          "productsList": []
-        },
-        "description": "fresh",
-        "points": {},
-        "comments": [],
-        "numberOfProduct": 2
+        "numberOfProduct": 15,
+        "set": true
       }
     ],
     "productsListId": [
-      "90638aee-cd02-405a-90b7-bd1982a96892",
-      "d61e19a0-ed2e-4cbf-8de4-1df3ac56b762"
+      "6eaff253-7fdc-42bd-b7db-85113d14eb60"
     ],
+    "offStatus": "CONFIRMED",
     "startTime": {
-      "year": 1398,
-      "month": 2,
-      "day": 3
+      "year": 2020,
+      "month": 7,
+      "day": 24
     },
     "endTime": {
-      "year": 1399,
-      "month": 1,
-      "day": 6
+      "year": 2020,
+      "month": 8,
+      "day": 1
     },
-    "discountPercent": 30.0
+    "discountPercent": 17,
+    "salesmanUsername": "ali"
   }
 ]

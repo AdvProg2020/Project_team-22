@@ -19,6 +19,7 @@ import main.java.model.Category;
 import main.java.model.account.Account;
 import main.java.model.databaseUtil.Database;
 import main.java.model.product.Product;
+import main.java.model.product.ProductStatus;
 import main.java.model.request.OffRequest;
 import main.java.model.request.ProductRequest;
 import main.java.model.request.Request;
@@ -158,8 +159,12 @@ public class ManagerController {
     }
 
     private void initAddRequests() {
-        for(Request request : Database.getAllRequests()){
-            initRequestTile(request);
+
+        for (ProductRequest productRequest : Database.getAllProductRequests()) {
+            initRequestTile((productRequest));
+        }
+        for (OffRequest offRequest : Database.getAllOffRequests()) {
+            initRequestTile(offRequest);
         }
     }
 
@@ -173,9 +178,9 @@ public class ManagerController {
                 fxmlLoader.setController(productRequestTileController);
                 root = fxmlLoader.load();
                 productRequestTileController.setParent(root);
-            } else {
+            } else if(request instanceof OffRequest) {
                 fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/tiles/request/OffRequestTile.fxml"));
-                OffRequestTileController offRequestTileController = new OffRequestTileController((OffRequest) request, tilePane);
+                OffRequestTileController offRequestTileController = new OffRequestTileController((OffRequest) request, tilePane, null);
                 fxmlLoader.setController(offRequestTileController);
                 root = fxmlLoader.load();
                 offRequestTileController.setParent(root);
@@ -232,14 +237,16 @@ public class ManagerController {
 
     private void initAddProducts() {
         for(Product product : Database.getAllProducts()){
-            initProductTile( product);
+            if(product.getProductStatus() == ProductStatus.CONFIRMED) {
+                initProductTile( product);
+            }
         }
     }
 
     public void initProductTile( Product product){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource( "/main/java/view/tiles/product/ProductTile.fxml"));
-            ProductTileController productTileController = new ProductTileController(product, tilePane);
+            ProductTileController productTileController = new ProductTileController(product, tilePane, true, true);
             fxmlLoader.setController(productTileController);
             Parent root = fxmlLoader.load();
             productTileController.setParent(root);

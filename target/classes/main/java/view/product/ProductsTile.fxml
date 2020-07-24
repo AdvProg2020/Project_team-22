@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vbox" alignment="CENTER" prefHeight="400.0" prefWidth="250.0" spacing="3.0" style="-fx-background-color: white; -fx-border-color: rgb(200,200,200 ,0.5);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="vbox" alignment="CENTER" prefHeight="400.0" prefWidth="250.0" spacing="3.0" style="-fx-background-color: white; -fx-border-color: rgb(200,200,200 ,0.5);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <StackPane fx:id="picStackPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="238.0" prefWidth="238.0">
          <children>
@@ -38,14 +38,14 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Label layoutX="36.0" layoutY="3.0" text="امتیاز :" textFill="#a4a3a3" AnchorPane.leftAnchor="20.0" />
-            <Label layoutX="8.0" layoutY="3.0" text="0" textFill="#a4a3a3" AnchorPane.leftAnchor="10.0" />
+            <Label layoutX="10.0" layoutY="3.0" text="Score" textFill="#a4a3a3" AnchorPane.leftAnchor="10.0" />
+            <Label layoutX="51.0" layoutY="3.0" text="0" textFill="#a4a3a3" AnchorPane.leftAnchor="51.0" />
          </children>
          <VBox.margin>
             <Insets right="10.0" />
          </VBox.margin>
       </AnchorPane>
-      <Label fx:id="priceLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefHeight="33.0" prefWidth="248.0" text="18500  تومان" textAlignment="RIGHT" textFill="#0a0a0a">
+      <Label fx:id="priceLabel" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefHeight="33.0" prefWidth="248.0" text="18500  تومان" textAlignment="RIGHT" textFill="#0a0a0a">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

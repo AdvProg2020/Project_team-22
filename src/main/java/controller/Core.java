@@ -338,7 +338,7 @@ public class Core {
         Database.addOff(off);
     }
 
-    public void editOff(Off off, ArrayList<Product> productsList, LocalDate startTime, LocalDate endTime, double discountPercent) {
+    public void editOff(Off off, ArrayList<Product> productsList, LocalDate startTime, LocalDate endTime, int discountPercent) throws Exception {
         off.setProductsList(productsList);
         off.setStartTime(startTime);
         off.setEndTime(endTime);
@@ -506,12 +506,12 @@ public class Core {
     public void editProductInfo(ProductStatus productStatus, int price, StockStatus stockStatus, String description) {
 
     }
-
-    public void sellProduct(Product product) {
-        product.setSalesman(currentAccount);
-        Database.addRequest(new ProductRequest(product, Type.ADD, currentAccount));
-        System.out.println("The request was sent");
-    }
+//
+//    public void sellProduct(Product product) {
+//        product.setSalesman(currentAccount);
+//        Database.addRequest(new ProductRequest(product, Type.ADD, currentAccount));
+//        System.out.println("The request was sent");
+//    }
 
     public void compareProduct(Product firstProduct, Product secondProduct) {
         if (firstProduct == null || secondProduct == null) {
@@ -670,63 +670,63 @@ public class Core {
         Database.addAllCommentsToDatabaseFile();
 
     }
-
-    public void showRequest(String requestId) throws Exception {
-        Request request = Database.getRequestByRequestId(requestId);
-        if (request == null) {
-            throw new Exception("invalid request id");
-        }
-        System.out.println("Request type: " + request.getType());
-        System.out.println("User " + request.getAccount().getUsername() + " has requested");
-        System.out.println("Company name: " + request.getAccount().getCompanyName());
-        if (request instanceof ProductRequest) {
-            Product product = ((ProductRequest) request).getProduct();
-            System.out.println("Request for product: " + product.getNumberOfProduct() + " number of " + product.getName()
-                    + " with product id: " + product.getProductId());
-        } else {
-            Off off = ((OffRequest) request).getOff();
-            System.out.println("Request for off with id: " + off.getOffId() + '\n'
-                    + "see more details in off panel");
-        }
-    }
-
-    public void acceptRequestById(String requestId) throws Exception {
-        Request request = Database.getRequestByRequestId(requestId);
-        if (request == null) {
-            throw new Exception("invalid request id");
-        }
-        if (request instanceof ProductRequest) {
-            if (request.getType().equals(Type.EDIT)) {
-                Database.removeProduct(Database.getProductByProductId(((ProductRequest) request).getProduct().getProductId()));
-            }
-            Database.addProduct(((ProductRequest) request).getProduct());
-        } else if (request instanceof OffRequest) {
-            if (request.getType().equals(Type.EDIT)) {
-                Database.removeOff(Database.getOffByOffId(((OffRequest) request).getOff().getOffId()));
-            }
-            Database.addOff(((OffRequest) request).getOff());
-        }
-        System.out.println("request accepted");
-        Database.removeRequest(request);
-    }
-
-    public void rejectRequestById(String requestId) throws Exception {
-        Request request = Database.getRequestByRequestId(requestId);
-        if (request == null) {
-            throw new Exception("invalid request id");
-        }
-        System.out.println("request rejected");
-        Database.removeRequest(request);
-    }
-
-    public void logoutUser() {
-        if (currentAccount == null) {
-            System.out.println("You have not logged in yet");
-        } else {
-            currentAccount = null;
-            System.out.println("You logged out successfully");
-        }
-    }
+//
+//    public void showRequest(String requestId) throws Exception {
+//        Request request = Database.getRequestByRequestId(requestId);
+//        if (request == null) {
+//            throw new Exception("invalid request id");
+//        }
+//        System.out.println("Request type: " + request.getType());
+//        System.out.println("User " + request.getAccount().getUsername() + " has requested");
+//        System.out.println("Company name: " + request.getAccount().getCompanyName());
+//        if (request instanceof ProductRequest) {
+//            Product product = ((ProductRequest) request).getProduct();
+//            System.out.println("Request for product: " + product.getNumberOfProduct() + " number of " + product.getName()
+//                    + " with product id: " + product.getProductId());
+//        } else {
+//            Off off = ((OffRequest) request).getOff();
+//            System.out.println("Request for off with id: " + off.getOffId() + '\n'
+//                    + "see more details in off panel");
+//        }
+//    }
+//
+//    public void acceptRequestById(String requestId) throws Exception {
+//        Request request = Database.getRequestByRequestId(requestId);
+//        if (request == null) {
+//            throw new Exception("invalid request id");
+//        }
+//        if (request instanceof ProductRequest) {
+//            if (request.getType().equals(Type.EDIT)) {
+//                Database.removeProduct(Database.getProductByProductId(((ProductRequest) request).getProduct().getProductId()));
+//            }
+//            Database.addProduct(((ProductRequest) request).getProduct());
+//        } else if (request instanceof OffRequest) {
+//            if (request.getType().equals(Type.EDIT)) {
+//                Database.removeOff(Database.getOffByOffId(((OffRequest) request).getOff().getOffId()));
+//            }
+//            Database.addOff(((OffRequest) request).getOff());
+//        }
+//        System.out.println("request accepted");
+//        Database.removeRequest(request);
+//    }
+//
+//    public void rejectRequestById(String requestId) throws Exception {
+//        Request request = Database.getRequestByRequestId(requestId);
+//        if (request == null) {
+//            throw new Exception("invalid request id");
+//        }
+//        System.out.println("request rejected");
+//        Database.removeRequest(request);
+//    }
+//
+//    public void logoutUser() {
+//        if (currentAccount == null) {
+//            System.out.println("You have not logged in yet");
+//        } else {
+//            currentAccount = null;
+//            System.out.println("You logged out successfully");
+//        }
+//    }
 
     /*public void showCustomerDiscount() {
         for (Discount discount : currentAccount.getDiscountsList()) {

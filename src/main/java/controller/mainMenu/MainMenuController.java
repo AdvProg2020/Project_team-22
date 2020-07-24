@@ -12,6 +12,7 @@ import main.java.Main;
 import main.java.controller.alertBox.AlertBoxController;
 import main.java.controller.loginAndRegister.LoginController;
 import main.java.controller.managerMenu.ManagerController;
+import main.java.controller.off.OffsController;
 import main.java.controller.product.ProductsController;
 import main.java.controller.salesmanMenu.SalesmanController;
 import main.java.model.account.Role;
@@ -45,12 +46,29 @@ public class MainMenuController {
         initProductsMenu();
         initLoginMenu();
         initAccessMenu();
+        initOffsMenu();
     }
 
     private void initProductsMenu() {
         productsMenu.setOnAction(b -> {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/product/Products.fxml"));
             fxmlLoader.setController(new ProductsController(stage));
+            Parent root = null;
+            try {
+                root = fxmlLoader.load();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            stage.setScene(new Scene(root, 947, 537));
+            stage.setResizable(false);
+            stage.show();
+        });
+    }
+
+    private void initOffsMenu() {
+        offs.setOnAction(b -> {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/java/view/off/Offs.fxml"));
+            fxmlLoader.setController(new OffsController(stage));
             Parent root = null;
             try {
                 root = fxmlLoader.load();

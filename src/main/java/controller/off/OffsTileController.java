@@ -49,7 +49,7 @@ public class OffsTileController {
 
     private void initTile() {
 
-        infoLabel.setText( product.getName() + "  " + product.getBrand() );
+        infoLabel.setText("  " + product.getName() + "  " + product.getBrand() );
         if ( product.getCategoryName() != null) {
             categoryLabel.setText( categoryLabel.getText() + product.getCategoryName());
         }
@@ -63,21 +63,21 @@ public class OffsTileController {
         }
         if( product.getNumberOfProduct() > 0) {
 
-            priceLabel.setText( product.getPrice() + " تومان");
+            priceLabel.setText( "  " + product.getPrice() + " $");
             priceLabel.setStyle( "-fx-text-fill: #0a0a0a") ;
             discount.setVisible(false);
         }else{
-            priceLabel.setText( "ناموجود است ");
+            priceLabel.setText( "Not available");
             priceLabel.setStyle( "-fx-text-fill: #8a8888");
             discount.setVisible(false);
         }
-        discount.setText(   "%"+ off.getDiscountPercent()+ "تخفیف ");
+        discount.setText(    off.getDiscountPercent()+ "% Off");
         discount.setVisible( true);
         LocalDate sTime = off.getStartTime() ;
         LocalDate eTime = off.getEndTime() ;
         startLabel.setText( startLabel.getText() + sTime.getYear() +"." + sTime.getMonthValue() + "." + sTime.getDayOfMonth());
         endLabel.setText( endLabel.getText() + eTime.getYear() +"." + eTime.getMonthValue() + "." + eTime.getDayOfMonth());
-        remainLabel.setText( remainLabel.getText() + remainDay(sTime , eTime) + " روز");
+        remainLabel.setText( remainLabel.getText() + remainDay(sTime , eTime) + " days");
     }
 
     public int remainDay( LocalDate sTime , LocalDate eTime){

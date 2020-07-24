@@ -17,6 +17,8 @@ import main.java.model.Category;
 import main.java.model.databaseUtil.Database;
 import main.java.model.off.OffStatus;
 import main.java.model.product.Product;
+import main.java.model.product.ProductStatus;
+import main.java.model.product.StockStatus;
 import main.java.model.request.Type;
 
 import java.io.IOException;
@@ -67,7 +69,7 @@ public class CategoryTileController {
             //stage.close();
             ArrayList<Product> products = new ArrayList<>();
             for (Product product : Database.getAllProducts()) {
-                if(product.getCategoryName().equals(category.getName())) {
+                if(product.getCategoryName().equals(category.getName()) && product.getProductStatus() == ProductStatus.CONFIRMED) {
                     products.add(product);
                 }
             }

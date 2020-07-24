@@ -2,6 +2,7 @@ package main.java.model.off;
 
 import main.java.model.product.Product;
 
+import java.awt.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -14,15 +15,24 @@ public class Off implements Serializable {
     private OffStatus offStatus;
     private LocalDate startTime;
     private LocalDate endTime;
-    private double discountPercent;
+    private int discountPercent;
+    private String salesmanUsername;
 
-    public Off(ArrayList<Product> productsList, LocalDate startTime, LocalDate endTime, double discountPercent) {
+    public Off(ArrayList<Product> productsList, LocalDate startTime, LocalDate endTime, int discountPercent) throws Exception {
         this.productsList = productsList;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.discountPercent = discountPercent;
+        setStartTime(startTime);
+        setEndTime(endTime);
+        setDiscountPercent(discountPercent);
         this.offId = UUID.randomUUID().toString();
         addProductListIdToIdList();
+    }
+
+    public void setSalesmanUsername(String salesmanUsername) {
+        this.salesmanUsername = salesmanUsername;
+    }
+
+    public String getSalesmanUsername() {
+        return salesmanUsername;
     }
 
     private void addProductListIdToIdList(){
@@ -72,15 +82,25 @@ public class Off implements Serializable {
         this.offStatus = offStatus;
     }
 
-    public void setStartTime(LocalDate startTime) {
+    public void setStartTime(LocalDate startTime) throws Exception {
+        LocalDate localDate = LocalDate.now();
+        if(startTime.isBefore(localDate)) {
+            throw new Exception("Invalid time for start time");
+        }
         this.startTime = startTime;
     }
 
-    public void setEndTime(LocalDate endTime) {
+    public void setEndTime(LocalDate endTime) throws Exception {
+        if(endTime.isBefore(startTime)) {
+            throw new Exception("Invalid time for end time");
+        }
         this.endTime = endTime;
     }
 
-    public void setDiscountPercent(double discountPercent) {
+    public void setDiscountPercent(int discountPercent) throws Exception {
+        if(discountPercent <= 0 || discountPercent >= 100) {
+            throw new Exception("invalid discount percent");
+        }
         this.discountPercent = discountPercent;
     }
 

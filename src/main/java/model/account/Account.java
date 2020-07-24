@@ -28,6 +28,8 @@ public class Account implements Serializable {
     private ArrayList<Product> shopBasket = new ArrayList<>();
     private ArrayList<String> shopBasketProductId = new ArrayList<>();
 
+
+
     public Account(String username, String firstName, String lastName, String email,
                    String phone, String password, Role role) throws Exception {
         setUsername(username);
